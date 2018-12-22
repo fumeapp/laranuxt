@@ -1,0 +1,28 @@
+
+# laravel
+public/hot
+public/storage
+storage/*
+_ide_helper.php
+.idea
+.vagrant
+npm-debug.log
+yarn-error.log
+.env
+envs/*
+vendor
+public/vendor
+
+# osx
+.DS_Store
+
+# vim
+*.swp
+
+# js
+node_modules
+dist
+.nuxt
+
+# nuxt
+web/static/framework.css
