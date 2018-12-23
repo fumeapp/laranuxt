@@ -78,11 +78,8 @@ module.exports = {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
+    '@nuxtjs/google-analytics',
   ],
-
-  proxy: {
-    '/api': process.env.APP_URL,
-  },
 
   axios: {
     baseURL: process.env.NUXT_PROXY,
@@ -92,6 +89,13 @@ module.exports = {
     },
   },
 
+  proxy: {
+    '/api': process.env.APP_URL,
+  },
+
+  'google-analytics': {
+    id: '',
+  },
 
   /*
   ** Plugins to load before mounting the App
