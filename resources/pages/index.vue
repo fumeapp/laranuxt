@@ -1,26 +1,21 @@
 <template lang="pug">
-#page
+#Users.page
   .container
     section.section
-      .buttons.is-centered
-        .button
-          span this is a test
-          span.icon: i.mdi.mdi-account-box
-        .button.is-primary
-          span this is a test
-          span.icon: i.mdi.mdi-account-box
-        .button
-          span this is a test
-          span.icon: i.mdi.mdi-account-box
-      pre.code {{ api }}
+      .columns.is-multiline
+        .column.is-one-third(v-for="user in users")
+          UserCard(:user="user")
 </template>
 
 <script>
+import UserCard from '@/components/UserCard'
 export default {
+
+  components: { UserCard },
 
   data () {
     return {
-      api: [],
+      users: [],
     }
   },
 
@@ -30,7 +25,7 @@ export default {
 
   methods: {
     async get () {
-      this.api = (await this.$axios.get('example')).data.data
+      this.users = (await this.$axios.get('example')).data.data
     }
   },
 
