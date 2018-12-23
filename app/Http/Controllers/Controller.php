@@ -19,8 +19,18 @@ class Controller extends \acidjazz\metapi\MetApiController
         return '<pre>'.Artisan::output().'</pre>';
     }
 
-    public function test(Request $request)
+    public function example(Request $request)
     {
-        return $this->render(['this','is','from','the','server']);
+        $faker = \Faker\Factory::create();
+        $users = [];
+        for ($i = 0; $i !== 20; $i++) {
+            $email = $faker->unique()->safeEmail;
+            $users[] = [
+                'name' => $faker->name(),
+                'email' => $email,
+                'avatar' => 'http://i.pravatar.cc/150?u='.$email,
+            ];
+        }
+        return $this->render($users);
     }
 }

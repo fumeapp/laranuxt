@@ -11,7 +11,6 @@ const pkg = require('./package')
 
 module.exports = {
 
-
   env: {
     NUXT_ROOT: process.env.NUXT_ROOT,
     API_URL: process.env.APP_URL,
@@ -33,10 +32,11 @@ module.exports = {
       { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
-      /*
+      { rel: 'stylesheet', href: '/bulma.css' },
+      { rel: 'stylesheet', href: '/mdi.css' },
+      /* use realfavicongenerator and throw the contents in resources/static/
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: '/framework.css' },
-      { rel: 'stylesheet', href: '/mdi.css' },
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
@@ -51,7 +51,6 @@ module.exports = {
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js', integrity: 'sha256-9Nt2r+tJnSd2A2CRUvnjgsD+ES1ExvjbjBNqidm9doI=', crossorigin: 'anonymous' },
     ],
   },
-
 
   /*
   ** Customize the progress-bar color

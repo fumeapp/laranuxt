@@ -13,5 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/test', 'Controller@test');
+Route::get('/example', 'Controller@example');
 Route::get('/routes', 'Controller@index');

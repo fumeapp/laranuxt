@@ -14,9 +14,11 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
+    $email = $faker->unique()->safeEmail;
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'remember_token' => str_random(10),
+        'name' => $faker->name(),
+        'email' => $email,
+        'avatar' => 'http://i.pravatar.cc/150?u='.$email,
+        'role' => 'member',
     ];
 });

@@ -24,5 +24,8 @@ node_modules
 dist
 .nuxt
 
-# nuxt
-web/static/framework.css
+# bulma/mdi
+resources/static/bulma.css
+resources/static/mdi.css
+resources/static/materialdesignicons.min.css.map
+resources/static/fonts
