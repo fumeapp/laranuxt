@@ -23,7 +23,7 @@ class Controller extends \acidjazz\metapi\MetApiController
     {
         $faker = \Faker\Factory::create();
         $users = [];
-        for ($i = 0; $i !== 20; $i++) {
+        for ($i = 0; $i !== 9; $i++) {
             $email = $faker->unique()->safeEmail;
             $users[] = [
                 'name' => $faker->name(),

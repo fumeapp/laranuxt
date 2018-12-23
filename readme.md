@@ -13,4 +13,5 @@
   * [@nuxtjs/google-analytics](https://github.com/nuxt-community/analytics-module) GA
 
 * [Laravel](https://laravel.com) - for our API
-  * [metapi](https://github.com/acidjazz/metapi) - helpers and utilities for our api
+  * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities
+  * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API
