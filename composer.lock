@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "536734abc85378278f980bbe9ab40ed9",
     "packages": [
         {
             "name": "acidjazz/metapi",
-            "version": "v1.1.8",
+            "version": "v1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acidjazz/metapi.git",
-                "reference": "196af6111992513ac3125db0e6796a0308aac6b4"
+                "reference": "cdd907659f24111780fbc4e318c5334fc8d584a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acidjazz/metapi/zipball/196af6111992513ac3125db0e6796a0308aac6b4",
-                "reference": "196af6111992513ac3125db0e6796a0308aac6b4",
+                "url": "https://api.github.com/repos/acidjazz/metapi/zipball/cdd907659f24111780fbc4e318c5334fc8d584a2",
+                "reference": "cdd907659f24111780fbc4e318c5334fc8d584a2",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "pagination",
                 "php"
             ],
-            "time": "2018-10-25T19:17:05+00:00"
+            "time": "2018-12-22T10:29:34+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
