@@ -67,7 +67,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    // { src: 'assets/stylus/main.styl', lang: 'stylus' },
+     // { src: 'assets/stylus/main.styl', lang: 'stylus' },
+    // '~/assets/css/tailwind.css'
   ],
   extractCSS: true,
 
