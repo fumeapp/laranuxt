@@ -1,0 +1,19 @@
+// modal zoom in/out
+.animodal-enter-active, .animodal-leave-active
+  transition opacity 0.5s ease 0s
+
+.animodal-enter-active > .modal-content > div, .animodal-leave-active > .modal-content > div,
+.animodal-enter-active > .modal-card , .animodal-leave-active > .modal-card
+  transition transform 0.4s ease 0.1s, opacity 0.4s ease 0.1s
+
+.animodal-leave-active > .modal-content > div,
+.animodal-leave-active > .modal-card
+  transition transform 0.2s ease 0s, opacity 0.2s ease 0s
+
+.animodal-enter, .animodal-leave-to
+  opacity 0
+  > .modal-content > div, > .modal-card
+    transform scale(0.9)
+    opacity 0
+
+

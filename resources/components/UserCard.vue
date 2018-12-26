@@ -1,6 +1,6 @@
 <template lang="pug">
-.card
-  .card-content
+.box
+  .content
     article.media
       figure.media-left
         figure.image.is-64x64
@@ -23,16 +23,6 @@
           span.tag.is-success(v-if="verified") true
           span.tag.is-danger(v-else) false
 
-  footer.card-footer
-    a.card-footer-item.has-text-primary
-      span.icon: i.mdi.mdi-account-card-details
-      span Details
-    a.card-footer-item.has-text-danger
-      span.icon: i.mdi.mdi-delete
-      span Delete
-    a.card-footer-item.has-text-info
-      span.icon: i.mdi.mdi-login
-      span Login As
 </template>
 
 <script>

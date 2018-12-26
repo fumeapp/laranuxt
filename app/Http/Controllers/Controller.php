@@ -13,10 +13,16 @@ class Controller extends \acidjazz\metapi\MetApiController
         parent::__construct($request);
     }
 
-    public function index(Request $request)
+    public function routes(Request $request)
     {
-        $routes = Artisan::call('route:list');
-        return '<pre>'.Artisan::output().'</pre>';
+        Artisan::call('route:list');
+        $routes = explode("\n", Artisan::output());
+        foreach ($routes as $index=>$route) {
+            if (strpos($route, 'debugbar') !== false) {
+                unset($routes[$index]);
+            }
+        }
+        return '<pre>'.implode("\n", $routes).'</pre>';
     }
 
     public function example(Request $request)
