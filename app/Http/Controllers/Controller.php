@@ -21,8 +21,13 @@ class Controller extends \acidjazz\metapi\MetApiController
 
     public function example(Request $request)
     {
+
+        $this->option('order', 'in:name,email');
+        $this->verify();
+
         $faker = \Faker\Factory::create();
         $users = [];
+
         for ($i = 0; $i !== 9; $i++) {
             $email = $faker->unique()->safeEmail;
             $users[] = [
@@ -31,6 +36,7 @@ class Controller extends \acidjazz\metapi\MetApiController
                 'avatar' => 'http://i.pravatar.cc/150?u='.$email,
             ];
         }
+
         return $this->render($users);
     }
 }
