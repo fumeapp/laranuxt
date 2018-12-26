@@ -4,10 +4,13 @@
     section.section
       .buttons
         .button(@click="modal_open")
-          span Example Modal
+          span.icon
+            i.mdi.mdi-window-open
+          span Modal
     section.section
+      .subtitle API driven user list
       .columns.is-multiline
-        .column(v-for="user in users")
+        .column.is-one-third(v-for="user in users")
           UserCard(:user="user")
   ModalExample(v-if="is_modal",:close="modal_close")
 </template>

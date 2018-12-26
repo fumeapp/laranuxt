@@ -66,7 +66,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-     // { src: 'assets/stylus/main.styl', lang: 'stylus' },
+     { src: 'assets/stylus/main.styl', lang: 'stylus' },
     // '~/assets/css/tailwind.css'
   ],
   extractCSS: true,
@@ -121,6 +121,8 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    extractCSS: true,
+
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {

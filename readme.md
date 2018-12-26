@@ -4,6 +4,7 @@
 <a href="https://bulma.io/"><img src="https://api.compargram.com/media/__sized__/images/2018/7/25/0bd7624cc7a94463be73f4bac71cc840-crop-c0-5__0-5-400x400.png" width="128" height="128" /></a>
 <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="128" height="128" /></a>
 <a href="https://materialdesignicons.com"><img src="https://lh3.googleusercontent.com/kellzw4-4Q258D_HdHvcclbu2HEheO1TxauO4lmI5T6tCDnk8pvUfh0W0WpvKiB54g=s128-rw" /></a>
+<a href="https://stylus-lang.com"><img src="https://avatars0.githubusercontent.com/u/10009463?s=400&v=4" width="128" height="128" /></a>
 
 ## boilerplate experiment 
 
