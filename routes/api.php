@@ -13,5 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/example', 'Controller@example');
-Route::get('/routes', 'Controller@index');
+Route::get('/example', 'Controller@example')->name('example route');
+Route::get('/', 'Controller@routes')->name('route information');
