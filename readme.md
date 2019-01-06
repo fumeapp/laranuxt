@@ -23,6 +23,8 @@
   * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities
   * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API
 
+* [bulma](https://bulma.io) - modern CSS framework based on flexbox
+* [mdi](https://materialdesignicons.com) - material design icons with a ton of contributed ones as well
 
 ### installation
 
