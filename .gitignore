@@ -28,4 +28,4 @@ dist
 resources/static/bulma.css
 resources/static/mdi.css
 resources/static/materialdesignicons.min.css.map
-resources/static/fonts
+resources/static/fonts/material*
