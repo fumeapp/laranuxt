@@ -1,5 +1,6 @@
 
 <a href="https://laravel.com"><img src="https://onecentlin.gallerycdn.vsassets.io/extensions/onecentlin/laravel-extension-pack/0.4.0/1534522609664/Microsoft.VisualStudio.Services.Icons.Default"  width="96" height="96"/></a>
+<a href="https://vuejs.org"><img src="https://vuejs.org/images/logo.png" width="96" height="96" /></a>
 <a href="https://nuxtjs.org/"><img src="https://pbs.twimg.com/profile_images/805469971664998400/UAIojlzx_400x400.jpg"  width="96" height="96"/></a>
 <a href="https://bulma.io/"><img src="https://api.compargram.com/media/__sized__/images/2018/7/25/0bd7624cc7a94463be73f4bac71cc840-crop-c0-5__0-5-400x400.png" width="96" height="96" /></a>
 <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="96" height="96" /></a>
@@ -8,13 +9,14 @@
 <a href="https://github.com/FullHuman/purgecss"><img src="https://github.com/FullHuman/purgecss/raw/master/.assets/logo.png" width="96" height="96" /></a>
 <a href="https://tailwindcss.com"><img src="https://pbs.twimg.com/profile_images/895274026783866881/E1G1nNb0_400x400.jpg" width="96" height="96" /></a>
 
-## boilerplate experiment 
+## laravel + nuxt.js boilerplate
 
 ### what is included
 
-* [NUXT](https://nuxtjs.org) for our SPA front-end
+* [NUXT](https://nuxtjs.org) for our SPA vue.js powered front-end
   * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API
   * [@nuxtjs/proxy](https://github.com/nuxt-community/proxy-module) sending `/api` to Laravel
+  * [tailwind](https://tailwindcss.com) - a utility-first framework
   * [nuxt-purgecss](https://github.com/Developmint/nuxt-purgecss) Drop superflous CSS!
 
 * [Laravel](https://laravel.com) - for our API
