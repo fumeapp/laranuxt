@@ -1,0 +1,103 @@
+@keyframes slide-in-left
+  0%
+    opacity 0
+    transform translate(20px, 0)
+  100%
+    opacity 1
+    transform translate(0, 0)
+
+@keyframes slide-out-left
+  0%
+    opacity 1
+    transform translate(0, 0)
+  100%
+    opacity 0
+    transform translate(20px, 0)
+
+.ani-slide-in-left
+  animation slide-in-left 0.2s ease 0s both
+  &.is-closing
+    animation-delay 0s !important
+    animation slide-out-left 0.2s ease 0s both
+
+@keyframes slide-in-right
+  0%
+    opacity 0
+    transform translate(-20px, 0)
+  100%
+    opacity 1
+    transform translate(0, 0)
+
+@keyframes slide-out-right
+  0%
+    opacity 1
+    transform translate(0, 0)
+  100%
+    opacity 0
+    transform translate(-20px, 0)
+
+.ani-slide-in-right
+  animation slide-in-right 0.2s ease 0s both
+  &.is-closing
+    animation-delay 0s !important
+    animation slide-out-right 0.2s ease 0s both
+
+@keyframes slide-in-top
+  0%
+    opacity 0
+    transform translate(0, -20px)
+  100%
+    opacity 1
+    transform translate(0, 0)
+
+@keyframes slide-out-top
+  0%
+    opacity 1
+    transform translate(0, 0)
+  100%
+    opacity 0
+    transform translate(0, -20px)
+
+.ani-slide-in-top
+  animation slide-in-top 0.2s ease 0s both
+
+.ani-zoom-in
+  animation zoom-in 0.2s ease 0s both
+.ani-zoom-out
+  animation zoom-out 0.6s ease 0s both
+
+@keyframes zoom-in
+  0%
+    opacity 0
+    transform scale(0.9)
+  100%
+    opacity 1
+    transform scale(1)
+
+@keyframes zoom-out
+  0%
+    opacity 1
+    transform scale(1)
+  100%
+    opacity 0
+    transform scale(0.9)
+
+.ani-slide-in-left, .ani-slide-in-top, .ani-slide-in-right, .ani-zoom-in
+  for i in 1..10
+    &.delay-{i}
+      animation-delay unit(0.05 * i, 's')
+
+.is-gradient-loading
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+
+
+  background-size 400% 400% !important
+  animation loading 1.7s linear infinite
+
+@keyframes loading
+  0%
+    background-position 50% 50%
+  100%
+    background-position -50% -50%
+
+

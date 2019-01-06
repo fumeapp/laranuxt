@@ -16,4 +16,15 @@
     transform scale(0.9)
     opacity 0
 
+span.icon
+  transition color .4s ease
+span.tag
+  transition background-color .4s ease
 
+// messages enter/leave
+.toast-enter-active, .toast-leave-active
+  transition transform 0.6s ease
+
+.toast-enter, .toast-leave-to
+  opacity 0
+  transform translate(40px, 0)

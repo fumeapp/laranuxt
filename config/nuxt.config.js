@@ -80,21 +80,18 @@ module.exports = {
     '/api': process.env.APP_URL,
   },
 
-  /*
-  ** Plugins to load before mounting the App
   plugins: [
     '@/plugins/ssl.js',
-    '@/plugins/axios.js',
-    '@/plugins/global-components.js',
+    // '@/plugins/axios.js',
+    '@/plugins/global.js',
   ],
 
   globals: {
     components: [
       '@/components/global/Modal',
-      '@/components/global/Message',
+      '@/components/global/Toast',
     ],
   },
-  */
 
   /*
   ** Build configuration

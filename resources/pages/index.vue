@@ -3,10 +3,18 @@
   .container
     section.section
       .buttons
-        .button(@click="modal_open")
-          span.icon
-            i.mdi.mdi-window-open
+        .button(@click="modal(false)")
+          span.icon: i.mdi.mdi-window-open
           span Modal
+        .button(@click="modal(true)")
+          span.icon: i.mdi.mdi-window-open
+          span Modal with title
+        .button(@click="toast(false)")
+          span.icon: i.mdi.mdi-toaster-oven
+          span Generic Toast
+        .button(@click="toast(true)")
+          span.icon: i.mdi.mdi-toaster-oven
+          span Random classed Toast
       .level
         .level-left
           .level-item from endpoint
@@ -14,7 +22,6 @@
       .columns.is-multiline
         .column.is-one-third(v-for="user in users")
           UserCard(:user="user")
-  ModalExample(v-if="is_modal",:close="modal_close")
 </template>
 
 <script>
@@ -27,7 +34,6 @@ export default {
   data () {
     return {
       users: [],
-      is_modal: false,
     }
   },
 
@@ -39,11 +45,27 @@ export default {
     async get () {
       this.users = (await this.$axios.get('example')).data.data
     },
-    modal_open () {
-      this.is_modal = true
+    modal (title=false) {
+      console.log(title)
+      this.$modal.show({
+        title:  title ? 'this is the title ' : false,
+        body: 'this is the body of the modal',
+        buttons: [
+          {name: 'OK', class: 'is-primary'},
+          {name: 'Cancel'},
+          ],
+      })
     },
-    modal_close () {
-      this.is_modal = false
+    toast (random=false) {
+      if (!random) {
+        this.$toast.show('This is a normal toast')
+      } else {
+        let types = ['default','success','info','danger']
+        let type = types[Math.floor(Math.random() * types.length)]
+        this.$toast.show({
+          type: type,
+          message: `this toast is type ${type}`})
+      }
     },
   },
 }
