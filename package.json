@@ -33,7 +33,7 @@
     "node-sass": "^4.11.0",
     "nuxt": "^2.3.4",
     "nuxt-purgecss": "^0.2.0",
-    "stylus": "^0.54.5",
+    "stylus": "acidjazz/stylus#dev",
     "stylus-loader": "^3.0.2",
     "tailwindcss": "^0.7.3"
   }

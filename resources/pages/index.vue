@@ -2,7 +2,6 @@
 #Examples.page
   .container
     section.section
-      .kevin.text-4xl this is a test
       .buttons
         .button(@click="modal_open")
           span.icon
