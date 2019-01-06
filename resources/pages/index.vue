@@ -46,7 +46,6 @@ export default {
       this.users = (await this.$axios.get('example')).data.data
     },
     modal (title=false) {
-      console.log(title)
       this.$modal.show({
         title:  title ? 'this is the title ' : false,
         body: 'this is the body of the modal',
