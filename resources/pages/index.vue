@@ -11,7 +11,7 @@
           span Modal with title
         .button(@click="toast(false)")
           span.icon: i.mdi.mdi-toaster-oven
-          span Generic Toast
+          span Default Toast
         .button(@click="toast(true)")
           span.icon: i.mdi.mdi-toaster-oven
           span Random classed Toast
