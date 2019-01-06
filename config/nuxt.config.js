@@ -7,7 +7,7 @@
  */
 
 require('dotenv').config()
-const pkg = require('./package')
+const pkg = require('../package')
 
 module.exports = {
 
@@ -17,7 +17,7 @@ module.exports = {
     ENV: process.env.APP_ENV,
   },
 
-  srcDir: process.env.NUXT_ROOT,
+  srcDir: '../' + process.env.NUXT_ROOT,
 
   /*
   ** Headers of the page
@@ -34,20 +34,8 @@ module.exports = {
     link: [
       { rel: 'stylesheet', href: '/bulma.css' },
       { rel: 'stylesheet', href: '/mdi.css' },
-      /* use realfavicongenerator and throw the contents in resources/static/
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/framework.css' },
-      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-      { rel: 'manifest', href: '/site.webmanifest' },
-      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#01b5fa' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto' },
-      */
     ],
     script: [
-      // { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js', integrity: 'sha256-9YAuB2VnFZNJ+lKfpaQ3dKQT9/C0j3VUla76hHbiVF8=', crossorigin: 'anonymous' },
-      // { src: 'https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js', integrity: 'sha256-LlHVI5rUauudM5ZcZaD6hHPHKrA7CSefHHnKgq+/AZc=', crossorigin: 'anonymous' },
     ],
   },
 
@@ -66,8 +54,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-     { src: 'assets/stylus/main.styl', lang: 'stylus' },
-    // '~/assets/css/tailwind.css'
+    '@/assets/css/tailwind.css',
+    { src: '@/assets/stylus/main.styl', lang: 'stylus' },
   ],
   extractCSS: true,
 
@@ -75,9 +63,9 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-purgecss',
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
-    // '@nuxtjs/google-analytics',
   ],
 
   axios: {
@@ -91,12 +79,6 @@ module.exports = {
   proxy: {
     '/api': process.env.APP_URL,
   },
-
-  /* uncomment this, the module include, add your ID when ready
-  'google-analytics': {
-    id: '',
-  },
-  */
 
   /*
   ** Plugins to load before mounting the App
@@ -118,13 +100,27 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
     extractCSS: true,
-
+    postcss: {
+      plugins: [
+        require('postcss-import'),
+        require('postcss-url'),
+        require('tailwindcss')('config/tailwind.config.js'),
+        require('autoprefixer')({
+          cascade: false,
+          grid: true
+        }),
+        require('postcss-preset-env')({
+          stage: 0
+        }),
+        require('cssnano')({
+          preset: 'default',
+          discardComments: { removeAll: true },
+          zindex: false
+        }),
+      ],
+    },
     extend(config, ctx) {
-      // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',

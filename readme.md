@@ -5,6 +5,8 @@
 <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="128" height="128" /></a>
 <a href="https://materialdesignicons.com"><img src="https://lh3.googleusercontent.com/kellzw4-4Q258D_HdHvcclbu2HEheO1TxauO4lmI5T6tCDnk8pvUfh0W0WpvKiB54g=s128-rw" /></a>
 <a href="https://stylus-lang.com"><img src="https://avatars0.githubusercontent.com/u/10009463?s=400&v=4" width="128" height="128" /></a>
+<a href="https://github.com/FullHuman/purgecss"><img src="https://github.com/FullHuman/purgecss/raw/master/.assets/logo.png" width="128" height="128" /></a>
+<a href="https://tailwindcss.com"><img src="https://pbs.twimg.com/profile_images/895274026783866881/E1G1nNb0_400x400.jpg" width="128" height="128" /></a>
 
 ## boilerplate experiment 
 
@@ -13,7 +15,7 @@
 * [NUXT](https://nuxtjs.org) for our SPA front-end
   * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API
   * [@nuxtjs/proxy](https://github.com/nuxt-community/proxy-module) sending `/api` to Laravel
-  * [@nuxtjs/google-analytics](https://github.com/nuxt-community/analytics-module) GA
+  * [nuxt-purgecss](https://github.com/Developmint/nuxt-purgecss) Drop superflous CSS!
 
 * [Laravel](https://laravel.com) - for our API
   * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities

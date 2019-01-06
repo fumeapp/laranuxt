@@ -2,13 +2,16 @@
 #Examples.page
   .container
     section.section
+      .kevin.text-4xl this is a test
       .buttons
         .button(@click="modal_open")
           span.icon
             i.mdi.mdi-window-open
           span Modal
-    section.section
-      .subtitle API driven user list
+      .level
+        .level-left
+          .level-item from endpoint
+          .level-item: a.button.is-text(href="/api/example") /api/example
       .columns.is-multiline
         .column.is-one-third(v-for="user in users")
           UserCard(:user="user")
