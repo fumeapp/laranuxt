@@ -18,13 +18,13 @@
   * [@nuxtjs/proxy](https://github.com/nuxt-community/proxy-module) sending `/api` to Laravel
   * [tailwind](https://tailwindcss.com) - a utility-first framework
   * [nuxt-purgecss](https://github.com/Developmint/nuxt-purgecss) Drop superflous CSS!
+  * [bulma](https://bulma.io) - modern CSS framework based on flexbox 
+  * [mdi](https://materialdesignicons.com) - material design icons with a ton of contributed ones as well
 
 * [Laravel](https://laravel.com) - for our API
   * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities
   * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API
 
-* [bulma](https://bulma.io) - modern CSS framework based on flexbox
-* [mdi](https://materialdesignicons.com) - material design icons with a ton of contributed ones as well
 
 ### installation
 
