@@ -59,7 +59,7 @@ export default {
       if (!random) {
         this.$toast.show('This is a normal toast')
       } else {
-        let types = ['default','success','info','danger']
+        let types = ['default','success','info','danger', 'warning']
         let type = types[Math.floor(Math.random() * types.length)]
         this.$toast.show({
           type: type,
