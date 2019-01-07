@@ -63,7 +63,7 @@ export default {
         let type = types[Math.floor(Math.random() * types.length)]
         this.$toast.show({
           type: type,
-          message: `this toast is type ${type}`})
+          message: `this toast type is ${type}`})
       }
     },
   },
