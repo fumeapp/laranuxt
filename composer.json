@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "laravel and nuxt.js boilerplate",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "laravel, nuxt.js, bulma, tailwid, stylus, and much more",
     "keywords": [
         "framework",
         "laravel"
@@ -9,9 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
-        "acidjazz/metapi": "^1.1",
+        "acidjazz/metapi": "^1.3",
         "barryvdh/laravel-debugbar": "^3.2",
-        "fideloper/proxy": "^4.0",
+        "fideloper/proxy": "^4.1",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0"
     },

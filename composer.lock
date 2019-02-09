@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "536734abc85378278f980bbe9ab40ed9",
+    "content-hash": "7f4252651348dfab4c3139c846c977bc",
     "packages": [
         {
             "name": "acidjazz/metapi",
-            "version": "v1.1.9",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acidjazz/metapi.git",
-                "reference": "cdd907659f24111780fbc4e318c5334fc8d584a2"
+                "reference": "d48be31c34b12e05a58d1fa7ee42498cf6fa14f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acidjazz/metapi/zipball/cdd907659f24111780fbc4e318c5334fc8d584a2",
-                "reference": "cdd907659f24111780fbc4e318c5334fc8d584a2",
+                "url": "https://api.github.com/repos/acidjazz/metapi/zipball/d48be31c34b12e05a58d1fa7ee42498cf6fa14f9",
+                "reference": "d48be31c34b12e05a58d1fa7ee42498cf6fa14f9",
                 "shasum": ""
             },
             "require": {
@@ -58,20 +58,20 @@
                 "pagination",
                 "php"
             ],
-            "time": "2018-12-22T10:29:34+00:00"
+            "time": "2019-01-14T00:46:43+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "9d5caf43c5f3a3aea2178942f281054805872e7c"
+                "reference": "ba046deba51f3899963c7d09840bf623c4ebf5ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/9d5caf43c5f3a3aea2178942f281054805872e7c",
-                "reference": "9d5caf43c5f3a3aea2178942f281054805872e7c",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/ba046deba51f3899963c7d09840bf623c4ebf5ed",
+                "reference": "ba046deba51f3899963c7d09840bf623c4ebf5ed",
                 "shasum": ""
             },
             "require": {
@@ -126,7 +126,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2018-11-09T08:37:55+00:00"
+            "time": "2019-02-04T10:23:43+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -436,16 +436,16 @@
         },
         {
             "name": "fideloper/proxy",
-            "version": "4.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fideloper/TrustedProxy.git",
-                "reference": "cf8a0ca4b85659b9557e206c90110a6a4dba980a"
+                "reference": "177c79a2d1f9970f89ee2fb4c12b429af38b6dfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fideloper/TrustedProxy/zipball/cf8a0ca4b85659b9557e206c90110a6a4dba980a",
-                "reference": "cf8a0ca4b85659b9557e206c90110a6a4dba980a",
+                "url": "https://api.github.com/repos/fideloper/TrustedProxy/zipball/177c79a2d1f9970f89ee2fb4c12b429af38b6dfb",
+                "reference": "177c79a2d1f9970f89ee2fb4c12b429af38b6dfb",
                 "shasum": ""
             },
             "require": {
@@ -486,7 +486,7 @@
                 "proxy",
                 "trusted proxy"
             ],
-            "time": "2018-02-07T20:20:57+00:00"
+            "time": "2019-01-10T14:06:47+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -806,16 +806,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.7.19",
+            "version": "v5.7.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "5c1d1ec7e8563ea31826fd5eb3f6791acf01160c"
+                "reference": "f8fb354878064b94a3ff09a6ffd48ee9a8d712cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/5c1d1ec7e8563ea31826fd5eb3f6791acf01160c",
-                "reference": "5c1d1ec7e8563ea31826fd5eb3f6791acf01160c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f8fb354878064b94a3ff09a6ffd48ee9a8d712cf",
+                "reference": "f8fb354878064b94a3ff09a6ffd48ee9a8d712cf",
                 "shasum": ""
             },
             "require": {
@@ -889,7 +889,7 @@
                 "moontoast/math": "^1.1",
                 "orchestra/testbench-core": "3.7.*",
                 "pda/pheanstalk": "^3.0",
-                "phpunit/phpunit": "^7.0",
+                "phpunit/phpunit": "^7.5",
                 "predis/predis": "^1.1.1",
                 "symfony/css-selector": "^4.1",
                 "symfony/dom-crawler": "^4.1",
@@ -948,7 +948,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-12-18T14:00:38+00:00"
+            "time": "2019-02-05T14:28:43+00:00"
         },
         {
             "name": "laravel/nexmo-notification-channel",
@@ -3673,16 +3673,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "100633629bf76d57430b86b7098cd6beb996a35a"
+                "reference": "dc4f10b6b1148744facb784015e4b339d7feec23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/100633629bf76d57430b86b7098cd6beb996a35a",
-                "reference": "100633629bf76d57430b86b7098cd6beb996a35a",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/dc4f10b6b1148744facb784015e4b339d7feec23",
+                "reference": "dc4f10b6b1148744facb784015e4b339d7feec23",
                 "shasum": ""
             },
             "require": {
@@ -3691,7 +3691,7 @@
                 "php": ">=5.6.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5.7.10|~6.5|~7.0"
+                "phpunit/phpunit": "~5.7.10|~6.5|~7.0|~8.0"
             },
             "type": "library",
             "extra": {
@@ -3734,7 +3734,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2018-10-02T21:52:37+00:00"
+            "time": "2019-02-08T14:43:54+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -4419,16 +4419,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.1",
+            "version": "7.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c23d78776ad415d5506e0679723cb461d71f488f"
+                "reference": "2896657da5fb237bc316bdfc18c2650efeee0dc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c23d78776ad415d5506e0679723cb461d71f488f",
-                "reference": "c23d78776ad415d5506e0679723cb461d71f488f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2896657da5fb237bc316bdfc18c2650efeee0dc0",
+                "reference": "2896657da5fb237bc316bdfc18c2650efeee0dc0",
                 "shasum": ""
             },
             "require": {
@@ -4499,7 +4499,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-12-12T07:20:32+00:00"
+            "time": "2019-02-07T14:15:04+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

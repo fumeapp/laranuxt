@@ -1,7 +1,7 @@
 
 <a href="https://laravel.com"><img src="https://onecentlin.gallerycdn.vsassets.io/extensions/onecentlin/laravel-extension-pack/0.4.0/1534522609664/Microsoft.VisualStudio.Services.Icons.Default"  width="96" height="96"/></a>
 <a href="https://vuejs.org"><img src="https://vuejs.org/images/logo.png" width="96" height="96" /></a>
-<a href="https://nuxtjs.org/"><img src="https://pbs.twimg.com/profile_images/805469971664998400/UAIojlzx_400x400.jpg"  width="96" height="96"/></a>
+<a href="https://nuxtjs.org/"><img src="https://images.opencollective.com/proxy/images?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F63047830-23b9-11e9-8073-c73f9d8c047d.png&height=480"  width="96" height="96"/></a>
 <a href="https://bulma.io/"><img src="https://api.compargram.com/media/__sized__/images/2018/7/25/0bd7624cc7a94463be73f4bac71cc840-crop-c0-5__0-5-400x400.png" width="96" height="96" /></a>
 <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="96" height="96" /></a>
 <a href="https://materialdesignicons.com"><img src="https://lh3.googleusercontent.com/kellzw4-4Q258D_HdHvcclbu2HEheO1TxauO4lmI5T6tCDnk8pvUfh0W0WpvKiB54g=s96-rw" width="96" height="96" /></a>
