@@ -5,6 +5,8 @@
   "author": "kevin olson <acidjazz@gmail.com>",
   "private": true,
   "scripts": {
+    "api": "php artisan serve",
+    "dump": "php artisan dump-server",
     "dev": "nuxt config/",
     "build": "nuxt build config/",
     "start": "nuxt start config/",
