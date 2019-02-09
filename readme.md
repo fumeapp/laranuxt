@@ -30,7 +30,7 @@
 
 * clone from github
 * run `yarn` and `composer install` to install all of your deps
-* copy .env.example to .env and configure it how you'd prefer
+* copy `.env.example` to `.env` and configure it to your likings
 * running `yarn bulma` will compile bulma to `resources/static/css/bublma.css`
   * i do this to speed up reactivity and compilation time
 * running `yarn mdi` will copy all the fonts and css to `resources/static/` allowing you to use MDI with bulma/etc
