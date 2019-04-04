@@ -1,4 +1,4 @@
-<center>
+<div style="text-align: center;">
   <a href="https://laravel.com"><img src="https://onecentlin.gallerycdn.vsassets.io/extensions/onecentlin/laravel-extension-pack/0.4.0/1534522609664/Microsoft.VisualStudio.Services.Icons.Default"  width="64" height="64"/></a>
   <a href="https://vuejs.org"><img src="https://vuejs.org/images/logo.png" width="64" height="64" /></a>
   <a href="https://nuxtjs.org/"><img src="https://images.opencollective.com/proxy/images?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F63047830-23b9-11e9-8073-c73f9d8c047d.png&height=480"  width="64" height="64"/></a>
@@ -8,7 +8,7 @@
   <a href="https://stylus-lang.com"><img src="https://avatars0.githubusercontent.com/u/10009463?s=400&v=4" width="64" height="64" /></a>
   <a href="https://github.com/FullHuman/purgecss"><img src="https://github.com/FullHuman/purgecss/raw/master/.assets/logo.png" width="64" height="64" /></a>
   <a href="https://tailwindcss.com"><img src="https://pbs.twimg.com/profile_images/895274026783866881/E1G1nNb0_400x400.jpg" width="64" height="64" /></a>
-</center>
+</div>
 
 ## laravel + nuxt.js boilerplate
 
