@@ -5,7 +5,7 @@
  * Distributed under terms of the APACHE license.
  */
 export default function (ctx) {
-  if (ctx.env.ENV !== 'local' && typeof window !== "undefined" && window.location.protocol != 'https:') {
+  if (ctx.env.APP_ENV !== 'local' && typeof window !== "undefined" && window.location.protocol != 'https:') {
     location.href = location.href.replace("http://", "https://");
   }
 }

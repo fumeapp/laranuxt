@@ -11,11 +11,7 @@ const pkg = require('../package')
 
 module.exports = {
 
-  env: {
-    NUXT_ROOT: process.env.NUXT_ROOT,
-    API_URL: process.env.APP_URL,
-    ENV: process.env.APP_ENV,
-  },
+  env: process.env
 
   srcDir: '../' + process.env.NUXT_ROOT,
 
