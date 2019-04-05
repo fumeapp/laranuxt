@@ -1,11 +1,11 @@
 
-<p style="text-align: center;">
+<p align="center">
   <a href="https://laravel.com"><img src="https://onecentlin.gallerycdn.vsassets.io/extensions/onecentlin/laravel-extension-pack/0.4.0/1534522609664/Microsoft.VisualStudio.Services.Icons.Default"  width="128" height="128"/></a>
   <img src="https://raw.githubusercontent.com/acidjazz/aeonian/master/media/plus.png"/>
   <a href="https://nuxtjs.org/"><img src="https://images.opencollective.com/proxy/images?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F63047830-23b9-11e9-8073-c73f9d8c047d.png&height=480"  width="128" height="128"/></a>
 </p>
 
-<p style="text-align: center;">
+<p align="center">
   <a href="https://vuejs.org"><img src="https://vuejs.org/images/logo.png" width="64" height="64" /></a>
   <a href="https://bulma.io/"><img src="https://i.pinimg.com/originals/f3/c5/4f/f3c54f51a7cb9de02523e226d6b010b6.png" width="64" height="64" /></a>
   <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="64" height="64" /></a>
