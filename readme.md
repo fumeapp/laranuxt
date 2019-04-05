@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://vuejs.org"><img src="https://vuejs.org/images/logo.png" width="64" height="64" /></a>
-  <a href="https://bulma.io/"><img src="https://i.pinimg.com/originals/f3/c5/4f/f3c54f51a7cb9de02523e226d6b010b6.png" width="64" height="64" /></a>
+  <a href="https://bulma.io/"><img src="https://bulma.io/favicons/apple-touch-icon.png" width="64" height="64" /></a>
   <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="64" height="64" /></a>
   <a href="https://materialdesignicons.com"><img src="https://lh3.googleusercontent.com/kellzw4-4Q258D_HdHvcclbu2HEheO1TxauO4lmI5T6tCDnk8pvUfh0W0WpvKiB54g=s96-rw" width="64" height="64" /></a>
   <a href="https://stylus-lang.com"><img src="https://avatars0.githubusercontent.com/u/10009463?s=400&v=4" width="64" height="64" /></a>
