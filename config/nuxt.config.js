@@ -11,7 +11,7 @@ const pkg = require('../package')
 
 module.exports = {
 
-  env: process.env
+  env: process.env,
 
   srcDir: '../' + process.env.NUXT_ROOT,
 
@@ -73,7 +73,8 @@ module.exports = {
   },
 
   proxy: {
-    '/api': process.env.APP_URL,
+    '/api': { target: process.env.APP_API, ws: true },
+    '/_debugbar': process.env.APP_API + '_debugbar',
   },
 
   plugins: [

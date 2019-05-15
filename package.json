@@ -14,7 +14,12 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
     "bulma": "node-sass --output-style compressed resources/assets/sass/bulma.sass > resources/static/bulma.css",
-    "mdi": "cp node_modules/@mdi/font/css/materialdesignicons.min.css resources/static/mdi.css; cp node_modules/@mdi/font/fonts/* resources/static/fonts/.; cp node_modules/@mdi/font/css/materialdesignicons.min.css.map resources/static/.;"
+    "mdi": "cp node_modules/@mdi/font/css/materialdesignicons.min.css resources/static/mdi.css; cp node_modules/@mdi/font/fonts/* resources/static/fonts/.; cp node_modules/@mdi/font/css/materialdesignicons.min.css.map resources/static/.;",
+    "pm2start": "HOST=0.0.0.0 pm2 start yarn.js -- start --name \"web\"",
+    "pm2restart": "pm2 restart all",
+    "staging-env": "aws s3 cp s3://mahalo-vault/envs/staging .env",
+    "staging-new": "git pull; yarn;yarn static; yarn staging-env; yarn build; yarn pm2start; composer staging",
+    "staging": "git pull;yarn mdi; yarn bulma; yarn staging-env; yarn; yarn build; yarn pm2restart; composer staging"
   },
   "devDependencies": {
     "autoprefixer": "^9.4.3",
