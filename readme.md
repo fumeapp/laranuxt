@@ -42,6 +42,9 @@
 * running `yarn mdi` will copy all the fonts and css to `resources/static/` allowing you to use MDI with bulma/etc
 * run `yarn logs` to create laravels needed storage logs folders
 
+#### TL;DR
+`git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; yarn mdi; yarn bulma; cp .env.example .env; yarn logs;`
+
 ### running your dev environment
 * run `yarn dev` in one terminal for our nuxt dev setup
 * run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
