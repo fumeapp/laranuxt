@@ -40,8 +40,11 @@
 * running `yarn bulma` will compile bulma to `resources/static/css/bublma.css`
   * i do this to speed up reactivity and compilation time
 * running `yarn mdi` will copy all the fonts and css to `resources/static/` allowing you to use MDI with bulma/etc
+* run `yarn logs` to create laravels needed storage logs folders
+
+### running your dev environment
 * run `yarn dev` in one terminal for our nuxt dev setup
-* run `./artisan serve` in another terminal for our laravel API
+* run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
 
 ### byobu
 I've also included a simple [byobu](http://byobu.co/) script that starts everything up, just change `PROJECT` to your project folder name 

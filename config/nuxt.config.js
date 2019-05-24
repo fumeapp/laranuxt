@@ -65,7 +65,7 @@ module.exports = {
   ],
 
   axios: {
-    baseURL: process.env.NUXT_PROXY,
+    baseURL: process.env.APP_API,
     credentials: true,
     init (axios, ctx) {
       axios.defaults.headers.common['Accept'] = 'application/json'
@@ -73,8 +73,8 @@ module.exports = {
   },
 
   proxy: {
-    '/api': { target: process.env.APP_API, ws: true },
-    '/_debugbar': process.env.APP_API + '_debugbar',
+    '/api': { target: process.env.APP_PROXY, ws: true },
+    '/_debugbar': process.env.APP_PROXY + '_debugbar',
   },
 
   plugins: [

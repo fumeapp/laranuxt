@@ -1,7 +1,7 @@
 {
-    "name": "laravel and nuxt.js boilerplate",
+    "name": "acidjazz/laranuxt",
     "type": "project",
-    "description": "laravel, nuxt.js, bulma, tailwid, stylus, and much more",
+    "description": "laravel + nuxt.js, bulma, tailwid, stylus, and much more",
     "keywords": [
         "framework",
         "laravel"
