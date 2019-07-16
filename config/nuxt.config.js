@@ -50,8 +50,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '@/assets/css/tailwind.css',
-    { src: '@/assets/stylus/main.styl', lang: 'stylus' },
+    '@/assets/stylus/main.styl',
   ],
   extractCSS: true,
 
@@ -63,6 +62,13 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
   ],
+  devModules: [
+    '@nuxtjs/tailwindcss',
+  ],
+
+  tailwindcss: {
+    configPath: '../config/tailwind.config.js',
+  },
 
   axios: {
     baseURL: process.env.APP_API,
@@ -79,7 +85,6 @@ module.exports = {
 
   plugins: [
     '@/plugins/ssl.js',
-    // '@/plugins/axios.js',
     '@/plugins/global.js',
   ],
 
@@ -89,41 +94,11 @@ module.exports = {
       '@/components/global/Toast',
     ],
   },
-
   /*
   ** Build configuration
   */
   build: {
-    extractCSS: true,
-    postcss: {
-      plugins: [
-        require('postcss-import'),
-        require('postcss-url'),
-        require('tailwindcss')('config/tailwind.config.js'),
-        require('autoprefixer')({
-          cascade: false,
-          grid: true
-        }),
-        require('postcss-preset-env')({
-          stage: 0
-        }),
-        require('cssnano')({
-          preset: 'default',
-          discardComments: { removeAll: true },
-          zindex: false
-        }),
-      ],
-    },
     extend(config, ctx) {
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
     }
   }
-
 }

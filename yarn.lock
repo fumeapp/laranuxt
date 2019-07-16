@@ -974,6 +974,16 @@
     consola "^2.5.6"
     http-proxy-middleware "^0.19.1"
 
+"@nuxtjs/tailwindcss@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-1.1.0.tgz#a1ba48901ae23f115b460654e4f1f644430096e3"
+  integrity sha512-G1Ep96Q94OJJ2HUJRWhDjDsgCzYJiZ/9hHEIu4lONi8Y4z+hSInI9jPjp1fd0vtBfPoKHNFYhb0Jm1nePPICmg==
+  dependencies:
+    consola "^2.7.1"
+    fs-extra "^8.0.1"
+    nuxt-purgecss "^0.2.1"
+    tailwindcss "^1.0.4"
+
 "@nuxtjs/youch@^4.2.3":
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/@nuxtjs/youch/-/youch-4.2.3.tgz#36f8b22df5a0efaa81373109851e1d857aca6bed"
@@ -5471,7 +5481,7 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-purgecss@^0.2.0:
+nuxt-purgecss@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/nuxt-purgecss/-/nuxt-purgecss-0.2.1.tgz#5cabb515beaff96cfb833b3ce13caecec953daca"
   integrity sha512-d2PXW9jvGLr3aF7BUf6s28oc8XpfS+aIord2DhwsAWoEOZh8f7c95+/491zrj1hEwv1aUlHSsXMK9UKCPrcdtA==
@@ -7848,7 +7858,7 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^4.1.0"
 
-tailwindcss@^1.0.1:
+tailwindcss@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.0.5.tgz#5145fd61f251be06a77748819e12fb126914095d"
   integrity sha512-e5edrSKqNOvWAVEutXN5czeJSXjQQxO7zNN4RDd5vQF/JTxnKdndcMFIC6p6YkRvcGFKPCZ/0rY1zZvPeq9V4A==
