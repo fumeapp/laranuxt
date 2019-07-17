@@ -28,7 +28,6 @@ module.exports = {
       { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
-      { rel: 'stylesheet', href: '/bulma.css' },
       { rel: 'stylesheet', href: '/mdi.css' },
     ],
     script: [
@@ -84,16 +83,8 @@ module.exports = {
   },
 
   plugins: [
-    '@/plugins/ssl.js',
-    '@/plugins/global.js',
   ],
 
-  globals: {
-    components: [
-      '@/components/global/Modal',
-      '@/components/global/Toast',
-    ],
-  },
   /*
   ** Build configuration
   */

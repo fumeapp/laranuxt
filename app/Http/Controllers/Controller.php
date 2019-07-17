@@ -38,7 +38,9 @@ class Controller extends \acidjazz\metapi\MetApiController
             $email = $faker->unique()->safeEmail;
             $users[] = [
                 'name' => $faker->name(),
+                'job' => $faker->jobTitle,
                 'email' => $email,
+                'phone' => $faker->phoneNumber(),
                 'avatar' => 'http://i.pravatar.cc/150?u='.$email,
             ];
         }

@@ -13,13 +13,12 @@
     "generate": "nuxt generate config/",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "bulma": "node-sass --output-style compressed resources/assets/sass/bulma.sass > resources/static/bulma.css",
     "mdi": "cp node_modules/@mdi/font/css/materialdesignicons.min.css resources/static/mdi.css; cp node_modules/@mdi/font/fonts/* resources/static/fonts/.; cp node_modules/@mdi/font/css/materialdesignicons.min.css.map resources/static/.;",
     "pm2start": "HOST=0.0.0.0 pm2 start yarn.js -- start --name \"web\"",
     "pm2restart": "pm2 restart all",
-    "staging-env": "aws s3 cp s3://mahalo-vault/envs/staging .env",
+    "staging-env": "aws s3 cp s3://laranuxt-vault/envs/staging .env",
     "staging-new": "git pull; yarn;yarn static; yarn staging-env; yarn build; yarn pm2start; composer staging",
-    "staging": "git pull;yarn mdi; yarn bulma; yarn staging-env; yarn; yarn build; yarn pm2restart; composer staging",
+    "staging": "git pull;yarn mdi; yarn staging-env; yarn; yarn build; yarn pm2restart; composer staging",
     "logs": "./artisan config:cache;./artisan cache:clear; mkdir storage; mkdir storage/framework storage/framework/cache storage/framework/sessions storage/framework/testing storage/framework/views;./artisan config:cache;./artisan cache:clear; "
   },
   "devDependencies": {
@@ -36,7 +35,6 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/proxy": "^1.3.1",
     "@nuxtjs/tailwindcss": "^1.1.0",
-    "bulma": "^0.7.2",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "node-sass": "^4.11.0",

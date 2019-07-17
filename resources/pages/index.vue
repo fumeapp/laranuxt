@@ -1,71 +1,31 @@
 <template lang="pug">
-#Examples.page
-  .container
-    section.section
-      .buttons
-        .button(@click="modal(false)")
-          span.icon: i.mdi.mdi-window-open
-          span Modal
-        .button(@click="modal(true)")
-          span.icon: i.mdi.mdi-window-open
-          span Modal with title
-        .button(@click="toast(false)")
-          span.icon: i.mdi.mdi-toaster-oven
-          span Default Toast
-        .button(@click="toast(true)")
-          span.icon: i.mdi.mdi-toaster-oven
-          span Random classed Toast
-      .level
-        .level-left
-          .level-item from endpoint
-          .level-item: a.button.is-text(href="/api/example") /api/example
-      .columns.is-multiline
-        .column.is-one-third(v-for="user in users")
-          UserCard(:user="user")
+.container.p-8
+  .flex.flex-wrap.-p-4
+    .w-1_3.p-4(v-for="user, index in users")
+      .p-2.border.border-gray.rounded.shadow.tran-shadow.hover_shadow-lg.ani-sil(:class="`ani-d-${index+1}`")
+        .flex
+          img(:src="user.avatar").rounded-full.w-20.h-20.m-2.bg-gray-600.ani-sil.ani-d-1
+          .text.ml-2.mt-2.ani-sil.ani-d-2
+            .text-lg {{ user.name }}
+            .text-gray-600 {{ user.email }}
+            .text-gray-600 {{ user.phone }}
 </template>
 
 <script>
-import UserCard from '@/components/UserCard'
-import ModalExample from '@/components/ModalExample'
 export default {
-
-  components: { UserCard, ModalExample },
-
   data () {
     return {
       users: [],
     }
   },
-
-  created () {
+  mounted () {
     this.get()
   },
-
   methods: {
     async get () {
       this.users = (await this.$axios.get('example')).data.data
     },
-    modal (title=false) {
-      this.$modal.show({
-        title:  title ? 'this is the title ' : false,
-        body: 'this is the body of the modal',
-        buttons: [
-          {name: 'OK', class: 'is-primary'},
-          {name: 'Cancel'},
-          ],
-      })
-    },
-    toast (random=false) {
-      if (!random) {
-        this.$toast.show('This is a normal toast')
-      } else {
-        let types = ['default','success','info','danger', 'warning']
-        let type = types[Math.floor(Math.random() * types.length)]
-        this.$toast.show({
-          type: type,
-          message: `this toast type is ${type}`})
-      }
-    },
   },
+
 }
 </script>

@@ -1,30 +1,28 @@
-// modal zoom in/out
-.animodal-enter-active, .animodal-leave-active
-  transition opacity 0.5s ease 0s
+.fade-in-left-enter-active,
+.fade-in-right-enter-active
+  transition opacity 0.6s ease-in-out 0.2s
+  div:nth-child(1)
+    transition transform 0.4s ease-in-out 0.2s
+  div:nth-child(2)
+    transition transform 0.4s ease-in-out 0.25s
+.fade-in-left-leave-active,
+.fade-in-right-leave-active
+  transition opacity 0.2s ease-in-out 0s
+  div
+    transition transform 0.2s ease-in-out 0s
 
-.animodal-enter-active > .modal-content > div, .animodal-leave-active > .modal-content > div,
-.animodal-enter-active > .modal-card , .animodal-leave-active > .modal-card
-  transition transform 0.4s ease 0.1s, opacity 0.4s ease 0.1s
-
-.animodal-leave-active > .modal-content > div,
-.animodal-leave-active > .modal-card
-  transition transform 0.2s ease 0s, opacity 0.2s ease 0s
-
-.animodal-enter, .animodal-leave-to
+.fade-in-left-enter, .fade-in-left-leave-to,
+.fade-in-right-enter, .fade-in-right-leave-to
   opacity 0
-  > .modal-content > div, > .modal-card
-    transform scale(0.9)
-    opacity 0
 
-span.icon
-  transition color .4s ease
-span.tag
-  transition background-color .4s ease
+.fade-in-left-enter div
+  transform translate(10px, 0)
 
-// messages enter/leave
-.toast-enter-active, .toast-leave-active
-  transition transform 0.6s ease
+.fade-in-left-leave-to div
+  transform translate(-4px, 0)
 
-.toast-enter, .toast-leave-to
-  opacity 0
-  transform translate(40px, 0)
+.fade-in-right-enter div
+  transform translate(-10px, 0)
+
+.fade-in-right-leave-to div
+  transform translate(4px, 0)
