@@ -26,6 +26,5 @@ export default {
       this.users = (await this.$axios.get('example')).data.data
     },
   },
-
 }
 </script>

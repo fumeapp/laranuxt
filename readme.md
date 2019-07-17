@@ -34,17 +34,16 @@
 * clone from github
 * run `yarn` and `composer install` to install all of your deps
 * copy `.env.example` to `.env` and configure it to your likings
-* running `yarn bulma` will compile bulma to `resources/static/css/bublma.css`
   * i do this to speed up reactivity and compilation time
-* running `yarn mdi` will copy all the fonts and css to `resources/static/` allowing you to use MDI with bulma/etc
+* running `yarn mdi` will copy all the fonts and css to `resources/static/`
 * run `yarn logs` to create laravels needed storage logs folders
 
 #### TL;DR
-`git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; yarn mdi; yarn bulma; cp .env.example .env; yarn logs;`
+`git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; yarn mdi; cp .env.example .env; yarn logs;`
 
 ### running your dev environment
-* run `yarn dev` in one terminal for our nuxt dev setup
 * run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
+* run `yarn dev` in one terminal for our nuxt dev setup
 
 ### byobu
 I've also included a simple [byobu](http://byobu.co/) script that starts everything up, just change `PROJECT` to your project folder name 
