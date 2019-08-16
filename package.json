@@ -19,7 +19,8 @@
     "staging-env": "aws s3 cp s3://laranuxt-vault/envs/staging .env",
     "staging-new": "git pull; yarn;yarn static; yarn staging-env; yarn build; yarn pm2start; composer staging",
     "staging": "git pull;yarn mdi; yarn staging-env; yarn; yarn build; yarn pm2restart; composer staging",
-    "logs": "./artisan config:cache;./artisan cache:clear; mkdir storage; mkdir storage/framework storage/framework/cache storage/framework/sessions storage/framework/testing storage/framework/views;./artisan config:cache;./artisan cache:clear; "
+    "logs": "./artisan config:cache;./artisan cache:clear; mkdir storage; mkdir storage/framework storage/framework/cache storage/framework/sessions storage/framework/testing storage/framework/views;./artisan config:cache;./artisan cache:clear; ",
+    "apicache": "php artisan cache:clear;php artisan config:cache"
   },
   "devDependencies": {
     "autoprefixer": "^9.4.3",
