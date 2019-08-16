@@ -45,8 +45,9 @@
 * I've also included a simple [byobu](http://byobu.co/) script that starts everything up, just change `PROJECT` to your project folder name 
 
 ### AWS configuration (WIP)
+This boilerplate also includes scripts to help you use it as an [Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html) with a [Launch Configuration](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html)
 * You can find `cloudinit-ami.sh` in `config/` which when configured and used as user-data will fire up an instance w/ the latest and all its dependencies to make an AMI
-* You can find `cloudinit-delploy.sh` in `config/` which when configured can be used with a [Launch Configuration](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html) to spin up more instances when needed
+* You can find `cloudinit-delploy.sh` in `config/` which when configured can be used with a Launch Configuration to spin up more instances when needed
 * The following are stipulations for these scripts to wrok functionality
   * You use the Amazon Linux 2 AMI
   * You have an s3 bucket holding your deploy keys and `.env` files, default to `${PROJECT}-vault`
