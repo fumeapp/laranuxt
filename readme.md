@@ -47,3 +47,8 @@
 
 ### byobu
 I've also included a simple [byobu](http://byobu.co/) script that starts everything up, just change `PROJECT` to your project folder name 
+
+### AWS configuration (WIP)
+* you can find `cloudinit-ami.sh` in `config/` which when configured and used as user-data will fire up an instance w/ the latest and all its dependencies to make an AMI
+* you can find `cloudinit-delploy.sh` in `config/` which when configured can be used with a [Launch Configuration](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html) to spin up more instances when needed
+* using these configs nuxt.js will run on port `3000` and then Laravel will run on port `8000`, you can make a [Target Group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) for each of these sending `80` and/or `443` to `3000`
