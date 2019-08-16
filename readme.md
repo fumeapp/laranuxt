@@ -48,11 +48,11 @@
 This boilerplate also includes scripts to help you use it as an [Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html) with a [Launch Configuration](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html)
 * You can find `cloudinit-ami.sh` in `config/` which when configured and used as user-data will fire up an instance w/ the latest and all its dependencies to make an AMI
 * You can find `cloudinit-delploy.sh` in `config/` which when configured can be used with a Launch Configuration to spin up more instances when needed
-* The following are stipulations for these scripts to wrok functionality
-  * You use the Amazon Linux 2 AMI
+* The following are stipulations for these scripts to work functionality
+  * You start with the Amazon Linux 2 AMI
   * You have an s3 bucket holding your deploy keys and `.env` files, default to `${PROJECT}-vault`
-    * key would be in `s3://project-vault/keys/` as `id_rsa`
-    * envs would be in `s3://project-vault/envs/` as `env-${branch}` (env-staging, env-master, etc)
+    * key would be in `s3://${project}-vault/keys/` as `id_rsa`
+    * envs would be in `s3://${project}-vault/envs/` as `env-${branch}` (env-staging, env-master, etc)
 * Using these configs nuxt.js will run on port `3000` and then Laravel will run on port `8000`, you can make a [Target Group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) for each of these sending `80` and/or `443` to `3000`
 
 ### CircleCI Testing and Deployment 
