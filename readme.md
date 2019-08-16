@@ -54,3 +54,16 @@ This boilerplate also includes scripts to help you use it as an [Auto Scaling Gr
     * key would be in `s3://project-vault/keys/` as `id_rsa`
     * envs would be in `s3://project-vault/envs/` as `env-${branch}` (env-staging, env-master, etc)
 * Using these configs nuxt.js will run on port `3000` and then Laravel will run on port `8000`, you can make a [Target Group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) for each of these sending `80` and/or `443` to `3000`
+
+### CircleCI Testing and Deployment 
+This boilerplate also includes a sample starter script to run tests and then deploy to your group of instances
+* This configuration works assuming your setup matches the above AWS config
+* Your EC2 group must have a tag key of `ssm` and value of your branch/environment, either `staging` or `master`
+* You can find, tweak, and use `config/circleci-config.yml` and move it to `.circleci/config.yml` when ready
+* Upon successful tests, this will use the [AWS SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) to run `yarn ${branch}` on each instance which will:
+  * Grab the latest code
+  * Re-download your `.env` from the s3 bucket
+  * Refresh the icons file
+  * Re-generate the nuxt.js static files
+  * Restart the pm2 server with the newer static files
+  * Via composer, run `artisn migrate`, `artisan config:clear`, `artisan cache:clear` and `composer install`
