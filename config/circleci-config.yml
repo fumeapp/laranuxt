@@ -1,0 +1,93 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7-node-browsers-legacy
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+      - image: circleci/python:3.6.4
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: laranuxt
+
+    working_directory: ~/laranuxt
+
+    steps:
+      - run:
+          name: apt packages needed, libgmp
+          command: sudo apt install libgmp-dev
+
+      - run:
+          name: Install pdo and gmp for PHP
+          command: sudo docker-php-ext-install pdo_mysql gmp
+
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "composer.json" }}-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run:
+          name: Install pip and awscli
+          command: |
+            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            python get-pip.py --user
+            ~/.local/bin/pip install awscli --upgrade --user
+
+      - run:
+          name: Install dependencies with composer
+          command: composer install -n --prefer-dist
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "composer.json" }}-{{ checksum "package.json" }}
+          paths:
+            - vendor
+            - node_modules
+            - .local
+
+      - run:
+          name: Copy over .env.testing
+          command: cp .env.testing .env
+      - run:
+          name: Initial table creation
+          command: ./artisan migrate --env=testing
+      - run:
+          name: Run PHPUnit
+          command: vendor/bin/phpunit --testdox --coverage-clover=coverage.xml
+
+      - deploy:
+          name: Deploy code via SSM
+          command: |
+            if [ "${CIRCLE_BRANCH}" = 'master' ] ||  [ "${CIRCLE_BRANCH}" = 'staging' ]; then
+              commandId=$(~/.local/bin/aws ssm send-command \
+                --region us-west-1 \
+                --targets "Key=tag:ssm,Values=${CIRCLE_BRANCH}" \
+                --document-name "AWS-RunShellScript" \
+                --comment "Deploy Web to ${CIRCLE_BRANCH}" \
+                --parameters '{"commands": ["su - ec2-user -c \"cd ~/laranuxt; yarn '"${CIRCLE_BRANCH}"' \""]}' \
+                --output text \
+                --query "Command.CommandId")
+              status="InProgress"
+              echo ["$commandId"] Status: "$status"
+              while  [ "$status" = InProgress ]
+              do
+                status=$(~/.local/bin/aws ssm list-commands \
+                  --region=us-west-1 \
+                  --command-id "$commandId" \
+                  --query "Commands[*].Status" \
+                  | tr -cd '[:alpha:]')
+                printf .
+              done
+              echo
+              echo ["$commandId"] Status: "$status"
+              ~/.local/bin/aws ssm list-command-invocations \
+                --region=us-east-1 \
+                --command-id "$commandId" \
+                --query="CommandInvocations[*].CommandPlugins[*].Output" \
+                --details \
+                | sed 1,2d | sed "s/^[ \t]*\"//" | sed 's/\\n/\'$'\n/g' | head -n -3
+            fi
+
