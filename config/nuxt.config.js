@@ -28,6 +28,8 @@ module.exports = {
       { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       { rel: 'stylesheet', href: '/mdi.css' },
     ],
     script: [
@@ -56,12 +58,9 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    'nuxt-purgecss',
+  buildModules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
-  ],
-  devModules: [
     '@nuxtjs/tailwindcss',
   ],
 
@@ -81,9 +80,6 @@ module.exports = {
     '/api': { target: process.env.APP_PROXY, ws: true },
     '/_debugbar': process.env.APP_PROXY + '_debugbar',
   },
-
-  plugins: [
-  ],
 
   /*
   ** Build configuration
