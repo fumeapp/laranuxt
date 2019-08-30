@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/master/resources/assets/laranuxt.png" />
+  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/master/resources/static/laranuxt.png" />
 </p>
 
 <p align="center">
