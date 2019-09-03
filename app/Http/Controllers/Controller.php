@@ -31,6 +31,8 @@ class Controller extends \acidjazz\metapi\MetApiController
         $this->option('order', 'in:name,email');
         $this->verify();
 
+        echo $breakplease;
+
         $faker = \Faker\Factory::create();
         $users = [];
 

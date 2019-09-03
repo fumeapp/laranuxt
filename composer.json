@@ -16,7 +16,7 @@
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
-        "filp/whoops": "^2.0",
+        "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
