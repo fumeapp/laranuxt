@@ -6,14 +6,14 @@
 # Distributed under terms of the APACHE license.
 #
 
-PROJECT=jumpdeck
+PROJECT=laranuxt
 ENV=staging
 PORT=8000
 MAXSIZE=25G
 MAXMEMORY=1G
 
-REPO=git@github.com:jumpdeck/jumpdeck.git
-BUCKET=kittyhawk-$ENV-vault
+REPO=git@github.com:acidjazz/laranuxt.git
+BUCKET=project-$ENV-vault
 HOSTNAME=$PROJECT-$ENV
 
 hostname $HOSTNAME
@@ -36,7 +36,7 @@ apt -y install php7.4 php7.4-fpm php7.4-common php7.4-mysql php7.4-xml php7.4-xm
 
 apt -y install nginx awscli nodejs
 
-aws s3 cp s3://${PROJECT}-vault/keys/id_rsa /home/ubuntu/.ssh/id_rsa
+aws s3 cp s3://${BUCKET}/keys/id_rsa /home/ubuntu/.ssh/id_rsa
 chmod 0700 /home/ubuntu/.ssh/id_rsa
 chown -R ubuntu:ubuntu /home/ubuntu/.ssh/
 
