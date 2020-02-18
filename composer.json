@@ -50,6 +50,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "storage":  [
+            "mkdir storage",
+            "mkdir storage/framework storage/framework/cache storage/framework/sessions storage/framework/testing storage/framework/views"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

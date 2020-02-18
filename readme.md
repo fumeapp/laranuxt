@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/master/resources/static/laranuxt.png" />
 </p>
@@ -16,7 +15,7 @@
 
 ### What is included
 
-* [NUXT](https://nuxtjs.org) for our SPA vue.js powered front-end
+* [NUXT](https://nuxtjs.org) for our [PWA](https://en.wikipedia.org/wiki/Progressive_web_application) front end, a progressive Vue.js framework
   * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API
   * [@nuxtjs/proxy](https://github.com/nuxt-community/proxy-module) sending `/api` to Laravel
   * [@nuxtjs/tailwindcss](https://github.com/nuxt-community/nuxt-tailwindcss) a [utility-first](https://tailwindcss.com) framework
