@@ -29,6 +29,7 @@
 ### Installation
 
 * clone from github
+* run `composer storage` to create all the needed storage folders
 * run `yarn` and `composer install` to install all of your deps
 * copy `.env.example` to `.env` and configure it to your likings
   * i do this to speed up reactivity and compilation time
