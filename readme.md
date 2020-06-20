@@ -1,85 +1,67 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/master/static/laranuxt.png" />
 </p>
 
-## About Laravel
+<p align="center">
+  <a href="https://vuejs.org"><img src="https://vuejs.org/images/logo.png" width="92" height="92" /></a>
+  <a href="https://tailwindcss.com"><img src="https://pbs.twimg.com/profile_images/895274026783866881/E1G1nNb0_400x400.jpg" width="92" height="92" /></a>
+  <a href="https://stylus-lang.com"><img src="https://avatars0.githubusercontent.com/u/10009463?s=400&v=4" width="92" height="92" /></a>
+  <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="92" height="92" /></a>
+  <a href="https://materialdesignicons.com"><img src="https://lh3.googleusercontent.com/kellzw4-4Q258D_HdHvcclbu2HEheO1TxauO4lmI5T6tCDnk8pvUfh0W0WpvKiB54g=s96-rw" width="92" height="92" /></a>
+  <a href="https://pugjs.org/"><img src="https://camo.githubusercontent.com/a43de8ca816e78b1c2666f7696f449b2eeddbeca/68747470733a2f2f63646e2e7261776769742e636f6d2f7075676a732f7075672d6c6f676f2f656563343336636565386664396431373236643738333963626539396431663639343639326330632f5356472f7075672d66696e616c2d6c6f676f2d5f2d636f6c6f75722d3132382e737667" width="92" height="92" /></a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Laravel + Nuxt.js Boilerplate
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### What is included
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* [NUXT](https://nuxtjs.org) for our [PWA](https://en.wikipedia.org/wiki/Progressive_web_application) front end, a progressive Vue.js framework
+  * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API
+  * [@nuxtjs/proxy](https://github.com/nuxt-community/proxy-module) sending `/api` to Laravel
+  * [@nuxtjs/tailwindcss](https://github.com/nuxt-community/nuxt-tailwindcss) a [utility-first](https://tailwindcss.com) framework
+  * [pug](https://pugjs.org) -  high-performance template engine
+  * [mdi](https://materialdesignicons.com) - material design icons with a ton of contributed ones as well
 
-## Learning Laravel
+* [Laravel](https://laravel.com) - for our API
+  * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities
+  * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* clone from github
+* run `composer storage` to create all the needed storage folders
+* run `yarn` and `composer install` to install all of your deps
+* copy `.env.example` to `.env` and configure it to your likings
+  * i do this to speed up reactivity and compilation time
+* running `yarn mdi` will copy all the fonts and css to `resources/static/`
+* run `yarn logs` to create laravels needed storage logs folders
+* TL;DR `git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; yarn mdi; cp .env.example .env; yarn logs;`
 
-## Laravel Sponsors
+### Local environment
+* run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
+* run `yarn dev` in one terminal for our nuxt dev setup
+* I've also included a simple [byobu](http://byobu.co/) script that starts everything up, just change `PROJECT` to your project folder name 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### AWS configuration (WIP)
+This boilerplate also includes scripts to help you use it as an [Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html) with a [Launch Configuration](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html)
+* You can find `cloudinit-ami.sh` in `config/` which when configured and used as user-data will fire up an instance w/ the latest and all its dependencies to make an AMI
+* You can find `cloudinit-delploy.sh` in `config/` which when configured can be used with a Launch Configuration to spin up more instances when needed
+* The following are stipulations for these scripts to work functionality
+  * You start with the Amazon Linux 2 AMI
+  * You have an s3 bucket holding your deploy keys and `.env` files, default to `${PROJECT}-vault`
+    * key would be in `s3://${project}-vault/keys/` as `id_rsa`
+    * envs would be in `s3://${project}-vault/envs/` as `env-${branch}` (env-staging, env-master, etc)
+* Using these configs nuxt.js will run on port `3000` and then Laravel will run on port `8000`, you can make a [Target Group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) for each of these sending `80` and/or `443` to `3000`
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-
-### Community Sponsors
-
-<a href="https://op.gg"><img src="http://opgg-static.akamaized.net/icon/t.rectangle.png" width="150"></a>
-
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [云软科技](http://www.yunruan.ltd/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### CircleCI Testing and Deployment 
+This boilerplate also includes a sample starter script to run tests and then deploy to your group of instances
+* This configuration works assuming your setup matches the above AWS config
+* Your EC2 group must have a tag key of `ssm` and value of your branch/environment, either `staging` or `master`
+* You can find, tweak, and use `config/circleci-config.yml` and move it to `.circleci/config.yml` when ready
+* Upon successful tests, this will use the [AWS SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) to run `yarn ${branch}` on each instance which will:
+  * Grab the latest code
+  * Re-download your `.env` from the s3 bucket
+  * Refresh the icons file
+  * Re-generate the nuxt.js static files
+  * Restart the pm2 server with the newer static files
+  * Via composer, run `artisn migrate`, `artisan config:clear`, `artisan cache:clear` and `composer install`
