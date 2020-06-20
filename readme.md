@@ -15,20 +15,20 @@
 
 ### What is included
 
-* [NUXT](https://nuxtjs.org) for our [PWA](https://en.wikipedia.org/wiki/Progressive_web_application) front end, a progressive Vue.js framework
-  * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API
-  * [@nuxtjs/pwa](https://pwa.nuxtjs.org/) Heavily tested, updated and stable PWA solution
-  * [@nuxt/components](https://github.com/nuxt/components) Auto import components
-  * [@nuxtjs/tailwindcss](https://github.com/nuxt-community/nuxt-tailwindcss) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in
-  * [stylus](https://stylus.org) - expressive, dynamic, robust css
-  * [pug](https://pugjs.org) -  high-performance template engine
-  * [mdi](https://materialdesignicons.com) - material design icons with a ton of contributed ones as well
+* [NUXT](https://nuxtjs.org) front end, a progressive Vue.js framework - `v2.13.0`
+  * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API - `v5.11.0`
+  * [@nuxtjs/pwa](https://pwa.nuxtjs.org/) Heavily tested, updated and stable PWA solution - `v3.0.0`
+  * [@nuxt/components](https://github.com/nuxt/components) Auto import components - `v1.0.3`
+  * [@nuxtjs/tailwindcss](https://github.com/nuxt-community/nuxt-tailwindcss) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in - `v2.0.0`
+  * [stylus](https://stylus.org) - expressive, dynamic, robust css - `v0.54.7`
+  * [pug](https://pugjs.org) -  high-performance template engine - `v3.0.0`
+  * [mdi](https://materialdesignicons.com) - material design icons with a ton of contributed ones as well - `v5.3.45`
 
-* [Laravel](https://laravel.com) - for our API
-  * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities
-  * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API
-  * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable accurate IDE autocompletion
-  * [dump-server](https://github.com/beyondcode/laravel-dump-server) - Collect your `dump` call outputs and show them separately
+* [Laravel](https://laravel.com) - for our API - `v7.16.1`
+  * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities - `v2.0.0`
+  * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.3.3`
+  * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable accurate IDE autocompletion - `v2.7.0`
+  * [dump-server](https://github.com/beyondcode/laravel-dump-server) - Collect your `dump` call outputs and show them separately - `v1.4.0`
 
 ### Installation
 
