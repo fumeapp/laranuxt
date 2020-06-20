@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use acidjazz\metapi\MetApi;
+use Faker\Factory;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Request;
 
-class Controller extends \acidjazz\metapi\MetApiController
+class Controller extends BaseController
 {
-
-    public function __construct(Request $request)
-    {
-        parent::__construct($request);
-    }
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi;
 
     public function routes(Request $request)
     {
@@ -31,7 +33,7 @@ class Controller extends \acidjazz\metapi\MetApiController
         $this->option('order', 'in:name,email');
         $this->verify();
 
-        $faker = \Faker\Factory::create();
+        $faker = Factory::create();
         $users = [];
 
         for ($i = 0; $i !== 9; $i++) {
@@ -46,5 +48,10 @@ class Controller extends \acidjazz\metapi\MetApiController
         }
 
         return $this->render($users);
+    }
+
+    public function error()
+    {
+        return $this->render(['forced_error' => $forced_error]);
     }
 }
