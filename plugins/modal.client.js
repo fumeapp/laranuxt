@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import GlobalModal from '@/components/global/modal/GlobalModal'
+import GlobalModal from '@/components/global/Modal/GlobalModal'
 import { spawn } from '@/plugins/utils.js'
 
 const ModalProgrammatic = {
