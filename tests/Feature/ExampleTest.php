@@ -8,14 +8,28 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
+     * Test result count of 9
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testNineResults()
     {
-        $response = $this->get('/');
+        $response = $this->json('get', '/example', ['count' => 9]);
+        $json = $response->json();
+        $this->assertCount(9, $json['data']);
+        $response->assertStatus(200);
+    }
 
+    /**
+     * Test result count of 27
+     *
+     * @return void
+     */
+    public function testTwentySevenResults()
+    {
+        $response = $this->json('get', '/example', ['count' => 27]);
+        $json = $response->json();
+        $this->assertCount(27, $json['data']);
         $response->assertStatus(200);
     }
 }

@@ -1,0 +1,42 @@
+name: Test PHP
+on:
+  push:
+    branches-ignore:
+      - staging
+      - production
+    paths:
+      - '**.php'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'MySQL - tweak mysql'
+        run: |
+          echo "[mysqld]" | sudo tee -a /etc/mysql/conf.d/mysql.cnf > /dev/null
+          echo "skip-grant-tables" | sudo tee -a /etc/mysql/conf.d/mysql.cnf > /dev/null
+      - name: MySQL - restart and add database
+        run: |
+          sudo service mysql restart
+          mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`test-grappling\`"
+      - uses: actions/checkout@v2
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Run phpunit
+        run: vendor/bin/phpunit --color=always --testdox --coverage-text --coverage-html coverage/
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: coverage-html
+          path: coverage/
+
+
