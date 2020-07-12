@@ -98,4 +98,5 @@ export default {
 
 .tran-width
   transition width 0.3s linear
+
 </style>

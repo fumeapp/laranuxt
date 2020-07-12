@@ -7,9 +7,9 @@ use Faker\Factory;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Request;
 
 class Controller extends BaseController
 {
@@ -35,18 +35,19 @@ class Controller extends BaseController
     /**
      * Example endpoint returning random users
      *
+     * @param Request $request
      * @return mixed
      */
-    public function example()
+    public function example(Request $request)
     {
-
-        $this->option('order', 'in:name,email');
-        $this->verify();
+        $this
+            ->option('count', 'required|integer')
+            ->verify();
 
         $faker = Factory::create();
         $users = [];
 
-        for ($i = 0; $i !== 9; $i++) {
+        for ($i = 0; $i !== (int) $request->get('count'); $i++) {
             $email = $faker->unique()->safeEmail;
             $users[] = [
                 'name' => $faker->name(),

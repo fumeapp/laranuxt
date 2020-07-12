@@ -6,8 +6,12 @@
         img(:src="user.avatar").rounded-full.w-20.h-20.m-2.bg-gray-600.ani-fi.ani-d-1
         .text.ml-2.mt-2.truncate
           .text-lg.mb-1.ani-fi {{ user.name }}
-          .text-gray-600.mb-1.ani-fi.ani-d-1 {{ user.email }}
-          .text-gray-600.mb-1.ani-fi.ani-d-2 {{ user.phone }}
+          .text-gray-600.mb-1.ani-fi.ani-d-1
+            i.mdi.mdi-email.mr-1
+            span {{ user.email }}
+          .text-gray-600.mb-1.ani-fi.ani-d-2
+            i.mdi.mdi-phone.mr-1
+            span {{ user.phone }}
 </template>
 
 <script>
