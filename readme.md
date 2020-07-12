@@ -37,12 +37,12 @@
   
  * Global Components
     * Global Toast Component   
-        * info, danger, warning, and success
-        * optional timeout
-        * properly captures and shows PHP errors from the back-end
-        * link to file:line in PHPStorm
+        * Info, danger, warning, and success
+        * Optional timeout
+        * Properly captures and shows PHP errors from the back-end
+        * Link to file:line in PHPStorm
      * Global Modal Component
-       * programmatic with actions that turn into buttons
+       * Programmatic with actions that turn into buttons
        * Customizable using the BaseModal component   
         
 <p align="center">
@@ -63,6 +63,7 @@
  ```bash
 git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; yarn mdi; cp .env.example .env;
  ```
+* Feel free to delete `media/`, this folder is only to store images for the readme
 
 ### Local environment
 * run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
