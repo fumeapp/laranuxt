@@ -45,9 +45,11 @@
        * programmatic with actions that turn into buttons
        * Customizable using the BaseModal component   
         
-<img src="/media/toasts.png" width="250" />        
-<img src="/media/php-error.png" width="250" />        
-<img src="/media/modal.png" width="250" />        
+<p align="center">
+    <img src="/media/toasts.png" width="250" />        
+    <img src="/media/php-error.png" width="250" />        
+    <img src="/media/modal.png" width="250" />        
+</p>   
 
 ### Installation
 
