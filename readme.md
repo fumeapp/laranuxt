@@ -15,6 +15,9 @@
 
 ## Laravel + Nuxt.js Boilerplate
 
+![Test PHP](https://github.com/acidjazz/laranuxt/workflows/Test%20PHP/badge.svg)
+![Test Javascript](https://github.com/acidjazz/laranuxt/workflows/Test%20Javascript/badge.svg)
+
 ### What is included
 
 * [NUXT](https://nuxtjs.org) front end, a progressive Vue.js framework - `v2.13.0`
