@@ -12,7 +12,11 @@
     .flex.justify-center.m-4
       PushButton.mr-2(label="Random Toast", @click.native="toastRandom")
       PushButton.mr-2(label="Endpoint Error", @click.native="toastError")
-      PushButton(label="Modal", @click.native="showModal")
+      PushButton.mr-2(label="Global Modal", @click.native="showModal")
+      PushButton(label="Custom Modal", @click.native="customModal = true")
+    ModalBase(v-if="customModal", :destroy="() => customModal = false")
+      .p-6.bg-white
+        span this is a test
 </template>
 
 <script>
@@ -20,6 +24,7 @@ export default {
   data () {
     return {
       users: [],
+      customModal: false,
     }
   },
   mounted () {
@@ -41,7 +46,7 @@ export default {
     },
     showModal () {
       this.$modal.show({
-        body: 'this is a test modal',
+        body: 'test modal with actions',
         actions: [
           { name: 'Confirm', action: () => this.$toast.show('confirmed') },
           { name: 'Cancel', action: () => this.$toast.show('canceled') },

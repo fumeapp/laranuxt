@@ -15,7 +15,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi;
 
-    public function routes(Request $request)
+    /**
+     * Display our routes
+     *
+     * @return string
+     */
+    public function routes()
     {
         Artisan::call('route:list');
         $routes = explode("\n", Artisan::output());
@@ -27,7 +32,12 @@ class Controller extends BaseController
         return '<pre>'.implode("\n", $routes).'</pre>';
     }
 
-    public function example(Request $request)
+    /**
+     * Example endpoint returning random users
+     *
+     * @return mixed
+     */
+    public function example()
     {
 
         $this->option('order', 'in:name,email');
