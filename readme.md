@@ -26,7 +26,7 @@
   * [pug](https://pugjs.org) -  high-performance template engine - `v3.0.0`
   * [mdi](https://materialdesignicons.com) - material design icons with a ton of contributed ones as well - `v5.3.45`
 
-* [Laravel](https://laravel.com) - for our API - `v7.16.1`
+* [Laravel](https://laravel.com) - for our API - `v7.19.1`
   * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities - `v2.0.0`
   * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.3.3`
   * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable accurate IDE autocompletion - `v2.7.0`
