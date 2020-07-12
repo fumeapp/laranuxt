@@ -44,11 +44,10 @@ export default {
     async get (count) {
       this.users = (await this.$axios.get('example', { params: { count } })).data.data
     },
-    async total (count) {
+    total (count) {
       this.users = []
       this.count = count
-      this.$sleep(2000)
-      await this.get(this.count)
+      this.get(this.count)
     },
     toastRandom () {
       const types = ['info', 'danger', 'warning', 'success']

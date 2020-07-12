@@ -40,6 +40,7 @@ class Controller extends BaseController
      */
     public function example(Request $request)
     {
+        sleep(2);
         $this
             ->option('count', 'required|integer')
             ->verify();
