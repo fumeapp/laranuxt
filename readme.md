@@ -34,6 +34,16 @@
   * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.3.3`
   * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable accurate IDE autocompletion - `v2.7.0`
   * [dump-server](https://github.com/beyondcode/laravel-dump-server) - Collect your `dump` call outputs and show them separately - `v1.4.0`
+  
+ * Global Components
+    * Global Toast Component   
+        * info, danger, warning, and success
+        * optional timeout
+        * properly captures and shows PHP errors from the back-end
+        * link to file:line in PHPStorm
+        
+<img src="/media/toasts.png" />        
+<img src="/media/php-error.png" />        
 
 ### Installation
 
