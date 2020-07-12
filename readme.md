@@ -40,7 +40,10 @@
   * i do this to speed up reactivity and compilation time
 * running `yarn mdi` will copy all the fonts and css to `resources/static/`
 * run `yarn logs` to create laravels needed storage logs folders
-* TL;DR `git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; yarn mdi; cp .env.example .env; yarn logs;`
+* TL;DR
+ ```bash
+git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; yarn mdi; cp .env.example .env;
+ ```
 
 ### Local environment
 * run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
