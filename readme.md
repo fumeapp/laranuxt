@@ -51,3 +51,13 @@ git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer inst
 ### Local environment
 * run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
 * run `yarn dev` in one terminal for our nuxt dev setup
+
+### I don't want pug
+* Copy+Paste the pug section of each `.vue` into [pughtml](https://pughtml.com/) and paste the html back
+* Be sure to remove `lang="pug"` in the `<template>` tag
+* `yarn remove pug pug-plain-loader`
+
+### I don't want stylus
+* Copy+Paste the stylus section of each `.vue|.styl` into [stylus2css](https://www.cssportal.com/stylus-to-css/) and paste the CSS back
+* Be sure to remove `lang="stylus"` in the `<style>` tag
+* `yarn remove stylus stylus-loader`
