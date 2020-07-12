@@ -3,7 +3,7 @@
     .m-8.flex.justify-center.items-center.flex-col.lg_flex-row
       a(href="https://github.com/acidjazz/laranuxt",target="_new")
         img.w-32.h-32(src="laranuxt.png")
-    UserSkeleton(v-if="users && users.length < 1")
+    UserSkeleton(v-if="users.length < 1")
     UserList(v-else, :users="users")
     .text-center
       span provided by endpoint
