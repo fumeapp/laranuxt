@@ -41,9 +41,13 @@
         * optional timeout
         * properly captures and shows PHP errors from the back-end
         * link to file:line in PHPStorm
+     * Global Modal Component
+       * programmatic with actions that turn into buttons
+       * Customizable using the BaseModal component   
         
-<img src="/media/toasts.png" />        
-<img src="/media/php-error.png" />        
+<img src="/media/toasts.png" width="250" />        
+<img src="/media/php-error.png" width="250" />        
+<img src="/media/modal.png" width="250" />        
 
 ### Installation
 
