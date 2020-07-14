@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Logo from '@/components/LaranuxtLogo.vue'
+import Logo from '@/client/components/LaranuxtLogo.vue'
 
 describe('Logo', () => {
   test('is a Vue instance', () => {
