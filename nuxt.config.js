@@ -62,6 +62,13 @@ export default {
   components: true,
 
   /*
+  ** Tailwind config
+  */
+  tailwindcss: {
+    configPath: '~/config/tailwind.config.js',
+  },
+
+  /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
