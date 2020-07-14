@@ -12,11 +12,11 @@ module.exports = {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',
     content: [
-      'components/**/*.vue',
-      'layouts/**/*.vue',
-      'pages/**/*.vue',
-      'plugins/**/*.js',
-      'nuxt.config.js',
+      'client/components/**/*.vue',
+      'client/layouts/**/*.vue',
+      'client/pages/**/*.vue',
+      'client/plugins/**/*.js',
+      'client/nuxt.config.js',
     ],
   },
   separator: '_',
