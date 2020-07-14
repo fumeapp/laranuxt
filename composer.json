@@ -47,12 +47,15 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/php/"
         }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "test": [
+          "vendor/bin/phpunit --testdox --colors=always"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
