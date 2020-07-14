@@ -14,6 +14,8 @@
       span provided by endpoint
       span &nbsp;
       a.text-blue-400(href="http://localhost:8000/example?count=9") /example
+      span &nbsp;
+      span.text-gray-400.text-sm (2 second delay)
     .flex.justify-center.m-4
       PushButton.mr-2(label="Random Toast", @click.native="toastRandom")
       PushButton.mr-2(label="Endpoint Error", @click.native="toastError")

@@ -1,5 +1,6 @@
 
 export default {
+  srcDir: 'client/',
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -60,13 +61,6 @@ export default {
   ** See https://github.com/nuxt/components
   */
   components: true,
-
-  /*
-  ** Tailwind config
-  */
-  tailwindcss: {
-    configPath: '~/config/tailwind.config.js',
-  },
 
   /*
   ** Axios module configuration
