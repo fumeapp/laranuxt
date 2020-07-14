@@ -54,7 +54,7 @@
     "prefer-stable": true,
     "scripts": {
         "test": [
-          "vendor/bin/phpunit --testdox --colors=always"
+          "vendor/bin/phpunit -c tests/php/phpunit.xml --colors=always --testdox --coverage-text"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
