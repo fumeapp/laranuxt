@@ -51,6 +51,10 @@
     <img src="/media/modal.png" width="250" />        
 </p>   
 
+<p align="center">
+    <img src="/media/error-validation.png" />        
+</p>   
+
 ### Installation
 
 * clone from github
