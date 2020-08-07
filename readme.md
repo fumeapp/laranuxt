@@ -35,15 +35,26 @@
   * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable accurate IDE autocompletion - `v2.7.0`
   * [dump-server](https://github.com/beyondcode/laravel-dump-server) - Collect your `dump` call outputs and show them separately - `v1.4.0`
   
- * Global Components
+ * Global Programmatic Components
     * Global Toast Component   
         * Info, danger, warning, and success
         * Optional timeout
         * Properly captures and shows PHP errors from the back-end
         * Link to file:line in PHPStorm
+        * Ex: `this.$toast.show('this is a toast')` or `this.$toast.show({type: 'danger', message: 'this is an error'})`
      * Global Modal Component
        * Programmatic with actions that turn into buttons
        * Customizable using the BaseModal component   
+       * Ex:
+```js
+this.$modal.show({
+  body: 'test modal with actions',
+  actions: [
+    { name: 'Confirm', action: () => this.$toast.show('confirmed') },
+    { name: 'Cancel', action: () => this.$toast.show('canceled') },
+  ],
+})
+```
         
 <p align="center">
     <img src="/media/toasts.png" width="250" />        
