@@ -18,7 +18,7 @@ jobs:
       - name: MySQL - restart and add database
         run: |
           sudo service mysql restart
-          mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`test-grappling\`"
+          mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`test-laranuxt\`"
       - uses: actions/checkout@v2
       - name: Get Composer Cache Directory
         id: composer-cache
