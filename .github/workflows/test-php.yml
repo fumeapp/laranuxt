@@ -32,7 +32,7 @@ jobs:
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - name: Run phpunit
-        run: vendor/bin/phpunit --color=always --testdox --coverage-text --coverage-html coverage/
+        run: vendor/bin/phpunit --color=always --testdox --coverage-text --coverage-html coverage/ -c tests/php/phpunit.xml
 
       - uses: actions/upload-artifact@v2
         with:
