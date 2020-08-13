@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Artisan;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi;
-
     /**
      * Display our routes
      *
