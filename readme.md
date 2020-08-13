@@ -66,7 +66,7 @@ this.$modal.show({
     <img src="/media/error-validation.png" />        
 </p>   
 
- * [metapi](https://github.com/acidjazz/metapi) packaged with fluent support by the Toast Component
+ * [metapi](https://github.com/acidjazz/metapi) packaged with built-in support by the Toast component
    * Now with Dracula dark mode to pair nicely with laravel-debugbar
 <p align="center">
     <img src="/media/metapi.png" />        
