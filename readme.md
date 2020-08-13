@@ -30,9 +30,9 @@
   * [mdi](https://materialdesignicons.com) - material design icons with a ton of contributed ones as well - `v5.4.55`
 
 * [Laravel](https://laravel.com) - for our API - `v7.22.4`
-  * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities - `v2.0.0`
-  * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.3.3`
-  * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable accurate IDE autocompletion - `v2.7.0`
+  * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities - `v2.1.0`
+  * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.4.3`
+  * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable accurate IDE autocompletion - `v2.8.0`
   * [dump-server](https://github.com/beyondcode/laravel-dump-server) - Collect your `dump` call outputs and show them separately - `v1.4.0`
   
  * Global Programmatic Components
@@ -66,6 +66,12 @@ this.$modal.show({
     <img src="/media/error-validation.png" />        
 </p>   
 
+ * [metapi](https://github.com/acidjazz/metapi) packaged with fluent support by the Toast Component
+   * Now with Dracula dark mode to pair nicely with laravel-debugbar
+<p align="center">
+    <img src="/media/metapi.png" />        
+</p>   
+ 
 ### Installation
 
 * clone from github
