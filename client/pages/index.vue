@@ -13,7 +13,7 @@
     .text-center
       span provided by endpoint
       span &nbsp;
-      a.text-blue-400(href="http://localhost:8000/example?count=9") /example
+      a.text-blue-400(:href="`${$config.apiUrl}/example?count=9`") /example
       span &nbsp;
       span.text-gray-400.text-sm (2 second delay)
     .flex.justify-center.m-4
@@ -26,7 +26,7 @@
         span custom modal using &nbsp;
         a.underline(
           target="_new",
-          href="https://github.com/acidjazz/laranuxt/blob/master/components/modals/ModalBase.vue"
+          href="https://github.com/acidjazz/laranuxt/blob/master/client/components/modals/ModalBase.vue"
           ) ModalBase
 </template>
 
@@ -41,6 +41,7 @@ export default {
   },
   mounted () {
     this.get(this.count)
+    console.log(this.$config.apiUrl)
   },
   methods: {
     async get (count) {

@@ -78,4 +78,9 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {},
+
+  publicRuntimeConfig: {
+    apiUrl: process.env.API_URL,
+  },
+
 }
