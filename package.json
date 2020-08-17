@@ -11,7 +11,7 @@
     "lint": "yarn lint:js",
     "test": "jest --config tests/js/jest.config.js",
     "api": "./artisan serve",
-    "mdi": "cp node_modules/@mdi/font/css/materialdesignicons.min.css static/mdi.css; cp node_modules/@mdi/font/fonts/* static/fonts/.; cp node_modules/@mdi/font/css/materialdesignicons.css.map static/.;"
+    "mdi": "cp node_modules/@mdi/font/css/materialdesignicons.min.css client/static/mdi.css; cp node_modules/@mdi/font/fonts/* client/static/fonts/.; cp node_modules/@mdi/font/css/materialdesignicons.css.map client/static/.;"
   },
   "config": {
     "colors": {
