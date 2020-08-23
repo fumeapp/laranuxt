@@ -4,7 +4,7 @@
     a(href="https://github.com/acidjazz/laranuxt",target="_new")
       img.w-32.h-32(src="laranuxt.png")
   ul.grid.grid-cols-1.gap-6.bg-gray-100.rounded.p-8.w-full(class="sm:grid-cols-2 lg:grid-cols-3")
-    ContactCardSkel(v-if="users.length === 0", v-for="i in 9" :key="`skel-${i}`")
+    ContactCardSkeleton(v-if="users.length === 0", v-for="i in 9" :key="`skel-${i}`")
     ContactCard(v-if="users.length > 0", v-for="(user, index) in users" :key="index" :user="user")
   .text-center.mt-4
     span provided by endpoint
@@ -32,9 +32,6 @@
   .flex.justify-center.my-4
     PushButton.mr-2( @click.native="customModal = true")
       span Custom Modal
-    // PushButton.mr-2(label="Random Toast", @click.native="toastRandom")
-    // PushButton.mr-2(label="Endpoint Error", @click.native="toastError")
-    // PushButton.mr-2(label="Global Modal", @click.native="showModal")
   ModalBase(v-if="customModal", :destroyed="() => customModal = false")
     .p-6.bg-white.text-center.flex.items-center
       span custom modal using &nbsp;

@@ -23,7 +23,7 @@ transition(
               IconBang.w-3.h-3(primary="text-yellow-400", secondary="text-yellow-300")
           .ml-3.w-0.flex-1(class="pt-0.5")
             p.text-sm.leading-5.font-medium.text-gray-900(v-if="title") {{ title }}
-            p.text-sm.leading-5.text-gray-500(:class="{'mt-1': title}", v-html="message")
+            p.text-sm.leading-5.text-gray-500.overflow-scroll(:class="{'mt-1': title}", v-html="message")
           .ml-4.flex-shrink-0.flex
             button.inline-flex.text-gray-400.transition.ease-in-out.duration-150(
               @click="destroy"
