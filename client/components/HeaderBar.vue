@@ -1,14 +1,16 @@
 <template lang="pug">
-#HeaderBar.flex.items-end.justify-end.m-2
-  LinkButton.mr-2(href="https://github.com/acidjazz/laranuxt")
-    i.mdi.mdi-github.mr-1
-    span Github
-  LinkButton.mr-2(href="https://laravel.com")
-    i.mdi.mdi-laravel.mr-1
-    span Laravel
-  LinkButton(href="https://nuxtjs.org")
-    i.mdi.mdi-vuejs.mr-1
-    span Nuxt.js
+#HeaderBar
+  .container
+    .flex.items-end.m-2.justify-center(class="lg:justify-end")
+      LinkButton.mr-2(href="https://github.com/acidjazz/laranuxt")
+        IconGithub.w-4.h-4.mr-2(primary="text-gray-900")
+        span Github
+      LinkButton.mr-2(href="https://laravel.com")
+        IconLaravel.w-4.h-4.mr-2(primary="text-red-500")
+        span Laravel
+      LinkButton(href="https://nuxtjs.org")
+        IconNuxt.w-4.h-4.mr-2
+        span Nuxt.js
 </template>
 
 <script>

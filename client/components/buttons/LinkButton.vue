@@ -1,5 +1,8 @@
 <template lang="pug">
-  a.py-2.px-4.border.border-gray-400.rounded.hover_bg-gray-200(:href="href", target="_blank")
+a.inline-flex.rounded-md.shadow-sm(:href="href", target="_new")
+  button.inline-flex.items-center.px-3.py-2.border.border-gray-300.text-sm.leading-4.font-medium.rounded-md.text-gray-700.bg-white.transition.ease-in-out.duration-150(
+    type="button"
+    class="hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50")
     slot
 </template>
 
@@ -9,6 +12,11 @@ export default {
     href: {
       type: String,
       required: true,
+    },
+    target: {
+      type: String,
+      required: false,
+      default: '_self',
     },
   },
 }

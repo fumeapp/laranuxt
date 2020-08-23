@@ -19,5 +19,7 @@ module.exports = {
     curly: ['error', 'multi'],
     'no-console': 'off',
     camelcase: 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
   },
 }

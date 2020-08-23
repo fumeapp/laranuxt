@@ -10,8 +10,7 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "test": "jest --config tests/js/jest.config.js",
-    "api": "./artisan serve",
-    "mdi": "cp node_modules/@mdi/font/css/materialdesignicons.min.css client/static/mdi.css; cp node_modules/@mdi/font/fonts/* client/static/fonts/.; cp node_modules/@mdi/font/css/materialdesignicons.css.map client/static/.;"
+    "api": "./artisan serve"
   },
   "config": {
     "colors": {
@@ -31,10 +30,10 @@
     }
   },
   "dependencies": {
-    "@mdi/font": "^5.3.45",
     "@nuxt/components": "^1.0.3",
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "@tailwindcss/ui": "^0.5.0",
     "nuxt": "^2.13.0",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
