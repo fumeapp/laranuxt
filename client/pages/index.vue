@@ -12,7 +12,7 @@
     a.text-blue-400(:href="`${$config.apiUrl}/example?count=9`") /example
     span &nbsp;
     span.text-gray-400.text-sm (2 second delay)
-  .flex.justify-center.m-4
+  .flex.justify-center.my-4
     PushButton.mr-2(@click.native="toast('success')")
       IconToast.w-4.h-4.mr-2
       IconCheck.w-4.h-4(primary="text-green-400", secondary="text-green-300")
@@ -22,6 +22,14 @@
     PushButton.mr-2(@click.native="toast('danger')")
       IconToast.w-4.h-4.mr-2
       IconBang.w-4.h-4(primary="text-red-400", secondary="text-red-300")
+  .flex.justify-center.my-4
+    PushButton.mr-2(@click.native="toastError")
+      IconToast.w-4.h-4.mr-2
+      span API Error
+    PushButton.mr-2(@click.native="toastActions")
+      IconToast.w-4.h-4.mr-2
+      span Actions
+  .flex.justify-center.my-4
     PushButton.mr-2( @click.native="customModal = true")
       span Custom Modal
     // PushButton.mr-2(label="Random Toast", @click.native="toastRandom")
@@ -32,7 +40,6 @@
       span custom modal using &nbsp;
       LinkButton(href="https://github.com/acidjazz/laranuxt/blob/master/client/components/modals/ModalBase.vue")
         span ModalBase.vue
-
 </template>
 
 <script>
@@ -59,8 +66,17 @@ export default {
     toast (type) {
       this.$toast.show({
         type,
+        timeout: false,
         title: 'This is the title',
         message: 'this is the body of the toast',
+      })
+    },
+    toastActions () {
+      this.$toast.show({
+        title: 'Toast tile with actions',
+        message: 'this is the body of the actionable toast',
+        primary: { label: 'Primary', action: () => true },
+        secondary: { label: 'Secondary', action: () => true },
         timeout: false,
       })
     },

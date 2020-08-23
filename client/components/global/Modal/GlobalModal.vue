@@ -1,5 +1,5 @@
 <template lang="pug">
-ModalBase(:active="active", :destroy="destroy")
+ModalBase(:active="active", :destroyed="destroy")
   .text-lg.bg-black-o1.p-4(v-if="title") {{ title }}
   .p-6.bg-white
     span {{ body }}

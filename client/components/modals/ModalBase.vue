@@ -13,7 +13,7 @@
         .fixed.top-0.right-0.p-3
           .p-3.cursor-pointer.rounded-full.transition.ease-in-out.duration-150(
             class="hover:bg-gray-800")
-            IconTimes.w-6.h-6
+            IconTimes.w-6.h-6(primary="text-gray-200", secondary="text-gray-300")
     span.hidden(class="sm:inline-block sm:align-middle sm:h-screen") &nbsp;
     transition(
       enter-active-class="ease-out duration-300"

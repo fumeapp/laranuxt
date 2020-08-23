@@ -30,8 +30,9 @@ export default function ({ $axios, app, store }, inject) {
     if (error.response.data && error.response.data.message) {
       app.$toast.show({
         type: 'danger',
-        message: `<b>[${error.response.data.exception}]</b> <br /> ${error.response.data.message} <br /> <a href="phpstorm://open?file=/${error.response.data.file}&line=${error.response.data.line}">${error.response.data.file}:${error.response.data.line}</a>`,
-        delay: 0,
+        title: error.response.data.exception,
+        message: `${error.response.data.message} <br /> <a href="phpstorm://open?file=/${error.response.data.file}&line=${error.response.data.line}">${error.response.data.file}:${error.response.data.line}</a>`,
+        timeout: 0,
       })
       throw (error.response.data.mesage)
     }
