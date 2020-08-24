@@ -1,15 +1,27 @@
 <template lang="pug">
 span.relative.z-0.inline-flex.shadow-sm.rounded-md.group-button
-  button(:class="[all, start]", type="button")
+  button(:class="[all, start]", type="button", @click="action(0)")
     slot(name="start")
-  button(v-if="$slots.middle", :class="[all, middle]", type="button")
+  button(
+    v-for="(slot, index) in $slots.middle",
+    v-if="$slots.middle",
+    :class="[all, middle]",
+    type="button",
+    @click="action(index+1)")
     slot(name="middle")
-  button(:class="[all, end]", type="button")
+  button(:class="[all, end]", type="button", @click="action(actions.length-1)")
     slot(name="end")
 </template>
 
 <script>
 export default {
+  props: {
+    actions: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
+  },
   data () {
     return {
       all: [
@@ -19,6 +31,12 @@ export default {
       middle: ['-ml-px'],
       end: ['-ml-px', 'rounded-r-md'],
     }
+  },
+  methods: {
+    action (index) {
+      if (this.actions[index])
+        return this.actions[index]()
+    },
   },
 }
 </script>

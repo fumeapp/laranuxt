@@ -14,19 +14,19 @@
     span.text-gray-400.text-sm (2 second delay)
   .flex.justify-center.my-4
 
-    GroupButton
+    GroupButton(:actions="[() => toast('success'), () => toast('warning'), () => toast('success'),  () => toast('danger')]")
       template('#start')
-        .flex(@click="toast('success')")
-          IconToast.w-4.h-4.mr-2
-          IconCheck.w-4.h-4(primary="text-green-400", secondary="text-green-300")
+        IconToast.w-4.h-4.mr-2
+        IconCheck.w-4.h-4(primary="text-green-400", secondary="text-green-300")
       template('#middle')
-        .flex(@click="toast('warning')")
-          IconToast.w-4.h-4.mr-2
-          IconBang.w-4.h-4(primary="text-yellow-400", secondary="text-yellow-300")
+        IconToast.w-4.h-4.mr-2
+        IconBang.w-4.h-4(primary="text-yellow-400", secondary="text-yellow-300")
+      template('#middle')
+        IconToast.w-4.h-4.mr-2
+        IconBang.w-4.h-4(primary="text-yellow-400", secondary="text-yellow-300")
       template('#end')
-        .flex(@click="toast('danger')")
-          IconToast.w-4.h-4.mr-2
-          IconBang.w-4.h-4(primary="text-red-400", secondary="text-red-300")
+        IconToast.w-4.h-4.mr-2
+        IconBang.w-4.h-4(primary="text-red-400", secondary="text-red-300")
 
   .flex.justify-center.my-4
     GroupButton
