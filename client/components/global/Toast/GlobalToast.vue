@@ -160,7 +160,7 @@ export default {
       this.destroy()
     },
     secondaryAction () {
-      this.seondary.action()
+      this.secondary.action()
       this.destroy()
     },
   },

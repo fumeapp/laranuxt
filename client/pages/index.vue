@@ -13,28 +13,37 @@
     span &nbsp;
     span.text-gray-400.text-sm (2 second delay)
   .flex.justify-center.my-4
-    PushButton.mr-2(@click.native="toast('success')")
-      IconToast.w-4.h-4.mr-2
-      IconCheck.w-4.h-4(primary="text-green-400", secondary="text-green-300")
-    PushButton.mr-2(@click.native="toast('warning')")
-      IconToast.w-4.h-4.mr-2
-      IconBang.w-4.h-4(primary="text-yellow-400", secondary="text-yellow-300")
-    PushButton.mr-2(@click.native="toast('danger')")
-      IconToast.w-4.h-4.mr-2
-      IconBang.w-4.h-4(primary="text-red-400", secondary="text-red-300")
+
+    GroupButton
+      template('#start')
+        .flex(@click="toast('success')")
+          IconToast.w-4.h-4.mr-2
+          IconCheck.w-4.h-4(primary="text-green-400", secondary="text-green-300")
+      template('#middle')
+        .flex(@click="toast('warning')")
+          IconToast.w-4.h-4.mr-2
+          IconBang.w-4.h-4(primary="text-yellow-400", secondary="text-yellow-300")
+      template('#end')
+        .flex(@click="toast('danger')")
+          IconToast.w-4.h-4.mr-2
+          IconBang.w-4.h-4(primary="text-red-400", secondary="text-red-300")
+
   .flex.justify-center.my-4
-    PushButton.mr-2(@click.native="toastError")
-      IconToast.w-4.h-4.mr-2
-      span API Error
-    PushButton.mr-2(@click.native="toastActions")
-      IconToast.w-4.h-4.mr-2
-      span Actions
+    GroupButton
+      template('#start')
+        .flex(@click="toastActions")
+          IconToast.w-4.h-4.mr-2
+          span Actions
+      template('#end')
+        .flex(@click="toastError")
+          IconToast.w-4.h-4.mr-2
+          span API Error
   .flex.justify-center.my-4
     PushButton.mr-2( @click.native="customModal = true")
       span Custom Modal
   ModalBase(v-if="customModal", :destroyed="() => customModal = false")
-    .p-6.bg-white.text-center.flex.items-center
-      span custom modal using &nbsp;
+    .p-6.bg-white.text-center.flex.flex-col.items-center
+      .mb-4 custom modal using
       LinkButton(href="https://github.com/acidjazz/laranuxt/blob/master/client/components/modals/ModalBase.vue")
         span ModalBase.vue
 </template>
@@ -63,14 +72,13 @@ export default {
     toast (type) {
       this.$toast.show({
         type,
-        timeout: false,
         title: 'This is the title',
         message: 'this is the body of the toast',
       })
     },
     toastActions () {
       this.$toast.show({
-        title: 'Toast tile with actions',
+        title: 'Toast with actions',
         message: 'this is the body of the actionable toast',
         primary: { label: 'Primary', action: () => true },
         secondary: { label: 'Secondary', action: () => true },
