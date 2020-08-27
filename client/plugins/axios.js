@@ -4,21 +4,7 @@
  *
  * Distributed under terms of the APACHE license.
  */
-
-import Vue from 'vue'
-import Toast from '@/components/global/Toast/GlobalToast.vue'
-import { spawn } from '@/plugins/utils.js'
-
-const ToastProgrammatic = {
-  show (props) {
-    if (typeof props === 'string') props = { message: props }
-    return spawn('toasts', props, Toast, Vue)
-  },
-}
-
-export default function ({ $axios, app, store }, inject) {
-  inject('toast', ToastProgrammatic)
-
+export default function ({ $axios, $toast, app, store }, inject) {
   $axios.onError((error) => {
     if (error.response.data && error.response.data.errors) {
       for (const err of error.response.data.errors)

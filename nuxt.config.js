@@ -32,7 +32,6 @@ export default {
   */
   plugins: [
     '@/plugins/helpers.js',
-    '@/plugins/toast.client.js',
     '@/plugins/modal.client.js',
     '@/plugins/axios.js',
   ],
@@ -54,6 +53,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    'nuxt-tv-toast',
   ],
   /*
   ** components module configuration

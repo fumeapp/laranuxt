@@ -7438,6 +7438,13 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
+nuxt-tv-toast@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/nuxt-tv-toast/-/nuxt-tv-toast-1.0.2.tgz#2afe1eb68bc2df9f3b14ff5977a3bb99a55abe76"
+  integrity sha512-H2Q37M1hJa1S+eMqlemZBWmdpfDXZtuvsFQwsPrTA0cpwnmKWW9tqEdWU/NOJlnm+3o7luBmZ/qy4fd08g3IOQ==
+  dependencies:
+    tv-toast "^1.1.0"
+
 nuxt@^2.13.0:
   version "2.14.3"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.14.3.tgz#1e1fb762d407dc275253360b87f3257c609b4dfd"
@@ -10423,6 +10430,11 @@ tunnel-agent@^0.6.0:
   integrity sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0=
   dependencies:
     safe-buffer "^5.0.1"
+
+tv-toast@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tv-toast/-/tv-toast-1.1.0.tgz#a7ffbb3106f51d9dccaa996f2383596046a51a80"
+  integrity sha512-1WZ4dESYtFHKr4R54j0guaJ+6A8ou2NyElWoaJNp7Uae5mfLLLsscaOWc68BU7RkWICqEn6dyAtOxuVaVkg/pg==
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"

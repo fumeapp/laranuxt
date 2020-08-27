@@ -25,7 +25,7 @@
   * [@nuxtjs/pwa](https://pwa.nuxtjs.org/) Heavily tested, updated and stable PWA solution - `v3.0.0`
   * [@nuxt/components](https://github.com/nuxt/components) Auto import components - `v1.0.3`
   * [@nuxtjs/tailwindcss](https://github.com/nuxt-community/nuxt-tailwindcss) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in - `v2.0.0`
-  * [stylus](https://stylus.org) - expressive, dynamic, robust css - `v0.54.8`
+  * [stylus](https://https://stylus-lang.com) - expressive, dynamic, robust css - `v0.54.8`
   * [pug](https://pugjs.org) -  high-performance template engine - `v3.0.0`
   * [mdi](https://materialdesignicons.com) - material design icons with a ton of contributed ones as well - `v5.4.55`
 

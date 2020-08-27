@@ -9,6 +9,9 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const pkg = require('../package')
 
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
   variants: {},
   plugins: [
     require('@tailwindcss/ui'),

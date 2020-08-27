@@ -35,6 +35,7 @@
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@tailwindcss/ui": "^0.5.0",
     "nuxt": "^2.13.0",
+    "nuxt-tv-toast": "^1.0.1",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.7",

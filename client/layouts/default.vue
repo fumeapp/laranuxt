@@ -1,8 +1,6 @@
 <template lang="pug">
 #LaraNuxt
   #modals
-  #toasts.z-40.fixed.inset-0.flex.flex-col-reverse.items-end.justify-center.px-4.py-6.pointer-events-none(
-    class="sm:p-6 sm:items-end sm:justify-end")
-  HeaderBar
+  //HeaderBar
   nuxt
 </template>

@@ -15,11 +15,10 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'comma-dangle': ['error', 'always-multiline'],
-    curly: ['error', 'multi'],
+    'comma-dangle': [ 'error', 'always-multiline' ],
+    curly: [ 'error', 'multi' ],
     'no-console': 'off',
     camelcase: 'off',
-    'vue/singleline-html-element-content-newline': 'off',
-    'vue/multiline-html-element-content-newline': 'off',
+    'array-bracket-spacing': 'off',
   },
 }
