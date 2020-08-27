@@ -32,9 +32,6 @@ export default {
       end: [ '-ml-px', 'rounded-r-md' ],
     }
   },
-  mounted () {
-    console.log(this.$slots)
-  },
   methods: {
     action (index) {
       if (this.actions[index])

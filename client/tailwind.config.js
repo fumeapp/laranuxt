@@ -19,11 +19,12 @@ module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     content: [
-      'client/components/**/*.vue',
-      'client/layouts/**/*.vue',
-      'client/pages/**/*.vue',
-      'client/plugins/**/*.js',
-      'client/nuxt.config.js',
+      './node_modules/tv-toast/**/*.vue',
+      './client/components/**/*.vue',
+      './client/layouts/**/*.vue',
+      './client/pages/**/*.vue',
+      './client/plugins/**/*.js',
+      './client/nuxt.config.js',
     ],
   },
   theme: {
