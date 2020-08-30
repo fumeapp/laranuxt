@@ -9,6 +9,8 @@
       span Error
     PushButton.mb-2(@click.native="action")
       span Single Action
+    PushButton.mb-2(@click.native="actions")
+      span Multiple Actions
 
 </template>
 
