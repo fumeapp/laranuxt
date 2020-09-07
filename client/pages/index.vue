@@ -2,7 +2,7 @@
 .container.p-2(class="lg:p-8")
   .mb-8.flex.justify-center.items-center.flex-col.lg_flex-row.w-full
     a(href="https://github.com/acidjazz/laranuxt",target="_new")
-      img.w-32.h-32(src="laranuxt.png")
+      img.w-32.h-32.bg-white.rounded.border.p-4(src="laranuxt.png")
   ul.grid.grid-cols-1.gap-6.bg-gray-100.rounded.p-8.w-full(class="sm:grid-cols-2 lg:grid-cols-3")
     ContactCardSkeleton(v-if="users.length === 0", v-for="i in 9" :key="`skel-${i}`")
     ContactCard(v-if="users.length > 0", v-for="(user, index) in users" :key="index" :user="user")
