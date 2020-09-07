@@ -53,7 +53,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    'nuxt-tv-toast',
+    ['nuxt-tailvue', {toast: true, button: true}],
   ],
   /*
   ** components module configuration
