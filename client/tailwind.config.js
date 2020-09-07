@@ -11,6 +11,7 @@ const pkg = require('../package')
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
   },
   variants: {},
   plugins: [
@@ -19,6 +20,8 @@ module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     content: [
+      './node_modules/tv-icon/**/*.vue',
+      './node_modules/tv-button/**/*.vue',
       './node_modules/tv-toast/**/*.vue',
       './client/components/**/*.vue',
       './client/layouts/**/*.vue',

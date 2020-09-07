@@ -7463,12 +7463,13 @@ num2fraction@^1.2.2:
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
 nuxt-tailvue@^1.0.2:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/nuxt-tailvue/-/nuxt-tailvue-1.0.4.tgz#96e559b2219e027385de379394a15fb2934c79cf"
-  integrity sha512-zaey+1rR45ffl0mI45Baa4kfiRsKl/BoQHy+KFCwx41ucP3w+drjHWTQWPZcpUt4b9vPDciTA1a3cTHWJeSJKQ==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/nuxt-tailvue/-/nuxt-tailvue-1.0.6.tgz#8296edfb1cf5402f2f6aa79a438c610ccdd6bbfa"
+  integrity sha512-4TGMKyvcmMcmgvVSv4Z4DZ9efvu6A70MYukQXUuHDmReMMiANpmHz4IDq7hgtxKr9p+Wo4KfHMoYHSdWu2AULg==
   dependencies:
-    tv-button "^1.0.4"
-    tv-toast "^1.2.2"
+    tv-button latest
+    tv-icon latest
+    tv-toast latest
 
 nuxt@^2.13.0:
   version "2.14.4"
@@ -10469,15 +10470,22 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
-tv-button@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tv-button/-/tv-button-1.0.4.tgz#013b067dd3bfc868e31e3dbb4e5b53aec1c11845"
-  integrity sha512-LsBn4YZMtFCGgWDLZC0vDXdrO5EBlTo9YOB6269VMYjRBEYPP0yrhixz1cTl5KGHwtobl7kScZnJamoVq/G/Xw==
+tv-button@latest:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/tv-button/-/tv-button-1.0.7.tgz#9147870dec25908d2cf38683c0fe64a6075ff6db"
+  integrity sha512-Q9I+qpw12KsTAIhO5rOlgYeHeuWRLDSDCSP+rGq31pVJbc++gufsNxSIq07418OxYxrG6d5uquTDcXExGc63ew==
 
-tv-toast@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/tv-toast/-/tv-toast-1.2.2.tgz#99b2a3739a84b68296236e022ed2509a6d12197c"
-  integrity sha512-S/QK+6KirCk+CVUj3Ne5ML60Lu3vlQrlCKvhuAy7QSScj3V1XF/Li1y3EuUQ2+rt9dmB/9HQn5J75NKSr1kQ6Q==
+tv-icon@^1.0.1, tv-icon@latest:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/tv-icon/-/tv-icon-1.0.4.tgz#5132a84d32ef63b8a778c4f649d974bbe47fe655"
+  integrity sha512-3Fm5Ufuex4VCpkHH9CIqpZpXuufHPkqZkHk7MsX7E/v3OE6aYQRg++yunaFOqE8D3Zdd8rubYOCilhYAb+dBXw==
+
+tv-toast@latest:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/tv-toast/-/tv-toast-1.2.3.tgz#8be4f6cb4956ce0313c96d4accd800692b3294ff"
+  integrity sha512-+JS4ODorvBkiNN6NXJSgTHj8MiHmP3m5xMDMbqPJ7XGbYh+TYFRVZF7tTlSNKvmVGwtelnN1MXw0bsbetT8PCw==
+  dependencies:
+    tv-icon "^1.0.1"
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
