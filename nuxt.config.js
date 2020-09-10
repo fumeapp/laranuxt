@@ -32,7 +32,6 @@ export default {
   */
   plugins: [
     '@/plugins/helpers.js',
-    '@/plugins/modal.client.js',
     '@/plugins/axios.js',
   ],
   /*
@@ -53,7 +52,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    ['nuxt-tailvue', {toast: true, button: true}],
+    ['nuxt-tailvue', {toast: true, button: true, modal: true}],
   ],
   /*
   ** components module configuration

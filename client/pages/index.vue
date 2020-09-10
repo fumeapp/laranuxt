@@ -43,8 +43,11 @@
           IconToast.w-4.h-4.mr-2
           span API Error
   .flex.justify-center.my-4
-    PushButton.mr-2( @click.native="customModal = true")
-      span Custom Modal
+    ButtonGroup
+      PushButton(@click="showModal", group="left")
+        span Programmatic Modal
+      PushButton(@click="customModal = true", group="right")
+        span Custom Modal
   ModalBase(v-if="customModal", :destroyed="() => customModal = false")
     .p-6.bg-white.text-center.flex.flex-col.items-center
       .mb-4 custom modal using
@@ -94,11 +97,14 @@ export default {
     },
     showModal () {
       this.$modal.show({
-        body: 'test modal with actions',
-        actions: [
-          { name: 'Confirm', action: () => this.$toast.show('confirmed') },
-          { name: 'Cancel', action: () => this.$toast.show('canceled') },
-        ],
+        type: 'success',
+        title: 'Successful Modal',
+        body: 'This is the body property.',
+        primary: {
+          label: 'OK',
+          theme: 'white',
+          action: () => this.$toast.success('Primary Button clicked'),
+        },
       })
     },
   },
