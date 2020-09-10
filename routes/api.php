@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Controller@routes')->name('route information');
-Route::get('/example', 'Controller@example')->name('example route');
-Route::get('/error', 'Controller@error')->name('error route');
+Route::get('/', [Controller::class, 'routes'])->name('route information');
+Route::get('/example', [Controller::class, 'example'])->name('example route');
+Route::get('/error', [Controller::class, 'error'])->name('error route');
 

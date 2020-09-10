@@ -40,6 +40,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    '@/plugins/helpers.js',
   ],
   /*
   ** Auto import components
@@ -60,17 +61,33 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    // Doc: https://github.com/acidjazz/nuxt-tailvue
+    ['nuxt-tailvue', { all: true }],
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    credentials: true,
+    baseURL: process.env.API_URL,
+    headers: {
+      accept: 'application/json',
+    },
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-  }
+  },
+
+  /*
+  ** Runtime Config
+  ** See https://nuxtjs.org/guide/runtime-config/
+  */
+  publicRuntimeConfig: {
+    apiUrl: process.env.API_URL,
+  },
 }

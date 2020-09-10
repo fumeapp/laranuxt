@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
-    "nuxt": "^2.14.0"
+    "@tailwindcss/ui": "^0.6.0",
+    "nuxt": "^2.14.0",
+    "nuxt-tailvue": "^1.0.10"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
