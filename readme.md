@@ -20,7 +20,7 @@
 
 * [NUXT](https://nuxtjs.org) front end, a progressive Vue.js framework - `v2.14.0`
   * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API - `v5.12.0`
-  * [@nuxtjs/tailwindcss](https://github.com/nuxt-community/nuxt-tailwindcss) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in - `v2.1.0`
+  * [@nuxtjs/tailwindcss](https://github.com/nuxt-community/Gnuxt-tailwindcss) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in - `v2.1.0`
   * [nuxt-tailvue](https://github.com/acidjazz/nuxt-tailvue) a collection of components built for Nuxt.js, powered by TailwindCSS
 
 * [Laravel](https://laravel.com) - for our API - `v7.22.4`
@@ -45,3 +45,4 @@ git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer inst
 * run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
 
 ### Features
+

@@ -15,7 +15,9 @@
       <span>&nbsp;</span>
       <span class="text-gray-400 text-sm">(2 second delay)</span>
     </div>
-    <div class="flex justify-center my-4" />
+    <div class="flex justify-center my-4">
+      tailvue examples:
+    </div>
   </div>
 </template>
 
