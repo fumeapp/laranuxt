@@ -1,10 +1,7 @@
 <template>
   <div class="container p-2 lg:p-8 flex flex-col">
     <div class="m-8 flex items-center justify-center">
-      <div class="flex items-center">
-        <IconLaravel class="w-16 h-16 -mt-8" primary="text-red-500" />
-        <IconNuxt class="w-16 h-16 -ml-6 mt-8" />
-      </div>
+      <Logo />
     </div>
     <ul v-if="users.length === 0" class="grid grid-cols-1 gap-6 bg-gray-100 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
       <ContactCardSkeleton v-for="i in 9" :key="`skel-${i}`" />
