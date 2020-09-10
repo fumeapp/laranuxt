@@ -1,7 +1,11 @@
-<template lang="pug">
-#LaraNuxt
-  #modals
-  #toasts.flex.flex-col.flex-col-reverse.fixed
-  HeaderBar
-  nuxt
+<template>
+  <div class="flex items-center justify-center">
+    <Nuxt />
+  </div>
 </template>
+
+<style>
+html,body {
+  @apply bg-gray-100
+}
+</style>

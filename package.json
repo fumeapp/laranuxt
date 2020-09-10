@@ -10,48 +10,26 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "test": "jest --config tests/js/jest.config.js",
-    "api": "./artisan serve",
-    "mdi": "cp node_modules/@mdi/font/css/materialdesignicons.min.css client/static/mdi.css; cp node_modules/@mdi/font/fonts/* client/static/fonts/.; cp node_modules/@mdi/font/css/materialdesignicons.css.map client/static/.;"
-  },
-  "config": {
-    "colors": {
-      "white": "#ffffff",
-      "white-o1": "rgba(255, 255, 255, 0.1)",
-      "white-o2": "rgba(255, 255, 255, 0.2)",
-      "white-o3": "rgba(255, 255, 255, 0.3)",
-      "white-o7": "rgba(255, 255, 255, 0.7)",
-      "white-o8": "rgba(255, 255, 255, 0.8)",
-      "white-o9": "rgba(255, 255, 255, 0.9)",
-      "black-o1": "rgba(0, 0, 0, 0.1)",
-      "black-o2": "rgba(0, 0, 0, 0.2)",
-      "black-o3": "rgba(0, 0, 0, 0.3)",
-      "black-o7": "rgba(0, 0, 0, 0.7)",
-      "black-o8": "rgba(0, 0, 0, 0.8)",
-      "black-o9": "rgba(0, 0, 0, 0.9)"
-    }
+    "api": "./artisan serve"
+
   },
   "dependencies": {
-    "@mdi/font": "^5.3.45",
-    "@nuxt/components": "^1.0.3",
-    "@nuxtjs/axios": "^5.11.0",
-    "@nuxtjs/pwa": "^3.0.0-beta.20",
-    "nuxt": "^2.13.0",
-    "pug": "^3.0.0",
-    "pug-plain-loader": "^1.0.0",
-    "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2"
+    "@nuxtjs/axios": "^5.12.0",
+    "@tailwindcss/ui": "^0.6.0",
+    "nuxt": "^2.14.0",
+    "nuxt-tailvue": "^1.0.10"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^3.0.0",
+    "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/tailwindcss": "^3.0.0",
+    "@nuxtjs/tailwindcss": "^2.1.0",
     "@vue/test-utils": "^1.0.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.0.1",
-    "eslint": "^7.2.0",
+    "babel-jest": "^26.1.0",
+    "eslint": "^7.5.0",
     "eslint-plugin-nuxt": "^1.0.0",
-    "jest": "^26.0.1",
+    "jest": "^26.1.0",
     "vue-jest": "^3.0.4"
   }
 }
