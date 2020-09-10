@@ -10,6 +10,8 @@
     "require": {
         "php": "^7.3",
         "acidjazz/metapi": "^2.1",
+        "barryvdh/laravel-debugbar": "^3.5",
+        "barryvdh/laravel-ide-helper": "^2.8",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",

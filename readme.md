@@ -15,3 +15,25 @@
 [![](https://img.shields.io/badge/Laravel-v8.0.0-ff2e21.svg?style=flat-square)](https://nuxtjs.org)
 ![Test PHP](https://github.com/acidjazz/laranuxt/workflows/Test%20PHP/badge.svg)
 ![Test Javascript](https://github.com/acidjazz/laranuxt/workflows/Test%20Javascript/badge.svg)
+
+### What is included
+
+* [NUXT](https://nuxtjs.org) front end, a progressive Vue.js framework - `v2.14.0`
+  * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API - `v5.12.0`
+  * [@nuxtjs/tailwindcss](https://github.com/nuxt-community/nuxt-tailwindcss) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in - `v2.1.0`
+
+* [Laravel](https://laravel.com) - for our API - `v7.22.4`
+  * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities - `v2.1.1`
+  * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.5.1`
+  * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable accurate IDE autocompletion - `v2.8.0`
+
+### Installation
+
+* clone from github
+* run `yarn` and `composer install` to install all of your deps
+* copy `.env.example` to `.env` and configure it to your likings
+* TL;DR
+ ```bash
+git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; yarn mdi; cp .env.example .env;
+ ```
+* Feel free to delete excess media in  `/client/static/`, just images for the readme
