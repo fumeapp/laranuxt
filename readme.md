@@ -23,6 +23,7 @@
   * [@nuxtjs/tailwindcss](https://github.com/nuxt-community/Gnuxt-tailwindcss) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in - `v2.1.0`
   * [nuxt-tailvue](https://github.com/acidjazz/nuxt-tailvue) a collection of components built for Nuxt.js, powered by TailwindCSS
 
+
 * [Laravel](https://laravel.com) - for our API - `v7.22.4`
   * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities - `v2.1.1`
   * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.5.1`
