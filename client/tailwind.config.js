@@ -27,10 +27,14 @@ module.exports = {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',
     content: [
-      'components/**/*.vue',
-      'layouts/**/*.vue',
-      'pages/**/*.vue',
-      'plugins/**/*.js',
+      'node_modules/tv-toast/**/*.vue',
+      'node_modules/tv-icon/**/*.vue',
+      'node_modules/tv-button/**/*.vue',
+      'node_modules/tv-modal/**/*.vue',
+      'client/components/**/*.vue',
+      'client/layouts/**/*.vue',
+      'client/pages/**/*.vue',
+      'client/plugins/**/*.js',
       'nuxt.config.js'
     ]
   }
