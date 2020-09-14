@@ -11,7 +11,7 @@
 
 ## Laravel + Nuxt.js Boilerplate
 
-[![](https://img.shields.io/badge/nuxt.js-v2.14.5-04C690.svg)](https://ux.js.org)
+[![](https://img.shields.io/badge/nuxt.js-v2.14.5-04C690.svg)](https://nuxtjs.org)
 [![](https://img.shields.io/badge/Laravel-v8.0.1-ff2e21.svg)](https://laravel.com)
 ![Test PHP](https://github.com/acidjazz/laranuxt/workflows/Test%20PHP/badge.svg)
 ![Test Javascript](https://github.com/acidjazz/laranuxt/workflows/Test%20Javascript/badge.svg)
@@ -27,7 +27,7 @@
 * [Laravel](https://laravel.com) - for our API - `v7.22.4`
   * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities - `v2.1.1`
   * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.5.1`
-  * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable accurate IDE autocompletion - `v2.8.0`
+  * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable help with IDE autocompletion - `v2.8.0`
 
 ### Installation
 
