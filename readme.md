@@ -16,9 +16,7 @@
 ![Test PHP](https://github.com/acidjazz/laranuxt/workflows/Test%20PHP/badge.svg)
 ![Test Javascript](https://github.com/acidjazz/laranuxt/workflows/Test%20Javascript/badge.svg)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/master/client/static/laranuxt.gif" />
-</p>
+![](client/static/laranuxt.gif?raw=true)
 
 ### What is included
 
