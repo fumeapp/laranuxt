@@ -19,6 +19,7 @@ module.exports = {
     curly: [ 'error', 'multi' ],
     'no-console': 'off',
     camelcase: 'off',
-    'array-bracket-spacing': 'off',
+    'array-bracket-spacing': [ 'error', 'always' ],
+    'vue-html-closing-bracket-newline': 0,
   },
 }
