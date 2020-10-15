@@ -53,7 +53,7 @@ class Controller extends BaseController
                 'job' => $faker->jobTitle,
                 'email' => $email,
                 'phone' => $faker->phoneNumber(),
-                'avatar' => 'https://api.adorable.io/avatars/285/'.$email.'.png',
+                'avatar' => 'https://avatars.dicebear.com/api/human/'.$email.'.svg',
             ];
         }
 

@@ -15,6 +15,23 @@
       <span>&nbsp;</span>
       <span class="text-gray-400 text-sm">(2 second delay)</span>
     </div>
+    <div class="text-center mt-4">
+      <span class="mr-4">nuxt-tailvue kitchen sink:</span>
+      <ButtonGroup>
+        <PushButton group="left" to="/modal">
+          Modals
+        </PushButton>
+        <PushButton group="middle" to="/toast">
+          toasts
+        </PushButton>
+        <PushButton group="middle" to="/button">
+          buttons
+        </PushButton>
+        <PushButton group="right" to="/icon">
+          icons
+        </PushButton>
+      </ButtonGroup>
+    </div>
   </div>
 </template>
 
