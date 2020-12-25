@@ -5,6 +5,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+storage/debugbar
 /vendor
 .env
 .env.backup
@@ -13,6 +14,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
 
 ## Nuxt.js
 # Created by .ignore support plugin (hsz.mobi)
@@ -106,3 +110,6 @@ sw.*
 
 # Vim swap files
 *.swp
+.vapor/
+.env.production
+.env.staging
