@@ -14,21 +14,21 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
-    "@tailwindcss/ui": "^0.6.0",
+    "@tailwindcss/ui": "^0.7.2",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "nuxt-tailvue": "^1.0.10"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^3.1.0",
-    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/tailwindcss": "^3.1.0",
     "@vue/test-utils": "^1.1.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.5.0",
     "eslint": "^7.10.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "jest": "^26.5.0",
     "vue-jest": "^3.0.4"
   }

@@ -4,10 +4,10 @@
       <Logo />
     </div>
     <ul v-if="users.length === 0" class="grid grid-cols-1 gap-6 bg-gray-100 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
-      <ContactCardSkeleton v-for="i in 9" :key="`skel-${i}`" />
+      <contact-card-skeleton v-for="i in 9" :key="`skel-${i}`" />
     </ul>
     <ul v-if="users.length &gt; 0" class="grid grid-cols-1 gap-6 bg-gray-100 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
-      <ContactCard v-for="(user, index) in users" :key="index" :user="user" />
+      <contact-card v-for="(user, index) in users" :key="index" :user="user" />
     </ul>
     <div class="text-center mt-4">
       <span>provided by endpoint</span><span>&nbsp;</span>
@@ -17,20 +17,20 @@
     </div>
     <div class="text-center mt-4">
       <span class="mr-4">nuxt-tailvue kitchen sink:</span>
-      <ButtonGroup>
-        <PushButton group="left" to="/modal">
+      <button-group>
+        <push-button group="left" to="/modal">
           Modals
-        </PushButton>
-        <PushButton group="middle" to="/toast">
+        </push-button>
+        <push-button group="middle" to="/toast">
           toasts
-        </PushButton>
-        <PushButton group="middle" to="/button">
+        </push-button>
+        <push-button group="middle" to="/button">
           buttons
-        </PushButton>
-        <PushButton group="right" to="/icon">
+        </push-button>
+        <push-button group="right" to="/icon">
           icons
-        </PushButton>
-      </ButtonGroup>
+        </push-button>
+      </button-group>
     </div>
   </div>
 </template>
