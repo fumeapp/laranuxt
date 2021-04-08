@@ -48,11 +48,20 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-    // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
+    // https://tailwindcss.nuxtjs.org/
     '@nuxtjs/tailwindcss',
+    // https://typescript.nuxtjs.org/
+    '@nuxt/typescript-build',
+    // https://composition-api.nuxtjs.org/
+    '@nuxtjs/composition-api',
+    // https://typed-vuex.roe.dev/
+    'nuxt-typed-vuex',
   ],
+
+  tailwindcss: {
+    jit: true,
+  },
+
   /*
   ** Nuxt.js modules
   */

@@ -17,7 +17,7 @@
           {{ user.job }}
         </p>
       </div>
-      <img class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0" :src="user.avatar" alt="avatar"></img>
+      <img class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0" :src="user.avatar" alt="avatar" />
     </div>
     <div class="border-t border-gray-200">
       <div class="-mt-px flex">
@@ -44,11 +44,14 @@
   </li>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { PropType } from '@nuxtjs/composition-api'
+import Vue from 'vue'
+import { User } from '@/client/types/api'
+export default Vue.extend({
   props: {
     user: {
-      type: Object,
+      type: Object as PropType<User>,
       required: true,
     },
   },
@@ -57,5 +60,5 @@ export default {
       return Math.random() >= 0.5
     },
   },
-}
+})
 </script>

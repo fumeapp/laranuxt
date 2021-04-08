@@ -35,27 +35,32 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import { Users } from '@/types/api'
+export default Vue.extend({
   data () {
+    const users:Users = []
+    const count:number = 9
+
     return {
-      users: [],
-      count: 9,
+      users,
+      count,
     }
   },
   mounted () {
     this.get(this.count)
   },
   methods: {
-    async get (count) {
+    async get (count: number): Promise<void> {
       await this.$sleep(2000)
       this.users = (await this.$axios.get('example', { params: { count } })).data.data
     },
-    total (count) {
+    total (count: number): void {
       this.users = []
       this.count = count
       this.get(this.count)
     },
   },
-}
+})
 </script>

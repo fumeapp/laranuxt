@@ -5,6 +5,7 @@
 <p align="center">
   <a href="https://laravel.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" width="92" height="92" /></a>
   <a href="https://vuejs.org"><img src="https://vuejs.org/images/logo.png" width="92" height="92" /></a>
+  <a href="https://typescriptlang.org"><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--LkL103Qa--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/377/landscape/typescriptlang.png" width="92" height="92" /></a>
   <a href="https://tailwindcss.com"><img src="https://pbs.twimg.com/profile_images/1278691829135876097/I4HKOLJw_400x400.png" width="92" height="92" /></a>
   <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="92" height="92" /></a>
 </p>
@@ -20,16 +21,17 @@
 
 ### What is included
 
-* [NUXT](https://nuxtjs.org) front end, a progressive Vue.js framework - `v2.14.7`
-  * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API - `v5.12.0`
+* [NUXT](https://nuxtjs.org) front end, a progressive Vue.js framework - `v2.15.4`
+  * [@nuxtjs/typescript-build](https://typescript.nuxtjs.org/) TypeScript Support for Nuxt.js - `v2.1.0`
+  * [@nuxtjs/composition-api](https://composition-api.nuxtjs.org/) Composition API Support for Nuxt.js - `v0.22.4`
   * [@nuxtjs/tailwindcss](https://tailwindcss.nuxtjs.org/) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in - `v3.1.0`
+  * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API - `v5.12.0`
   * [nuxt-tailvue](https://github.com/acidjazz/nuxt-tailvue) a collection of components built for Nuxt.js, powered by TailwindCSS `v1.0.16`
 
-
-* [Laravel](https://laravel.com) - for our API - `v7.22.4`
-  * [metapi](https://github.com/acidjazz/metapi) - API helpers and utilities - `v2.1.1`
-  * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.5.1`
-  * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable help with IDE autocompletion - `v2.8.0`
+* [Laravel](https://laravel.com) - for our API - `v8.27.0`
+  * [MetAPI](https://github.com/acidjazz/metapi) - API helpers and utilities - `v2.1.4`
+  * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API - `v3.5.5`
+  * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable help with IDE autocompletion - `v2.9.3`
 
 ### Installation
 

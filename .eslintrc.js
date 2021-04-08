@@ -4,12 +4,9 @@ module.exports = {
     browser: true,
     node: true,
   },
-  parserOptions: {
-    parser: 'babel-eslint',
-  },
   extends: [
-    '@nuxtjs',
-    'plugin:nuxt/recommended',
+    '@nuxtjs/eslint-config-typescript',
+    'plugin:nuxt/recommended'
   ],
   plugins: [
   ],
@@ -21,5 +18,7 @@ module.exports = {
     camelcase: 'off',
     'array-bracket-spacing': [ 'error', 'always' ],
     'vue-html-closing-bracket-newline': 0,
+    'vue/singleline-html-element-content-newline': 0,
+    'vue/comment-directive': 0,
   },
 }
