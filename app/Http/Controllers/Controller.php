@@ -7,7 +7,9 @@ use Faker\Factory;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -19,7 +21,7 @@ class Controller extends BaseController
      *
      * @return string
      */
-    public function routes()
+    public function routes(): string
     {
         Artisan::call('route:list');
         $routes = explode("\n", Artisan::output());
@@ -37,7 +39,7 @@ class Controller extends BaseController
      * @param Request $request
      * @return mixed
      */
-    public function example(Request $request)
+    public function example(Request $request): Response|JsonResponse
     {
         $this
             ->option('count', 'required|integer')
@@ -60,7 +62,7 @@ class Controller extends BaseController
         return $this->render($users);
     }
 
-    public function error()
+    public function error(): Response|JsonResponse
     {
         return $this->render(['forced_error' => $forced_error]);
     }

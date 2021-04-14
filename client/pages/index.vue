@@ -54,7 +54,9 @@ export default Vue.extend({
   methods: {
     async get (count: number): Promise<void> {
       await this.$sleep(2000)
-      this.users = (await this.$axios.get('example', { params: { count } })).data.data
+      this.users = (
+        await this.$axios.get('example', { params: { count } })
+      ).data.data as Users
     },
     total (count: number): void {
       this.users = []
