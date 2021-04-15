@@ -11,7 +11,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Artisan;
 
 class Controller extends BaseController
 {
@@ -23,8 +22,7 @@ class Controller extends BaseController
      */
     public function routes(): string
     {
-        Artisan::call('route:list');
-        $routes = explode("\n", Artisan::output());
+        exec(app_path() . '/../artisan route:list', $routes);
         foreach ($routes as $index=>$route) {
             if (strpos($route, 'debugbar') !== false) {
                 unset($routes[$index]);
