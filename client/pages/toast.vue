@@ -1,9 +1,6 @@
 <template>
   <div class="flex items-center justify-center w-screen h-screen">
     <div class="flex flex-col justify-center items-center">
-      <PushButton class="mb-2" @click.native="colors">
-        <span>Custom Colors</span>
-      </PushButton>
       <PushButton class="mb-2" @click.native="simple">
         <span>Keep it simple</span>
       </PushButton>
@@ -16,8 +13,17 @@
       <PushButton class="mb-2" @click.native="action">
         <span>Single Action</span>
       </PushButton>
+      <PushButton class="mb-2" @click.native="actionColors">
+        <span>Single Action - red cta</span>
+      </PushButton>
       <PushButton class="mb-2" @click.native="actions">
         <span>Multiple Actions</span>
+      </PushButton>
+      <PushButton class="mb-2" @click.native="actionsColors">
+        <span>Multiple Actions - custom colors</span>
+      </PushButton>
+      <PushButton class="mb-2" @click.native="colors">
+        <span>Custom Colors</span>
       </PushButton>
     </div>
   </div>
@@ -30,11 +36,11 @@ export default {
       this.$toast.show({
         title: 'custom colors',
         message: 'these are custom colors',
-        classToast: 'bg-teal-600',
-        classTitle: 'text-teal-100',
-        classMessage: 'text-teal-200',
-        classClose: 'text-teal-300',
-        classTimeout: 'bg-teal-800',
+        classToast: 'bg-indigo-600',
+        classTitle: 'text-indigo-100',
+        classMessage: 'text-indigo-200',
+        classClose: 'text-indigo-300',
+        classTimeout: 'bg-indigo-800',
       })
     },
     simple () {
@@ -61,12 +67,31 @@ export default {
         timeout: 6,
       })
     },
+    actionColors () {
+      this.$toast.show({
+        message: 'Single action toast',
+        primary: { label: 'UNDO', action: () => alert('undone') },
+        timeout: false,
+        classSingle: 'text-red-400 hover:text-red-500',
+      })
+    },
     actions () {
       this.$toast.show({
         title: 'Toast with actions',
         message: 'This toast has multiple actions',
         primary: { label: 'Primary', action: () => alert('primary') },
         secondary: { label: 'Secondary', action: () => alert('secondary') },
+        timeout: false,
+      })
+    },
+    actionsColors () {
+      this.$toast.show({
+        title: 'Toast with actions',
+        message: 'This toast has multiple actions',
+        primary: { label: 'Primary', action: () => alert('primary') },
+        secondary: { label: 'Secondary', action: () => alert('secondary') },
+        classPrimary: 'text-green-600 hover:text-green-700',
+        classSecondary: 'text-indigo-600 hover:text-indigo-700',
         timeout: false,
       })
     },
