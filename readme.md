@@ -10,6 +10,9 @@
   <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="92" height="92" /></a>
 </p>
 
+
+> *NEW* Want all of your models typed out as interfaces? check out [modeltyper](https://github.com/fumeapp/modeltyper)
+
 ## Laravel + Nuxt.js Boilerplate
 
 [![](https://img.shields.io/badge/nuxt.js-v2.15.0-04C690.svg)](https://nuxtjs.org)
