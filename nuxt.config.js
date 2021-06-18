@@ -56,6 +56,8 @@ export default {
     '@nuxtjs/composition-api',
     // https://typed-vuex.roe.dev/
     'nuxt-typed-vuex',
+    // https://github.com/fumeapp/nuxt-storm
+    'nuxt-storm',
   ],
 
   tailwindcss: {

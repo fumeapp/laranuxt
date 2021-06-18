@@ -7978,6 +7978,13 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
+nuxt-storm@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/nuxt-storm/-/nuxt-storm-1.0.8.tgz#a0238a2d7eb0ad4c6a2fff5b800187bf285d34a8"
+  integrity sha512-GcdMrxJE/VTbs9UO6epGx0g/ZVvziJdw8nPYqXUW3pkgk7Npxg5JIJOTkTVS6vF+Ua3R3Dy+AYk3cuSsfm76hw==
+  dependencies:
+    consola "^2.15.3"
+
 nuxt-tailvue@^1.0.10:
   version "1.0.91"
   resolved "https://registry.yarnpkg.com/nuxt-tailvue/-/nuxt-tailvue-1.0.91.tgz#7dca1725f8178fa8d197faab267f855cf6f17e5c"

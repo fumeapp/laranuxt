@@ -1,4 +1,5 @@
 
+
 ## Laravel
 
 /node_modules
@@ -20,6 +21,9 @@ _ide_helper_models.php
 
 ## Nuxt.js
 # Created by .ignore support plugin (hsz.mobi)
+
+# nuxt-storm
+.components.gen.js
 
 ### Node template
 # Logs

@@ -19,7 +19,6 @@
 [![](https://img.shields.io/badge/Laravel-v8.27.0-ff2e21.svg)](https://laravel.com)
 ![Test PHP](https://github.com/acidjazz/laranuxt/workflows/Test%20PHP/badge.svg)
 ![Test Javascript](https://github.com/acidjazz/laranuxt/workflows/Test%20Javascript/badge.svg)
-
 [![Lint Javascript](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml)
 [![Lint PHP](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml)
 

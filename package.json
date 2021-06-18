@@ -38,6 +38,7 @@
     "eslint": "^7.10.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "jest": "^26.5.0",
+    "nuxt-storm": "^1.0.8",
     "nuxt-typed-vuex": "^0.1.22",
     "vue-jest": "^3.0.4"
   }
