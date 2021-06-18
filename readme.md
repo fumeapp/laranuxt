@@ -15,8 +15,8 @@
 
 ## Laravel + Nuxt.js Boilerplate
 
-[![](https://img.shields.io/badge/nuxt.js-v2.15.0-04C690.svg)](https://nuxtjs.org)
-[![](https://img.shields.io/badge/Laravel-v8.27.0-ff2e21.svg)](https://laravel.com)
+[![](https://img.shields.io/badge/nuxt.js-v2.15.7-04C690.svg)](https://nuxtjs.org)
+[![](https://img.shields.io/badge/Laravel-v8.47.0-ff2e21.svg)](https://laravel.com)
 ![Test PHP](https://github.com/acidjazz/laranuxt/workflows/Test%20PHP/badge.svg)
 ![Test Javascript](https://github.com/acidjazz/laranuxt/workflows/Test%20Javascript/badge.svg)
 [![Lint Javascript](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml)
