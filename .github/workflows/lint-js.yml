@@ -5,7 +5,7 @@ on:
       - staging
       - production
 jobs:
-  typescript:
+  eslint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

@@ -5,7 +5,7 @@ on:
       - staging
       - production
 jobs:
-  php:
+  phpcs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
