@@ -1,4 +1,4 @@
-name: Lint JS
+name: Lint Javascript
 on:
   push:
     branches-ignore:

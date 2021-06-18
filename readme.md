@@ -19,7 +19,6 @@
 [![](https://img.shields.io/badge/Laravel-v8.27.0-ff2e21.svg)](https://laravel.com)
 ![Test PHP](https://github.com/acidjazz/laranuxt/workflows/Test%20PHP/badge.svg)
 ![Test Javascript](https://github.com/acidjazz/laranuxt/workflows/Test%20Javascript/badge.svg)
-[![Style Guide](https://github.com/acidjazz/laranuxt/actions/workflows/format.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/format.yml)
 
 ![](client/static/laranuxt.gif?raw=true)
 
