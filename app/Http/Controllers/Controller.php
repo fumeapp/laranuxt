@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Artisan;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi;
+
     /**
      * Display our routes
      *
@@ -25,12 +26,12 @@ class Controller extends BaseController
     {
         Artisan::call('route:list');
         $routes = explode("\n", Artisan::output());
-        foreach ($routes as $index=>$route) {
-            if (strpos($route, 'debugbar') !== false) {
+        foreach ($routes as $index => $route) {
+            if (str_contains($route, 'debugbar')) {
                 unset($routes[$index]);
             }
         }
-        return '<pre>'.implode("\n", $routes).'</pre>';
+        return '<pre>' . implode("\n", $routes) . '</pre>';
     }
 
     /**
@@ -54,8 +55,7 @@ class Controller extends BaseController
                 'name' => $faker->name(),
                 'job' => $faker->jobTitle,
                 'email' => $email,
-                'phone' => $faker->phoneNumber(),
-                'avatar' => 'https://avatars.dicebear.com/api/human/'.$email.'.svg',
+                'avatar' => 'https://avatars.dicebear.com/api/human/' . $email . '.svg',
             ];
         }
 

@@ -7,9 +7,14 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .ts,.js,.vue .",
+    "lint": "yarn lint:js",
+    "lint:js": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
+    "lint:action": "yarn lint:js -f @jamesacarr/github-actions",
+    "style": "composer cs; yarn lint",
     "test": "jest --config tests/js/jest.config.js",
-    "api": "./artisan serve"
+    "api": "./artisan serve",
+    "seed": "./artisan migrate:fresh --seed",
+    "caches": "./artisan config:cache; ./artisan route:cache; ./artisan cache:clear; ./artisan event:clear;"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
@@ -19,6 +24,7 @@
     "nuxt-tailvue": "^1.0.10"
   },
   "devDependencies": {
+    "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@nuxt/types": "^2.15.4",
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config": "^6.0.0",

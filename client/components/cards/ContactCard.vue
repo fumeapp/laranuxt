@@ -17,7 +17,7 @@
           {{ user.job }}
         </p>
       </div>
-      <img class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0" :src="user.avatar" alt="avatar" />
+      <img class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0" :src="user.avatar" alt="avatar">
     </div>
     <div class="border-t border-gray-200">
       <div class="-mt-px flex">
