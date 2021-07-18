@@ -53,7 +53,7 @@ export default {
     // https://typescript.nuxtjs.org/
     '@nuxt/typescript-build',
     // https://composition-api.nuxtjs.org/
-    '@nuxtjs/composition-api',
+    '@nuxtjs/composition-api/module',
     // https://typed-vuex.roe.dev/
     'nuxt-typed-vuex',
     // https://github.com/fumeapp/nuxt-storm
