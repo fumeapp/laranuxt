@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: changedfiles
 
-    if: ${{ needs.changedfiles.outputs.vue != '' }}
+    # if: ${{ needs.changedfiles.outputs.vue != '' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
