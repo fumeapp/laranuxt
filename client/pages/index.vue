@@ -50,6 +50,7 @@ export default Vue.extend({
   },
   mounted () {
     this.get(this.count)
+    console.log('test')
   },
   methods: {
     async get (count: number): Promise<void> {
