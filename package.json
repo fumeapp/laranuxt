@@ -26,12 +26,12 @@
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@nuxt/types": "^2.15.7",
     "@nuxt/typescript-build": "^2.1.0",
+    "@nuxtjs/composition-api": "^0.24.7",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/tailwindcss": "^4.2.0",
     "@vue/test-utils": "^1.1.0",
-    "@nuxtjs/composition-api": "^0.24.7",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.5.0",
@@ -39,10 +39,10 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
     "jest": "^27.0.5",
-    "postcss": "^8.3.5",
-    "ts-jest": "^27.0.3",
     "nuxt-storm": "^1.0.8",
     "nuxt-typed-vuex": "^0.2.0",
+    "postcss": "^8.3.5",
+    "ts-jest": "^27.0.3",
     "vue-jest": "^3.0.4"
   }
 }
