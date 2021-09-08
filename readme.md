@@ -40,7 +40,7 @@
 
 ### Installation
 
-* clone from github
+* clone from GitHub
 * run `yarn` and `composer install` to install all of your deps
 * copy `.env.example` to `.env` and configure it to your likings
 * TL;DR
