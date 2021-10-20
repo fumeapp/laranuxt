@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
@@ -38,6 +39,7 @@
     "eslint": "^7.10.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
+    "husky": "^7.0.1",
     "jest": "^27.0.5",
     "nuxt-storm": "^1.0.8",
     "nuxt-typed-vuex": "^0.2.0",

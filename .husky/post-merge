@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  zsh $PARENT_PATH/check-changed.sh
+else
+  bash $PARENT_PATH/check-changed.sh
+fi
+
+exit 0
