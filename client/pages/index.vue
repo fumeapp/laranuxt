@@ -15,22 +15,28 @@
       <span>&nbsp;</span>
       <span class="text-gray-400 text-sm">(2 second delay)</span>
     </div>
-    <div class="text-center mt-4">
+    <div class="text-center mx-auto mt-4">
       <span class="mr-4">nuxt-tailvue kitchen sink:</span>
-      <button-group>
-        <push-button group="left" to="/modal">
-          Modals
-        </push-button>
-        <push-button group="middle" to="/toast">
-          toasts
-        </push-button>
-        <push-button group="middle" to="/button">
-          buttons
-        </push-button>
-        <push-button group="right" to="/icon">
-          icons
-        </push-button>
-      </button-group>
+      <div class="mt-2 flex mx-auto">
+        <n-link to="/modal">
+          <push-button theme="whiteLeft" class="-mr-px"> Modal </push-button>
+        </n-link>
+        <n-link to="/toast">
+          <push-button theme="whiteMid">
+            toasts
+          </push-button>
+        </n-link>
+        <n-link to="/button">
+          <push-button theme="whiteMid">
+            buttons
+          </push-button>
+        </n-link>
+        <n-link to="/icon">
+          <push-button theme="whiteRight">
+            icons
+          </push-button>
+        </n-link>
+      </div>
     </div>
   </div>
 </template>
