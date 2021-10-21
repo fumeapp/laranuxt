@@ -2,18 +2,13 @@
   <div>
     <push-button
       class="w-full lg:w-20 justify-center"
-      theme="indigo"
       @click="show"
     >
       <div
         v-if="authed === null"
         key="waiting"
       >
-        <icon-spinner
-          class="w-5 h-5"
-          primary="text-fuchsia-200"
-          secondary="text-fuchsia-300"
-        />
+        <span data-icon="eos-icons:loading" class="iconify w-5 h-5 text-red-500" />
       </div>
       <div
         v-else-if="authed === false"
@@ -25,51 +20,34 @@
         v-else-if="authed === true"
         key="user"
       >
-        <icon-home
-          class="w-5 h-5"
-          primary="text-fuchsia-200"
-          secondary="text-fuchsia-300"
+        <span
+          data-icon="mdi:home"
+          class="iconify w-5 h-5 text-green-500"
         />
       </div>
     </push-button>
-    <modal-base v-if="modal" ref="modal" :destroyed="modalOff">
-      <modal-login :modal-off="modalOff" />
+    <modal-base v-if="modal" ref="modal" :destroyed="off">
+      <modal-login @off="off" />
     </modal-base>
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  data () {
-    return {
-      authed: null as null|boolean,
-      modal: false,
-    }
-  },
-  computed: {
-    loggedIn (): boolean { return this.$auth.loggedIn },
-  },
-  watch: {
-    loggedIn (after) {
-      this.authed = after
-    },
-  },
-  async mounted () {
-    await this.$sleep(200)
-    this.authed = this.$auth.loggedIn
-  },
-  methods: {
-    modalOn (): void {
-      this.modal = true
-    },
-    modalOff (): void {
-      this.modal = false
-    },
-    show () {
-      if (this.authed) this.$router.push('/home')
-      else this.modal = true
-    },
-  },
+<script lang="ts" setup>
+import { Ref } from '@nuxtjs/composition-api'
+const ctx = useContext()
+const authed = ref(null) as Ref<null|boolean>
+const modal = ref(false)
+const loggedIn = computed((): boolean => ctx.$auth.loggedIn)
+watch(loggedIn, (after) => { authed.value = after })
+onMounted(async () => {
+  await ctx.$sleep(200)
+  authed.value = ctx.$auth.loggedIn
 })
+function show (): void {
+  if (authed.value) ctx.app.router?.push('/home')
+  else modal.value = true
+}
+function off (): void {
+  modal.value = false
+}
 </script>

@@ -35,6 +35,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    '@/plugins/utils',
   ],
   /*
   ** Auto import components
@@ -60,7 +61,7 @@ export default {
     // https://github.com/fumeapp/nuxt-storm
     'nuxt-storm',
     // https://github.com/antfu/purge-icons
-    ['nuxt-purge-icons-module'],
+    'nuxt-purge-icons-module',
     [
       'unplugin-auto-import/nuxt',
       {

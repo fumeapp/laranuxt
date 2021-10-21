@@ -3,23 +3,29 @@
     <div class="grid grid-cols-2 gap-3">
       <div>
         <push-button class="w-full justify-center" @click="login('google')">
-          <icon-spinner
+          <icon
             v-if="loading.google"
-            class="w-5 h-5 block"
-            primary="text-red-500"
-            secondary="text-blue-300"
+            icon="gg:spinner-two"
+            class="w-6 h-6 text-indigo-600 animate-spin"
           />
-          <span v-else data-icon="flat-color-icons:google" class="iconify w-6 h-6 mr-2.5" />
+          <icon
+            v-else
+            icon="flat-color-icons:google"
+            class="w-6 h-6"
+          />
         </push-button>
       </div>
       <div>
         <push-button class="w-full justify-center" @click="login('facebook')">
           <icon-spinner
             v-if="loading.facebook"
-            class="w-5 h-5"
+            class="w-6 h-6"
             primary="text-blue-400"
           />
-          <span data-icon="logos:facebook" class="iconify w-6 h-6 mr-2.5" />
+          <icon
+            icon="logos:facebook"
+            class="w-6 h-6"
+          />
         </push-button>
       </div>
     </div>
@@ -55,12 +61,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-interface User {
-  name: string
-}
+<script lang="ts" setup>
+import { User } from '@/types/models'
 
 interface OauthResult {
   token: string
@@ -68,86 +70,72 @@ interface OauthResult {
   provider: string
   error?: string
 }
-export default Vue.extend({
-  props: {
-    modalOff: {
-      required: true,
-      type: Function,
-    },
-  },
-  data () {
-    return {
-      email: '',
-      loading: {
-        attempt: false,
-        google: false,
-        github: false,
-        gitlab: false,
-        bitbucket: false,
-      } as Record<string, boolean>,
-    }
-  },
 
-  created () { if (process.browser) this.messageHandler(true) },
-  destroyed () { if (process.browser) this.messageHandler(false) },
+const emit = defineEmits(['off'])
 
-  methods: {
-    async attempt (): Promise<void> {
-      const email = this.email
-      this.loading.attempt = true
-      const action = JSON.stringify(this.$store.state.action)
-      try {
-        await this.$axios.post('/attempt', { email, action })
-      } catch (e) {
-        this.loading.attempt = false
-        return
-      }
-      this.$toast.show({
-        type: 'success',
-        title: 'Login E-mail Sent',
-        message: `Login link sent to <b>${this.email}</b>`,
-        timeout: 5,
-      })
-      this.email = ''
-      this.loading.attempt = false
-      this.modalOff()
-    },
+const ctx = useContext()
+const email = ref('')
+const loading = reactive({
+  attempt: false,
+  google: false,
+} as Record<string, boolean>)
+onMounted(() => { if (process.browser) messageHandler(true) })
+onBeforeUnmount(() => { if (process.browser) messageHandler(false) })
 
-    messageHandler (add: boolean): void {
-      if (add) return window.addEventListener('message', this.handleMessage)
-      return window.removeEventListener('message', this.handleMessage)
-    },
+async function attempt (): Promise<void> {
+  loading.attempt = true
+  try {
+    await ctx.$axios.post('/attempt', { email })
+  } catch (e) {
+    loading.attempt = false
+    return
+  }
+  ctx.$toast.show({
+    type: 'success',
+    title: 'Login E-mail Sent',
+    message: `Login link sent to <b>${email.value}</b>`,
+    timeout: 5,
+  })
+  email.value = ''
+  loading.attempt = false
+  emit('off')
+}
 
-    handleMessage (event: { data: OauthResult }): void {
-      if (event.data.user && event.data.token)
-        this.oauthComplete(event.data)
-      if (event.data.error)
-        this.$toast.show({ type: 'danger', message: event.data.error })
-    },
+function messageHandler (add: boolean): void {
+  if (add) return window.addEventListener('message', handleMessage)
+  return window.removeEventListener('message', handleMessage)
+}
 
-    login (provider: 'facebook'|'google'): void {
-      this.loading[provider] = true
-      const width = 640
-      const height = 660
-      const left = window.screen.width / 2 - (width / 2)
-      const top = window.screen.height / 2 - (height / 2)
-      const win = window.open(`${this.$axios.defaults.baseURL}/redirect/${provider}`, 'Log In',
-        `toolbar=no, location=no, directories=no, status=no, menubar=no, scollbars=no,
+function handleMessage (event: { data: OauthResult }): void {
+  if (event.data.user && event.data.token)
+    oauthComplete(event.data)
+  if (event.data.error)
+    ctx.$toast.show({ type: 'danger', message: event.data.error })
+}
+
+function login (provider: 'facebook'|'google'): void {
+  loading.google = true
+  console.log(provider, loading)
+  const width = 640
+  const height = 660
+  const left = window.screen.width / 2 - (width / 2)
+  const top = window.screen.height / 2 - (height / 2)
+  const win = window.open(`${ctx.$axios.defaults.baseURL}/redirect/${provider}`, 'Log In',
+    `toolbar=no, location=no, directories=no, status=no, menubar=no, scollbars=no,
       resizable=no, copyhistory=no, width=${width},height=${height},top=${top},left=${left}`)
-      const interval = setInterval(() => {
-        if (win === null || win.closed) {
-          clearInterval(interval)
-          this.loading[provider] = false
-        }
-      }, 200)
-    },
-    async oauthComplete (result: OauthResult): Promise<void> {
-      this.loading[result.provider] = false
-      await this.$auth.setUserToken(result.token)
-      this.$toast.show({ type: 'success', message: 'Login Successful' })
-      await this.$router.push('/home')
-      this.modalOff()
-    },
-  },
-})
+  const interval = setInterval(() => {
+    if (win === null || win.closed) {
+      clearInterval(interval)
+      loading[provider] = false
+    }
+  }, 200)
+}
+
+async function oauthComplete (result: OauthResult): Promise<void> {
+  loading[result.provider] = false
+  await ctx.$auth.setUserToken(result.token)
+  ctx.$toast.show({ type: 'success', message: 'Login Successful' })
+  await ctx.app.$router.push('/home')
+  emit('off')
+}
 </script>

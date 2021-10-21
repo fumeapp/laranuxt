@@ -36,6 +36,7 @@
     "@nuxtjs/eslint-config-typescript": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/tailwindcss": "^4.2.0",
+    "@vue/runtime-dom": "^3.2.20",
     "@vue/test-utils": "^1.1.0",
     "@vueuse/core": "^6.7.3",
     "babel-core": "7.0.0-bridge.0",
