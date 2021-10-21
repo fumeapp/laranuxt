@@ -22,11 +22,11 @@ Route::get('/example', [Controller::class, 'example'])->name('example route');
 Route::get('/error', [Controller::class, 'error'])->name('error route');
 
 // Authentication
-Route::get('/login', [Controller::class, 'auth'])->name('login');
-Route::get('redirect/{provider}', [AuthController::class, 'redirect']);
-Route::get('callback/{provider}', [AuthController::class, 'callback']);
-Route::get('onetap/{credential}', [AuthController::class, 'onetap']);
-Route::post('attempt', [AuthController::class, 'attempt']);
-Route::post('login', [AuthController::class, 'login']);
-Route::get('logout', [AuthController::class, 'logout'])->middleware('auth:api');
-Route::get('me', [AuthController::class, 'me'])->middleware('auth:api');
+Route::get('/login', [Controller::class, 'auth'])->name('login')->name('proper login redirect');
+Route::get('redirect/{provider}', [AuthController::class, 'redirect'])->name('redirect to provider');
+Route::get('callback/{provider}', [AuthController::class, 'callback'])->name('provider callback');
+Route::get('onetap/{credential}', [AuthController::class, 'onetap'])->name('onetap support');
+Route::post('attempt', [AuthController::class, 'attempt'])->name('email login attempt');
+Route::post('login', [AuthController::class, 'login'])->name('attempt to start session');
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth:api')->name('remove session');
+Route::get('me', [AuthController::class, 'me'])->middleware('auth:api')->name('get logged in user');

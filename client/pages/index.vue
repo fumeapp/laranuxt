@@ -12,11 +12,12 @@
     <div class="text-center mt-4">
       <div class="mb-4">
         <push-button @click="error">
+          <icon icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
           Force PHP Error
         </push-button>
       </div>
       <span>provided by endpoint</span><span>&nbsp;</span>
-      <a class="text-blue-400" :href="`${$config.apiUrl}/example?count=9`">/example</a>
+      <a class="text-blue-400" :href="`${$axios.defaults.baseURL}/example?count=9`">/example</a>
       <span>&nbsp;</span>
       <span class="text-gray-400 text-sm">(2 second delay)</span>
     </div>

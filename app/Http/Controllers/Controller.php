@@ -20,6 +20,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi;
 
+    public function __construct(Request $request)
+    {
+        $this->metApiInit($request);
+    }
+
     /**
      * Display our routes
      *
