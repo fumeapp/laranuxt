@@ -46,6 +46,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts" setup>
 const ctx = useContext()
 const users = ref([] as models.Users)
@@ -56,7 +57,7 @@ async function get (count: number) : Promise<void> {
   users.value = (await ctx.$axios.get('example', { params: { count } })).data.data
 }
 async function error (): Promise<void> {
-  const result = await ctx.$axios.get('/error') as api.MetApiResults
+  await ctx.$axios.get('/error')
 }
 </script>
 
