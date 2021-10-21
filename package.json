@@ -47,7 +47,7 @@
     "jest": "^27.0.5",
     "nuxt-storm": "^1.0.8",
     "nuxt-typed-vuex": "^0.2.0",
-    "postcss": "^8.3.5",
+    "postcss": "^8.3.11",
     "ts-jest": "^27.0.3",
     "unplugin-auto-import": "^0.4.12",
     "unplugin-icons": "^0.12.16",
