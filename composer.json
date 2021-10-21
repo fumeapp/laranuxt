@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
+        "composer/composer": "2.1.9",
         "acidjazz/humble": "^2.1",
         "acidjazz/metapi": "^2.1",
         "fideloper/proxy": "^4.4",
