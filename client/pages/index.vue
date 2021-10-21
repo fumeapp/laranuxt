@@ -48,12 +48,15 @@
 </template>
 <script lang="ts" setup>
 const ctx = useContext()
-const users = ref([])
+const users = ref([] as models.Users)
 const count = ref(9)
 onMounted(() => get(count.value))
 async function get (count: number) : Promise<void> {
   await ctx.$sleep(2000)
   users.value = (await ctx.$axios.get('example', { params: { count } })).data.data
+}
+async function error (): Promise<void> {
+  const result = await ctx.$axios.get('/error') as api.MetApiResults
 }
 </script>
 
@@ -83,14 +86,7 @@ export default Vue.extend({
     },
     async get (count: number): Promise<void> {
       await this.$sleep(2000)
-      this.users = (
-        await this.$axios.get('example', { params: { count } })
-      ).data.data as Users
-    },
-    total (count: number): void {
-      this.users = []
-      this.count = count
-      this.get(this.count)
+      this.users = ( await this.$axios.get('example', { params: { count } }) ).data.data as Users
     },
   },
 })

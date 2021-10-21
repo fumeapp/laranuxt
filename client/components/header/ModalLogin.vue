@@ -63,8 +63,6 @@
 </template>
 
 <script lang="ts" setup>
-import { User } from '@/types/models'
-
 interface OauthResult {
   token: string
   user: User

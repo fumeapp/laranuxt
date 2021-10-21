@@ -70,16 +70,13 @@ class User extends Authenticatable
 
     public array $interfaces = [
         'location' => [
-            'name' => 'SessionLocation',
-            'import' => "@/types/api",
+            'name' => 'api.SessionLocation',
         ],
         'session' => [
-            'name' => 'Session',
-            'import' => "@/types/api",
+            'name' => 'api.Session',
         ],
         'sessions' => [
-            'name' => 'Sessions',
-            'import' => "@/types/api",
+            'name' => 'api.Sessions',
         ],
     ];
 

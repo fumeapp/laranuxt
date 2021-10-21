@@ -30,7 +30,7 @@
       "@nuxtjs/auth-next",
       "nuxt-tailvue",
       "unplugin-vue2-script-setup/types",
-    ]
+    ],
   },
   "exclude": [
     "node_modules"
