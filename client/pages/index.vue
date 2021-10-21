@@ -46,7 +46,20 @@
     </div>
   </div>
 </template>
+<script lang="ts" setup>
+const ctx = useContext()
+const users = ref([])
+const count = ref(9)
+onMounted(() => get(count.value))
+async function get (count: number) : Promise<void> {
+  await ctx.$sleep(2000)
+  users.value = (await ctx.$axios.get('example', { params: { count } })).data.data
+}
+</script>
 
+<script lang="ts">export default { auth: false }</script>
+
+<!--
 <script lang="ts">
 import Vue from 'vue'
 import { Users } from '@/types/models'
@@ -82,3 +95,4 @@ export default Vue.extend({
   },
 })
 </script>
+-->
