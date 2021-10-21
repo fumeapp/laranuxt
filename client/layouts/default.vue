@@ -6,7 +6,7 @@
           <n-link to="/">
             <logo-header />
           </n-link>
-          <header-login />
+          <header-login-button />
         </div>
       </div>
     </nav>

@@ -1,30 +1,12 @@
 <template>
   <div>
     <push-button
-      class="w-full lg:w-20 justify-center"
+      class="flex items-center justify-center"
       @click="show"
     >
-      <div
-        v-if="authed === null"
-        key="waiting"
-      >
-        <span data-icon="eos-icons:loading" class="iconify w-5 h-5 text-red-500" />
-      </div>
-      <div
-        v-else-if="authed === false"
-        key="login"
-      >
-        Log In
-      </div>
-      <div
-        v-else-if="authed === true"
-        key="user"
-      >
-        <span
-          data-icon="mdi:home"
-          class="iconify w-5 h-5 text-green-500"
-        />
-      </div>
+      <icon v-if="authed === null" icon="gg:spinner-two" class="w-5 h-5 text-indigo-500 animate-spin" />
+      <icon v-else-if="authed === false" icon="mdi:login" class="w-5 h-5 text-indigo-600" />
+      <icon v-else-if="authed === true" icon="mdi:home" class="w-5 h-5 text-indigo-500" />
     </push-button>
     <modal-base v-if="modal" ref="modal" :destroyed="off">
       <modal-login @off="off" />
