@@ -13,7 +13,6 @@ export default function ({ $axios, $toast, redirect }: { $axios: NuxtAxiosInstan
       for (const err of error.response.data.errors)
         $toast.show({
           type: 'danger',
-          // classToast: 'max-w-xl bg-white',
           message: err.detail ?? err.message ?? '',
           timeout: false,
         })

@@ -1,10 +1,11 @@
 <template>
   <div class="mt-12">
-    <h1 class="text-center"> This page is behind the auth middleware </h1>
-    <pre class="text-xs"> {{ $auth.user }} </pre>
+    <h1 class="text-center mb-4"> This page is behind auth middleware </h1>
+    <span> $auth.user</span>
+    <pre class="text-xs border p-4 bg-gray-900 text-gray-100 rounded-lg mb-4"> {{ $auth.user }} </pre>
     <div class="flex flex-col space-y-2 items-center">
       <push-button @click="logout">
-        <span data-icon="mdi:logout" class="iconify w-6 h-6 mr-2.5" />
+        <icon icon="mdi:logout" class="w-6 h-6 text-gray-400 mr-2.5" />
         <span>Logout</span>
       </push-button>
     </div>

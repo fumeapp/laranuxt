@@ -8,7 +8,7 @@
             icon="gg:spinner-two"
             class="w-6 h-6 text-indigo-600 animate-spin"
           />
-          <icon
+          <Icon
             v-else
             icon="flat-color-icons:google"
             class="w-6 h-6"
@@ -17,12 +17,13 @@
       </div>
       <div>
         <push-button class="w-full justify-center" @click="login('facebook')">
-          <icon-spinner
+          <icon
             v-if="loading.facebook"
-            class="w-6 h-6"
-            primary="text-blue-400"
+            icon="gg:spinner-two"
+            class="w-6 h-6 text-indigo-600 animate-spin"
           />
           <icon
+            v-else
             icon="logos:facebook"
             class="w-6 h-6"
           />
@@ -33,7 +34,7 @@
     <label class="mt-6 block text-sm font-medium leading-5 text-gray-700" for="login_email">Email address</label>
     <div class="mt-1 relative rounded-md shadow-sm">
       <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-        <icon-envelope class="w-5 h-5" primary="text-gray-400" secondary="text-gray-300" />
+        <icon icon="mdi:envelope" class="w-5 h-5 text-gray-400" />
       </div>
       <input
         id="login_email"
@@ -114,7 +115,7 @@ function handleMessage (event: { data: OauthResult }): void {
 }
 
 function login (provider: 'facebook'|'google'): void {
-  loading.google = true
+  loading[provider] = true
   const width = 640
   const height = 660
   const left = window.screen.width / 2 - (width / 2)

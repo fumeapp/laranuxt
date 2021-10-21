@@ -37,6 +37,7 @@ export default {
   plugins: [
     '@/plugins/utils',
     '@/plugins/axios',
+    '@/plugins/icon',
   ],
   /*
   ** Auto import components
@@ -61,8 +62,6 @@ export default {
     'nuxt-typed-vuex',
     // https://github.com/fumeapp/nuxt-storm
     'nuxt-storm',
-    // https://github.com/antfu/purge-icons
-    'nuxt-purge-icons-module',
     [
       'unplugin-auto-import/nuxt',
       {
