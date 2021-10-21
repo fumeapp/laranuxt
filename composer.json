@@ -9,11 +9,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "composer/composer": "2.1.9",
         "acidjazz/humble": "^2.1",
         "acidjazz/metapi": "^2.1",
+        "composer/composer": "2.1.9",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
+        "google/apiclient": "^2.11",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/socialite": "^5.2",

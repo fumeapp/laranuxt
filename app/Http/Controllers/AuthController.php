@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Provider;
 use App\Models\User;
 use App\Notifications\LoginAttempt;
-
 use Google\Client;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
