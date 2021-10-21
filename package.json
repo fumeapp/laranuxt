@@ -18,12 +18,16 @@
     "caches": "./artisan config:cache; ./artisan route:cache; ./artisan cache:clear; ./artisan event:clear;"
   },
   "dependencies": {
+    "@iconify/iconify": "2",
+    "@nuxtjs/auth-next": "5.0.0-1624817847.21691f1",
     "@nuxtjs/axios": "^5.12.2",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
     "nuxt-tailvue": "^1.0.10"
   },
   "devDependencies": {
+    "@iconify/json": "^1.1.417",
+    "@iconify/vue": "^3.0.0",
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@nuxt/types": "^2.15.7",
     "@nuxt/typescript-build": "^2.1.0",
@@ -33,6 +37,7 @@
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/tailwindcss": "^4.2.0",
     "@vue/test-utils": "^1.1.0",
+    "@vueuse/core": "^6.7.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.5.0",
@@ -41,10 +46,13 @@
     "eslint-plugin-vue": "^7.12.1",
     "husky": "^7.0.1",
     "jest": "^27.0.5",
+    "nuxt-purge-icons-module": "^0.7.0",
     "nuxt-storm": "^1.0.8",
     "nuxt-typed-vuex": "^0.2.0",
     "postcss": "^8.3.5",
     "ts-jest": "^27.0.3",
+    "unplugin-auto-import": "^0.4.12",
+    "unplugin-icons": "^0.12.16",
     "vue-jest": "^3.0.4"
   }
 }

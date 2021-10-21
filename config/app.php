@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Laranuxt'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +53,8 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'web' => env('WEB_URL', 'http://localhost:3000'),
+    'api' => env('API_URL', 'http://localhost:8000'),
 
     'asset_url' => env('ASSET_URL', null),
 

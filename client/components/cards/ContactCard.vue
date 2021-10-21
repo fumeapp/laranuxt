@@ -47,7 +47,7 @@
 <script lang="ts">
 import { PropType } from '@nuxtjs/composition-api'
 import Vue from 'vue'
-import { User } from '@/client/types/api'
+import { User } from '@/client/types/models'
 export default Vue.extend({
   props: {
     user: {

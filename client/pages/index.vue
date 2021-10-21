@@ -43,8 +43,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Users } from '@/types/api'
+import { Users } from '@/types/models'
 export default Vue.extend({
+  auth: false,
   data () {
     const users:Users = []
     const count:number = 9

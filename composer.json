@@ -9,11 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
+        "acidjazz/humble": "^2.1",
         "acidjazz/metapi": "^2.1",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
+        "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
@@ -21,6 +23,7 @@
         "barryvdh/laravel-ide-helper": "^2.8",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "fumeapp/modeltyper": "^1.0",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "phpunit/phpunit": "^9.5.10",

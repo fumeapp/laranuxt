@@ -1,6 +1,16 @@
 <template>
-  <div class="flex items-center justify-center">
-    <Nuxt />
+  <div>
+    <nav class="bg-white shadow">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <logo-header />
+          <header-login />
+        </div>
+      </div>
+    </nav>
+    <div class="flex items-center justify-center">
+      <Nuxt />
+    </div>
   </div>
 </template>
 

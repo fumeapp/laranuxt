@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,13 @@ Route::get('/', [Controller::class, 'routes'])
     ->withoutMiddleware('api');
 Route::get('/example', [Controller::class, 'example'])->name('example route');
 Route::get('/error', [Controller::class, 'error'])->name('error route');
+
+// Authentication
+Route::get('/login', [Controller::class, 'auth'])->name('login');
+Route::get('redirect/{provider}', [AuthController::class, 'redirect']);
+Route::get('callback/{provider}', [AuthController::class, 'callback']);
+Route::get('onetap/{credential}', [AuthController::class, 'onetap']);
+Route::post('attempt', [AuthController::class, 'attempt']);
+Route::post('login', [AuthController::class, 'login']);
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth:api');
+Route::get('me', [AuthController::class, 'me'])->middleware('auth:api');

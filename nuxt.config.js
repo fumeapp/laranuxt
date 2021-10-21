@@ -43,6 +43,7 @@ export default {
   components: [
     '@/components',
     '@/components/cards',
+    '@/components/header',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -58,7 +59,24 @@ export default {
     'nuxt-typed-vuex',
     // https://github.com/fumeapp/nuxt-storm
     'nuxt-storm',
+    // https://github.com/antfu/purge-icons
+    ['nuxt-purge-icons-module'],
+    [
+      'unplugin-auto-import/nuxt',
+      {
+        dts: 'client/types/auto-imports.d.ts',
+        imports: [
+          '@vueuse/core',
+          '@nuxtjs/composition-api',
+        ],
+        presetOverriding: true,
+      },
+    ],
   ],
+
+  scriptSetup: {
+
+  },
 
   tailwindcss: {
     mode: 'jit',
@@ -70,6 +88,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // Doc: https://auth.nuxtjs.org
+    '@nuxtjs/auth-next',
     // Doc: https://github.com/acidjazz/nuxt-tailvue
     ['nuxt-tailvue', { all: true }],
   ],
@@ -85,17 +105,34 @@ export default {
     },
   },
   /*
+  ** Auth module configuration
+  ** See https://auth.nuxtjs.org/
+  */
+  router: {
+    middleware: ['auth'],
+  },
+  auth: {
+    redirect: {
+      login: '/',
+      logout: '/',
+      home: '/home',
+    },
+    strategies: {
+      local: {
+        token: {
+          maxAge: 60 * 60 * 24 * 30,
+        },
+        endpoints: {
+          user: { url: '/me', method: 'get', propertyName: 'data' },
+          logout: { url: '/logout', method: 'get' },
+        },
+      },
+    },
+  },
+  /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
-  build: {
-  },
+  build: {},
 
-  /*
-  ** Runtime Config
-  ** See https://nuxtjs.org/guide/runtime-config/
-  */
-  publicRuntimeConfig: {
-    apiUrl: process.env.API_URL,
-  },
 }

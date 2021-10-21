@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "esnext",
+    "target": "es2017",
+    "moduleResolution": "node",
     "lib": [
       "ESNext",
       "ESNext.AsyncIterable",
@@ -20,7 +20,7 @@
       ],
       "@/*": [
         "./*",
-        "./client/*",
+        "./client/*"
       ]
     },
     "types": [
@@ -29,6 +29,7 @@
       "@nuxtjs/axios",
       "@nuxtjs/auth-next",
       "nuxt-tailvue",
+      "unplugin-vue2-script-setup/types",
     ]
   },
   "exclude": [
