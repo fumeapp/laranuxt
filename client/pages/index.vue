@@ -61,34 +61,3 @@ async function error (): Promise<void> {
 </script>
 
 <script lang="ts">export default { auth: false }</script>
-
-<!--
-<script lang="ts">
-import Vue from 'vue'
-import { Users } from '@/types/models'
-export default Vue.extend({
-  auth: false,
-  data () {
-    const users:Users = []
-    const count:number = 9
-
-    return {
-      users,
-      count,
-    }
-  },
-  mounted () {
-    this.get(this.count)
-  },
-  methods: {
-    async error (): Promise<void> {
-      await this.$axios.get('/error')
-    },
-    async get (count: number): Promise<void> {
-      await this.$sleep(2000)
-      this.users = ( await this.$axios.get('example', { params: { count } }) ).data.data as Users
-    },
-  },
-})
-</script>
--->
