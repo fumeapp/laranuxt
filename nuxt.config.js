@@ -36,6 +36,7 @@ export default {
   */
   plugins: [
     '@/plugins/utils',
+    '@/plugins/axios',
   ],
   /*
   ** Auto import components

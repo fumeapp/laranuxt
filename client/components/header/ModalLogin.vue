@@ -115,7 +115,6 @@ function handleMessage (event: { data: OauthResult }): void {
 
 function login (provider: 'facebook'|'google'): void {
   loading.google = true
-  console.log(provider, loading)
   const width = 640
   const height = 660
   const left = window.screen.width / 2 - (width / 2)
@@ -131,11 +130,11 @@ function login (provider: 'facebook'|'google'): void {
   }, 200)
 }
 
-async function oauthComplete (result: OauthResult): Promise<void> {
+const oauthComplete = async (result: OauthResult): Promise<void> => {
   loading[result.provider] = false
   await ctx.$auth.setUserToken(result.token)
   ctx.$toast.show({ type: 'success', message: 'Login Successful' })
-  await ctx.app.$router.push('/home')
+  await ctx.app.router?.push('/home')
   emit('off')
 }
 </script>

@@ -10,6 +10,9 @@
       <contact-card v-for="(user, index) in users" :key="index" :user="user" />
     </ul>
     <div class="text-center mt-4">
+      <div class="mb-4">
+        <push-button @click="error">Force PHP Error</push-button>
+      </div>
       <span>provided by endpoint</span><span>&nbsp;</span>
       <a class="text-blue-400" :href="`${$config.apiUrl}/example?count=9`">/example</a>
       <span>&nbsp;</span>
@@ -57,9 +60,11 @@ export default Vue.extend({
   },
   mounted () {
     this.get(this.count)
-    console.log('test')
   },
   methods: {
+    async error (): Promise<void> {
+      await this.$axios.get('/error')
+    },
     async get (count: number): Promise<void> {
       await this.$sleep(2000)
       this.users = (

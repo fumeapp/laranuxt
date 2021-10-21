@@ -31,6 +31,7 @@
 
 <script>
 export default {
+  auth: false,
   methods: {
     colors () {
       this.$toast.show({

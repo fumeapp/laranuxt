@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  auth: false,
   methods: {
     simple () {
       this.$modal.show({
