@@ -3,10 +3,10 @@
     <div class="m-8 flex items-center justify-center">
       <Logo />
     </div>
-    <ul v-if="users.length === 0" class="grid grid-cols-1 gap-6 bg-gray-100 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
+    <ul v-if="users.length === 0" class="grid grid-cols-1 gap-6 bg-gray-100 dark:bg-gray-900 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
       <contact-card-skeleton v-for="i in 9" :key="`skel-${i}`" />
     </ul>
-    <ul v-if="users.length &gt; 0" class="grid grid-cols-1 gap-6 bg-gray-100 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
+    <ul v-if="users.length &gt; 0" class="grid grid-cols-1 gap-6 bg-gray-100 dark:bg-gray-900 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
       <contact-card v-for="(user, index) in users" :key="index" :user="user" />
     </ul>
     <div class="text-center mt-4">
@@ -25,7 +25,9 @@
       <span class="mr-4">nuxt-tailvue kitchen sink:</span>
       <div class="mt-2 flex mx-auto">
         <n-link to="/modal">
-          <push-button theme="whiteLeft" class="-mr-px"> Modal </push-button>
+          <push-button theme="whiteLeft" class="-mr-px">
+            Modal
+          </push-button>
         </n-link>
         <n-link to="/toast">
           <push-button theme="whiteMid">

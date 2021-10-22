@@ -29,6 +29,7 @@
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@nuxt/types": "^2.15.7",
     "@nuxt/typescript-build": "^2.1.0",
+    "@nuxtjs/color-mode": "^2.1.1",
     "@nuxtjs/composition-api": "^0.29.0",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.0",

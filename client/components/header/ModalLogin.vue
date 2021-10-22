@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white py-8 px-4 sm:px-10">
+  <div class="bg-white dark:bg-gray-800 py-8 px-4 sm:px-10">
     <div class="grid grid-cols-2 gap-3">
       <div>
         <push-button class="w-full justify-center" @click="login('google')">
