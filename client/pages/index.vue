@@ -19,7 +19,7 @@
       <span>provided by endpoint</span><span>&nbsp;</span>
       <a class="text-blue-400" :href="`${$axios.defaults.baseURL}/example?count=9`">/example</a>
       <span>&nbsp;</span>
-      <span class="text-gray-400 text-sm">(2 second delay)</span>
+      <span class="text-sm">(2 second delay)</span>
     </div>
     <div class="text-center mx-auto mt-4">
       <span class="mr-4">nuxt-tailvue kitchen sink:</span>

@@ -2,6 +2,7 @@
   <div>
     <push-button
       class="flex items-center justify-center"
+      theme="whiteRight"
       @click="show"
     >
       <icon v-if="authed === null" icon="gg:spinner-two" class="w-5 h-5 text-indigo-500 animate-spin" />

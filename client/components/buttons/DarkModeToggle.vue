@@ -1,5 +1,5 @@
 <template>
-  <push-button @click="mode" size="xs">
+  <push-button size="xs" @click="mode" theme="whiteLeft">
     <span
       id="darkModeButton"
       class="w-6 h-6"
@@ -15,7 +15,7 @@ onMounted(async () => {
   await ctx.$sleep(200)
   if (!process.browser || !window.lottie) return
   darkMode = window.lottie.loadAnimation({
-    container: document.getElementById('darkModeButton'),
+    container: document.getElementById('darkModeButton') as HTMLElement,
     renderer: 'svg',
     path: '/json/darkMode.json',
     loop: false,

@@ -9,6 +9,6 @@
 
 <style>
 html,body {
-  @apply bg-gray-100
+  @apply bg-gray-100 text-gray-600
 }
 </style>
