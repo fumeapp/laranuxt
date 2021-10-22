@@ -30,6 +30,7 @@
       "@nuxtjs/auth-next",
       "nuxt-tailvue",
       "unplugin-vue2-script-setup/types",
+      "@nuxtjs/color-mode",
     ],
   },
   "exclude": [

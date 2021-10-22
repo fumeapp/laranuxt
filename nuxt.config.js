@@ -24,6 +24,9 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
+    script: [
+      { src: '//cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/lottie.min.js ', async: true },
+    ],
   },
   /*
   ** Global CSS
@@ -47,6 +50,7 @@ export default {
     '@/components',
     '@/components/cards',
     '@/components/header',
+    '@/components/buttons',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -62,6 +66,8 @@ export default {
     'nuxt-typed-vuex',
     // https://github.com/fumeapp/nuxt-storm
     'nuxt-storm',
+    // https://color-mode.nuxtjs.org
+    '@nuxtjs/color-mode',
     [
       'unplugin-auto-import/nuxt',
       {
@@ -76,11 +82,11 @@ export default {
   ],
 
   scriptSetup: {
-
+    // ...
   },
 
-  tailwindcss: {
-    mode: 'jit',
+  colorMode: {
+    classSuffix: '',
   },
 
   /*

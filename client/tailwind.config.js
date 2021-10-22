@@ -7,8 +7,11 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  mode: 'jit',
+  darkMode: 'class',
   variants: {
     extend: {
+      typography: ['dark'],
     },
   },
   plugins: [
