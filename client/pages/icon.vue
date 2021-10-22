@@ -1,5 +1,5 @@
 <template>
-  <div class="container m-20 flex flex-col items-center justify-center bg-white">
+  <div class="container m-20 flex flex-col items-center justify-center bg-white dark:bg-gray-900">
     <div class="flex flex-wrap max-w-xl my-20">
       <div class="bg-white p-2 rounded border flex mr-2 mt-2">
         <span class="mr-2 text-gray-500 text-sm">&lt;IconBang/&gt;</span>
