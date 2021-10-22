@@ -42,20 +42,41 @@
 
 <style>
 .skeleton {
-  @apply text-opacity-0;
-  /* TODO: Change gradient for dark mode class */
-  /* background-image: linear-gradient(100deg, #edf2f7 0%, #f4f7fa 20%, #edf2f7 40%); */
-  background-image: linear-gradient(100deg, #edf2f7 0%, #a9a9a9 20%, #7e7e7e 40%);
+  --text-opacity: 0;
+  background-image: linear-gradient(100deg, #edf2f7 0%, #f4f7fa 20%, #edf2f7 40%);
   background-position: 50%;
   background-size: 200%;
-  animation: skeleton 1.5s infinite linear;
+  animation: skeleton 1.25s infinite linear;
 }
+
+.skeleton-teal {
+  background-image: linear-gradient(100deg, #b4c5f8 0%, #cad8f9 20%, #b4c5f8 40%);
+}
+
+.skeleton-white {
+  background-image: linear-gradient(100deg, #f9fafb 0%, #ffffff 20%, #f9fafb 40%);
+}
+
+.dark .skeleton {
+  background-image: linear-gradient(100deg, #374151 0%, #404954 20%, #374151 40%);
+}
+
 @keyframes skeleton {
   0% {
     background-position: 50%;
   }
   50%, 100% {
-    background-position: -90%
+    background-position: -100%
   }
+}
+
+.fresh {
+  animation: fresh 2s ease-in-out;
+}
+
+@keyframes fresh {
+  0% { @apply bg-auto; }
+  20% { @apply bg-green-100; }
+  100% { @apply bg-auto; }
 }
 </style>

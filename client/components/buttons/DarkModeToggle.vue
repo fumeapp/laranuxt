@@ -2,20 +2,20 @@
   <push-button @click="mode" size="xs">
     <span
       id="darkModeButton"
-      class="w-9 h-9"
+      class="w-6 h-6"
     />
   </push-button>
 </template>
 <script lang="ts" setup>
 import { AnimationItem } from 'lottie-web'
 const ctx = useContext()
-const darkMode = undefined as undefined|AnimationItem
+let darkMode = undefined as undefined|AnimationItem
 const isDark = computed(() => ctx.$colorMode.preference === 'dark')
-onMounted(() => {
+onMounted(async () => {
+  await ctx.$sleep(200)
   if (!process.browser || !window.lottie) return
-  const span = document.getElementById('darkModeButton')
-  const darkMode = window.lottie.loadAnimation({
-    span,
+  darkMode = window.lottie.loadAnimation({
+    container: document.getElementById('darkModeButton'),
     renderer: 'svg',
     path: '/json/darkMode.json',
     loop: false,
@@ -28,9 +28,11 @@ onMounted(() => {
 async function mode (): Promise<void> {
   if (ctx.$colorMode.preference === 'dark') {
     darkMode?.playSegments([160, 228], true)
+    await ctx.$sleep(400)
     ctx.$colorMode.preference = 'light'
   } else {
     darkMode?.playSegments([0, 114], true)
+    await ctx.$sleep(400)
     ctx.$colorMode.preference = 'dark'
   }
 }
