@@ -65,7 +65,7 @@
 <script lang="ts" setup>
 interface OauthResult {
   token: string
-  user: User
+  user: models.User
   provider: string
   error?: string
 }

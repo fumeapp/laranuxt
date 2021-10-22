@@ -47,11 +47,10 @@
 <script lang="ts">
 import { PropType } from '@nuxtjs/composition-api'
 import Vue from 'vue'
-import { User } from '@/client/types/models'
 export default Vue.extend({
   props: {
     user: {
-      type: Object as PropType<User>,
+      type: Object as PropType<models.User>,
       required: true,
     },
   },

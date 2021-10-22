@@ -24,6 +24,9 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
+    script: [
+      { src: '//cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/lottie.min.js ', async: true },
+    ],
   },
   /*
   ** Global CSS

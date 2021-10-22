@@ -23,7 +23,6 @@
 </template>
 
 <script lang="ts" setup>
-const ctx = useContext()
 function logout (): void {
   ctx.$auth.logout('local')
   ctx.$toast.success('Logout Successful')
