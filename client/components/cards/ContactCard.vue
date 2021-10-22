@@ -8,7 +8,7 @@
           </h3>
           <span
             v-if="is_admin"
-            class="flex-shrink-0 inline-block px-2 text-teal-800 text-xs leading-4 font-medium bg-green-100 dark:bg-green-200 rounded-full py-0.5"
+            class="flex-shrink-0 inline-block px-2 text-teal-800 text-xs leading-4 font-medium bg-green-100 dark:bg-green-400 rounded-full py-0.5"
           >
             Admin
           </span>
