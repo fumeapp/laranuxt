@@ -11,7 +11,7 @@
     </ul>
     <div class="text-center mt-4">
       <div class="mb-4">
-        <push-button @click="error">
+        <push-button @click="error" class="">
           <icon icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
           Force PHP Error
         </push-button>

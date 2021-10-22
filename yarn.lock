@@ -3670,9 +3670,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001264, caniuse-lite@^1.0.30001265:
-  version "1.0.30001270"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001270.tgz#cc9c37a4ec5c1a8d616fc7bace902bb053b0cdea"
-  integrity sha512-TcIC7AyNWXhcOmv2KftOl1ShFAaHQYcB/EPL/hEyMrcS7ZX0/DvV1aoy6BzV0+16wTpoAyTMGDNAJfSqS/rz7A==
+  version "1.0.30001271"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001271.tgz#0dda0c9bcae2cf5407cd34cac304186616cc83e8"
+  integrity sha512-BBruZFWmt3HFdVPS8kceTBIguKxu4f99n5JNp06OlPD/luoAMIaIK5ieV5YjnBLH3Nysai9sxj9rpJj4ZisXOA==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -8462,9 +8462,9 @@ nuxt-storm@^1.0.8:
     consola "^2.15.3"
 
 nuxt-tailvue@^1.0.10:
-  version "1.0.94"
-  resolved "https://registry.yarnpkg.com/nuxt-tailvue/-/nuxt-tailvue-1.0.94.tgz#e59991ade6eca07d9819ee5b383f1a9aaa8cdbb9"
-  integrity sha512-VELHi9LcL3xmgTbWaYX2t1H6Ebj+msMJphyFL30lCH9ycfFYMVVAzhfpPes+dYUNJZhHJWtPIgk+ok7PjKpH3A==
+  version "1.0.95"
+  resolved "https://registry.yarnpkg.com/nuxt-tailvue/-/nuxt-tailvue-1.0.95.tgz#88b31463dac2dba9e21328d5733806aac274f006"
+  integrity sha512-8DVluxBJak/X2QZ8WpiJSbEwkKbhVF2x8OURKWhfYuXsj5cDlXE4LhnZfr/Otj6KdcTCEVGnQt96lqE+WQG02A==
   dependencies:
     tv-button latest
     tv-icon latest
@@ -11510,9 +11510,9 @@ tv-button@^1.0.7:
   integrity sha512-hiOPIBuMt7ID6BcqG1umWWpLlnOJVnyZPzNHiWXrtGhoIECGf+z96ub7o07zer+C7iZg+Ei0TWt8xB0zQVbL4A==
 
 tv-button@latest:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/tv-button/-/tv-button-2.0.6.tgz#e4170be5d5388f825d46b32847895f9c1b863f29"
-  integrity sha512-9ejromAwlufjqYBqsnIOoiH/BwS60HC2U68gG3MMSQmOP66t1sBdRxsfSOxLx0Y1TcepUvOpG5JuM28FCsW6KQ==
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/tv-button/-/tv-button-2.0.7.tgz#108f4d521959d5b2a5df67bfabd4670544419451"
+  integrity sha512-qd5zCM2yKbY/5AkHOSX7OWqa/bQcKZMXU8cPTAf0xdKYPuiMH618luSw5Ope4vZMj7j3fCcLwumfCp+lUkWq/g==
 
 tv-icon@^1.0.1, tv-icon@latest:
   version "1.0.24"

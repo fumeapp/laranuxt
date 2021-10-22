@@ -7,9 +7,10 @@
             <logo-header />
           </n-link>
         </div>
-        <div class="flex items-center justify-end md:flex-1 lg:w-0">
+        <div class="flex items-center space-x-4 justify-end md:flex-1 lg:w-0">
           <dark-mode-toggle />
           <header-login-button />
+          <header-user />
         </div>
       </div>
     </div>

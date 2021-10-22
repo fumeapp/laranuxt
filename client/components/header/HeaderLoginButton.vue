@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div class="flex">
     <push-button
       class="flex items-center justify-center"
-      theme="whiteRight"
       @click="show"
     >
-      <icon v-if="authed === null" icon="gg:spinner-two" class="w-5 h-5 text-indigo-500 animate-spin" />
-      <icon v-else-if="authed === false" icon="mdi:login" class="w-5 h-5 text-indigo-600" />
-      <icon v-else-if="authed === true" icon="mdi:home" class="w-5 h-5 text-indigo-500" />
+      <div class="w-5 h-5">
+        <icon v-if="authed === null" icon="gg:spinner-two" class="w-5 h-5 text-indigo-500 animate-spin" />
+        <icon v-else-if="authed === false" icon="mdi:login" class="w-5 h-5 text-indigo-500" />
+        <icon v-else-if="authed === true" icon="mdi:logout" class="w-5 h-5 text-indigo-500" />
+      </div>
     </push-button>
     <modal-base v-if="modal" ref="modal" :destroyed="off">
       <modal-login @off="off" />
@@ -27,7 +28,25 @@ onMounted(async () => {
   authed.value = ctx.$auth.loggedIn
 })
 function show (): void {
-  if (authed.value) ctx.app.router?.push('/home')
+  if (authed.value)
+    ctx.$modal.show({
+      type: 'danger',
+      title: 'Logging out',
+      body: 'Are you sure you want to Log Out?',
+      primary: {
+        label: 'Yes',
+        theme: 'indigo',
+        action: () => {
+          ctx.$auth.logout('local')
+          ctx.$toast.success('Logout Successful')
+        },
+      },
+      secondary: {
+        label: 'No',
+        theme: 'white',
+        action: () => {},
+      },
+    })
   else modal.value = true
 }
 function off (): void {

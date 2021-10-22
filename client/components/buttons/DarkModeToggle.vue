@@ -1,5 +1,5 @@
 <template>
-  <push-button size="xs" @click="mode" theme="whiteLeft">
+  <push-button size="xs" @click="mode">
     <span
       id="darkModeButton"
       class="w-6 h-6"
