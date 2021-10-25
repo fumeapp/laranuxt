@@ -20,7 +20,7 @@
   "dependencies": {
     "@nuxtjs/auth-next": "5.0.0-1624817847.21691f1",
     "@nuxtjs/axios": "^5.12.2",
-    "core-js": "^3.15.1",
+    "core-js": "^3.19.0",
     "nuxt": "^2.15.7",
     "nuxt-tailvue": "^1.0.10"
   },
