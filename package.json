@@ -52,7 +52,7 @@
     "postcss": "^8.3.5",
     "ts-jest": "^27.0.3",
     "unplugin-auto-import": "^0.4.12",
-    "unplugin-icons": "^0.12.16",
+    "unplugin-icons": "^0.12.18",
     "vue-jest": "^3.0.4"
   }
 }
