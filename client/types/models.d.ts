@@ -12,6 +12,7 @@ declare global {
       created_at?: Date
       updated_at?: Date
     }
+
     export type Providers = Array<Provider>
 
     export interface User {
@@ -34,6 +35,8 @@ declare global {
       providers: Providers
       sessions: api.Sessions
     }
+
     export type Users = Array<User>
 
   }
+}
