@@ -71,8 +71,7 @@ interface OauthResult {
 }
 
 const emit = defineEmits(['off'])
-
-const ctx = useContext()
+const { $axios, $toast, $auth, app } = useContext()
 const email = ref('')
 const loading = reactive({
   attempt: false,
@@ -84,12 +83,12 @@ onBeforeUnmount(() => { if (process.browser) messageHandler(false) })
 async function attempt (): Promise<void> {
   loading.attempt = true
   try {
-    await ctx.$axios.post('/attempt', { email })
+    await $axios.post('/attempt', { email: email.value })
   } catch (e) {
     loading.attempt = false
     return
   }
-  ctx.$toast.show({
+  $toast.show({
     type: 'success',
     title: 'Login E-mail Sent',
     message: `Login link sent to <b>${email.value}</b>`,
@@ -109,7 +108,7 @@ function handleMessage (event: { data: OauthResult }): void {
   if (event.data.user && event.data.token)
     oauthComplete(event.data)
   if (event.data.error)
-    ctx.$toast.show({ type: 'danger', message: event.data.error })
+    $toast.show({ type: 'danger', message: event.data.error })
 }
 
 function login (provider: 'facebook'|'google'): void {
@@ -118,7 +117,7 @@ function login (provider: 'facebook'|'google'): void {
   const height = 660
   const left = window.screen.width / 2 - (width / 2)
   const top = window.screen.height / 2 - (height / 2)
-  const win = window.open(`${ctx.$axios.defaults.baseURL}/redirect/${provider}`, 'Log In',
+  const win = window.open(`${$axios.defaults.baseURL}/redirect/${provider}`, 'Log In',
     `toolbar=no, location=no, directories=no, status=no, menubar=no, scollbars=no,
       resizable=no, copyhistory=no, width=${width},height=${height},top=${top},left=${left}`)
   const interval = setInterval(() => {
@@ -131,9 +130,9 @@ function login (provider: 'facebook'|'google'): void {
 
 const oauthComplete = async (result: OauthResult): Promise<void> => {
   loading[result.provider] = false
-  await ctx.$auth.setUserToken(result.token)
-  ctx.$toast.show({ type: 'success', message: 'Login Successful' })
-  await ctx.app.router?.push('/home')
+  await $auth.setUserToken(result.token)
+  $toast.show({ type: 'success', message: 'Login Successful' })
+  await app.router?.push('/home')
   emit('off')
 }
 </script>
