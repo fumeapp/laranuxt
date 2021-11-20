@@ -21,8 +21,8 @@
     "@iconify/vue": "^3.0.0",
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@tailvue/nuxt": "^0.1.33",
-    "husky": "^7.0.1",
     "nuxt-windicss": "^2.0.12",
-    "nuxt3": "latest"
+    "nuxt3": "latest",
+    "husky": "^7.0.1"
   }
 }

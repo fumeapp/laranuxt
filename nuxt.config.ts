@@ -14,11 +14,7 @@ export default defineNuxtConfig({
     ],
   },
   css: [
-    'virtual:windi-base.css',
     '@/assets/css/main.css',
-    // windi extras
-    'virtual:windi-components.css',
-    'virtual:windi-utilities.css',
   ],
 
   /*
@@ -34,15 +30,22 @@ export default defineNuxtConfig({
     'nuxt-windicss',
     '@tailvue/nuxt',
   ],
-  // @ts-ignore
-  windicss: {
-    scan: {
-      dirs: ['./client'],
-      exclude: [
-        'node_modules',
-        'dist',
-      ],
-    }
+
+  publicRuntimeConfig: {
+    apiURL: process.env.API_URL || 'http://localhost:8000',
   },
 
+  /**
+   * https://github.com/windicss/nuxt-windicss/issues/138
+   */
+  // @ts-ignore
+  windicss: {
+    darkMode: 'class',
+    extract: {
+      include: [
+        "./client/**/*.{vue,ts}",
+        "node_modules/tailvue/dist/tailvue.es.js",
+      ],
+    },
+  },
 })
