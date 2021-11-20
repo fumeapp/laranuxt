@@ -35,17 +35,4 @@ export default defineNuxtConfig({
     apiURL: process.env.API_URL || 'http://localhost:8000',
   },
 
-  /**
-   * https://github.com/windicss/nuxt-windicss/issues/138
-   */
-  // @ts-ignore
-  windicss: {
-    darkMode: 'class',
-    extract: {
-      include: [
-        "./client/**/*.{vue,ts}",
-        "node_modules/tailvue/dist/tailvue.es.js",
-      ],
-    },
-  },
 })

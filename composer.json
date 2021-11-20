@@ -29,6 +29,7 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ray": "^1.26",
         "squizlabs/php_codesniffer": "^3.6"
     },
     "config": {

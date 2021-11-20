@@ -68,7 +68,6 @@ class AuthController extends Controller
 
         $user = $this->oaHandle($oaUser, $provider);
 
-        /** @var User $user */
         auth()->login($user, $provider);
 
         return $this->response($provider);

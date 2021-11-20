@@ -22,7 +22,7 @@ const { data: result } = await useFetch<string, MetApiExamples>(
 </script>
 
 <template>
-  <div class="w-screen h-screen flex flex-col items-center justify-center">
+  <div v-if="result" class="w-screen h-screen flex flex-col items-center justify-center">
     <span>pages/index.vue</span>
     <div> {{ result.benchmark }}</div>
     <div v-for="example of result.data" :key="example.email">
