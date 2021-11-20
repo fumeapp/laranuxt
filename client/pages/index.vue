@@ -4,19 +4,26 @@ import { useFetch } from '#app/composables/fetch'
 import { useRuntimeConfig } from '#app'
 const config = useRuntimeConfig()
 const url = config.apiURL
-const { data: example } = await useFetch(`/example`, {
-  baseURL: url,
-  params: {
-    count: 2,
-  }
-})
 
+export interface Example {
+  name: string
+  job: string
+  email: string
+  avatar: string
+}
+export type Examples = Example[]
+
+const { data: result } = await useFetch<string, api.MetApiResults & { data: Examples }>(
+  `/example`, { baseURL: url, params: { count: 2, } })
 </script>
 
 <template>
   <div class="w-screen h-screen flex flex-col items-center justify-center">
     <span>pages/index.vue</span>
-    <pre class="p-4 m-4 bg-green-100">{{ url }}</pre>
-    <pre class="p-4 m-4 bg-green-100">{{ example }}</pre>
+    <div> {{ result.benchmark }}</div>
+    <div v-for="example of result.data" :key="example.email">
+      job: {{ example.job }}
+      email: {{ example.email }}
+    </div>
   </div>
 </template>
