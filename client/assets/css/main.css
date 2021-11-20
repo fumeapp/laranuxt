@@ -1,0 +1,3 @@
+html, body {
+  @apply bg-red-100 dark:bg-red-900 text-gray-600 dark:text-gray-300
+}

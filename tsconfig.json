@@ -1,39 +1,8 @@
 {
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es2017",
-    "moduleResolution": "node",
-    "lib": [
-      "ESNext",
-      "ESNext.AsyncIterable",
-      "DOM"
-    ],
-    "esModuleInterop": true,
-    "allowJs": true,
-    "sourceMap": true,
-    "strict": true,
-    "noEmit": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*",
-        "./client/*"
-      ]
-    },
     "types": [
-      "@types/node",
-      "@nuxt/types",
-      "@nuxtjs/axios",
-      "@nuxtjs/auth-next",
-      "nuxt-tailvue",
-      "unplugin-vue2-script-setup/types",
-      "@nuxtjs/color-mode",
-    ],
-  },
-  "exclude": [
-    "node_modules"
-  ]
+      "nuxt-windicss"
+    ]
+  }
 }
