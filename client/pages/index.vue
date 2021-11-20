@@ -7,13 +7,17 @@ const url = config.apiURL
 
 export interface Example {
   name: string
+  /** Current Position */
   job: string
   email: string
   avatar: string
 }
 export type Examples = Example[]
+export interface MetApiExamples extends api.MetApiResults {
+  data: Examples
+}
 
-const { data: result } = await useFetch<string, api.MetApiResults & { data: Examples }>(
+const { data: result } = await useFetch<string, MetApiExamples>(
   `/example`, { baseURL: url, params: { count: 2, } })
 </script>
 
