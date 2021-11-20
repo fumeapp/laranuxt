@@ -24,6 +24,9 @@
 
 ![](client/static/laranuxt.gif?raw=true)
 
+![](client/static/darkmode.png?raw=true)
+> Now with examples on using Dark Mode and the Nuxt Auth module!
+
 ### What is included
 
 * [NUXT](https://nuxtjs.org) front end, a progressive Vue.js framework - `v2.15.8`
@@ -31,6 +34,7 @@
   * [@nuxtjs/composition-api](https://composition-api.nuxtjs.org/) Composition API Support for Nuxt.js
   * [@nuxtjs/tailwindcss](https://tailwindcss.nuxtjs.org/) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in
   * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API 
+  * [@nuxtjs/auth](https://auth.nuxtjs.org/) NuxtJS Authentication module 
   * [nuxt-tailvue](https://github.com/acidjazz/nuxt-tailvue) a collection of components built for Nuxt.js, powered by TailwindCSS
 
 * [Laravel](https://laravel.com) - for our API - `v8.60.0`
