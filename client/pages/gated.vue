@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-12 text-center">
     this is a gated route
   </div>
 </template>

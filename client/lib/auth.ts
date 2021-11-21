@@ -26,16 +26,19 @@ export default class Auth {
     this.checkUser().then()
   }
 
-  async checkUser(): Promise<void> {
+  async checkUser(): Promise<boolean> {
+    if (this.loggedIn.value === true) return true
+    if (this.loggedIn.value === false) return false
     const token = await Auth.get()
     if (!token || token.length !== 64) {
       this.loggedIn.value = false
-      return
+      return false
     }
     this.setBearer(token)
     try {
       this.$user = await this.getUser()
       this.loggedIn.value = true
+      return true
     } catch (_e) {
       this.loggedIn.value = false
     }

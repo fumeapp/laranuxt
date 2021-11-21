@@ -36,8 +36,4 @@ export default defineNuxtConfig({
     apiURL: process.env.API_URL || 'http://localhost:8000',
   },
 
-  serverMiddleware: [
-    { path: '/gated', handler: '~/middleware/auth.ts' },
-  ],
-
 })
