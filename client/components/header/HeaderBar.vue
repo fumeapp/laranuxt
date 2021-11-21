@@ -7,25 +7,20 @@
         <icon-client icon="cib:laravel" class="w-10 h-10 text-white" />
         <icon-client icon="simple-icons:nuxtdotjs" class="w-10 h-10 text-white -ml-1" />
         <div class="hidden ml-10 space-x-8 lg:block">
-          <a href="#" class="text-base font-medium text-white hover:text-indigo-50" key="Solutions">
-            Solutions
-          </a>
+          <router-link to='/' class="text-base font-medium text-white hover:text-indigo-50" key="Solutions">
+            home page
+          </router-link>
 
-          <a href="#" class="text-base font-medium text-white hover:text-indigo-50" key="Pricing">
-            Pricing
-          </a>
+          <router-link to="/gated" class="text-base font-medium text-white hover:text-indigo-50" key="Pricing">
+            gated
+          </router-link>
 
-          <a href="#" class="text-base font-medium text-white hover:text-indigo-50" key="Docs">
-            Docs
-          </a>
-
-          <a href="#" class="text-base font-medium text-white hover:text-indigo-50" key="Company">
-            Company
-          </a>
         </div>
       </div>
       <div class="ml-10 space-x-4">
-        <push-button theme="indigo" @click="show">Sign In</push-button>
+        <client-only>
+          <push-button theme="indigo" @click="action"> {{ userText }} </push-button>
+        </client-only>
       </div>
     </div>
     <div class="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
@@ -51,13 +46,36 @@
   <header-login-modal @off="off" />
 </modal-base>
 </template>
+
 <script lang="ts" setup>
 import { PushButton, ModalBase } from 'tailvue'
+import { useNuxtApp } from '#app'
+import { computed, ref } from '@vue/reactivity'
+import IconClient from '~/components/IconClient.vue'
+const { $auth, $modal, $toast } = useNuxtApp()
 const modal = ref(false)
-function show (): void {
-  modal.value = true
+
+const userText = computed(() => $auth.loggedIn.value === null ? 'Loading' : $auth.loggedIn.value === true ? 'Sign Out' : 'Sign In')
+
+function logout() {
+  $modal.show({
+    type: 'danger',
+    title: 'Logging out',
+    body: `Are you sure you want to Log Out as <b>${$auth.$user.name}</b> ?`,
+    primary: {
+      label: 'Yes',
+      theme: 'indigo',
+      action: async () => $toast.show(await $auth.logout())
+    },
+    secondary: {
+      label: 'No',
+      theme: 'white',
+    },
+  })
 }
-function off(): void {
-  modal.value = false
-}
+
+const login = () =>  modal.value = true
+const off = () => modal.value = false
+const  action =  () => $auth.loggedIn.value ? logout() : login()
+
 </script>

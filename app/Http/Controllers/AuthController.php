@@ -47,7 +47,7 @@ class AuthController extends Controller
         return $this->render([
             'token' => auth()->token(),
             'user' => auth()->user(),
-        ])->cookie('token', auth()->token(), 0, '');
+        ]);
     }
 
 
@@ -120,7 +120,7 @@ class AuthController extends Controller
                     'provider' => $provider,
                 ])
             ])
-        )->cookie('token', auth()->token(), 0);
+        );
     }
 
     /**
@@ -191,7 +191,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function login(Request $request)
+    public function login(Request $request): Response|JsonResponse
     {
         $this
             ->option('token', 'required|alpha_num|size:64')
@@ -205,15 +205,16 @@ class AuthController extends Controller
             'token' => auth()->token(),
             'user' => auth()->user(),
             'action' => $login->action,
-        ])->cookie('token', auth()->token(), 0, '');
+        ]);
     }
 
     /**
      * Standard user info auth check
      *
-     * @return mixed
+     * @param Request $request
+     * @return Response|JsonResponse
      */
-    public function me(Request $request)
+    public function me(Request $request): Response|JsonResponse
     {
         $this
             ->option('providers', 'boolean')
@@ -222,10 +223,7 @@ class AuthController extends Controller
             return $this->render(User::whereId(auth()->user()->id)->with(['providers'])->first());
         }
         auth()->user()->session->touch();
-        return response()->json([
-            'user' => auth()->user(),
-            'data' => auth()->user(),
-        ]);
+        return $this->render(auth()->user());
     }
 
     public function update(Request $request)
@@ -248,6 +246,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        return $this->render(auth()->logout())->cookie('token', false, 0);
+        auth()->logout();
+        return $this->success('auth.logout');
     }
 }

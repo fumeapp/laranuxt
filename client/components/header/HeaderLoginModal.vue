@@ -73,17 +73,11 @@
 
 <script lang="ts" setup>
 import { useNuxtApp, useRuntimeConfig } from '#app'
-
-interface OauthResult {
-  token: string
-  user: models.User
-  provider: string
-  error?: string
-}
+import { OAuthResult } from '~/lib/auth'
 
 const config = useRuntimeConfig()
 const emit = defineEmits(['off'])
-const { $toast } = useNuxtApp()
+const { $toast, $auth } = useNuxtApp()
 const email = ref('')
 const loading = reactive({
   attempt: false,
@@ -113,13 +107,11 @@ async function attempt (): Promise<void> {
 }
 
 function messageHandler (add: boolean): void {
-  console.log('messageHandler:', add)
   if (add) return window.addEventListener('message', handleMessage)
   return window.removeEventListener('message', handleMessage)
 }
 
-function handleMessage (event: { data: OauthResult }): void {
-  console.log('handleMessage', event)
+function handleMessage (event: { data: OAuthResult }): void {
   if (event.data.user && event.data.token)
     oauthComplete(event.data)
   if (event.data.error)
@@ -143,14 +135,10 @@ function login (provider: 'facebook'|'google'): void {
   }, 200)
 }
 
-const oauthComplete = async (result: OauthResult): Promise<void> => {
+const oauthComplete = async (result: OAuthResult): Promise<void> => {
   loading[result.provider] = false
-  console.log(result)
-  /*
-  await $auth.setUserToken(result.token)
+  await $auth.setOAuthUser(result)
   $toast.show({ type: 'success', message: 'Login Successful' })
-  await app.router?.push('/home')
   emit('off')
-  */
 }
 </script>

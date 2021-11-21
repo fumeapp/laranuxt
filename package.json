@@ -21,8 +21,10 @@
     "@iconify/vue": "^3.1.1",
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@tailvue/nuxt": "^0.1.33",
+    "@vueuse/core": "^7.0.0",
     "husky": "^7.0.1",
     "nuxt-windicss": "^2.0.12",
-    "nuxt3": "latest"
+    "nuxt3": "latest",
+    "universal-cookie": "^4.0.4"
   }
 }

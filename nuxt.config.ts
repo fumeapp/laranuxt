@@ -27,6 +27,7 @@ export default defineNuxtConfig({
   ** https://v3.nuxtjs.org/docs/directory-structure/nuxt.config#buildmodules
   */
   buildModules: [
+    '@vueuse/core/nuxt',
     'nuxt-windicss',
     '@tailvue/nuxt',
   ],
@@ -34,5 +35,9 @@ export default defineNuxtConfig({
   publicRuntimeConfig: {
     apiURL: process.env.API_URL || 'http://localhost:8000',
   },
+
+  serverMiddleware: [
+    { path: '/gated', handler: '~/middleware/auth.ts' },
+  ],
 
 })

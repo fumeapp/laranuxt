@@ -6,6 +6,7 @@ export default defineConfig({
     include: [
       "./client/**/*.{vue,ts}",
       "node_modules/tailvue/dist/tailvue.es.js",
+      "node_modules/tailvue/dist/tailvue.umd.js",
     ],
   },
 })
