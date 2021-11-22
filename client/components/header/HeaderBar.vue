@@ -2,7 +2,7 @@
 <template>
 <header class="bg-indigo-800">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
-    <div class="w-full py-6 flex items-center justify-between border-b border-indigo-500 lg:border-none">
+    <div class="w-full py-3 flex items-center justify-between border-b border-indigo-500 lg:border-none">
       <div class="flex items-center">
         <icon-client icon="cib:laravel" class="w-10 h-10 text-white" />
         <icon-client icon="simple-icons:nuxtdotjs" class="w-10 h-10 text-white -ml-1" />
