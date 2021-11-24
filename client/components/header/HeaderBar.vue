@@ -51,7 +51,6 @@
 import { PushButton, ModalBase } from 'tailvue'
 import { useNuxtApp } from '#app'
 import { computed, ref } from '@vue/reactivity'
-import IconClient from '~/components/IconClient.vue'
 const { $auth, $modal, $toast } = useNuxtApp()
 const modal = ref(false)
 
