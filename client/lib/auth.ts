@@ -38,6 +38,7 @@ export default class Auth {
   public loggedIn = ref(false)
 
   constructor(config: AuthConfig) {
+    console.log('Auth constructor : ', process.client)
     this.config = { ...authConfigDefaults,...config }
     this.token.value = this.get()
     if (this.token.value)  {

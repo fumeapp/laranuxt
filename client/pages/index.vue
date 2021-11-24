@@ -22,10 +22,6 @@ export interface MetApiExamples extends api.MetApiResults {
 const { data: result } = await useFetch<string, MetApiExamples>(
   `/example`, { baseURL: url, params: { count: 2, } })
 
-async function logout() {
-  const response = await $auth.logout()
-  $toast.show(response)
-}
 </script>
 
 <template>
