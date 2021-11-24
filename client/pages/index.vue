@@ -31,7 +31,8 @@ async function logout() {
 <template>
   <div v-if="result" class="mt-12 flex flex-col space-y-2 items-center justify-center">
     <client-only>
-      <span> loggedIn : {{ $auth.loggedIn }}</span>
+      <span> $auth.loggedIn : {{ $auth.loggedIn }}</span>
+      <span class="text-xs p-2" > $auth.$user </span>
       <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-md overflow-hidden" > {{ $auth.$user }} </pre>
     </client-only>
     <div> {{ result.benchmark }}</div>
