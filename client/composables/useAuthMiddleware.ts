@@ -11,6 +11,6 @@ export const useAuthMiddleware = async () => {
 
   watchEffect(async () => {
     if ($auth.loggedIn.value === false)
-      await router.push({path: '/'})
+      await router.push({path: $auth.config.redirect.logout})
   })
 }
