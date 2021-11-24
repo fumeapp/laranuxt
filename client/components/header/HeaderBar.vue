@@ -8,14 +8,21 @@
         <icon-client icon="simple-icons:nuxtdotjs" class="w-10 h-10 text-white -ml-1" />
         <div class="hidden ml-10 space-x-8 lg:block">
           <router-link to='/' class="text-base font-medium text-white hover:text-indigo-50" key="Solutions">
-            home page
+            Home
           </router-link>
 
           <router-link
             v-if="$api.loggedIn.value === true"
             to="/gated"
             class="text-base font-medium text-white hover:text-indigo-50" key="Pricing">
-            Gated Page
+            Gated
+          </router-link>
+
+          <router-link
+            v-if="$api.loggedIn.value === true"
+            to="/sessions"
+            class="text-base font-medium text-white hover:text-indigo-50" key="Sessions">
+            User Sessions
           </router-link>
 
         </div>

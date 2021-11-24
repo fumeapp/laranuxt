@@ -79,7 +79,7 @@ import { useRouter } from 'vue-router'
 const config = useRuntimeConfig()
 const router = useRouter()
 const emit = defineEmits(['off'])
-const { $toast, $auth } = useNuxtApp()
+const { $toast, $api } = useNuxtApp()
 const email = ref('')
 const loading = reactive({
   attempt: false,
@@ -139,7 +139,7 @@ function login (provider: 'facebook'|'google'): void {
 
 const oauthComplete = async (result: OAuthResult): Promise<void> => {
   loading[result.provider] = false
-  const redirect = await $auth.login(result)
+  const redirect = await $api.login(result)
   if (redirect) await router.push({path: redirect})
   $toast.show({ type: 'success', message: 'Login Successful' })
   emit('off')

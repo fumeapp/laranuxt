@@ -62,8 +62,8 @@ export default class Api {
   }
 
   private get(): string {
-    if (this.config.req) return useCookie(this.config.req, 'auth.token')
-    return `; ${document.cookie}`.split(`; auth.token=`).pop().split(';').shift()
+    if (this.config.req) return useCookie(this.config.req, 'token')
+    return `; ${document.cookie}`.split(`; token=`).pop().split(';').shift()
   }
 
   private fetchOptions(params?: SearchParams): FetchOptions {
@@ -85,7 +85,7 @@ export default class Api {
     }
   }
 
-  public async index <Results>(endpoint: string, params: SearchParams): Promise<api.MetApiResults & { data: Results }> {
+  public async index <Results>(endpoint: string, params?: SearchParams): Promise<api.MetApiResults & { data: Results }> {
     try {
       return await $fetch<api.MetApiResults & { data: Results }>(endpoint, this.fetchOptions(params))
     } catch (error) {
@@ -104,7 +104,7 @@ export default class Api {
 
   public async logout (): Promise<api.MetApiResponse> {
     const response = (await $fetch<api.MetApiResponse>('/logout', this.config.fetchOptions)).data
-    // if (this.config.req) setCookie(this.config.res, 'auth.token', '', { maxAge: -99999 })
+    // if (this.config.req) setCookie(this.config.res, 'token', '', { maxAge: -99999 })
     this.invalidate()
     return response
   }
@@ -113,8 +113,8 @@ export default class Api {
     this.token = undefined
     this.loggedIn.value = false
     this.$user.value = undefined
-    //if (this.config.req) setCookie(this.config.res, 'auth.token', '', { expires: new Date('Thu, 01 Jan 1970 00:00:01 GMT') })
-    if (!this.config.req) document.cookie = 'auth.token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    //if (this.config.req) setCookie(this.config.res, 'token', '', { expires: new Date('Thu, 01 Jan 1970 00:00:01 GMT') })
+    if (!this.config.req) document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 
 }

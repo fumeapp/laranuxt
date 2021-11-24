@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use acidjazz\Humble\Models\Session;
 use acidjazz\metapi\MetApi;
 use Faker\Factory;
 use Illuminate\Contracts\Foundation\Application;
@@ -78,5 +79,10 @@ class Controller extends BaseController
     public function auth(): Redirector|Application|RedirectResponse
     {
         return redirect(config('app.web'));
+    }
+
+    public function session(): Response|JsonResponse
+    {
+        return $this->render(Session::whereUserId(auth()->user()->id)->get());
     }
 }
