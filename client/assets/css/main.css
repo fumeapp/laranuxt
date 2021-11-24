@@ -2,10 +2,9 @@ html, body {
   @apply bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300;
 }
 
-p {
+p, h1, h2, h3 {
   @apply m-0;
 }
-
 
 button {
   @apply bg-transparent;

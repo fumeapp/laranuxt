@@ -8,6 +8,17 @@ export default defineNuxtPlugin((nuxtApp) => {
     res: nuxtApp.ssrContext?.res,
     fetchOptions: {
       baseURL: config.apiURL
-    }
+    },
+    redirect: {
+      logout: '/',
+      login: '/gated',
+    },
   }))
 })
+
+declare module '#app' {
+  interface NuxtApp {
+    $auth: Auth
+  }
+}
+

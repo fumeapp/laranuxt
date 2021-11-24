@@ -11,8 +11,11 @@
             home page
           </router-link>
 
-          <router-link to="/gated" class="text-base font-medium text-white hover:text-indigo-50" key="Pricing">
-            gated
+          <router-link
+            v-if="$auth.loggedIn.value === true"
+            to="/gated"
+            class="text-base font-medium text-white hover:text-indigo-50" key="Pricing">
+            Gated Page
           </router-link>
 
         </div>
@@ -60,7 +63,7 @@ function logout() {
   $modal.show({
     type: 'danger',
     title: 'Logging out',
-    body: `Are you sure you want to Log Out as <b>${$auth.$user.name}</b> ?`,
+    body: `Are you sure you want to log out as <b>${$auth.$user.value.name}</b> ?`,
     primary: {
       label: 'Yes',
       theme: 'indigo',

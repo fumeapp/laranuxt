@@ -22,7 +22,7 @@ Route::get('/example', [Controller::class, 'example'])->name('example route');
 Route::get('/error', [Controller::class, 'error'])->name('error route');
 
 // Authentication
-Route::get('/login', [Controller::class, 'auth'])->name('login')->name('proper login redirect');
+Route::get('/login', [Controller::class, 'auth'])->name('login');
 Route::get('redirect/{provider}', [AuthController::class, 'redirect'])->name('redirect to provider');
 Route::get('callback/{provider}', [AuthController::class, 'callback'])->name('provider callback');
 Route::get('onetap/{credential}', [AuthController::class, 'onetap'])->name('onetap support');

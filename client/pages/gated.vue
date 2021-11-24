@@ -1,16 +1,11 @@
 <template>
-  <div class="py-12 text-center">
-    this is a gated route
+  <div class="flex flex-col items-center justify-center">
+    <div class="py-12 text-center">
+      this is a gated route
+    </div>
+    <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-md overflow-hidden" > {{ $auth.$user }} </pre>
   </div>
 </template>
-
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
-import { useNuxtApp } from '#app'
-const router = useRouter()
-const { $auth } = useNuxtApp()
-console.log($auth.loggedIn.value)
-console.log($auth.$user)
-onMounted(() => { console.log($auth.loggedIn.value) })
-
+useAuthMiddleware()
 </script>

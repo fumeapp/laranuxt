@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import { PushButton } from 'tailvue'
 import { useFetch } from '#app/composables/fetch'
@@ -23,23 +22,17 @@ export interface MetApiExamples extends api.MetApiResults {
 const { data: result } = await useFetch<string, MetApiExamples>(
   `/example`, { baseURL: url, params: { count: 2, } })
 
-
-const user = ref(null)
-async function getUser () {
-  user.value = await $auth.getUser()
-}
 async function logout() {
   const response = await $auth.logout()
   $toast.show(response)
 }
-
 </script>
 
 <template>
-  <div v-if="result" class="w-screen h-screen flex flex-col space-y-2 items-center justify-center">
+  <div v-if="result" class="mt-12 flex flex-col space-y-2 items-center justify-center">
     <client-only>
       <span> loggedIn : {{ $auth.loggedIn }}</span>
-      <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-md overflow-hidden"> {{ $auth.$user }}</pre>
+      <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-md overflow-hidden" > {{ $auth.$user }} </pre>
     </client-only>
     <div> {{ result.benchmark }}</div>
     <div v-for="example of result.data" :key="example.email">
