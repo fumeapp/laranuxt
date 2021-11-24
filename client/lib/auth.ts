@@ -1,6 +1,7 @@
 import { FetchOptions } from 'ohmyfetch'
 import { ref } from '@vue/reactivity'
 import { IncomingMessage, ServerResponse } from 'http'
+import { useCookie } from 'h3'
 
 export interface OAuthResult {
   token: string
@@ -17,31 +18,19 @@ export interface AuthConfig {
 
 export default class Auth {
 
+  private token: string|undefined
   private config: AuthConfig
   public loggedIn = ref<null|boolean>(null)
   public $user:models.User
 
   constructor(config: AuthConfig) {
+    this.token = this.get()
     this.config = config
-    this.checkUser().then()
+    this.checkUser()
   }
 
-  async checkUser(): Promise<boolean> {
-    if (this.loggedIn.value === true) return true
-    if (this.loggedIn.value === false) return false
-    const token = await Auth.get()
-    if (!token || token.length !== 64) {
-      this.loggedIn.value = false
-      return false
-    }
-    this.setBearer(token)
-    try {
-      this.$user = await this.getUser()
-      this.loggedIn.value = true
-      return true
-    } catch (_e) {
-      this.loggedIn.value = false
-    }
+  checkUser(): void {
+    this.loggedIn.value = true
   }
 
   async setOAuthUser (result: OAuthResult): Promise<void> {
@@ -55,8 +44,9 @@ export default class Auth {
     return await $fetch('/api/set', { params: { token: token } })
   }
 
-  private static async get(): Promise<string> {
-    return await $fetch<string>('/api/get')
+  private get(): string {
+    if (this.config.req) return useCookie(this.config.req, 'auth.token')
+    return `; ${document.cookie}`.split(`; ${name}=`).pop().split(';').shift()
   }
 
   private setBearer(token: string): void {
