@@ -50,7 +50,6 @@ class Controller extends BaseController
      */
     public function example(Request $request): Response|JsonResponse
     {
-        ray('example()');
         $this
             ->option('count', 'required|integer')
             ->verify();
