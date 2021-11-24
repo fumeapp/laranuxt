@@ -25,7 +25,7 @@
 ![](client/static/laranuxt.gif?raw=true)
 
 ![](client/static/darkmode.png?raw=true)
-> Now with examples on using Dark Mode and the Nuxt Auth module!
+> Now with examples on using Dark Mode and the Nuxt Api module!
 
 ### What is included
 

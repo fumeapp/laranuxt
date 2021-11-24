@@ -3,8 +3,8 @@
     <div class="py-12 text-center">
       this uses <i>useAuthMiddleware()</i> <b>pages/gated.vue</b>
     </div>
-    <span class="text-xs p-2" > $auth.$user </span>
-    <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-md overflow-hidden" > {{ $auth.$user }} </pre>
+    <span class="text-xs p-2" > $api.$user </span>
+    <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-md overflow-hidden" > {{ $api.$user }} </pre>
   </div>
 </template>
 <script lang="ts" setup>

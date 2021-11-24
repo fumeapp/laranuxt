@@ -73,7 +73,7 @@
 
 <script lang="ts" setup>
 import { useNuxtApp, useRuntimeConfig } from '#app'
-import { OAuthResult } from '~/lib/auth'
+import { OAuthResult } from '~/lib/api'
 import { useRouter } from 'vue-router'
 
 const config = useRuntimeConfig()

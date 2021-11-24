@@ -46,10 +46,11 @@ class Controller extends BaseController
      * Example endpoint returning random users
      *
      * @param Request $request
-     * @return mixed
+     * @return Response|JsonResponse
      */
     public function example(Request $request): Response|JsonResponse
     {
+        ray('example()');
         $this
             ->option('count', 'required|integer')
             ->verify();

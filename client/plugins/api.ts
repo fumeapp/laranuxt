@@ -1,9 +1,10 @@
-import { defineNuxtPlugin, useRuntimeConfig } from '#app'
-import Auth from '@/lib/auth'
+import { defineNuxtPlugin, useNuxtApp, useRuntimeConfig } from '#app'
+import Api from '~/lib/api'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig()
-  nuxtApp.provide('auth', new Auth({
+  const { $toast } = useNuxtApp()
+  nuxtApp.provide('api', new Api({
     req: nuxtApp.ssrContext?.req,
     res: nuxtApp.ssrContext?.res,
     fetchOptions: {
@@ -13,12 +14,12 @@ export default defineNuxtPlugin((nuxtApp) => {
       logout: '/',
       login: '/gated',
     },
-  }))
+  }, $toast))
 })
 
 declare module '#app' {
   interface NuxtApp {
-    $auth: Auth
+    $api: Api
   }
 }
 

@@ -1,7 +1,8 @@
-import { FetchOptions } from 'ohmyfetch'
+import { FetchOptions, SearchParams } from 'ohmyfetch'
 import { ref } from '@vue/reactivity'
 import { IncomingMessage, ServerResponse } from 'http'
-import { setCookie, useCookie } from 'h3'
+import { useCookie } from 'h3'
+import { TailvueToast } from 'tailvue'
 
 export interface OAuthResult {
   token: string
@@ -30,15 +31,16 @@ const authConfigDefaults:AuthConfig = {
   }
 }
 
-export default class Auth {
+export default class Api {
 
   private token = ref<string|undefined>(undefined)
   public config: AuthConfig
   public $user = ref<models.User>(undefined)
+  public $toast:TailvueToast
   public loggedIn = ref(false)
 
-  constructor(config: AuthConfig) {
-    console.log('Auth constructor : ', process.client)
+  constructor(config: AuthConfig, toast: TailvueToast) {
+    this.$toast = toast
     this.config = { ...authConfigDefaults,...config }
     this.token.value = this.get()
     if (this.token.value)  {
@@ -64,11 +66,13 @@ export default class Auth {
     return `; ${document.cookie}`.split(`; auth.token=`).pop().split(';').shift()
   }
 
-  private fetchOptions(): FetchOptions {
-    this.config.fetchOptions.headers = {
+  private fetchOptions(params?: SearchParams): FetchOptions {
+    const fetchOptions = this.config.fetchOptions
+    fetchOptions.headers = {
       Accept: 'application/json',
       Authorization: `Bearer ${this.token.value}`,
     }
+    if (params) this.config.fetchOptions.params = params
     return this.config.fetchOptions
   }
 
@@ -78,6 +82,19 @@ export default class Auth {
     } catch (e) {
       if (e.response.status === 401)
         this.invalidate()
+    }
+  }
+
+  public async index <Results>(endpoint: string, params: SearchParams): Promise<api.MetApiResults & { data: Results }> {
+    try {
+      return await $fetch<api.MetApiResults & { data: Results }>(endpoint, this.fetchOptions(params))
+    } catch (error) {
+      for (const err of error.response.data.errors)
+        this.$toast.show({
+          type: 'danger',
+          message: err.detail ?? err.message ?? '',
+          timeout: 0,
+        })
     }
   }
 

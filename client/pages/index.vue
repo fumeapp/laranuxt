@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { PushButton } from 'tailvue'
-import { useFetch } from '#app/composables/fetch'
-import { useNuxtApp, useRuntimeConfig } from '#app'
-import { ref } from '@vue/reactivity'
-const config = useRuntimeConfig()
-const url = config.apiURL
-const { $auth, $toast } = useNuxtApp()
+import { useAsyncData, useNuxtApp } from '#app'
+const { $api } = useNuxtApp()
 
 export interface Example {
   name: string
@@ -15,26 +10,25 @@ export interface Example {
   avatar: string
 }
 export type Examples = Example[]
-export interface MetApiExamples extends api.MetApiResults {
-  data: Examples
-}
 
-const { data: result } = await useFetch<string, MetApiExamples>(
-  `/example`, { baseURL: url, params: { count: 2, } })
+const { data: result } = await useAsyncData('examples', () => $api.index<Examples>('/example', { count: 3 }))
 
 </script>
 
 <template>
-  <div v-if="result" class="mt-12 flex flex-col space-y-2 items-center justify-center">
-    <client-only>
-      <span> $auth.loggedIn : {{ $auth.loggedIn }}</span>
-      <span class="text-xs p-2" > $auth.$user </span>
-      <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-md overflow-hidden" > {{ $auth.$user }} </pre>
-    </client-only>
-    <div> {{ result.benchmark }}</div>
-    <div v-for="example of result.data" :key="example.email">
-      job: {{ example.job }}
-      email: {{ example.email }}
+  <div class="flex flex-col items-center">
+    <div v-if="result" class="mt-12 flex flex-col space-y-2 justify-center">
+      <span> $api.loggedIn : {{ $api.loggedIn }}</span>
+      <span class="text-xs p-2" > $api.$user </span>
+      <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-lg overflow-hidden" > {{ $api.$user }} </pre>
+      <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-lg">
+const result = await $api.index&lt;Examples&gt;('/example', { count: 3 })
+from endpoint <a target="_new" href="http://localhost:8000/example?count=6" class="text-underline">http://localhost:8000/example</a>
+      </pre>
+      <div v-for="example of result.data" :key="example.email">
+        example.job: {{ example.job }}
+        example.email: {{ example.email }}
+      </div>
     </div>
   </div>
 </template>

@@ -12,7 +12,7 @@
           </router-link>
 
           <router-link
-            v-if="$auth.loggedIn.value === true"
+            v-if="$api.loggedIn.value === true"
             to="/gated"
             class="text-base font-medium text-white hover:text-indigo-50" key="Pricing">
             Gated Page
@@ -54,20 +54,20 @@
 import { PushButton, ModalBase } from 'tailvue'
 import { useNuxtApp } from '#app'
 import { computed, ref } from '@vue/reactivity'
-const { $auth, $modal, $toast } = useNuxtApp()
+const { $api, $modal, $toast } = useNuxtApp()
 const modal = ref(false)
 
-const userText = computed(() => $auth.loggedIn.value === null ? 'Loading' : $auth.loggedIn.value === true ? 'Sign Out' : 'Sign In')
+const userText = computed(() => $api.loggedIn.value === null ? 'Loading' : $api.loggedIn.value === true ? 'Sign Out' : 'Sign In')
 
 function logout() {
   $modal.show({
     type: 'danger',
     title: 'Logging out',
-    body: `Are you sure you want to log out as <b>${$auth.$user.value.name}</b> ?`,
+    body: `Are you sure you want to log out as <b>${$api.$user.value.name}</b> ?`,
     primary: {
       label: 'Yes',
       theme: 'indigo',
-      action: async () => $toast.show(await $auth.logout())
+      action: async () => $toast.show(await $api.logout())
     },
     secondary: {
       label: 'No',
@@ -78,6 +78,6 @@ function logout() {
 
 const login = () =>  modal.value = true
 const off = () => modal.value = false
-const  action =  () => $auth.loggedIn.value ? logout() : login()
+const  action =  () => $api.loggedIn.value ? logout() : login()
 
 </script>
