@@ -1,0 +1,28 @@
+<template>
+  <ul v-if="sessions" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+    <li
+      v-for="session in sessions"
+      :key="session.token"
+      class="col-span-1"
+    >
+      <pre> session </pre>
+    </li>
+  </ul>
+  <ul v-else class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+    <li
+      v-for="i in 3"
+      :key="i"
+      class="col-span-1"
+    >
+      <session-device-skeleton />
+    </li>
+  </ul>
+</template>
+
+<script setup lang="ts">
+import { PropType } from '@vue/runtime-core'
+import SessionDeviceSkeleton from '@/components/session/SessionDeviceSkeleton.vue'
+const props = defineProps({
+  sessions: Array as PropType<api.Sessions>,
+})
+</script>

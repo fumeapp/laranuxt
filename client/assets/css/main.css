@@ -9,3 +9,21 @@ p, h1, h2, h3 {
 button {
   @apply bg-transparent;
 }
+
+.skeleton {
+  --text-opacity: 0;
+  background-image: linear-gradient(100deg, #edf2f7 0%, #f4f7fa 20%, #edf2f7 40%);
+  background-position: 50%;
+  background-size: 200%;
+  animation: skeleton 1.25s infinite linear;
+  @apply rounded-md;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: 50%;
+  }
+  50%, 100% {
+    background-position: -100%
+  }
+}
