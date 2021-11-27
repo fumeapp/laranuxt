@@ -75,6 +75,7 @@
 import { useNuxtApp, useRuntimeConfig } from '#app'
 import { OAuthResult } from '~/lib/api'
 import { useRouter } from 'vue-router'
+import { PushButton } from 'tailvue'
 
 const config = useRuntimeConfig()
 const router = useRouter()

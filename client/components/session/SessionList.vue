@@ -5,7 +5,7 @@
       :key="session.token"
       class="col-span-1"
     >
-      <pre> session </pre>
+      <session-device :session="session" />
     </li>
   </ul>
   <ul v-else class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
@@ -22,6 +22,7 @@
 <script setup lang="ts">
 import { PropType } from '@vue/runtime-core'
 import SessionDeviceSkeleton from '@/components/session/SessionDeviceSkeleton.vue'
+import SessionDevice from '~/components/session/SessionDevice.vue'
 const props = defineProps({
   sessions: Array as PropType<api.Sessions>,
 })

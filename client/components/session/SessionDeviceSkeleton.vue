@@ -4,9 +4,7 @@
       <push-button theme="text" size="xs" class="shadow-none">
         <icon-client
           icon="mdi-trash"
-          class="w-4 h-4"
-          primary="text-gray-200"
-          secondary="text-gray-100"
+          class="w-4 h-4 text-gray-200"
         />
       </push-button>
     </div>
@@ -18,9 +16,7 @@
         <div class="flex items-center text-gray-900 mb-1">
           <icon-client
             icon="mdi-laptop"
-            class="w-4 h-4 mr-1.5"
-            primary="text-gray-200"
-            secondary="text-gray-100"
+            class="w-4 h-4 mr-1.5 text-gray-200"
           />
           <div class="w-32 skeleton">
             &nbsp;
@@ -29,9 +25,7 @@
         <div class="flex items-center text-gray-500 text-sm mb-1">
           <icon-client
             icon="mdi-application-outline"
-            class="w-4 h-4 mr-1.5"
-            primary="text-gray-200"
-            secondary="text-gray-100"
+            class="w-4 h-4 mr-1.5 text-gray-200"
           />
           <div class="w-32 skeleton">
             &nbsp;
@@ -40,9 +34,7 @@
         <div class="flex items-center text-gray-500 text-sm mb-1">
           <icon-client
             icon="mdi-map"
-            class="w-4 h-4 mr-1.5"
-            primary="text-gray-200"
-            secondary="text-gray-100"
+            class="w-4 h-4 mr-1.5 text-gray-200"
           />
           <div class="w-20 skeleton">
             &nbsp;
@@ -51,9 +43,7 @@
         <div class="flex items-center text-gray-500 text-sm mb-1">
           <icon-client
             icon="mdi-envelope"
-            class="w-4 h-4 mr-1.5"
-            primary="text-gray-200"
-            secondary="text-gray-100"
+            class="w-4 h-4 mr-1.5 text-gray-200"
           />
           <div class="w-20 skeleton">
             &nbsp;
@@ -62,9 +52,7 @@
         <div class="flex items-center text-gray-500 text-sm mb-1">
           <icon-client
             icon="mdi-clock"
-            class="w-4 h-4 mr-1.5"
-            primary="text-gray-200"
-            secondary="text-gray-100"
+            class="w-4 h-4 mr-1.5 text-gray-200"
           />
           <div class="w-14 skeleton">
             &nbsp;
@@ -73,9 +61,7 @@
         <div class="flex items-center text-gray-500 text-sm mb-1">
           <icon-client
             icon="mdi-clock"
-            class="w-4 h-4 mr-1.5"
-            primary="text-gray-200"
-            secondary="text-gray-100"
+            class="w-4 h-4 mr-1.5 text-gray-200"
           />
           <div class="w-14 skeleton">
             &nbsp;
@@ -86,5 +72,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-import IconClient from '@/components/IconClient'
+import { PushButton } from 'tailvue'
+import IconClient from '~/components/IconClient.vue'
 </script>

@@ -19,8 +19,15 @@ _ide_helper.php
 _ide_helper_models.php
 .phpstorm.meta.php
 
+# Laravel Vapor
+.vapor/
+.env.production
+.env.staging
+
+
 ## Nuxt.js
 # Created by .ignore support plugin (hsz.mobi)
+
 
 # nuxt-storm
 .components.gen.js
@@ -85,24 +92,12 @@ typings/
 # dotenv environment variables file
 .env
 
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-
-# next.js build output
-.next
-
 # nuxt.js build output
+.output
 .nuxt
 
 # Nuxt generate
 dist
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless
-
 # IDE / Editor
 .idea
 
@@ -114,6 +109,3 @@ sw.*
 
 # Vim swap files
 *.swp
-.vapor/
-.env.production
-.env.staging

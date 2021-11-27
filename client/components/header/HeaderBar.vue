@@ -4,8 +4,10 @@
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
     <div class="w-full py-3 flex items-center justify-between border-b border-indigo-500 lg:border-none">
       <div class="flex items-center">
-        <icon-client icon="cib:laravel" class="w-10 h-10 text-white" />
-        <icon-client icon="simple-icons:nuxtdotjs" class="w-10 h-10 text-white -ml-1" />
+        <div class="flex w-16 h-8">
+          <icon-client icon="cib:laravel" class="w-8 h-8 text-white" />
+          <icon-client icon="simple-icons:nuxtdotjs" class="w-8 h-8 text-white -ml-1" />
+        </div>
         <div class="hidden ml-10 space-x-8 lg:block">
           <router-link to='/' class="text-base font-medium text-white hover:text-indigo-50" key="Solutions">
             Home
@@ -28,27 +30,8 @@
         </div>
       </div>
       <div class="ml-10 space-x-4">
-        <client-only>
-          <push-button theme="indigo" @click="action"> {{ userText }} </push-button>
-        </client-only>
+        <push-button theme="indigo" @click="action"> {{ userText }} </push-button>
       </div>
-    </div>
-    <div class="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
-      <a href="#" class="text-base font-medium text-white hover:text-indigo-50" key="Solutions">
-        Solutions
-      </a>
-
-      <a href="#" class="text-base font-medium text-white hover:text-indigo-50" key="Pricing">
-        Pricing
-      </a>
-
-      <a href="#" class="text-base font-medium text-white hover:text-indigo-50" key="Docs">
-        Docs
-      </a>
-
-      <a href="#" class="text-base font-medium text-white hover:text-indigo-50" key="Company">
-        Company
-      </a>
     </div>
   </nav>
 </header>
@@ -61,6 +44,8 @@
 import { PushButton, ModalBase } from 'tailvue'
 import { useNuxtApp } from '#app'
 import { computed, ref } from '@vue/reactivity'
+import HeaderLoginModal from '~/components/header/HeaderLoginModal.vue'
+import IconClient from '~/components/IconClient.vue'
 const { $api, $modal, $toast } = useNuxtApp()
 const modal = ref(false)
 

@@ -1,0 +1,36 @@
+.device {
+  width: 72px;
+  height: 72px;
+}
+.device-mac {
+  background: no-repeat url("/devices.png") 0 -511px;
+  background-size: 72px 1167px;
+}
+.device-windows {
+  background: no-repeat url("/devices.png") 0 -219px;
+  background-size: 72px 1167px;
+}
+.device-linux {
+  background: no-repeat url("/devices.png") 0 -801px;
+  background-size: 72px 1167px;
+}
+.device-iphone {
+  background: no-repeat url("/devices.png") 0 -1095px;
+  background-size: 72px 1167px;
+}
+.device-ipad {
+  background: no-repeat url("/devices.png") 0 -365px;
+  background-size: 72px 1167px;
+}
+.device-android {
+  background: no-repeat url("/devices.png") 0 -658px;
+  background-size: 72px 1167px;
+}
+.device-postman {
+  background: no-repeat url("https://calliditasblog.files.wordpress.com/2017/12/linuxpostman.png?w=72");
+  background-size: 72px 72px;
+}
+
+.device-other {
+  display: none;
+}

@@ -1,8 +1,10 @@
 import { FetchOptions, SearchParams } from 'ohmyfetch'
-import { ref } from '@vue/reactivity'
+import { Ref, ref } from '@vue/reactivity'
 import { IncomingMessage, ServerResponse } from 'http'
 import { useCookie } from 'h3'
 import { TailvueToast } from 'tailvue'
+import { useAsyncData, useFetch } from '#app'
+import { _AsyncData } from '#app/composables/asyncData'
 
 export interface OAuthResult {
   token: string
@@ -42,7 +44,7 @@ export default class Api {
   constructor(config: AuthConfig, toast: TailvueToast) {
     this.$toast = toast
     this.config = { ...authConfigDefaults,...config }
-    this.token.value = this.get()
+    this.token.value = this.getToken()
     if (this.token.value)  {
       this.loggedIn.value = true
       this.setUser().then()
@@ -61,7 +63,7 @@ export default class Api {
     return await $fetch('/api/set', { params: { token: this.token.value } })
   }
 
-  private get(): string {
+  private getToken(): string {
     if (this.config.req) return useCookie(this.config.req, 'token')
     return `; ${document.cookie}`.split(`; token=`).pop().split(';').shift()
   }
@@ -77,30 +79,31 @@ export default class Api {
   }
 
   private async setUser(): Promise<void> {
-    try {
-      this.$user.value = await this.getUser()
-    } catch (e) {
-      if (e.response.status === 401)
-        this.invalidate()
-    }
+    const result = await $fetch<api.MetApiResponse & { data: models.User }>('/me', this.fetchOptions())
+    this.$user.value = result.data
   }
 
   public async index <Results>(endpoint: string, params?: SearchParams): Promise<api.MetApiResults & { data: Results }> {
     try {
-      return await $fetch<api.MetApiResults & { data: Results }>(endpoint, this.fetchOptions(params))
+      return (await $fetch<api.MetApiResults & { data: Results }>(endpoint, this.fetchOptions(params)))
     } catch (error) {
+      if (error.response.data.exception) {
+        this.$toast.show({
+          type: 'danger',
+          message: `<b>[${error.response.data.exception}]</b> <br /> ${error.response.data.message} <br /> <a href="phpstorm://open?file=/${error.response.data.file}&line=${error.response.data.line}">${error.response.data.file}:${error.response.data.line}</a>`,
+          timeout: 0,
+        })
+      } else {
       for (const err of error.response.data.errors)
         this.$toast.show({
           type: 'danger',
           message: err.detail ?? err.message ?? '',
           timeout: 0,
         })
+      }
     }
   }
 
-  private async getUser (): Promise<models.User> {
-    return (await $fetch<api.MetApiResponse & { data: models.User }>('/me', this.fetchOptions())).data
-  }
 
   public async logout (): Promise<api.MetApiResponse> {
     const response = (await $fetch<api.MetApiResponse>('/logout', this.config.fetchOptions)).data
