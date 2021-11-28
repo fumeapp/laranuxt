@@ -1,6 +1,6 @@
 
 <template>
-<header class="bg-indigo-800">
+<header class="bg-indigo-900">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
     <div class="w-full py-3 flex items-center justify-between border-b border-indigo-500 lg:border-none">
       <div class="flex items-center">
@@ -10,27 +10,13 @@
         </div>
         <div class="hidden ml-10 space-x-8 lg:block">
           <router-link
-            to='/'
-            class="text-base font-medium text-white hover:text-indigo-50"
-            key="Solutions"
+            v-for="item in menu"
+            :key="item.name"
+            :to="item.to"
+            class="text-base font-medium text-white hover:text-indigo-50 py-2 px-4 rounded-md"
+            :class="{'bg-blue-700': item.names.includes($route.name)}"
           >
-            Home
-          </router-link>
-
-          <router-link
-            v-if="$api.loggedIn.value === true"
-            to="/gated"
-            class="text-base font-medium text-white hover:text-indigo-50"
-            key="Gated"
-          >
-            Gated
-          </router-link>
-
-          <router-link
-            v-if="$api.loggedIn.value === true"
-            to="/sessions"
-            class="text-base font-medium text-white hover:text-indigo-50" key="Sessions">
-            User Sessions
+            {{ item.name }}
           </router-link>
 
         </div>
@@ -44,16 +30,43 @@
 </template>
 <script lang="ts" setup>
 import HeaderProfile from '~/components/header/HeaderProfile.vue'
+import { computed } from '@vue/reactivity'
+import { useNuxtApp } from '#app'
+const { $api } = useNuxtApp()
 
 interface MenuItem {
+  /* Menu item name */
   name: string
+  /* router :to */
   to: string
+  /* only show for logged in users */
+  guarded: boolean
+  /* route names to decide if active */
+  names: string[]
 }
 
-const menu = [
+const menu = computed((): MenuItem[] =>
+  menuItems.filter(mi => $api.loggedIn.value === false ? mi.guarded === false : true )
+)
+
+const menuItems:MenuItem[] = [
   {
     name: 'Home',
     to: '/',
+    guarded: false,
+    names: ['index'],
+  },
+  {
+    name: 'Gated',
+    to: '/gated',
+    guarded: true,
+    names: ['gated'],
+  },
+  {
+    name: 'User Sessions',
+    to: '/sessions',
+    guarded: true,
+    names: ['sessions'],
   },
 ]
 
