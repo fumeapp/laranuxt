@@ -84,6 +84,14 @@ export default class Api {
     this.$user = reactive(result.data)
   }
 
+  public async get <Result>(endpoint: string, params?: SearchParams): Promise<api.MetApiResponse & { data: Result }> {
+    try {
+      return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
+    } catch (error) {
+      this.toastError(error)
+    }
+  }
+
   public async index <Results>(endpoint: string, params?: SearchParams): Promise<api.MetApiResults & { data: Results }> {
     try {
       return await $fetch<api.MetApiResults & { data: Results }>(endpoint, this.fetchOptions(params))

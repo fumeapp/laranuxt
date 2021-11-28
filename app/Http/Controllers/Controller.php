@@ -51,6 +51,7 @@ class Controller extends BaseController
      */
     public function example(Request $request): Response|JsonResponse
     {
+        sleep(2);
         $this
             ->option('count', 'required|integer')
             ->verify();
