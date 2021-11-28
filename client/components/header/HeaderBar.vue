@@ -9,14 +9,20 @@
           <icon-client icon="simple-icons:nuxtdotjs" class="w-8 h-8 text-white -ml-1" />
         </div>
         <div class="hidden ml-10 space-x-8 lg:block">
-          <router-link to='/' class="text-base font-medium text-white hover:text-indigo-50" key="Solutions">
+          <router-link
+            to='/'
+            class="text-base font-medium text-white hover:text-indigo-50"
+            key="Solutions"
+          >
             Home
           </router-link>
 
           <router-link
             v-if="$api.loggedIn.value === true"
             to="/gated"
-            class="text-base font-medium text-white hover:text-indigo-50" key="Pricing">
+            class="text-base font-medium text-white hover:text-indigo-50"
+            key="Gated"
+          >
             Gated
           </router-link>
 
@@ -38,4 +44,19 @@
 </template>
 <script lang="ts" setup>
 import HeaderProfile from '~/components/header/HeaderProfile.vue'
+
+interface MenuItem {
+  name: string
+  to: string
+}
+
+const menu = [
+  {
+    name: 'Home',
+    to: '/',
+  },
+]
+
+
+
 </script>

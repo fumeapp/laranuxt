@@ -6,7 +6,7 @@
         v-else
         id="user-menu-button"
         type="button"
-        class="max-w-xs bg-blue-300 flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200"
+        class="max-w-xs bg-blue-300 flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300"
         aria-expanded="false"
         aria-haspopup="true"
         @click="toggle"
