@@ -24,6 +24,7 @@
     "@vueuse/core": "^7.0.0",
     "dayjs": "^1.10.7",
     "husky": "^7.0.1",
+    "lottie-web": "^5.8.1",
     "nuxt-windicss": "^2.0.12",
     "nuxt3": "^3.0.0-27294839.7e5e50b",
     "universal-cookie": "^4.0.4"

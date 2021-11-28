@@ -52,7 +52,7 @@ const modal = ref(false)
 const profile = ref(false)
 const target = ref(null)
 
-onClickOutside(target, (event) => toggle() )
+onClickOutside(target, (event) => profile.value = false)
 
 const toggle = () => profile.value = !profile.value
 const login = () =>  modal.value = true

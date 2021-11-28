@@ -21,7 +21,7 @@
 
         </div>
       </div>
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-8">
         <header-dark-mode />
         <header-profile />
       </div>
@@ -34,6 +34,7 @@ import HeaderProfile from '~/components/header/HeaderProfile.vue'
 import { computed } from '@vue/reactivity'
 import { useNuxtApp } from '#app'
 import HeaderDarkMode from '~/components/header/HeaderDarkMode.vue'
+import IconClient from '~/components/IconClient.vue'
 const { $api } = useNuxtApp()
 
 interface MenuItem {
