@@ -2,43 +2,39 @@
 import { PushButton } from 'tailvue'
 import { useAsyncData, useNuxtApp } from '#app'
 import { Ref } from '@vue/reactivity'
+import ContactCardSkeleton from '~/components/contact/ContactCardSkeleton.vue'
+import ContactCard from '~/components/contact/ContactCard.vue'
 const { $api } = useNuxtApp()
 
-export interface Example {
+export interface ExampleUser {
   name: string
   /** Current Position */
   job: string
   email: string
   avatar: string
 }
-export type Examples = Example[]
 
 const {
-  data: result,
+  data: users,
   refresh: reloadExample,
 }: {
-  data: Ref<api.MetApiResults & { data: Examples }>
+  data: Ref<api.MetApiResults & { data: ExampleUser[] }>
   refresh: (force?: boolean) => Promise<void>
 } = useAsyncData(
   'example',
-  () => $api.index<Examples>('/example', { count: 3 }),
+  () => $api.index<ExampleUser[]>('/example', { count: 9 }),
   { server: true },
 )
 
 </script>
 
 <template>
-  <div class="flex flex-col items-center">
-    <div v-if="result" class="mt-12 flex flex-col space-y-2 justify-center">
-      <span class="text-xs p-2" > $api.$user </span>
-      <pre class="text-xs p-4 bg-gray-200 rounded-md max-w-lg overflow-hidden" > {{ $api.$user }} </pre>
-      <div v-if="result">
-        <div v-for="example of result.data" :key="example.email">
-          example.job: {{ example.job }}
-          example.email: {{ example.email }}
-        </div>
-        <push-button class="mt-2" @click="reloadExample">reload example</push-button>
-      </div>
-    </div>
+  <div class="container p-2 lg:p-8 flex flex-col">
+    <ul v-if="!users" class="grid grid-cols-1 gap-6 bg-gray-100 dark:bg-gray-900 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
+      <contact-card-skeleton v-for="i in 9" :key="`user-${i}`" />
+    </ul>
+    <ul v-else class="grid grid-cols-1 gap-6 bg-gray-100 dark:bg-gray-900 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
+      <contact-card v-for="(user, index) in users.data" :key="index" :user="user" />
+    </ul>
   </div>
 </template>
