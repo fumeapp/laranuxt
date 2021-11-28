@@ -2,6 +2,10 @@ html, body {
   @apply bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300;
 }
 
+html.dark {
+  @apply bg-gray-900;
+}
+
 p, h1, h2, h3 {
   @apply m-0;
 }
@@ -18,6 +22,11 @@ button {
   animation: skeleton 1.25s infinite linear;
   @apply rounded-md;
 }
+
+.dark .skeleton {
+  background-image: linear-gradient(100deg, #4B5563 0%, #6B7280 20%, #4B5563 40%);
+}
+
 
 @keyframes skeleton {
   0% {
