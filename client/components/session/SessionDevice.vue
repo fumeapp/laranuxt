@@ -68,7 +68,7 @@
         </div>
         <div class="flex items-center text-gray-500 text-sm mb-1">
           <icon-client
-            icon="mdi-check"
+            icon="mdi-clock"
             class="w-4 h-4 mr-1.5 text-gray-400"
           />
           Last activity {{ $dayjs(session.updated_at).fromNow() }}
@@ -84,7 +84,7 @@ import IconClient from '~/components/IconClient.vue'
 import { PropType } from '@vue/runtime-core'
 import { useNuxtApp } from '#app'
 import { computed } from '@vue/reactivity'
-const { $toast, $modal } = useNuxtApp()
+const { $toast, $modal, $api } = useNuxtApp()
 const props = defineProps({
   session: {
     type: Object as PropType<api.Session>,
@@ -119,18 +119,7 @@ const name = computed((): string => {
   if (props.session.device.platform) return props.session.device.platform
   return props.session.agent
 })
-async function revoke (session: api.Session) {
-  if (session.current)
-    return this.$auth.logout('local')
 
-  try {
-    const result = (await this.$axios.delete(`/session/${session.token}`)).data.data
-    $toast.show(result)
-    emit('refresh')
-  } catch (e) {
-
-  }
-}
 function confirm (session: api.Session) {
   $modal.show({
     type: 'danger',
@@ -148,4 +137,11 @@ function confirm (session: api.Session) {
     },
   })
 }
+
+async function revoke (session: api.Session) {
+  if (session.current) return this.$auth.logout('local')
+  $toast.show((await $api.delete(`/session/${session.token}`)).data)
+  emit('refresh')
+}
+
 </script>

@@ -30,46 +30,12 @@
         </div>
       </div>
       <div class="ml-10 space-x-4">
-        <push-button theme="indigo" @click="action"> {{ userText }} </push-button>
+        <header-profile />
       </div>
     </div>
   </nav>
 </header>
-<modal-base v-if="modal" :destroyed="off">
-  <header-login-modal @off="off" />
-</modal-base>
 </template>
-
 <script lang="ts" setup>
-import { PushButton, ModalBase } from 'tailvue'
-import { useNuxtApp } from '#app'
-import { computed, ref } from '@vue/reactivity'
-import HeaderLoginModal from '~/components/header/HeaderLoginModal.vue'
-import IconClient from '~/components/IconClient.vue'
-const { $api, $modal, $toast } = useNuxtApp()
-const modal = ref(false)
-
-const userText = computed(() => $api.loggedIn.value === null ? 'Loading' : $api.loggedIn.value === true ? 'Sign Out' : 'Sign In')
-
-function logout() {
-  $modal.show({
-    type: 'danger',
-    title: 'Logging out',
-    body: `Are you sure you want to log out as <b>${$api.$user.value.name}</b> ?`,
-    primary: {
-      label: 'Yes',
-      theme: 'indigo',
-      action: async () => $toast.show(await $api.logout())
-    },
-    secondary: {
-      label: 'No',
-      theme: 'white',
-    },
-  })
-}
-
-const login = () =>  modal.value = true
-const off = () => modal.value = false
-const  action =  () => $api.loggedIn.value ? logout() : login()
-
+import HeaderProfile from '~/components/header/HeaderProfile.vue'
 </script>

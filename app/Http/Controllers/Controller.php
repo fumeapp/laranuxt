@@ -81,8 +81,4 @@ class Controller extends BaseController
         return redirect(config('app.web'));
     }
 
-    public function session(): Response|JsonResponse
-    {
-        return $this->render(Session::whereUserId(auth()->user()->id)->get());
-    }
 }
