@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/nuxt3/resources/laranuxt.png" />
+  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/nuxt3/resources/laranuxt.png" width="300" />
 </p>
 
 > Now supporting [Nuxt v3](https://v3.nuxtjs.org)
