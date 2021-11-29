@@ -46,7 +46,7 @@ async function error (): Promise<void> {
       <span>provided by endpoint</span><span>&nbsp;</span>
       <a class="text-blue-400" target="_new" href="http://localhost:8000/example?count=9">/example</a>
       <span>&nbsp;</span>
-      <span class="text-sm">(2 second delay)</span>
+      <span class="text-sm">(1 second delay)</span>
       <div class="mt-4">
         <push-button @click="error">
           <icon-client icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />

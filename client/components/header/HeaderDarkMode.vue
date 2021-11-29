@@ -3,7 +3,7 @@
     class="text-white flex items-center justify-center p-0.5 rounded-full"
     @click="toggle"
   >
-    <span class="w-8 h-8" id="darkModeIcon" />
+    <span id="darkModeIcon" class="w-8 h-8" />
   </button>
 </template>
 
@@ -14,12 +14,12 @@ import { useNuxtApp } from '#app'
 import { onMounted } from '@vue/runtime-core'
 const isDark = useDark()
 const toggleDark = useToggle((isDark))
-const { $lottie } = useNuxtApp()
 
 let animation:undefined|AnimationItem = undefined
 
 onMounted(() => {
-  animation = $lottie.loadAnimation({
+  if (!process.client || !window.lottie) return
+  animation = window.lottie.loadAnimation({
     container: document.getElementById('darkModeIcon'),
     path: '/json/darkMode.json',
     loop: false,
@@ -31,11 +31,8 @@ onMounted(() => {
 })
 
 const toggle = () => {
-  toggleDark()
-  setTimeout(() => {
-    animation.setSpeed(10000)
-    if (isDark.value === true) animation.goToAndStop(114, true)
-    else animation.goToAndStop(0, true)
-  }, 200)
+  if (isDark.value === true)animation.playSegments([160, 228], true)
+  else animation.playSegments([0, 114], true)
+  setTimeout(toggleDark, 200)
 }
 </script>

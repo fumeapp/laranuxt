@@ -12,6 +12,9 @@ export default defineNuxtConfig({
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
+    script: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.8.1/lottie.min.js' },
+    ]
   },
   css: [
     '@/assets/css/main.css',

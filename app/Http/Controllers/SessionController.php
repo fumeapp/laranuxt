@@ -16,6 +16,7 @@ class SessionController extends Controller
      */
     public function index(): JsonResponse|Response
     {
+        sleep(1);
         return $this->render(Session::whereUserId(auth()->user()->id)->get());
     }
 

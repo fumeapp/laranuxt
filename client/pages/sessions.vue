@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-5xl mx-auto py-6 sm:px-6 lg:px-8">
-    <session-list :sessions="sessions" />
+    <session-list :sessions="sessions" @refresh="get" />
   </div>
 </template>
 
@@ -14,6 +14,7 @@ const { $api } = useNuxtApp()
 
 useAuthMiddleware()
 const sessions = ref(undefined)
-onMounted(async () => sessions.value = (await $api.index<api.Sessions>('/session'))?.data)
+const get = async () => sessions.value = (await $api.index<api.Sessions>('/session'))?.data
+onMounted(() => get())
 
 </script>

@@ -1,17 +1,8 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/master/client/static/laranuxt.png" />
+  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/nuxt3/resources/laranuxt.png" />
 </p>
 
-<p align="center">
-  <a href="https://laravel.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" width="92" height="92" /></a>
-  <a href="https://vuejs.org"><img src="https://vuejs.org/images/logo.png" width="92" height="92" /></a>
-  <a href="https://www.typescriptlang.org/"><img src="https://miro.medium.com/max/816/1*mn6bOs7s6Qbao15PMNRyOA.png" width="92" height="92" /></a>
-  <a href="https://tailwindcss.com"><img src="https://pbs.twimg.com/profile_images/1278691829135876097/I4HKOLJw_400x400.png" width="92" height="92" /></a>
-  <a href="https://github.com/acidjazz/metapi"><img src="https://github.com/acidjazz/metapi/raw/master/logo.png" width="92" height="92" /></a>
-</p>
-
-
-> *NEW* Want all of your models typed out as interfaces? check out [modeltyper](https://github.com/fumeapp/modeltyper)
+> Now supporting [Nuxt v3](https://v3.nuxtjs.org)
 
 ## Laravel + Nuxt.js Boilerplate
 
@@ -22,9 +13,8 @@
 [![Lint Javascript](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml)
 [![Lint PHP](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml)
 
-![](client/static/laranuxt.gif?raw=true)
+![](resources/laranuxt.gif?raw=true)
 
-![](client/static/darkmode.png?raw=true)
 > Now with examples on using Dark Mode and the Nuxt Api module!
 
 ### What is included
