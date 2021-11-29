@@ -19,15 +19,13 @@
 
 ### What is included
 
-* [NUXT](https://nuxtjs.org) front end, a progressive Vue.js framework - `v2.15.8`
-  * [@nuxtjs/typescript-build](https://typescript.nuxtjs.org/) TypeScript Support for Nuxt.js
-  * [@nuxtjs/composition-api](https://composition-api.nuxtjs.org/) Composition API Support for Nuxt.js
-  * [@nuxtjs/tailwindcss](https://tailwindcss.nuxtjs.org/) a [utility-first](https://tailwindcss.com) framework - now with PurgeCSS built in
-  * [@nuxtjs/axios](https://github.com/nuxt-community/axios-module) to communicate with our API 
-  * [@nuxtjs/auth](https://auth.nuxtjs.org/) NuxtJS Authentication module 
-  * [nuxt-tailvue](https://github.com/acidjazz/nuxt-tailvue) a collection of components built for Nuxt.js, powered by TailwindCSS
+* [NUXT v3](https://v3.nuxtjs.org) front end, a progressive Vue.js framework
+  * [tailvue](https://github.com/fumeapp/tailvue) a collection of components built for Nuxt.js, powered by WindiCSS|TailwindCSS
+  * Authentication library to assist with user sessions and logging in/out
+  * Example Authentication Middleware
 
 * [Laravel](https://laravel.com) - for our API - `v8.60.0`
+  * [Model Typer](https://github.com/fumeapp/modeltyper) - Generates Typescript interfaces from Laravel Models 
   * [MetAPI](https://github.com/acidjazz/metapi) - API helpers and utilities
   * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API
   * [ide-helper](https://github.com/barryvdh/laravel-ide-helper) - Helper files to enable help with IDE autocompletion
@@ -41,12 +39,13 @@
  ```bash
 git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; cp .env.example .env;
  ```
-* Feel free to delete excess media in  `/client/static/`, just images for the readme
+* Feel free to delete excess media in  `/resources/`
 
 
 ### Local Environment
 * run `yarn dev` in one terminal for our nuxt dev setup
 * run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
 
-### Features
+### Authentication
 
+* TODO
