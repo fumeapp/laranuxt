@@ -71,11 +71,28 @@ console.log($api.$user.name);
 #### API
 The API class provides helper functions to easily retrieve, update, and remove data from your Laravel endpoints
 
-* To get a listing of data, use `$api.index`
-
+* To get a listing/index of data, use `$api.index`
 ```ts
-const users =  $api.index<models.User>('/user', { limit: 9 })
+const users =  $api.index<models.User>('/user', { page: 1 })
 ```
+
+* To get an individual by id, use `$api.get`
+```ts
+const users =  $api.get<models.User>('/user/1')
+```
+
+* To update with an id, use $api.put`
+```ts
+const result = $api.put<models.User>('/user/1', user)
+```
+
+* To delete with an id, use $api.delete`
+```ts
+const result = $api.delete<models.User>('/user/1')
+```
+
+
+
 
 
 
