@@ -20,7 +20,12 @@
             </router-link>
           </div>
         </div>
-        <div class="flex items-center space-x-8">
+        <div class="flex items-center justify-center space-x-4">
+          <a href="https://github.com/fumeapp/laranuxt" target="_new">
+            <button>
+              <icon-client icon="mdi-github" class="w-6 h-6" />
+            </button>
+          </a>
           <header-dark-mode />
           <header-profile />
         </div>

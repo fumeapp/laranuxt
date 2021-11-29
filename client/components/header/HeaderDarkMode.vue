@@ -1,9 +1,9 @@
 <template>
   <button
-    class="text-white flex items-center justify-center p-0.5 rounded-full"
+    class="text-white flex items-center justify-center rounded-full"
     @click="toggle"
   >
-    <span id="darkModeIcon" class="w-8 h-8" />
+    <span id="darkModeIcon" class="w- h-8" />
   </button>
 </template>
 
