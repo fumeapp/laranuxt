@@ -15,7 +15,7 @@
 
 ![](resources/laranuxt.gif?raw=true)
 
-> Now with examples on using Dark Mode and the Nuxt Api module!
+> Examples on using Dark Mode, authentication, and listing data
 
 ### What is included
 
@@ -73,12 +73,12 @@ The API class provides helper functions to easily retrieve, update, and remove d
 
 * To get a listing/index of data, use `$api.index`
 ```ts
-const users =  $api.index<models.User>('/user', { page: 1 })
+const users = $api.index<models.User>('/user', { page: 1 })
 ```
 
 * To get an individual by id, use `$api.get`
 ```ts
-const users =  $api.get<models.User>('/user/1')
+const users = $api.get<models.User>('/user/1')
 ```
 
 * To update with an id, use $api.put`
