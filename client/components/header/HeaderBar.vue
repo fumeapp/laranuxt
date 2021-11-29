@@ -22,7 +22,7 @@
         </div>
         <div class="flex items-center justify-center space-x-4">
           <a href="https://github.com/fumeapp/laranuxt" target="_new">
-            <button>
+            <button class="rounded-full w-8 h-8 flex items-center justify-center">
               <icon-client icon="mdi-github" class="w-6 h-6" />
             </button>
           </a>

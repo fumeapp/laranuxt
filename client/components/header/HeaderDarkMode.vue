@@ -3,7 +3,7 @@
     class="text-white flex items-center justify-center rounded-full"
     @click="toggle"
   >
-    <span id="darkModeIcon" class="w- h-8" />
+    <span id="darkModeIcon" class="w-8 h-8" />
   </button>
 </template>
 
