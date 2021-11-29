@@ -48,7 +48,7 @@ git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer inst
 
 ### Api and Authentication
 
-* Api and auth can be access via the `$api` providedG
+* Api and auth can be accessed via the provided `$api` library
 
 ```ts
 const { $api } = useNuxtApp()
