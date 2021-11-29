@@ -28,7 +28,7 @@
       class="text-gray-400"
     />
     Logout
-</a>
+  </a>
 </template>
 
 <script lang="ts" setup>
@@ -67,7 +67,7 @@ function logout() {
     primary: {
       label: 'Yes',
       theme: 'indigo',
-      action: async () => $toast.show(await $api.logout())
+      action: async () => $toast.show(await $api.logout()),
     },
     secondary: {
       label: 'No',

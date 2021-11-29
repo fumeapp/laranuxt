@@ -8,7 +8,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     req: nuxtApp.ssrContext?.req,
     res: nuxtApp.ssrContext?.res,
     fetchOptions: {
-      baseURL: config.apiURL
+      baseURL: config.apiURL,
     },
     redirect: {
       logout: '/',

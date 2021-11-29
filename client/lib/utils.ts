@@ -22,22 +22,17 @@ export function rand (min: number, max: number): number {
 // be triggered. The function will be called after it stops being called for
 // N milliseconds. If `immediate` is passed, trigger the function on the
 // leading edge, instead of the trailing.
-export function debounce (func: Function, wait: Number, immediate?: boolean) {
-  let timeout: Number|undefined
-  return function () {
-    // @ts-ignore
-    const context = this
-    const args = arguments
+export function debounce (func: (any) => void, wait: number, immediate?: boolean) {
+  let timeout: NodeJS.Timeout|undefined
+  return function (...args) {
     const later = function () {
       timeout = undefined
-      if (!immediate) func.apply(context, args)
+      if (!immediate) func.apply(this, args)
     }
     const callNow = immediate && !timeout
-    // @ts-ignore
     clearTimeout(timeout)
-    // @ts-ignore
     timeout = setTimeout(later, wait)
-    if (callNow) func.apply(context, args)
+    if (callNow) func.apply(this, args)
   }
 }
 

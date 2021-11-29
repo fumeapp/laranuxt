@@ -1,6 +1,9 @@
 <template>
   <client-only>
-    <Icon :icon="props.icon" :class="props.class" />
+    <Icon
+      :icon="props.icon"
+      :class="props.class"
+    />
     <template #fallback>
       <div :class="props.class" />
     </template>

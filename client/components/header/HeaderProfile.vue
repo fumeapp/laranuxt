@@ -23,12 +23,11 @@
     <client-only>
       <transition-scale-in>
         <div
-          ref="target"
           v-if="profile"
+          ref="target"
           class="origin-top-right absolute z-10 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none"
-          >
+        >
           <header-profile-menu @off="toggle" />
-
         </div>
       </transition-scale-in>
     </client-only>
@@ -41,18 +40,16 @@
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core'
 import { PushButton, ModalBase } from 'tailvue'
-import { useNuxtApp } from '#app'
 import { ref } from '@vue/reactivity'
 import HeaderLoginModal from '~/components/header/HeaderLoginModal.vue'
 import TransitionScaleIn from '~/components/transition/TransitionScaleIn.vue'
 import HeaderProfileMenu from '~/components/header/HeaderProfileMenu.vue'
-const { $api, $modal, $toast } = useNuxtApp()
 
 const modal = ref(false)
 const profile = ref(false)
 const target = ref(null)
 
-onClickOutside(target, (event) => profile.value = false)
+onClickOutside(target, () => profile.value = false)
 
 const toggle = () => profile.value = !profile.value
 const login = () =>  modal.value = true

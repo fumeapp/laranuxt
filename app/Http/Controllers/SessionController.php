@@ -30,6 +30,7 @@ class SessionController extends Controller
     public function destroy(Session $session): JsonResponse|Response
     {
         $this->authorize('delete', $session);
+        $session->delete();
         return $this->success('auth.session-removed');
     }
 }

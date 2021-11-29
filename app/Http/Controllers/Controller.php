@@ -81,5 +81,4 @@ class Controller extends BaseController
     {
         return redirect(config('app.web'));
     }
-
 }

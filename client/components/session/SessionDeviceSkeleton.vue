@@ -9,7 +9,7 @@
       </push-button>
     </div>
     <div class="flex items-center justify-center py-4 border-gray-200 border-b">
-      <div class="skeleton" style="width: 72px; height: 72px;"/>
+      <div class="skeleton" style="width: 72px; height: 72px;" />
     </div>
     <div class="p-4">
       <div>

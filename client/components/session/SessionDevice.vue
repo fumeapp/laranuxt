@@ -42,7 +42,7 @@
           <icon-client
             icon="flat-color-icons:google"
             class="w-4 h-4 mr-1.5"
-           />
+          />
           Verified through Google
         </div>
         <div
@@ -89,7 +89,7 @@ const props = defineProps({
   session: {
     type: Object as PropType<api.Session>,
     required: true,
-  }
+  },
 })
 const emit = defineEmits(['refresh'])
 
@@ -128,12 +128,12 @@ function confirm (session: api.Session) {
     primary: {
       label: 'Delete Session',
       theme: 'red',
-      action: () => this.revoke(session),
+      action: () => revoke(session),
     },
     secondary: {
       label: 'Cancel',
       theme: 'white',
-      action: () => {},
+      action: () => $toast.info('Delete cancelled'),
     },
   })
 }

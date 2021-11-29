@@ -14,7 +14,7 @@ module.exports = {
     '^.+\\.js$': 'babel-jest',
     '.*\\.(vue)$': 'vue-jest',
   },
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: [
     '<rootDir>/client/components/**/*.vue',
     '<rootDir>/client/pages/**/*.vue',

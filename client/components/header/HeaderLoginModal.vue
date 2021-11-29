@@ -35,9 +35,9 @@
         <div class="w-full border-t border-gray-300 dark:border-gray-600" />
       </div>
       <div class="relative flex justify-center text-sm leading-5">
-      <span class="px-2 bg-white dark:bg-gray-800 text-gray-500">
-        Or continue with
-      </span>
+        <span class="px-2 bg-white dark:bg-gray-800 text-gray-500">
+          Or continue with
+        </span>
       </div>
     </div>
     <label class="mt-6 block text-sm font-medium leading-5 text-gray-700 dark:text-gray-500" for="login_email">Email address</label>

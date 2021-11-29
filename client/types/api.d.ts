@@ -5,18 +5,18 @@ declare global {
       success: boolean
       message: string
       type: 'success' | 'failure'
-      data: any
+      data: unknown
     }
 
     export interface MetApiResults {
       benchmark: number
       status: 'success' | 'failure'
       query: {
-        options: Record<string, any>
-        params: Record<string, any>
+        options: Record<string, unknown>
+        params: Record<string, unknown>
       }
       paginate?: MetApiPaginate
-      data: any
+      data: unknown
     }
 
     export interface MetApiPaginate {

@@ -4,7 +4,7 @@
       <div class="flex-1 truncate">
         <div class="flex items-center space-x-3">
           <h3 class="text-gray-900 dark:text-gray-200 text-sm leading-5 font-medium truncate">
-            {{ user.name }}
+            {{ props.user.name }}
           </h3>
           <span
             v-if="is_admin"
@@ -14,10 +14,10 @@
           </span>
         </div>
         <p class="mt-1 text-gray-500 dark:text-gray-400 text-sm leading-5 truncate">
-          {{ user.job }}
+          {{ props.user.job }}
         </p>
       </div>
-      <img class="w-10 h-10 bg-gray-300 dark:border-gray-600 rounded-full flex-shrink-0" :src="user.avatar" alt="avatar">
+      <img class="w-10 h-10 bg-gray-300 dark:border-gray-600 rounded-full flex-shrink-0" :src="props.user.avatar" alt="avatar">
     </div>
     <div class="border-t border-gray-200 dark:border-gray-500">
       <div class="-mt-px flex">

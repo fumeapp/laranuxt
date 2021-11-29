@@ -10,7 +10,6 @@
 <script lang="ts" setup>
 import { useDark, useToggle } from '@vueuse/core'
 import { AnimationItem } from 'lottie-web'
-import { useNuxtApp } from '#app'
 import { onMounted } from '@vue/runtime-core'
 const isDark = useDark()
 const toggleDark = useToggle((isDark))

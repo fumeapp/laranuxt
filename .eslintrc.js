@@ -5,10 +5,10 @@ module.exports = {
     node: true,
   },
   extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'plugin:nuxt/recommended',
-  ],
-  plugins: [
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended',
+    "@vue/typescript/recommended",
+
   ],
   rules: {
     // allow-dangle (syncs w/ laravel).
@@ -43,5 +43,17 @@ module.exports = {
 
     // https://eslint.vuejs.org/rules/no-v-html.html
     'vue/no-v-html': 'off',
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 3,
+      },
+      "multiline": {
+        "max": 3,
+      },
+    }],
+    "vue/multi-word-component-names": ["error", {
+      "ignores": ['default'],
+    }],
+
   },
 }

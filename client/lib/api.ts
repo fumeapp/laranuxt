@@ -1,10 +1,8 @@
 import { FetchError, FetchOptions, SearchParams } from 'ohmyfetch'
-import { reactive, Ref, ref } from '@vue/reactivity'
+import { reactive, ref } from '@vue/reactivity'
 import { IncomingMessage, ServerResponse } from 'http'
 import { useCookie } from 'h3'
 import { TailvueToast } from 'tailvue'
-import { useAsyncData, useFetch } from '#app'
-import { _AsyncData } from '#app/composables/asyncData'
 
 export interface UserLogin {
   token: string
@@ -30,7 +28,7 @@ const authConfigDefaults:AuthConfig = {
   redirect: {
     logout: '/',
     login: undefined,
-  }
+  },
 }
 
 export default class Api {
@@ -68,7 +66,7 @@ export default class Api {
     return `; ${document.cookie}`.split(`; token=`).pop().split(';').shift()
   }
 
-  private fetchOptions(params?: SearchParams, method:string = 'GET'): FetchOptions {
+  private fetchOptions(params?: SearchParams, method = 'GET'): FetchOptions {
     const fetchOptions = this.config.fetchOptions
     fetchOptions.headers = {
       Accept: 'application/json',
@@ -100,7 +98,7 @@ export default class Api {
     }
   }
 
-  public async update <Results>(endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
+  public async update (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
     try {
       return await $fetch<api.MetApiResponse>(endpoint, this.fetchOptions(params, 'PUT'))
     } catch (error) {
@@ -109,7 +107,7 @@ export default class Api {
   }
 
 
-  public async delete <Results>(endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
+  public async delete (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
     try {
       return await $fetch<api.MetApiResponse>(endpoint, this.fetchOptions(params, 'DELETE'))
     } catch (error) {
@@ -133,14 +131,12 @@ export default class Api {
         timeout: 0,
       })
 
-    if (error.response.data.exception) {
+    if (error.response.data.exception)
       this.$toast.show({
         type: 'danger',
         message: `<b>[${error.response.data.exception}]</b> <br /> ${error.response.data.message} <br /> <a href="phpstorm://open?file=/${error.response.data.file}&line=${error.response.data.line}">${error.response.data.file}:${error.response.data.line}</a>`,
         timeout: 0,
       })
-
-    }
   }
 
 
