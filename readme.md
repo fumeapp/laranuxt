@@ -48,7 +48,7 @@ git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer inst
 
 ### Api and Authentication
 
-* Api and auth can be access via the `$api` provided
+* Api and auth can be access via the `$api` providedG
 
 ```ts
 const { $api } = useNuxtApp()
@@ -67,4 +67,16 @@ console.log($api.$user.name);
 ```html
   <img class="w-8 h-8 rounded-full bg-blue-400" :src="$api.$user?.avatar" alt="User Avatar">
 ```
+
+#### API
+The API class provides helper functions to easily retrieve, update, and remove data from your Laravel endpoints
+
+* To get a listing of data, use `$api.index`
+
+```ts
+const users =  $api.index<models.User>('/user', { limit: 9 })
+```
+
+
+
 
