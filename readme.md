@@ -22,10 +22,13 @@
 [![Lint Javascript](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml)
 [![Lint PHP](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml)
 
+* For the Nuxt v3 version please visit [This branch](https://github.com/fumeapp/laranuxt)
+
 ![](client/static/laranuxt.gif?raw=true)
 
 ![](client/static/darkmode.png?raw=true)
 > Now with examples on using Dark Mode and the Nuxt Auth module!
+
 
 ### What is included
 
