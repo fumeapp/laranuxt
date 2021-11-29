@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/nuxt3/resources/laranuxt.png" width="300" />
+  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/main/resources/laranuxt.png" width="300" />
 </p>
 
 > Now supporting [Nuxt v3](https://v3.nuxtjs.org)
@@ -19,7 +19,7 @@
 
 ### What is included
 
-* [NUXT v3](https://v3.nuxtjs.org) front end, a progressive Vue.js framework
+* [NUXT v3](https://v3.nuxtjs.org) front end, a progressive Vue.js framework - For Nuxt v2 visit [this branch](https://github.com/fumeapp/laranuxttree/nuxt2)
   * [tailvue](https://github.com/fumeapp/tailvue) a collection of components built for Nuxt.js, powered by WindiCSS|TailwindCSS
   * Authentication library to assist with user sessions and logging in/out
   * Example Authentication Middleware
