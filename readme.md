@@ -46,6 +46,25 @@ git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer inst
 * run `yarn dev` in one terminal for our nuxt dev setup
 * run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
 
-### Authentication
+### Api and Authentication
 
-* TODO
+* Api and auth can be access via the `$api` provided
+
+```ts
+const { $api } = useNuxtApp()
+console.log($api.$user.name);
+```
+
+#### Authentication
+
+* Take a look at [HeaderLoginModal.vue](https://github.com/fumeapp/laranuxt/blob/main/client/components/header/HeaderLoginModal.vue#L143) to see how we pass the credentials to our library
+```ts
+  const redirect = await $api.login(result)
+  if (redirect) await router.push({path: redirect})
+  $toast.show({ type: 'success', message: 'Login Successful' })
+```
+* Once logged on, you have the boolean `$api.loggedIn` and the object `$api.$user`
+```html
+  <img class="w-8 h-8 rounded-full bg-blue-400" :src="$api.$user?.avatar" alt="User Avatar">
+```
+

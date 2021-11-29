@@ -53,8 +53,7 @@
         :readonly="loading.attempt"
         placeholder="email@address.com"
         type="email"
-        required="required"
-        @keydown.esc="modalOff"
+        @keydown.esc="off"
         @keydown.enter="attempt"
       >
     </div>
@@ -73,9 +72,10 @@
 
 <script lang="ts" setup>
 import { useNuxtApp, useRuntimeConfig } from '#app'
-import { OAuthResult } from '~/lib/api'
+import { UserLogin } from '~/lib/api'
 import { useRouter } from 'vue-router'
 import { PushButton } from 'tailvue'
+import IconClient from '~/components/IconClient.vue'
 
 const config = useRuntimeConfig()
 const router = useRouter()
@@ -89,6 +89,8 @@ const loading = reactive({
 
 onMounted(() => { if (window) messageHandler(true) })
 onBeforeUnmount(() => { if (window) messageHandler(false) })
+
+const off = () => emit('off')
 
 async function attempt (): Promise<void> {
   loading.attempt = true
@@ -114,7 +116,7 @@ function messageHandler (add: boolean): void {
   return window.removeEventListener('message', handleMessage)
 }
 
-function handleMessage (event: { data: OAuthResult }): void {
+function handleMessage (event: { data: UserLogin }): void {
   if (event.data.user && event.data.token)
     oauthComplete(event.data)
   if (event.data.error)
@@ -138,7 +140,7 @@ function login (provider: 'facebook'|'google'): void {
   }, 200)
 }
 
-const oauthComplete = async (result: OAuthResult): Promise<void> => {
+const oauthComplete = async (result: UserLogin): Promise<void> => {
   loading[result.provider] = false
   const redirect = await $api.login(result)
   if (redirect) await router.push({path: redirect})

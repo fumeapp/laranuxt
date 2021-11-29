@@ -6,7 +6,7 @@ import { TailvueToast } from 'tailvue'
 import { useAsyncData, useFetch } from '#app'
 import { _AsyncData } from '#app/composables/asyncData'
 
-export interface OAuthResult {
+export interface UserLogin {
   token: string
   user: models.User
   provider: string
@@ -51,7 +51,7 @@ export default class Api {
     }
   }
 
-  async login (result: OAuthResult): Promise<undefined|string> {
+  async login (result: UserLogin): Promise<undefined|string> {
     this.loggedIn.value = true
     this.token.value = result.token
     this.$user = reactive(result.user)
