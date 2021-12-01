@@ -1,10 +1,11 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/main/resources/laranuxt.png" width="300" />
+  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/main/resources/laranuxt.png" width="200" />
 </p>
+
+## Laravel + Nuxt.js Boilerplate
 
 > Now supporting [Nuxt v3](https://v3.nuxtjs.org)
 
-## Laravel + Nuxt.js Boilerplate
 
 [![](https://img.shields.io/badge/nuxt.js-v3-04C690.svg)](https://v3.nuxtjs.org)
 [![](https://img.shields.io/badge/Laravel-v8.73.2-ff2e21.svg)](https://laravel.com)
@@ -72,7 +73,7 @@ The API class provides helper functions to easily retrieve, update, and remove d
 
 * To get a listing/index of data, use `$api.index`
 ```ts
-const users = $api.index<models.User>('/user', { page: 1 })
+const users = $api.index<models.Users>('/user', { page: 1 })
 ```
 
 * To get an individual by id, use `$api.get`
