@@ -94,12 +94,9 @@ const off = () => emit('off')
 
 async function attempt (): Promise<void> {
   loading.attempt = true
-  try {
-    useFetch('/attempt', { baseURL: config.apiURL, params: { email: email.value } })
-  } catch (e) {
-    loading.attempt = false
-    return
-  }
+  const result = await $api.store('/attempt', { email: email.value })
+  loading.attempt = false
+  if (!result) return
   $toast.show({
     type: 'success',
     title: 'Login E-mail Sent',
@@ -107,7 +104,6 @@ async function attempt (): Promise<void> {
     timeout: 5,
   })
   email.value = ''
-  loading.attempt = false
   emit('off')
 }
 
