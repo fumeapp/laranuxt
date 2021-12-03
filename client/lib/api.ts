@@ -110,7 +110,7 @@ export default class Api {
     }
   }
 
-  public async post (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
+  public async store (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
     try {
       return await $fetch<api.MetApiResponse>(endpoint, this.fetchOptions(params, 'POST'))
     } catch (error) {

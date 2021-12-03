@@ -94,7 +94,7 @@ const off = () => emit('off')
 
 async function attempt (): Promise<void> {
   loading.attempt = true
-  const result = await $api.post('/attempt', { email: email.value })
+  const result = await $api.store('/attempt', { email: email.value })
   loading.attempt = false
   if (!result) return
   $toast.show({
