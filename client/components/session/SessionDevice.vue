@@ -139,7 +139,7 @@ function confirm (session: api.Session) {
 }
 
 async function revoke (session: api.Session) {
-  if (session.current) return this.$auth.logout('local')
+  if (session.current) return $api.logout()
   $toast.show((await $api.delete(`/session/${session.token}`)).data)
   emit('refresh')
 }
