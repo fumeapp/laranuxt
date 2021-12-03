@@ -73,7 +73,11 @@ export default class Api {
       Authorization: `Bearer ${this.token.value}`,
     }
     fetchOptions.method = method
-    if (params) this.config.fetchOptions.params = params
+    if (params)
+      if (method === 'POST' || method === 'PUT')
+        this.config.fetchOptions.body = params
+      else
+        this.config.fetchOptions.params = params
     return this.config.fetchOptions
   }
 
@@ -106,6 +110,13 @@ export default class Api {
     }
   }
 
+  public async post (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
+    try {
+      return await $fetch<api.MetApiResponse>(endpoint, this.fetchOptions(params, 'POST'))
+    } catch (error) {
+      this.toastError(error)
+    }
+  }
 
   public async delete (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
     try {
@@ -141,7 +152,7 @@ export default class Api {
 
 
   public async logout (): Promise<api.MetApiResponse> {
-    const response = (await $fetch<api.MetApiResponse>('/logout', this.fetchOptions())).data
+    const response = (await $fetch<api.MetApiResponse>('/logout', this.fetchOptions())).data as api.MetApiResponse
     // if (this.config.req) setCookie(this.config.res, 'token', '', { maxAge: -99999 })
     this.invalidate()
     return response
