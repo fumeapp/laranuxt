@@ -81,17 +81,17 @@ const users = $api.index<models.Users>('/user', { page: 1 })
 const users = $api.get<models.User>('/user/1')
 ```
 
-* To update with an id, use $api.put`
+* To update with an id, use `$api.put`
 ```ts
 const result = $api.put<models.User>('/user/1', user)
 ```
 
-* To store a new record, use $api.store`
+* To store a new record, use `$api.store`
 ```ts
 const result = $api.store<models.User>('/user', { name: 'Bob', email: 'bob@mail.com' })
 ```
 
-* To delete with an id, use $api.delete`
+* To delete with an id, use `$api.delete`
 ```ts
 const result = $api.delete<models.User>('/user/1')
 ```
