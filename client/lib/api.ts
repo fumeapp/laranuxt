@@ -3,6 +3,7 @@ import { reactive, ref } from '@vue/reactivity'
 import { IncomingMessage, ServerResponse } from 'http'
 import { useCookie } from 'h3'
 import { TailvueToast } from 'tailvue'
+import { Router } from 'vue-router'
 
 export interface UserLogin {
   token: string
@@ -35,17 +36,20 @@ export default class Api {
 
   private token = ref<string|undefined>(undefined)
   public config: AuthConfig
-  public $user = <models.User|undefined>undefined
+  public $user = reactive<models.User|Record<string, unknown>>({})
   public $toast:TailvueToast
   public loggedIn = ref(false)
 
   constructor(config: AuthConfig, toast: TailvueToast) {
     this.$toast = toast
     this.config = { ...authConfigDefaults,...config }
+  }
+
+  async checkUser() {
     this.token.value = this.getToken()
     if (this.token.value)  {
       this.loggedIn.value = true
-      this.setUser().then()
+      await this.setUser()
     }
   }
 
@@ -53,12 +57,7 @@ export default class Api {
     this.loggedIn.value = true
     this.token.value = result.token
     this.$user = reactive(result.user)
-    await this.set()
     return this.config.redirect.login
-  }
-
-  private async set(): Promise<string> {
-    return await $fetch('/api/set', { params: { token: this.token.value } })
   }
 
   private getToken(): string {
@@ -73,6 +72,8 @@ export default class Api {
       Authorization: `Bearer ${this.token.value}`,
     }
     fetchOptions.method = method
+    delete this.config.fetchOptions.body
+    delete this.config.fetchOptions.params
     if (params)
       if (method === 'POST' || method === 'PUT')
         this.config.fetchOptions.body = params
@@ -82,15 +83,19 @@ export default class Api {
   }
 
   private async setUser(): Promise<void> {
-    const result = await $fetch<api.MetApiResponse & { data: models.User }>('/me', this.fetchOptions())
-    this.$user = reactive(result.data)
+    try {
+      const result = await $fetch<api.MetApiResponse & { data: models.User }>('/me', this.fetchOptions())
+      this.$user = reactive(result.data)
+    } catch (e) {
+      await this.invalidate()
+    }
   }
 
   public async index <Results>(endpoint: string, params?: SearchParams): Promise<api.MetApiResults & { data: Results }> {
     try {
       return await $fetch<api.MetApiResults & { data: Results }>(endpoint, this.fetchOptions(params))
     } catch (error) {
-      this.toastError(error)
+      await this.toastError(error)
     }
   }
 
@@ -98,35 +103,35 @@ export default class Api {
     try {
       return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
     } catch (error) {
-      this.toastError(error)
+      await this.toastError(error)
     }
   }
 
   public async update (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
     try {
-      return await $fetch<api.MetApiResponse>(endpoint, this.fetchOptions(params, 'PUT'))
+      return (await $fetch<api.MetApiResults & { data: api.MetApiResponse}>(endpoint, this.fetchOptions(params, 'PUT'))).data
     } catch (error) {
-      this.toastError(error)
+      await this.toastError(error)
     }
   }
 
   public async store (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
     try {
-      return await $fetch<api.MetApiResponse>(endpoint, this.fetchOptions(params, 'POST'))
+      return (await $fetch<api.MetApiResults & { data: api.MetApiResponse}>(endpoint, this.fetchOptions(params, 'POST'))).data
     } catch (error) {
-      this.toastError(error)
+      await this.toastError(error)
     }
   }
 
   public async delete (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
     try {
-      return await $fetch<api.MetApiResponse>(endpoint, this.fetchOptions(params, 'DELETE'))
+      return (await $fetch<api.MetApiResults & { data: api.MetApiResponse}>(endpoint, this.fetchOptions(params, 'DELETE'))).data
     } catch (error) {
-      this.toastError(error)
+      await this.toastError(error)
     }
   }
 
-  private toastError (error: FetchError): void {
+  private async toastError (error: FetchError): Promise<void> {
     if (error.response.data && error.response.data.errors)
       for (const err of error.response.data.errors)
         this.$toast.show({
@@ -134,6 +139,8 @@ export default class Api {
           message: err.detail ?? err.message ?? '',
           timeout: 0,
         })
+    if (error.response?.status === 401)
+      return await this.invalidate()
 
     if (error.response?.status === 403)
       return this.$toast.show({
@@ -151,19 +158,19 @@ export default class Api {
   }
 
 
-  public async logout (): Promise<api.MetApiResponse> {
-    const response = (await $fetch<api.MetApiResponse>('/logout', this.fetchOptions())).data as api.MetApiResponse
-    // if (this.config.req) setCookie(this.config.res, 'token', '', { maxAge: -99999 })
-    this.invalidate()
-    return response
+  public async logout (router: Router): Promise<void> {
+    const response = (await $fetch<api.MetApiResults>('/logout', this.fetchOptions()))
+    this.$toast.show(response.data)
+    await this.invalidate(router)
   }
 
-  private invalidate (): void {
+  private async invalidate (router?: Router): Promise<void> {
     this.token.value = undefined
     this.loggedIn.value = false
     this.$user = undefined
-    //if (this.config.req) setCookie(this.config.res, 'token', '', { expires: new Date('Thu, 01 Jan 1970 00:00:01 GMT') })
     if (!this.config.req) document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    if (router) await router.push(this.config.redirect.logout)
+    else if (!this.config.req) document.location = this.config.redirect.logout
   }
 
 }

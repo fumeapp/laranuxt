@@ -76,6 +76,8 @@ import { UserLogin } from '~/lib/api'
 import { useRouter } from 'vue-router'
 import { PushButton } from 'tailvue'
 import IconClient from '~/components/IconClient.vue'
+import { getCurrentInstance, onBeforeUnmount, onMounted } from '@vue/runtime-core'
+import { reactive, ref } from '@vue/reactivity'
 
 const config = useRuntimeConfig()
 const router = useRouter()
@@ -87,8 +89,11 @@ const loading = reactive({
   google: false,
 } as Record<string, boolean>)
 
-onMounted(() => { if (window) messageHandler(true) })
-onBeforeUnmount(() => { if (window) messageHandler(false) })
+
+if (getCurrentInstance() && window) {
+  onMounted(() => messageHandler(true))
+  onBeforeUnmount(() => messageHandler(false))
+}
 
 const off = () => emit('off')
 

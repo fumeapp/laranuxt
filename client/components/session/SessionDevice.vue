@@ -84,7 +84,9 @@ import IconClient from '~/components/IconClient.vue'
 import { PropType } from '@vue/runtime-core'
 import { useNuxtApp } from '#app'
 import { computed } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
 const { $toast, $modal, $api } = useNuxtApp()
+const router = useRouter()
 const props = defineProps({
   session: {
     type: Object as PropType<api.Session>,
@@ -139,8 +141,8 @@ function confirm (session: api.Session) {
 }
 
 async function revoke (session: api.Session) {
-  if (session.current) return $api.logout()
-  $toast.show((await $api.delete(`/session/${session.token}`)).data)
+  if (session.current) return $api.logout(router)
+  $toast.show((await $api.delete(`/session/${session.token}`)))
   emit('refresh')
 }
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Provider;
 use App\Models\User;
 use App\Notifications\LoginAttempt;
-use Google\Client;
+use Google_Client;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -13,10 +13,6 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
-
-    private array $owners = [
-        // 'acidjazz@gmail.com',
-    ];
 
     /**
      * Provider a redirect URL
@@ -32,24 +28,26 @@ class AuthController extends Controller
         return Socialite::driver($provider)->stateless()->redirect();
     }
 
-    public function onetap(string $credential): Response|JsonResponse
+
+    /*
+    public function onetap(string $credential)
     {
         $client = new Client(['client_id' => config('services.google.client_id')]);
-        $oaUser = (object)$client->verifyIdToken($credential);
+        $oaUser = (object) $client->verifyIdToken($credential);
         if (!isset($oaUser->sub)) {
             return $this->error('auth.provider-invalid');
         }
         $user = $this->oaHandle($oaUser, 'google');
 
-        /** @var User $user */
+        // @var User $user
         auth()->login($user, 'google');
 
         return $this->render([
             'token' => auth()->token(),
             'user' => auth()->user(),
-        ]);
+        ])->cookie('token', auth()->token(), 0, '');
     }
-
+    */
 
     /**
      * Callback hit by the provider to verify user
@@ -68,6 +66,7 @@ class AuthController extends Controller
 
         $user = $this->oaHandle($oaUser, $provider);
 
+        /** @var User $user */
         auth()->login($user, $provider);
 
         return $this->response($provider);
@@ -120,7 +119,7 @@ class AuthController extends Controller
                     'provider' => $provider,
                 ])
             ])
-        );
+        )->cookie('token', auth()->token(), strtotime('+30 days'), '/', '', true, false);
     }
 
     /**
@@ -146,13 +145,6 @@ class AuthController extends Controller
             'payload' => $payload,
         ]);
 
-        if (in_array($email, $this->owners)) {
-            $user->is_sub = true;
-            $user->save();
-        }
-
-        // app(StripeService::class, ['user' => $user])->user();
-
         return $user;
     }
 
@@ -172,7 +164,7 @@ class AuthController extends Controller
         if (!$user = User::where('email', $request->email)->first()) {
             $user = $this->createUser(
                 'email',
-                explode('@', $request->email)[ 0 ],
+                explode('@', $request->email)[0],
                 $request->email,
                 'https://www.gravatar.com/avatar/' . md5($request->email),
                 []
@@ -205,7 +197,7 @@ class AuthController extends Controller
             'token' => auth()->token(),
             'user' => auth()->user(),
             'action' => $login->action,
-        ]);
+        ])->cookie('token', auth()->token(), strtotime('+30 days'), '/', '', true, false);
     }
 
     /**
@@ -244,9 +236,9 @@ class AuthController extends Controller
      *
      * @return mixed
      */
-    public function logout()
+    public function logout(): Response|JsonResponse
     {
         auth()->logout();
-        return $this->success('auth.logout');
+        return $this->success('auth.logout')->cookie('token', false, 0);
     }
 }

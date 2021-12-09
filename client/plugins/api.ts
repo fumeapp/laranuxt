@@ -1,10 +1,10 @@
 import { defineNuxtPlugin, useNuxtApp, useRuntimeConfig } from '#app'
 import Api from '~/lib/api'
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp) => {
   const config = useRuntimeConfig()
   const { $toast } = useNuxtApp()
-  nuxtApp.provide('api', new Api({
+  const api = new Api({
     req: nuxtApp.ssrContext?.req,
     res: nuxtApp.ssrContext?.res,
     fetchOptions: {
@@ -12,9 +12,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
     redirect: {
       logout: '/',
-      login: '/gated',
+      login: '/home',
     },
-  }, $toast))
+  }, $toast)
+  await api.checkUser()
+  nuxtApp.provide('api', api)
 })
 
 declare module '#app' {
@@ -22,4 +24,3 @@ declare module '#app' {
     $api: Api
   }
 }
-

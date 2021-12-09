@@ -34,7 +34,9 @@
 <script lang="ts" setup>
 import IconClient from '~/components/IconClient.vue'
 import { useNuxtApp } from '#app'
+import { useRouter } from 'vue-router'
 const { $api, $modal, $toast } = useNuxtApp()
+const router = useRouter()
 
 const props = defineProps({
   mobile: Boolean,
@@ -67,7 +69,7 @@ function logout() {
     primary: {
       label: 'Yes',
       theme: 'indigo',
-      action: async () => $toast.show(await $api.logout()),
+      action: () => $api.logout(router),
     },
     secondary: {
       label: 'No',

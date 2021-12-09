@@ -11,13 +11,12 @@
 import { useNuxtApp } from '#app'
 import { useAuthMiddleware } from '~/composables/useAuthMiddleware'
 import SessionList from '~/components/session/SessionList.vue'
-import { onMounted } from '@vue/runtime-core'
 import { ref } from '@vue/reactivity'
 const { $api } = useNuxtApp()
 
 useAuthMiddleware()
 const sessions = ref(undefined)
 const get = async () => sessions.value = (await $api.index<api.Sessions>('/session'))?.data
-onMounted(() => get())
+get()
 
 </script>
