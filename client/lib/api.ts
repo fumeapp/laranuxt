@@ -4,6 +4,7 @@ import { IncomingMessage, ServerResponse } from 'http'
 import { useCookie } from 'h3'
 import { TailvueToast } from 'tailvue'
 import { Router } from 'vue-router'
+import Cookies from 'universal-cookie'
 
 export interface UserLogin {
   token: string
@@ -38,25 +39,29 @@ export default class Api {
   public config: AuthConfig
   public $user = reactive<models.User|Record<string, unknown>>({})
   public $toast:TailvueToast
-  public loggedIn = ref(false)
+  public loggedIn = ref<boolean>(false)
 
   constructor(config: AuthConfig, toast: TailvueToast) {
     this.$toast = toast
     this.config = { ...authConfigDefaults,...config }
+    this.checkUser()
   }
 
-  async checkUser() {
+  checkUser() {
     this.token.value = this.getToken()
     if (this.token.value)  {
       this.loggedIn.value = true
-      await this.setUser()
+      this.setUser().then()
     }
+    else this.loggedIn.value = false
   }
 
   async login (result: UserLogin): Promise<undefined|string> {
     this.loggedIn.value = true
     this.token.value = result.token
-    this.$user = reactive(result.user)
+    Object.assign(this.$user, result.user)
+    const cookies = new Cookies()
+    cookies.set('token', this.token.value, { path: '/', maxAge: 60*60*24*30 })
     return this.config.redirect.login
   }
 
@@ -85,7 +90,7 @@ export default class Api {
   private async setUser(): Promise<void> {
     try {
       const result = await $fetch<api.MetApiResponse & { data: models.User }>('/me', this.fetchOptions())
-      this.$user = reactive(result.data)
+      Object.assign(this.$user, result.data)
     } catch (e) {
       await this.invalidate()
     }
@@ -139,6 +144,7 @@ export default class Api {
           message: err.detail ?? err.message ?? '',
           timeout: 0,
         })
+
     if (error.response?.status === 401)
       return await this.invalidate()
 
@@ -167,7 +173,7 @@ export default class Api {
   private async invalidate (router?: Router): Promise<void> {
     this.token.value = undefined
     this.loggedIn.value = false
-    this.$user = undefined
+    Object.assign(this.$user, {})
     if (!this.config.req) document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     if (router) await router.push(this.config.redirect.logout)
     else if (!this.config.req) document.location = this.config.redirect.logout

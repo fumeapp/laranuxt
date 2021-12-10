@@ -152,8 +152,8 @@ function login (provider: 'facebook'|'google'): void {
 const oauthComplete = async (result: UserLogin): Promise<void> => {
   loading[result.provider] = false
   const redirect = await $api.login(result)
-  if (redirect) await router.push({path: redirect})
   $toast.show({ type: 'success', message: 'Login Successful' })
+  await router.push({path: redirect})
   emit('off')
 }
 </script>

@@ -33,6 +33,7 @@
     "lottie-web": "^5.8.1",
     "nuxt-windicss": "^2.0.12",
     "nuxt3": "^3.0.0-27294839.7e5e50b",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.2",
+    "universal-cookie": "^4.0.4"
   }
 }

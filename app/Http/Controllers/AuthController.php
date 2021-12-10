@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Provider;
 use App\Models\User;
 use App\Notifications\LoginAttempt;
-use Google_Client;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -119,7 +118,7 @@ class AuthController extends Controller
                     'provider' => $provider,
                 ])
             ])
-        )->cookie('token', auth()->token(), strtotime('+30 days'), '/', '', true, false);
+        )->cookie('token', auth()->token(), 60 * 24 * 30, '/', '', true, false);
     }
 
     /**
@@ -131,7 +130,7 @@ class AuthController extends Controller
      * @param array $payload
      * @return User
      */
-    private function createUser(string $provider, string $name, string $email, string $avatar, array $payload)
+    private function createUser(string $provider, string $name, string $email, string $avatar, array $payload): User
     {
         $user = User::create([
             'name' => $name,
@@ -197,7 +196,7 @@ class AuthController extends Controller
             'token' => auth()->token(),
             'user' => auth()->user(),
             'action' => $login->action,
-        ])->cookie('token', auth()->token(), strtotime('+30 days'), '/', '', true, false);
+        ])->cookie('token', auth()->token(), 60 * 24 * 30, '/', '', true, false);
     }
 
     /**
@@ -239,6 +238,6 @@ class AuthController extends Controller
     public function logout(): Response|JsonResponse
     {
         auth()->logout();
-        return $this->success('auth.logout')->cookie('token', false, 0);
+        return $this->success('auth.logout')->cookie('token', false, 0, '/', '', true, false);
     }
 }
