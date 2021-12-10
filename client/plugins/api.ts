@@ -7,7 +7,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.provide('api',
     new Api({
       req: nuxtApp.ssrContext?.req,
-      res: nuxtApp.ssrContext?.res,
       fetchOptions: {
         baseURL: config.apiURL,
       },

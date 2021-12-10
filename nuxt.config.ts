@@ -31,7 +31,7 @@ export default defineNuxtConfig({
   ** https://v3.nuxtjs.org/docs/directory-structure/nuxt.config#buildmodules
   */
   buildModules: [
-    '@vueuse/core/nuxt',
+    '@vueuse/nuxt',
     'nuxt-windicss',
     '@tailvue/nuxt',
   ],

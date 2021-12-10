@@ -16,7 +16,9 @@
     "seed": "./artisan migrate:fresh --seed",
     "caches": "./artisan config:cache; ./artisan route:cache; ./artisan cache:clear; ./artisan event:clear;"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@vueuse/nuxt": "^7.2.2"
+  },
   "devDependencies": {
     "@iconify/vue": "^3.1.1",
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
@@ -25,7 +27,6 @@
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/eslint-config-typescript": "^9.1.0",
     "@vue/test-utils": "^2.0.0-rc.17",
-    "@vueuse/core": "^7.0.0",
     "dayjs": "^1.10.7",
     "eslint": "^8.3.0",
     "eslint-plugin-vue": "^8.1.1",
