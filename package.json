@@ -17,11 +17,11 @@
     "caches": "./artisan config:cache; ./artisan route:cache; ./artisan cache:clear; ./artisan event:clear;"
   },
   "dependencies": {
-    "@vueuse/nuxt": "^7.2.2"
   },
   "devDependencies": {
     "@iconify/vue": "^3.1.1",
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
+    "@vueuse/nuxt": "^7.2.2",
     "@tailvue/nuxt": "^0.1.33",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
