@@ -32,15 +32,17 @@
       </transition-scale-in>
     </client-only>
   </div>
-  <modal-base v-if="modal" :destroyed="off">
-    <header-login-modal @off="off" />
-  </modal-base>
+  <header-login-modal
+    v-if="modal"
+    :destroyed="off"
+    @off="off"
+  />
 </template>
 
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core'
-import { PushButton, ModalBase } from 'tailvue'
 import { ref } from '@vue/reactivity'
+import { PushButton } from 'tailvue'
 import HeaderLoginModal from '~/components/header/HeaderLoginModal.vue'
 import TransitionScaleIn from '~/components/transition/TransitionScaleIn.vue'
 import HeaderProfileMenu from '~/components/header/HeaderProfileMenu.vue'

@@ -1,80 +1,82 @@
 <template>
-  <div class="bg-white dark:bg-gray-800 py-8 px-4 sm:px-10">
-    <div class="grid grid-cols-2 gap-3">
-      <div>
-        <push-button class="w-full justify-center" @click="login('google')">
-          <Icon-client
-            v-if="loading.google"
-            icon="gg:spinner-two"
-            class="w-6 h-6 text-indigo-600 animate-spin"
-          />
-          <Icon-client
-            v-else
-            icon="flat-color-icons:google"
-            class="w-6 h-6"
-          />
-        </push-button>
+  <modal-base :destroyed="props.destroyed">
+    <div class="bg-white dark:bg-gray-800 py-8 px-4 sm:px-10">
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <push-button class="w-full justify-center" @click="login('google')">
+            <Icon-client
+              v-if="loading.google"
+              icon="gg:spinner-two"
+              class="w-6 h-6 text-indigo-600 animate-spin"
+            />
+            <Icon-client
+              v-else
+              icon="flat-color-icons:google"
+              class="w-6 h-6"
+            />
+          </push-button>
+        </div>
+        <div>
+          <push-button class="w-full justify-center" @click="login('facebook')">
+            <icon-client
+              v-if="loading.facebook"
+              icon="gg:spinner-two"
+              class="w-6 h-6 text-indigo-600 animate-spin"
+            />
+            <icon-client
+              v-else
+              icon="logos:facebook"
+              class="w-6 h-6"
+            />
+          </push-button>
+        </div>
       </div>
-      <div>
-        <push-button class="w-full justify-center" @click="login('facebook')">
-          <icon-client
-            v-if="loading.facebook"
-            icon="gg:spinner-two"
-            class="w-6 h-6 text-indigo-600 animate-spin"
-          />
-          <icon-client
-            v-else
-            icon="logos:facebook"
-            class="w-6 h-6"
-          />
-        </push-button>
+      <div class="mt-6 relative">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300 dark:border-gray-600" />
+        </div>
+        <div class="relative flex justify-center text-sm leading-5">
+          <span class="px-2 bg-white dark:bg-gray-800 text-gray-500">
+            Or continue with
+          </span>
+        </div>
       </div>
-    </div>
-    <div class="mt-6 relative">
-      <div class="absolute inset-0 flex items-center">
-        <div class="w-full border-t border-gray-300 dark:border-gray-600" />
+      <label class="mt-6 block text-sm font-medium leading-5 text-gray-700 dark:text-gray-500" for="login_email">Email address</label>
+      <div class="mt-1 relative rounded-md shadow-sm">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <icon-client icon="mdi:envelope" class="w-5 h-5 text-gray-400" />
+        </div>
+        <input
+          id="login_email"
+          ref="input"
+          v-model="email"
+          class="form-input appearance-none block dark:bg-gray-600 w-full px-3 py-2 pl-10 border border-gray-300 dark:border-gray-500 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+          :readonly="loading.attempt"
+          placeholder="email@address.com"
+          type="email"
+          @keydown.esc="off"
+          @keydown.enter="attempt"
+        >
       </div>
-      <div class="relative flex justify-center text-sm leading-5">
-        <span class="px-2 bg-white dark:bg-gray-800 text-gray-500">
-          Or continue with
+      <div class="mt-6">
+        <span class="block w-full rounded-md shadow-sm">
+          <push-button theme="indigo" class="w-full justify-center" @click="attempt">
+            Sign in / Register
+            <div v-if="loading.attempt" class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <icon-client icon="gg:spinner-two" class="w-5 h-5 text-indigo-200 animate-spin" />
+            </div>
+          </push-button>
         </span>
       </div>
     </div>
-    <label class="mt-6 block text-sm font-medium leading-5 text-gray-700 dark:text-gray-500" for="login_email">Email address</label>
-    <div class="mt-1 relative rounded-md shadow-sm">
-      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-        <icon-client icon="mdi:envelope" class="w-5 h-5 text-gray-400" />
-      </div>
-      <input
-        id="login_email"
-        ref="input"
-        v-model="email"
-        class="form-input appearance-none block dark:bg-gray-600 w-full px-3 py-2 pl-10 border border-gray-300 dark:border-gray-500 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-        :readonly="loading.attempt"
-        placeholder="email@address.com"
-        type="email"
-        @keydown.esc="off"
-        @keydown.enter="attempt"
-      >
-    </div>
-    <div class="mt-6">
-      <span class="block w-full rounded-md shadow-sm">
-        <push-button theme="indigo" class="w-full justify-center" @click="attempt">
-          Sign in / Register
-          <div v-if="loading.attempt" class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <icon-client icon="gg:spinner-two" class="w-5 h-5 text-indigo-200 animate-spin" />
-          </div>
-        </push-button>
-      </span>
-    </div>
-  </div>
+  </modal-base>
 </template>
 
 <script lang="ts" setup>
 import { useNuxtApp, useRuntimeConfig } from '#app'
 import { UserLogin } from '~/lib/api'
 import { useRouter } from 'vue-router'
-import { PushButton } from 'tailvue'
+import { PushButton, ModalBase } from 'tailvue'
 import IconClient from '~/components/IconClient.vue'
 import { getCurrentInstance, onBeforeUnmount, onMounted } from '@vue/runtime-core'
 import { reactive, ref } from '@vue/reactivity'
@@ -89,6 +91,12 @@ const loading = reactive({
   google: false,
 } as Record<string, boolean>)
 
+const props = defineProps({
+  destroyed: {
+    type: Function,
+    required: true,
+  },
+})
 
 if (getCurrentInstance() && window) {
   onMounted(() => messageHandler(true))
