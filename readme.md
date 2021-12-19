@@ -61,7 +61,6 @@ console.log($api.$user.name);
 ```ts
   const redirect = await $api.login(result)
   if (redirect) await router.push({path: redirect})
-  $toast.show({ type: 'success', message: 'Login Successful' })
 ```
 * Once logged on, you have the boolean `$api.loggedIn` and the object `$api.$user`
 ```html

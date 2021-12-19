@@ -60,6 +60,7 @@ export default class Api {
     this.token.value = result.token
     Object.assign(this.$user, result.user)
     this.cookies.set('token', this.token.value, { path: '/', maxAge: 60*60*24*30 })
+    this.$toast.show({ type: 'success', message: 'Login Successful' })
     return this.config.redirect.login
   }
 
@@ -134,13 +135,21 @@ export default class Api {
     }
   }
 
+  public async attempt (token: string | string[]): Promise<UserLogin> {
+    try {
+      return (await $fetch<api.MetApiResponse & { data: UserLogin }>('/login', this.fetchOptions({ token }, 'POST'))).data
+    } catch (error) {
+      await this.toastError(error)
+    }
+  }
+
   private async toastError (error: FetchError): Promise<void> {
     if (error.response.data && error.response.data.errors)
       for (const err of error.response.data.errors)
         this.$toast.show({
           type: 'danger',
           message: err.detail ?? err.message ?? '',
-          timeout: 0,
+          timeout: 12,
         })
 
     if (error.response?.status === 401)

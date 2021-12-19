@@ -51,9 +51,7 @@ module.exports = {
         "max": 3,
       },
     }],
-    "vue/multi-word-component-names": ["error", {
-      "ignores": ['default'],
-    }],
-
+    // Turn this off until we can figure out how to ignore pages/ and layouts/
+    "vue/multi-word-component-names": "off",
   },
 }
