@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PushButton } from 'tailvue'
-import { useAsyncData, useNuxtApp } from '#app'
-import { ref, Ref } from '@vue/reactivity'
+import { useNuxtApp } from '#app'
+import { ref } from '@vue/reactivity'
 import ContactCardSkeleton from '~/components/contact/ContactCardSkeleton.vue'
 import ContactCard from '~/components/contact/ContactCard.vue'
 import IconClient from '~/components/IconClient.vue'
