@@ -17,19 +17,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [Controller::class, 'routes'])
-    ->name('route information')
+    ->name('entry-point')
     ->withoutMiddleware('api');
-Route::get('/example', [Controller::class, 'example'])->name('example route');
-Route::get('/error', [Controller::class, 'error'])->name('error route');
+Route::get('example', [Controller::class, 'example'])->name('example');
+Route::get('error', [Controller::class, 'error'])->name('error');
 
 // Authentication
-Route::get('/login', [Controller::class, 'auth'])->name('login');
-Route::get('redirect/{provider}', [AuthController::class, 'redirect'])->name('redirect to provider');
-Route::get('callback/{provider}', [AuthController::class, 'callback'])->name('provider callback');
-Route::get('onetap/{credential}', [AuthController::class, 'onetap'])->name('onetap support');
-Route::post('attempt', [AuthController::class, 'attempt'])->name('email login attempt');
-Route::post('login', [AuthController::class, 'login'])->name('attempt to start session');
-Route::get('logout', [AuthController::class, 'logout'])->middleware('auth:api')->name('remove session');
-Route::get('me', [AuthController::class, 'me'])->middleware('auth:api')->name('get logged in user');
+Route::get('login', [Controller::class, 'auth'])->name('login');
+Route::get('redirect/{provider}', [AuthController::class, 'redirect'])->name('provider.redirect');
+Route::get('callback/{provider}', [AuthController::class, 'callback'])->name('provider.callback');
+Route::get('onetap/{credential}', [AuthController::class, 'onetap'])->name('onetap.support');
+Route::post('attempt', [AuthController::class, 'attempt'])->name('auth.attempt');
+Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth:api')->name('auth.logout');
+Route::get('me', [AuthController::class, 'me'])->middleware('auth:api')->name('auth.session');
 
 Route::apiResource('session', SessionController::class)->middleware('auth:api');
