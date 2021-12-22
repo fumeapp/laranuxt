@@ -35,7 +35,7 @@
 import IconClient from '~/components/IconClient.vue'
 import { useNuxtApp } from '#app'
 import { useRouter } from 'vue-router'
-const { $api, $modal, $toast } = useNuxtApp()
+const { $api, $modal } = useNuxtApp()
 const router = useRouter()
 
 const props = defineProps({
