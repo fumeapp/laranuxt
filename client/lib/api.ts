@@ -119,9 +119,9 @@ export default class Api {
     }
   }
 
-  public async store (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
+  public async store <Result>(endpoint: string, params?: SearchParams): Promise<api.MetApiResponse & { data: Result }> {
     try {
-      return (await $fetch<api.MetApiResults & { data: api.MetApiResponse}>(endpoint, this.fetchOptions(params, 'POST'))).data
+      return (await $fetch<api.MetApiResults & { data: api.MetApiResponse & { data: Result } }>(endpoint, this.fetchOptions(params, 'POST'))).data
     } catch (error) {
       await this.toastError(error)
     }
@@ -144,6 +144,7 @@ export default class Api {
   }
 
   private async toastError (error: FetchError): Promise<void> {
+
     if (error.response.data && error.response.data.errors)
       for (const err of error.response.data.errors)
         this.$toast.show({
@@ -182,7 +183,7 @@ export default class Api {
     Object.assign(this.$user, {})
     this.cookies.remove('token')
     if (router) await router.push(this.config.redirect.logout)
-    else if (!this.config.req) document.location = this.config.redirect.logout
+    else if (!this.config.req) document.location.href = this.config.redirect.logout
   }
 
 }
