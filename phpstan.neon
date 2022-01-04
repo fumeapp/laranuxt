@@ -6,7 +6,7 @@ parameters:
     paths:
         - app
 
-    # Determines the level of checking. 5 is a good starter point
+    # Determines the level of checking. 5 is a good starter point 8 is max
     level: 5
 
     ignoreErrors:
