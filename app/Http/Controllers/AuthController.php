@@ -73,7 +73,7 @@ class AuthController extends Controller
 
     /**
      * Handle the login/creation process of a user
-     * @param $oaUser
+     * @param mixed $oaUser
      * @param string $provider
      * @return User
      */
@@ -151,9 +151,9 @@ class AuthController extends Controller
      * Login attempt via e-mail
      *
      * @param Request $request
-     * @return mixed
+     * @return Response|JsonResponse
      */
-    public function attempt(Request $request)
+    public function attempt(Request $request): Response|JsonResponse
     {
         $this
             ->option('email', 'required|email')
@@ -180,7 +180,7 @@ class AuthController extends Controller
      * Verify the link clicked in the e-mail
      *
      * @param Request $request
-     * @return mixed
+     * @return Response|JsonResponse
      */
     public function login(Request $request): Response|JsonResponse
     {
@@ -195,7 +195,7 @@ class AuthController extends Controller
         return $this->render([
             'token' => auth()->token(),
             'user' => auth()->user(),
-            'action' => $login->action,
+            'action' => $login->action, // @phpstan-ignore-line
         ])->cookie('token', auth()->token(), 60 * 24 * 30, '/', '', true, false);
     }
 
@@ -233,7 +233,7 @@ class AuthController extends Controller
     /**
      * Log a user out
      *
-     * @return mixed
+     * @return Response|JsonResponse
      */
     public function logout(): Response|JsonResponse
     {

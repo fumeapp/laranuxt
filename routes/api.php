@@ -20,7 +20,7 @@ Route::get('/', [Controller::class, 'routes'])
     ->name('entry-point')
     ->withoutMiddleware('api');
 Route::get('example', [Controller::class, 'example'])->name('example');
-Route::get('error', [Controller::class, 'error'])->name('error');
+Route::get('error', [Controller::class, 'exampleError'])->name('error');
 
 // Authentication
 Route::get('login', [Controller::class, 'auth'])->name('login');

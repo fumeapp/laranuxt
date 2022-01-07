@@ -62,7 +62,7 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<string>|bool
      */
     protected $guarded = [];
     protected $appends = ['first_name', 'is_trial',];

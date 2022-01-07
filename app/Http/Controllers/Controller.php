@@ -72,8 +72,9 @@ class Controller extends BaseController
         return $this->render($users);
     }
 
-    public function error(): Response|JsonResponse
+    public function exampleError(): Response|JsonResponse
     {
+        // @phpstan-ignore-next-line
         return $this->render(['forced_error' => $forced_error]);
     }
 
