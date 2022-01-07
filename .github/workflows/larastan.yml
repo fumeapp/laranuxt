@@ -15,7 +15,7 @@ jobs:
       matrix:
         php: [8.1]
 
-    name: PHP Version: ${{ matrix.php }}
+    name: PHP Version:${{ matrix.php }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
