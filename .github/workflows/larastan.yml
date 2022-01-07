@@ -4,6 +4,9 @@ on:
     branches-ignore:
       - staging
       - production
+    paths:
+      - '**.php'
+      - '!client/**'      
 jobs:
   stan:
     runs-on: ubuntu-latest
