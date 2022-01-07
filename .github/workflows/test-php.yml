@@ -11,6 +11,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.0, 8.1]
+
+    name: P${{ matrix.php }}
+
     steps:
       - name: 'MySQL - tweak mysql'
         run: |

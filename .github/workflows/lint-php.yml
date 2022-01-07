@@ -10,6 +10,13 @@ on:
 jobs:
   phpcs:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.0, 8.1]
+
+    name: P${{ matrix.php }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,7 +24,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: ${{ matrix.php }}
           coverage: none
           tools: composer, cs2pr
 
