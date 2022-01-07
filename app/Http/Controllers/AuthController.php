@@ -211,21 +211,27 @@ class AuthController extends Controller
             ->option('providers', 'boolean')
             ->verify();
         if ($request->providers) {
-            return $this->render(User::whereId(auth()->user()->id)->with(['providers'])->first());
+            return $this->render(User::whereId(auth()->user()?->id)->with(['providers'])->first());
         }
-        auth()->user()->session->touch();
+        auth()->user()?->session->touch();
         return $this->render(auth()->user());
     }
 
+    /**
+     * Update user info
+     *
+     * @param Request $request
+     * @return Response|JsonResponse
+     */
     public function update(Request $request)
     {
         $this
             ->option('name', 'required|string')
             ->option('avatar', 'required|url')
             ->verify();
-        auth()->user()->name = $request->name;
-        auth()->user()->avatar = $request->avatar;
-        auth()->user()->save();
+        auth()->user()->name ??= $request->name;
+        auth()->user()->avatar ??= $request->avatar;
+        auth()->user()?->save();
 
         return $this->success('user.updated');
     }

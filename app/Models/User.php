@@ -87,7 +87,7 @@ class User extends Authenticatable
 
     public function getFirstNameAttribute(): string
     {
-        return explode(' ', $this->name)[ 0 ];
+        return explode(' ', $this->name ?? '')[ 0 ];
     }
 
     public function providers(): HasMany
