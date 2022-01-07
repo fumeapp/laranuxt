@@ -6,6 +6,7 @@ on:
       - production
     paths:
       - '**.php'
+      - '!client/**'
 jobs:
   test:
     runs-on: ubuntu-latest
