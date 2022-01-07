@@ -4,6 +4,8 @@ on:
     branches-ignore:
       - staging
       - production
+    paths:
+      - 'client/**'
 jobs:
   eslint:
     runs-on: ubuntu-latest
