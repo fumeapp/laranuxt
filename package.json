@@ -14,7 +14,8 @@
     "test": "jest --config tests/js/jest.config.js",
     "api": "./artisan serve",
     "seed": "./artisan migrate:fresh --seed",
-    "caches": "./artisan config:cache; ./artisan route:cache; ./artisan cache:clear; ./artisan event:clear;"
+    "caches": "./artisan config:cache; ./artisan route:cache; ./artisan cache:clear; ./artisan event:clear;",
+    "stan": "composer stan"
   },
   "dependencies": {},
   "devDependencies": {

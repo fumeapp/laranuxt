@@ -18,7 +18,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/socialite": "^5.2",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "nunomaduro/larastan": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -75,6 +76,9 @@
         ],
         "cs-v": [
             "@php vendor/bin/phpcs -s"
+        ],
+        "stan": [
+          "vendor/bin/phpstan analyse"
         ]
     }
 }

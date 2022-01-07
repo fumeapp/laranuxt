@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use acidjazz\Humble\Models\Attempt;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,14 +12,14 @@ class LoginAttempt extends Notification
 {
     use Queueable;
 
-    private $attempt;
+    private Attempt $attempt;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($attempt)
+    public function __construct(Attempt $attempt)
     {
         $this->attempt = $attempt;
     }
