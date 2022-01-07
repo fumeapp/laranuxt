@@ -42,7 +42,7 @@ get()
         </push-button>
         <push-button @click="error">
           <icon-client icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
-          Force PHP Error - Test
+          Force PHP Error
         </push-button>
       </div>
     </div>
