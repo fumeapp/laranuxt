@@ -12,7 +12,6 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
-
     /**
      * Provider a redirect URL
      *
