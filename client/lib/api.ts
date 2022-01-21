@@ -33,7 +33,7 @@ const authConfigDefaults:AuthConfig = {
 
 export default class Api {
 
-  private token = ref<string|undefined>(undefined)
+  public token = ref<string|undefined>(undefined)
   private cookies:Cookies = new Cookies();
   public config: AuthConfig
   public $user = reactive<models.User|Record<string, unknown>>({})
