@@ -1,0 +1,27 @@
+import { defineNuxtPlugin, useNuxtApp, useRuntimeConfig } from '#app'
+import Echo from 'laravel-echo'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  const config = useRuntimeConfig()
+  const { $api } = useNuxtApp()
+  const echo = new Echo({
+    broadcaster: 'pusher',
+    key: config.pusherAppKey,
+    cluster: 'mt1',
+    authEndpoint: `${config.apiURL}/broadcasting/auth`,
+    forceTls: true,
+    encrypted: true,
+    auth: {
+      headers: {
+        Authorization: `Bearer ` + $api.token.value,
+      },
+    },
+  })
+  nuxtApp.provide('echo', echo)
+})
+
+declare module '#app' {
+  interface NuxtApp {
+    $echo: typeof Echo
+  }
+}
