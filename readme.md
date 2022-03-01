@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/acidjazz/laranuxt/main/resources/laranuxt.png" width="200" />
+  <img src="https://raw.githubusercontent.com/fumeapp/laranuxt/main/resources/laranuxt.png" width="200" />
 </p>
 
 ## Laravel + Nuxt.js Boilerplate
@@ -9,9 +9,9 @@
 
 [![](https://img.shields.io/badge/nuxt.js-v3-04C690.svg)](https://v3.nuxtjs.org)
 [![](https://img.shields.io/badge/Laravel-v9.2.0-ff2e21.svg)](https://laravel.com)
-![Test PHP](https://github.com/acidjazz/laranuxt/workflows/Test%20PHP/badge.svg)
-[![Lint Javascript](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml)
-[![Lint PHP](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml)
+![Test PHP](https://github.com/fumeapp/laranuxt/workflows/Test%20PHP/badge.svg)
+[![Lint Javascript](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml)
+[![Lint PHP](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml)
 
 ![](resources/laranuxt.gif?raw=true)
 
@@ -24,7 +24,7 @@
   * Authentication library to assist with user sessions and logging in/out
   * Example Authentication Middleware
 
-* [Laravel](https://laravel.com) - for our API - `v8.60.0`
+* [Laravel](https://laravel.com) - for our API - `v9.2.0`
   * [Model Typer](https://github.com/fumeapp/modeltyper) - Generates Typescript interfaces from Laravel Models 
   * [MetAPI](https://github.com/acidjazz/metapi) - API helpers and utilities
   * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API
@@ -37,7 +37,7 @@
 * copy `.env.example` to `.env` and configure it to your likings
 * TL;DR
  ```bash
-git clone git@github.com:acidjazz/laranuxt.git; cd laranuxt; yarn; composer install; cp .env.example .env;
+git clone git@github.com:fumeapp/laranuxt.git; cd laranuxt; yarn; composer install; cp .env.example .env;
  ```
 * Feel free to delete excess media in  `/resources/`
 
