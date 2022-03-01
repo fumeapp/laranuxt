@@ -90,6 +90,11 @@ class User extends Authenticatable
         return explode(' ', $this->name ?? '')[ 0 ];
     }
 
+    /**
+     * Get the providers for the user model.
+     *
+     * @return HasMany<Provider>
+     */
     public function providers(): HasMany
     {
         return $this->hasMany(Provider::class);

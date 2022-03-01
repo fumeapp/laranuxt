@@ -5,7 +5,6 @@ import { ref } from '@vue/reactivity'
 import ContactCardSkeleton from '~/components/contact/ContactCardSkeleton.vue'
 import ContactCard from '~/components/contact/ContactCard.vue'
 import IconClient from '~/components/IconClient.vue'
-const { $api } = useNuxtApp()
 
 export interface ExampleUser {
   name: string
@@ -15,6 +14,7 @@ export interface ExampleUser {
   avatar: string
 }
 
+const { $api } = useNuxtApp()
 const users = ref<ExampleUser[]|undefined>(undefined)
 const get = async () => users.value = (await $api.index<ExampleUser[]>('/example', { count: 9 })).data
 const error = async (): Promise<api.MetApiResponse> => await $api.get('/error')
