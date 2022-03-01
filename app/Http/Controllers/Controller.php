@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use acidjazz\Humble\Models\Session;
 use acidjazz\metapi\MetApi;
 use Faker\Factory;
 use Illuminate\Contracts\Foundation\Application;
@@ -40,6 +39,7 @@ class Controller extends BaseController
                 unset($routes[$index]);
             }
         }
+
         return '<pre>' . implode("\n", $routes) . '</pre>';
     }
 
@@ -52,6 +52,7 @@ class Controller extends BaseController
     public function example(Request $request): Response|JsonResponse
     {
         sleep(1);
+
         $this
             ->option('count', 'required|integer')
             ->verify();

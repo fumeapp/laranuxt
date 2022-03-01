@@ -228,9 +228,13 @@ class AuthController extends Controller
             ->option('name', 'required|string')
             ->option('avatar', 'required|url')
             ->verify();
-        auth()->user()->name ??= $request->name;
-        auth()->user()->avatar ??= $request->avatar;
-        auth()->user()?->save();
+
+        /** @var User $user */
+        $user = auth()->user();
+
+        $user->name ??= $request->name;
+        $user->avatar ??= $request->avatar;
+        $user->save();
 
         return $this->success('user.updated');
     }
