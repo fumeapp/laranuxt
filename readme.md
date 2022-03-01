@@ -8,7 +8,7 @@
 
 
 [![](https://img.shields.io/badge/nuxt.js-v3-04C690.svg)](https://v3.nuxtjs.org)
-[![](https://img.shields.io/badge/Laravel-v8.73.2-ff2e21.svg)](https://laravel.com)
+[![](https://img.shields.io/badge/Laravel-v9.2.0-ff2e21.svg)](https://laravel.com)
 ![Test PHP](https://github.com/acidjazz/laranuxt/workflows/Test%20PHP/badge.svg)
 [![Lint Javascript](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-js.yml)
 [![Lint PHP](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/acidjazz/laranuxt/actions/workflows/lint-php.yml)
