@@ -59,11 +59,11 @@ RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION"
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-# Set USer
+# Set User and Group
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
-# Set xdebug logging file
+# Set Xdebug logging file
 RUN chown $USER_UID:$USER_GID /var/log/xdebug.log
 
 ENV DEBIAN_FRONTEND=dialog
