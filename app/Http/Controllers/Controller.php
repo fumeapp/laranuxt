@@ -51,7 +51,9 @@ class Controller extends BaseController
      */
     public function example(Request $request): Response|JsonResponse
     {
-        sleep(1);
+        if (! app()->environment('testing')) {
+            sleep(1);
+        }
 
         $this
             ->option('count', 'required|integer')
