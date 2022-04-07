@@ -8,7 +8,7 @@
 
 
 [![](https://img.shields.io/badge/nuxt.js-v3-04C690.svg)](https://v3.nuxtjs.org)
-[![](https://img.shields.io/badge/Laravel-v9.2.0-ff2e21.svg)](https://laravel.com)
+[![](https://img.shields.io/badge/Laravel-v9.7.0-ff2e21.svg)](https://laravel.com)
 ![Test PHP](https://github.com/fumeapp/laranuxt/workflows/Test%20PHP/badge.svg)
 [![Lint Javascript](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml)
 [![Lint PHP](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml)
@@ -24,7 +24,7 @@
   * Authentication library to assist with user sessions and logging in/out
   * Example Authentication Middleware
 
-* [Laravel](https://laravel.com) - for our API - `v9.2.0`
+* [Laravel](https://laravel.com) - for our API - `v9.7.0`
   * [Model Typer](https://github.com/fumeapp/modeltyper) - Generates Typescript interfaces from Laravel Models 
   * [MetAPI](https://github.com/acidjazz/metapi) - API helpers and utilities
   * [debugbar](https://github.com/barryvdh/laravel-debugbar) - awesome debugbar for our API
@@ -94,10 +94,3 @@ const result = $api.store<models.User>('/user', { name: 'Bob', email: 'bob@mail.
 ```ts
 const result = $api.delete<models.User>('/user/1')
 ```
-
-
-
-
-
-
-
