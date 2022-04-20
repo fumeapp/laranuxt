@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   srcDir: 'client/',
@@ -27,10 +27,10 @@ export default defineNuxtConfig({
   */
   components: true,
 
-  /*
-  ** https://v3.nuxtjs.org/docs/directory-structure/nuxt.config#buildmodules
-  */
-  buildModules: [
+  /**
+   * @see https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
+   */
+   modules: [
     '@vueuse/nuxt',
     'nuxt-windicss',
     '@tailvue/nuxt',
@@ -38,6 +38,14 @@ export default defineNuxtConfig({
 
   publicRuntimeConfig: {
     apiURL: process.env.API_URL || 'http://localhost:8000',
+  },
+
+  /**
+   * WindiCSS configuration
+   * @see https://github.com/windicss/nuxt-windicss
+   */
+   windicss: {
+    analyze: false,
   },
 
 })
