@@ -36,8 +36,13 @@ export default defineNuxtConfig({
     '@tailvue/nuxt',
   ],
 
-  publicRuntimeConfig: {
-    apiURL: process.env.API_URL || 'http://localhost:8000',
+  /**
+   * @see https://v3.nuxtjs.org/guide/features/runtime-config#exposing-runtime-config
+   */
+   runtimeConfig: {
+    public: {
+      apiURL: process.env.API_URL || 'http://localhost:8000',
+    },
   },
 
   /**
