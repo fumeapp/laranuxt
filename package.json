@@ -24,15 +24,15 @@
     "@tailvue/nuxt": "^0.1.33",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
-    "@vue/eslint-config-typescript": "^9.1.0",
-    "@vueuse/nuxt": "^7.2.2",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "@vueuse/nuxt": "^8.2.6",
     "dayjs": "^1.10.7",
     "eslint": "^8.3.0",
     "eslint-plugin-vue": "^8.1.1",
     "husky": "^7.0.1",
     "lottie-web": "^5.8.1",
+    "nuxt": "^3.0.0-rc.1",
     "nuxt-windicss": "^2.0.12",
-    "nuxt3": "^3.0.0-27328916.daec432",
     "typescript": "^4.5.2",
     "universal-cookie": "^4.0.4"
   }

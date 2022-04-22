@@ -4,9 +4,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useNuxtApp } from '#app'
 import { useRoute, useRouter } from 'vue-router'
-import { useMeta } from '#meta'
 import IconClient from '~/components/IconClient.vue'
 import { getCurrentInstance, onMounted } from '@vue/runtime-core'
 
@@ -21,7 +19,7 @@ const verify = async () => {
   await router.push(redirect)
 }
 
-useMeta({ title: 'Authenticating..' })
+useHead({ title: 'Authenticating..' })
 
 if (getCurrentInstance()) onMounted(verify)
 </script>
