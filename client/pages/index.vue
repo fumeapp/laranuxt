@@ -14,12 +14,19 @@ export interface ExampleUser {
   avatar: string
 }
 
-const { $api } = useNuxtApp()
+const { $api, $crumbs } = useNuxtApp()
+
+$crumbs.set([
+  {
+    name: 'Home',
+    to: '/',
+  },
+])
+
 const users = ref<ExampleUser[]|undefined>(undefined)
 const get = async () => users.value = (await $api.index<ExampleUser[]>('/example', { count: 9 })).data
 const error = async (): Promise<api.MetApiResponse> => await $api.get('/error')
 get()
-
 </script>
 
 <template>

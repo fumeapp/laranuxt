@@ -25,7 +25,13 @@ export default defineNuxtConfig({
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
   */
-  components: true,
+  components: [
+    '~/components',
+    '~/components/contact',
+    '~/components/layout',
+    '~/components/header',
+    '~/components/transition',
+  ],
 
   /**
    * @see https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
@@ -41,6 +47,7 @@ export default defineNuxtConfig({
    */
    runtimeConfig: {
     public: {
+      webURL: process.env.WEB_URL || 'http://localhost:3000',
       apiURL: process.env.API_URL || 'http://localhost:8000',
     },
   },

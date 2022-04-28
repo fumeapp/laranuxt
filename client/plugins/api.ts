@@ -8,9 +8,9 @@ export default defineNuxtPlugin(() => {
     provide: {
       api: new Api({
           fetchOptions: {
-            baseURL: config.apiURL,
+            baseURL: config.public.apiURL,
           },
-          webUrl: config.webURL,
+          webUrl: config.public.webURL,
           redirect: {
             logout: '/',
             login: '/gated',
@@ -25,4 +25,3 @@ declare module '#app' {
     $api: Api
   }
 }
-

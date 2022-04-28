@@ -10,7 +10,7 @@
           </div>
           <div class="hidden ml-10 space-x-8 lg:block">
             <router-link
-              v-for="item in menu"
+              v-for="item in menu.main()"
               :key="item.name"
               :to="item.to"
               class="text-base py-2 px-4 rounded-md text-gray-900 dark:text-gray-200"
@@ -35,48 +35,15 @@
 </template>
 <script lang="ts" setup>
 import HeaderProfile from '~/components/header/HeaderProfile.vue'
-import { computed } from '@vue/reactivity'
 import { useNuxtApp } from '#app'
 import HeaderDarkMode from '~/components/header/HeaderDarkMode.vue'
 import IconClient from '~/components/IconClient.vue'
+import Menu from '~~/client/lib/menu'
+
+const route = useRoute()
+const router = useRouter()
 const { $api } = useNuxtApp()
 
-interface MenuItem {
-  /* Menu item name */
-  name: string
-  /* router to */
-  to: string
-  /* only show for logged in users */
-  guarded: boolean
-  /* route names to decide if active */
-  names: string[]
-}
-
-const menu = computed((): MenuItem[] =>
-  menuItems.filter(mi => $api.loggedIn.value === false ? mi.guarded === false : true ),
-)
-
-const menuItems:MenuItem[] = [
-  {
-    name: 'Home',
-    to: '/',
-    guarded: false,
-    names: ['index'],
-  },
-  {
-    name: 'Gated',
-    to: '/gated',
-    guarded: true,
-    names: ['gated'],
-  },
-  {
-    name: 'User Sessions',
-    to: '/sessions',
-    guarded: true,
-    names: ['sessions'],
-  },
-]
-
-
+const menu = new Menu(route, router, $api)
 
 </script>
