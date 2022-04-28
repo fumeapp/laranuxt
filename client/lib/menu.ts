@@ -30,7 +30,7 @@ export default class {
         name: 'Home',
         icon: 'mdi-view-dashboard',
         to: '/',
-        names: ['home'],
+        names: ['index'],
         gated: false,
       },
       {

@@ -26,7 +26,7 @@
             class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 dark:text-gray-200 font-medium border border-transparent rounded-bl-lg transition ease-in-out duration-150 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10"
             href="#"
           >
-            <icon-client icon="mdi:envelope" class="w-5 h-5 text-gray-400" />
+            <icon icon="mdi:envelope" class="w-5 h-5 text-gray-400" />
             <span class="ml-3">Email</span>
           </a>
         </div>
@@ -35,7 +35,7 @@
             class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 dark:text-gray-200 font-medium border border-transparent rounded-br-lg transition ease-in-out duration-150 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10"
             href="#"
           >
-            <icon-client icon="mdi:phone" class="w-5 h-5 text-gray-400" />
+            <icon icon="mdi:phone" class="w-5 h-5 text-gray-400" />
             <span class="ml-3">Call</span>
           </a>
         </div>
@@ -45,9 +45,9 @@
 </template>
 
 <script lang="ts" setup>
+import { Icon } from '@iconify/vue'
 import { PropType } from '@vue/runtime-core'
 import { computed } from '@vue/reactivity'
-import IconClient from '~/components/IconClient.vue'
 
 const props = defineProps({
   user: {

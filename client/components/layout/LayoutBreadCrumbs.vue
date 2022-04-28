@@ -14,7 +14,7 @@
           <li key="home">
             <div>
               <router-link to="/home" class="text-gray-400 hover:text-gray-500">
-                <icon-client icon="fa-solid:home" class="w-5 h-5" />
+                <icon icon="fa-solid:home" class="w-5 h-5" />
                 <span class="sr-only">Home</span>
               </router-link>
             </div>
@@ -22,16 +22,16 @@
 
           <li v-for="crumb in $crumbs.list.value" :key="crumb.name">
             <div v-if="crumb" class="flex items-center">
-              <icon-client icon="mdi-chevron-right" class="w-5 h-5" />
+              <icon icon="mdi-chevron-right" class="w-5 h-5" />
               <router-link v-if="crumb && crumb.to" :to="crumb.to" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">
                 <div class="flex items-center space-x-2">
-                  <icon-client v-if="crumb.icon" :icon="crumb.icon" class="w-5 h-5" />
+                  <icon v-if="crumb.icon" :icon="crumb.icon" class="w-5 h-5" />
                   <span> {{ crumb.name }} </span>
                 </div>
               </router-link>
               <span v-else class="ml-4 text-sm font-medium text-gray-500">
                 <div class="flex items-center space-x-2">
-                  <icon-client v-if="crumb.icon" :icon="crumb.icon" class="w-5 h-5" />
+                  <icon v-if="crumb.icon" :icon="crumb.icon" class="w-5 h-5" />
                   <span> {{ crumb.name }} </span>
                 </div>
               </span>
@@ -47,7 +47,7 @@
           class="flex text-xs"
         >
           <push-button size="xs">
-            <icon-client :icon="action.icon" class="w-4 h-4 mr-2.5" />
+            <icon :icon="action.icon" class="w-4 h-4 mr-2.5" />
             {{ action.name }}
           </push-button>
         </router-link>
@@ -60,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import IconClient from '~/components/IconClient.vue'
+import { Icon } from '@iconify/vue'
 import { useNuxtApp } from '#app'
 import { PushButton } from 'tailvue'
 const { $crumbs } = useNuxtApp()

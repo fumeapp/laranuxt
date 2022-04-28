@@ -1,10 +1,8 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { PushButton } from 'tailvue'
 import { useNuxtApp } from '#app'
 import { ref } from '@vue/reactivity'
-import ContactCardSkeleton from '~/components/contact/ContactCardSkeleton.vue'
-import ContactCard from '~/components/contact/ContactCard.vue'
-import IconClient from '~/components/IconClient.vue'
 
 export interface ExampleUser {
   name: string
@@ -44,11 +42,11 @@ get()
       <span class="text-sm">(1 second delay)</span>
       <div class="mt-4 flex justify-center space-x-2">
         <push-button @click="get">
-          <icon-client icon="mdi:refresh" class="w-6 h-6 text-green-600 mr-2.5" />
+          <icon icon="mdi:refresh" class="w-6 h-6 text-green-600 mr-2.5" />
           get()
         </push-button>
         <push-button @click="error">
-          <icon-client icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
+          <icon icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
           Force PHP Error
         </push-button>
       </div>

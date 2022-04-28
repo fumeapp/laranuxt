@@ -5,8 +5,8 @@
       <div class="w-full py-3 flex items-center justify-between border-b border-indigo-500 lg:border-none">
         <div class="flex items-center">
           <div class="flex w-16 h-8">
-            <icon-client icon="cib:laravel" class="w-8 h-8 text-red-400" />
-            <icon-client icon="simple-icons:nuxtdotjs" class="w-8 h-8 text-green-400 -ml-1" />
+            <icon icon="cib:laravel" class="w-8 h-8 text-red-400" />
+            <icon icon="simple-icons:nuxtdotjs" class="w-8 h-8 text-green-400 -ml-1" />
           </div>
           <div class="hidden ml-10 space-x-8 lg:block">
             <router-link
@@ -23,7 +23,7 @@
         <div class="flex items-center justify-center space-x-4">
           <a href="https://github.com/fumeapp/laranuxt" target="_new">
             <button class="rounded-full w-8 h-8 flex items-center justify-center">
-              <icon-client icon="mdi-github" class="w-6 h-6" />
+              <icon icon="mdi-github" class="w-6 h-6" />
             </button>
           </a>
           <header-dark-mode />
@@ -34,10 +34,10 @@
   </header>
 </template>
 <script lang="ts" setup>
+import { Icon } from '@iconify/vue'
 import HeaderProfile from '~/components/header/HeaderProfile.vue'
 import { useNuxtApp } from '#app'
 import HeaderDarkMode from '~/components/header/HeaderDarkMode.vue'
-import IconClient from '~/components/IconClient.vue'
 import Menu from '~~/client/lib/menu'
 
 const route = useRoute()
