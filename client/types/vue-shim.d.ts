@@ -1,4 +1,4 @@
-// import { Numeral } from 'numeral'
+import { Numeral } from 'numeral'
 import { LottiePlayer } from 'lottie-web'
 
 declare module '*.vue' {
@@ -8,7 +8,8 @@ declare module '*.vue' {
 
 declare global {
   interface Window {
-    // numeral: Numeral
+    Pusher: typeof Pusher
+    numeral: Numeral
     lottie: LottiePlayer
   }
 }
