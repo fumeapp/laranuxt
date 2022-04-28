@@ -79,6 +79,7 @@ import { useRouter } from 'vue-router'
 import { PushButton, ModalBase } from 'tailvue'
 import { getCurrentInstance, onBeforeUnmount, onMounted } from '@vue/runtime-core'
 import { reactive, ref } from '@vue/reactivity'
+import { Icon } from '@iconify/vue'
 
 const config = useRuntimeConfig()
 const router = useRouter()
