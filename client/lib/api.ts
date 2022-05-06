@@ -3,6 +3,9 @@ import { reactive, ref } from '@vue/reactivity'
 import { TailvueToast, ToastProps } from 'tailvue'
 import { Router } from 'vue-router'
 
+import Echo from 'laravel-echo'
+import Pusher from 'pusher-js'
+
 export interface UserLogin {
   token: string
   user: models.User
@@ -13,12 +16,20 @@ export interface UserLogin {
 
 export interface AuthConfig {
   fetchOptions: FetchOptions<'json'>
-  webUrl: string
+  webURL: string
+  apiURL: string
   redirect: {
     logout: string
     login: undefined|string
   }
   paymentToast?: ToastProps,
+  echoConfig?: EchoConfig,
+}
+
+export interface EchoConfig {
+  pusherAppKey: string
+  pusheAppCluster: string
+
 }
 
 export interface LoginAction {
@@ -28,7 +39,8 @@ export interface LoginAction {
 
 const authConfigDefaults:AuthConfig = {
   fetchOptions: {},
-  webUrl: 'https://localhost:3000',
+  webURL: 'https://localhost:3000',
+  apiURL: 'https://localhost:8000',
   redirect: {
     logout: '/',
     login: undefined,
@@ -40,13 +52,12 @@ export default class Api {
   public token = useCookie('token', { path: '/', maxAge: 60*60*24*30 })
   public config: AuthConfig
   public $user = reactive<models.User|Record<string, unknown>>({})
+  public $echo:undefined|Echo = undefined
   public $toast:TailvueToast
   public loggedIn = ref<boolean>(false)
   public modal = ref<boolean>(false)
   public redirect = ref<boolean>(false)
   public action = ref<null|LoginAction>(null)
-  public callback = undefined
-  public callbacked = ref<boolean>(false)
 
   constructor(config: AuthConfig, toast: TailvueToast) {
     this.$toast = toast
@@ -66,10 +77,31 @@ export default class Api {
 
   checkUser() {
     if (this.token.value !== undefined)  {
-      this.loggedIn.value = true
       this.setUser().then()
+      this.setEcho()
+      this.loggedIn.value = true
     }
     else this.loggedIn.value = false
+  }
+
+  setEcho() {
+    if (!this.config.echoConfig) return
+    if (!process.client) return
+    window.Pusher = Pusher
+    this.$echo = new Echo({
+      broadcaster: 'pusher',
+      key: this.config.echoConfig.pusherAppKey,
+      cluster: this.config.echoConfig.pusheAppCluster,
+      authEndpoint: `${this.config.apiURL}/broadcasting/auth`,
+      forceTls: true,
+      encrypted: true,
+      auth: {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ` + this.token.value,
+        },
+      },
+    })
   }
 
   async login (result: UserLogin): Promise<undefined|string> {
@@ -78,8 +110,6 @@ export default class Api {
     Object.assign(this.$user, result.user)
     this.$toast.show({ type: 'success', message: 'Login Successful', timeout: 1 })
     if (result.action && result.action.action === 'redirect') return result.action.url
-    if (this.callback && !this.callbacked.value) this.callback()
-    this.callbacked.value = true
     return this.config.redirect.login
   }
   private fetchOptions(params?: SearchParams, method = 'GET'): FetchOptions<'json'> {
@@ -87,7 +117,7 @@ export default class Api {
     fetchOptions.headers = {
       Accept: 'application/json',
       Authorization: `Bearer ${this.token.value}`,
-      Referer: this.config.webUrl,
+      Referer: this.config.webURL,
     }
     fetchOptions.method = method
     delete this.config.fetchOptions.body
@@ -118,6 +148,8 @@ export default class Api {
   }
 
   public async get <Result>(endpoint: string, params?: SearchParams): Promise<api.MetApiResponse & { data: Result }> {
+    if (params.noCatch)
+      return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
     try {
       return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
     } catch (error) {

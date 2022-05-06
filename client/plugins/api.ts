@@ -10,10 +10,15 @@ export default defineNuxtPlugin(() => {
           fetchOptions: {
             baseURL: config.public.apiURL,
           },
-          webUrl: config.public.webURL,
+          apiURL: config.public.apiURL,
+          webURL: config.public.webURL,
           redirect: {
             logout: '/',
-            login: '/gated',
+            login: '/home',
+          },
+          echoConfig: {
+            pusherAppKey: config.public.pusherAppKey,
+            pusheAppCluster: config.public.pusherAppCluster,
           },
         }, $toast),
     },
