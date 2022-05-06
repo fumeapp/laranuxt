@@ -78,7 +78,6 @@ export default class Api {
   checkUser() {
     if (this.token.value !== undefined)  {
       this.setUser().then()
-      this.setEcho()
       this.loggedIn.value = true
     }
     else this.loggedIn.value = false
@@ -108,6 +107,7 @@ export default class Api {
     this.loggedIn.value = true
     this.token.value = result.token
     Object.assign(this.$user, result.user)
+    this.setEcho()
     this.$toast.show({ type: 'success', message: 'Login Successful', timeout: 1 })
     if (result.action && result.action.action === 'redirect') return result.action.url
     return this.config.redirect.login
@@ -134,6 +134,7 @@ export default class Api {
     try {
       const result = await $fetch<api.MetApiResponse & { data: models.User }>('/me', this.fetchOptions())
       Object.assign(this.$user, result.data)
+      this.setEcho()
     } catch (e) {
       await this.invalidate()
     }
