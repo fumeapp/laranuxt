@@ -226,6 +226,7 @@ export default class Api {
   }
 
   public async logout (router: Router): Promise<void> {
+    if (this.$echo) this.$echo.disconnect()
     const response = (await $fetch<api.MetApiResults>('/logout', this.fetchOptions()))
     this.$toast.show(Object.assign(response.data, { timeout: 1 }))
     await this.invalidate(router)
