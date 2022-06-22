@@ -32,6 +32,7 @@ class SessionController extends Controller
     {
         $this->authorize('delete', $session);
         $session->delete();
+
         return $this->success('auth.session-removed');
     }
 }

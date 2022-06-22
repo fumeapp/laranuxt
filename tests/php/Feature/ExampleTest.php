@@ -52,13 +52,11 @@ class ExampleTest extends TestCase
 
         $this->json('get', "/example?count={$count}")
             ->assertOk()
-            ->assertJson(fn(AssertableJson $json) =>
-                $json->where('status', 'success')
+            ->assertJson(fn (AssertableJson $json) => $json->where('status', 'success')
                     ->has('benchmark')
                     ->has('query')
                     ->has('data')
-                    ->has('data.0', fn($json) =>
-                        $json->has('name')
+                    ->has('data.0', fn ($json) => $json->has('name')
                             ->has('job')
                             ->has('email')
                             ->has('avatar')));

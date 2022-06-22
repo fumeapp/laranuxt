@@ -65,8 +65,10 @@ class User extends Authenticatable
      * @var array<string>|bool
      */
     protected $guarded = [];
-    protected $appends = ['first_name', 'is_trial',];
-    protected $casts = [ 'is_sub' => 'boolean' ];
+
+    protected $appends = ['first_name', 'is_trial'];
+
+    protected $casts = ['is_sub' => 'boolean'];
 
     public array $interfaces = [
         'location' => [
@@ -87,7 +89,7 @@ class User extends Authenticatable
 
     public function getFirstNameAttribute(): string
     {
-        return explode(' ', $this->name ?? '')[ 0 ];
+        return explode(' ', $this->name ?? '')[0];
     }
 
     /**
