@@ -7891,21 +7891,22 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v0.1.1",
+            "version": "v0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "d32c4decbd15989f6612016a0bb1bd93f57ae96b"
+                "reference": "5d3ddb86ce445b50e342b04e90cb43cf43f0d2b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/d32c4decbd15989f6612016a0bb1bd93f57ae96b",
-                "reference": "d32c4decbd15989f6612016a0bb1bd93f57ae96b",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/5d3ddb86ce445b50e342b04e90cb43cf43f0d2b7",
+                "reference": "5d3ddb86ce445b50e342b04e90cb43cf43f0d2b7",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-tokenizer": "*",
+                "ext-xml": "*",
                 "php": "^8.0"
             },
             "require-dev": {
@@ -7951,7 +7952,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2022-06-22T16:18:49+00:00"
+            "time": "2022-06-23T16:21:52+00:00"
         },
         {
             "name": "maximebf/debugbar",

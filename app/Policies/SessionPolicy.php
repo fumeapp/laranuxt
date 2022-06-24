@@ -13,8 +13,8 @@ class SessionPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param User $user
-     * @param Session $session
+     * @param  User  $user
+     * @param  Session  $session
      * @return bool
      */
     public function delete(User $user, Session $session): bool

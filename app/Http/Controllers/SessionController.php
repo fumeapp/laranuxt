@@ -24,8 +24,9 @@ class SessionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Session $session
+     * @param  Session  $session
      * @return JsonResponse|Response
+     *
      * @throws AuthorizationException
      */
     public function destroy(Session $session): JsonResponse|Response

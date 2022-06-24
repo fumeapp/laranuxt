@@ -15,7 +15,7 @@ class AuthController extends Controller
     /**
      * Provider a redirect URL
      *
-     * @param string $provider
+     * @param  string  $provider
      * @return mixed
      */
     public function redirect(string $provider): mixed
@@ -50,8 +50,8 @@ class AuthController extends Controller
     /**
      * Callback hit by the provider to verify user
      *
-     * @param string $provider
-     * @param Request $request
+     * @param  string  $provider
+     * @param  Request  $request
      * @return Response
      */
     public function callback(string $provider, Request $request): Response
@@ -72,8 +72,9 @@ class AuthController extends Controller
 
     /**
      * Handle the login/creation process of a user
-     * @param mixed $oaUser
-     * @param string $provider
+     *
+     * @param  mixed  $oaUser
+     * @param  string  $provider
      * @return User
      */
     private function oaHandle($oaUser, string $provider): User
@@ -122,11 +123,12 @@ class AuthController extends Controller
 
     /**
      * Create new users with their initial team
-     * @param string $provider
-     * @param string $name
-     * @param string $email
-     * @param string $avatar
-     * @param array $payload
+     *
+     * @param  string  $provider
+     * @param  string  $name
+     * @param  string  $email
+     * @param  string  $avatar
+     * @param  array  $payload
      * @return User
      */
     private function createUser(string $provider, string $name, string $email, string $avatar, array $payload): User
@@ -149,7 +151,7 @@ class AuthController extends Controller
     /**
      * Login attempt via e-mail
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return Response|JsonResponse
      */
     public function attempt(Request $request): Response|JsonResponse
@@ -178,7 +180,7 @@ class AuthController extends Controller
     /**
      * Verify the link clicked in the e-mail
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return Response|JsonResponse
      */
     public function login(Request $request): Response|JsonResponse
@@ -201,7 +203,7 @@ class AuthController extends Controller
     /**
      * Standard user info auth check
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return Response|JsonResponse
      */
     public function me(Request $request): Response|JsonResponse
@@ -220,7 +222,7 @@ class AuthController extends Controller
     /**
      * Update user info
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return Response|JsonResponse
      */
     public function update(Request $request)

@@ -85,7 +85,7 @@ class Controller extends BaseController
     /**
      * Example endpoint returning random users
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return Response|JsonResponse
      */
     public function example(Request $request): Response | JsonResponse
