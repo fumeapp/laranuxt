@@ -13,7 +13,7 @@ class SessionPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param User $user
+     * @param User  $user
      * @param Session $session
      * @return bool
      */
