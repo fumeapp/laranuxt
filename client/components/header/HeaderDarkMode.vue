@@ -17,7 +17,7 @@ const toggleDark = useToggle((isDark))
 
 let animation:undefined|AnimationItem = undefined
 
-if (getCurrentInstance() && window)
+if (getCurrentInstance() && process.client && window)
   onMounted(() => {
     if (!process.client || !window.lottie) return
     animation = window.lottie.loadAnimation({

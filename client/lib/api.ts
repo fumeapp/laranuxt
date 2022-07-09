@@ -149,7 +149,7 @@ export default class Api {
   }
 
   public async get <Result>(endpoint: string, params?: SearchParams): Promise<api.MetApiResponse & { data: Result }> {
-    if (params.noCatch)
+    if (params?.noCatch)
       return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
     try {
       return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
