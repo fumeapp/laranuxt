@@ -39,7 +39,7 @@
 
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core'
-import { ref } from '@vue/reactivity'
+import { ref } from 'vue'
 import { PushButton } from 'tailvue'
 import Menu from '~/lib/menu'
 

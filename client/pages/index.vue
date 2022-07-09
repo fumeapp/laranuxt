@@ -2,15 +2,6 @@
 import { Icon } from '@iconify/vue'
 import { PushButton } from 'tailvue'
 import { useNuxtApp } from '#app'
-import { ref } from '@vue/reactivity'
-
-export interface ExampleUser {
-  name: string
-  /** Current Position */
-  job: string
-  email: string
-  avatar: string
-}
 
 const { $api, $crumbs } = useNuxtApp()
 
@@ -21,8 +12,8 @@ $crumbs.set([
   },
 ])
 
-const users = ref<ExampleUser[]|undefined>(undefined)
-const get = async () => users.value = (await $api.index<ExampleUser[]>('/example', { count: 9 })).data
+const users = ref<models.User[]|undefined>(undefined)
+const get = async () => users.value = (await $api.index<models.User[]>('/example', { count: 9 })).data
 const error = async (): Promise<api.MetApiResponse> => await $api.get('/error')
 get()
 </script>

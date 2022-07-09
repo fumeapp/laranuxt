@@ -81,9 +81,9 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
 import { PushButton } from 'tailvue'
-import { PropType } from '@vue/runtime-core'
+import { PropType } from 'vue'
 import { useNuxtApp } from '#app'
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 const { $toast, $modal, $api } = useNuxtApp()
 const router = useRouter()

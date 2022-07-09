@@ -46,8 +46,8 @@
 
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
-import { PropType } from '@vue/runtime-core'
-import { computed } from '@vue/reactivity'
+import { PropType } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   user: {

@@ -1,5 +1,5 @@
 import { FetchError, FetchOptions, SearchParams, $fetch } from 'ohmyfetch'
-import { reactive, ref } from '@vue/reactivity'
+import { reactive, ref } from 'vue'
 import { TailvueToast, ToastProps } from 'tailvue'
 import { Router } from 'vue-router'
 

@@ -9,8 +9,6 @@
 
 <script lang="ts" setup>
 import { useNuxtApp } from '#app'
-import SessionList from '~/components/session/SessionList.vue'
-import { ref } from '@vue/reactivity'
 const { $api, $crumbs } = useNuxtApp()
 
 const sessions = ref(undefined)
