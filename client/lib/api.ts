@@ -51,10 +51,10 @@ export default class Api {
 
   public token = useCookie('token', { path: '/', maxAge: 60*60*24*30 })
   public config: AuthConfig
-  public $user = reactive<models.User|Record<string, unknown>>({})
+  public $user = reactive<models.User>({})
   public $echo:undefined|Echo = undefined
   public $toast:TailvueToast
-  public loggedIn = ref<boolean>(false)
+  public loggedIn = ref<boolean|undefined>(undefined)
   public modal = ref<boolean>(false)
   public redirect = ref<boolean>(false)
   public action = ref<null|LoginAction>(null)
@@ -103,12 +103,12 @@ export default class Api {
     })
   }
 
-  async login (result: UserLogin): Promise<undefined|string> {
+  async login (result: UserLogin, discreet = false): Promise<undefined|string> {
     this.loggedIn.value = true
     this.token.value = result.token
     Object.assign(this.$user, result.user)
     this.setEcho()
-    this.$toast.show({ type: 'success', message: 'Login Successful', timeout: 1 })
+    if (!discreet) this.$toast.show({ type: 'success', message: 'Login Successful', timeout: 1 })
     if (result.action && result.action.action === 'redirect') return result.action.url
     return this.config.redirect.login
   }
@@ -130,7 +130,7 @@ export default class Api {
     return this.config.fetchOptions
   }
 
-  private async setUser(): Promise<void> {
+  public async setUser(): Promise<void> {
     try {
       const result = await $fetch<api.MetApiResponse & { data: models.User }>('/me', this.fetchOptions())
       Object.assign(this.$user, result.data)
@@ -148,21 +148,21 @@ export default class Api {
     }
   }
 
-  public async get <Result>(endpoint: string, params?: SearchParams): Promise<api.MetApiResponse & { data: Result }> {
-    if (params?.noCatch)
-      return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
+  public async get <Result>(endpoint: string, params?: SearchParams, cb?: (e: FetchError) => unknown): Promise<api.MetApiResponse & { data: Result }> {
     try {
       return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
     } catch (error) {
-      await this.toastError(error)
+      if (cb) cb(error)
+      else await this.toastError(error)
     }
   }
 
-  public async update (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
+  public async update (endpoint: string, params?: SearchParams, cb?: (e: FetchError) => unknown): Promise<api.MetApiResponse> {
     try {
       return (await $fetch<api.MetApiResults & { data: api.MetApiResponse}>(endpoint, this.fetchOptions(params, 'PUT'))).data
     } catch (error) {
-      await this.toastError(error)
+      if (cb) cb(error)
+      else await this.toastError(error)
     }
   }
 
@@ -171,9 +171,11 @@ export default class Api {
       return (await $fetch<api.MetApiResults & { data: api.MetApiResponse & { data: Result } }>(endpoint, this.fetchOptions(params, 'POST'))).data
     } catch (error) {
       if (cb) cb(error)
-      else await this.toastError(error)
+      await this.toastError(error)
     }
   }
+
+
 
   public async delete (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
     try {
@@ -191,7 +193,11 @@ export default class Api {
     }
   }
 
-  private async toastError (error: FetchError): Promise<void> {
+  public upload (url: string, params?: SearchParams) {
+    return $fetch(url, {method: 'PUT', body: params})
+  }
+
+  public async toastError (error: FetchError): Promise<void> {
 
     if (error.response?.status === 401)
       return await this.invalidate()

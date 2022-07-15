@@ -16,10 +16,12 @@ export default defineNuxtPlugin(() => {
             logout: '/',
             login: '/home',
           },
+          /*
           echoConfig: {
             pusherAppKey: config.public.pusherAppKey,
             pusheAppCluster: config.public.pusherAppCluster,
           },
+          */
         }, $toast),
     },
   }
