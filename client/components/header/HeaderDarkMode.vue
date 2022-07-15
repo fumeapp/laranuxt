@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
 import { useDark, useToggle } from '@vueuse/core'
-import { getCurrentInstance, onMounted } from '@vue/runtime-core'
+import { getCurrentInstance, onMounted } from 'vue'
 import { AnimationItem } from 'lottie-web'
 
 const isDark = useDark()
@@ -17,7 +17,7 @@ const toggleDark = useToggle((isDark))
 
 let animation:undefined|AnimationItem = undefined
 
-if (getCurrentInstance() && window)
+if (getCurrentInstance() && process.client && window)
   onMounted(() => {
     if (!process.client || !window.lottie) return
     animation = window.lottie.loadAnimation({

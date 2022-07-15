@@ -24,17 +24,17 @@
     "@tailvue/nuxt": "^0.1.33",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
-    "@vue/eslint-config-typescript": "^10.0.0",
+    "@vue/eslint-config-typescript": "^11.0.0",
     "@vueuse/nuxt": "^8.2.6",
     "dayjs": "^1.10.7",
     "eslint": "^8.3.0",
-    "eslint-plugin-vue": "^8.1.1",
-    "husky": "^7.0.1",
+    "eslint-plugin-vue": "^9.2.0",
+    "husky": "^8.0.1",
     "laravel-echo": "^1.11.7",
     "lottie-web": "^5.8.1",
-    "nuxt": "^3.0.0-rc.4",
+    "nuxt": "^3.0.0-rc.5",
     "nuxt-windicss": "^2.0.12",
-    "pusher-js": "^7.1.0-beta",
+    "pusher-js": "^7.1.1-beta",
     "typescript": "^4.5.2"
   }
 }
