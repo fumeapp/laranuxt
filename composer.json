@@ -21,13 +21,14 @@
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.5",
     "barryvdh/laravel-ide-helper": "^2.8",
-    "spatie/laravel-ignition": "^1.0",
     "fakerphp/faker": "^1.9.1",
     "fumeapp/modeltyper": "^1.0",
+    "laravel/pint": "^1.0.0",
     "mockery/mockery": "^1.4.4",
     "nunomaduro/collision": "^6.1",
     "nunomaduro/larastan": "^2.0",
     "phpunit/phpunit": "^9.5.10",
+    "spatie/laravel-ignition": "^1.0",
     "spatie/laravel-ray": "^1.29",
     "squizlabs/php_codesniffer": "^3.6"
   },
@@ -77,6 +78,19 @@
     ],
     "stan": [
       "vendor/bin/phpstan analyse"
+    ],
+    "pint": [
+      "vendor/bin/pint"
     ]
+  },
+  "scripts-descriptions": {
+    "test": "Run the PHPUnit tests.",
+    "post-autoload-dump": "Run after autoloading has been dumped.",
+    "post-root-package-install": "Run after the root package has been installed.",
+    "post-create-project-cmd": "Run after the project has been created.",
+    "cs": "Run the PHP CodeSniffer.",
+    "cs-v": "Run the PHP CodeSniffer verbosely.",
+    "stan": "Run the PHPStan analyser.",
+    "pint": "Run the Pint analyser."
   }
 }

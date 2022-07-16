@@ -10,6 +10,9 @@
   <rule ref="PSR12.Classes.ClassInstantiation.MissingParentheses">
     <exclude name="PSR12.Classes.ClassInstantiation.MissingParentheses" />
   </rule>
+  <rule ref="PSR12.Files.FileHeader.SpacingAfterBlock">
+    <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock" />
+  </rule>
 
   <arg name="colors"/>
 

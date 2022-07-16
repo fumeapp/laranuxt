@@ -17,6 +17,7 @@ use Illuminate\Support\Carbon;
  * @property array $payload
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static Builder|Provider newModelQuery()
  * @method static Builder|Provider newQuery()
  * @method static Builder|Provider query()
@@ -32,7 +33,10 @@ use Illuminate\Support\Carbon;
 class Provider extends Model
 {
     public static array $allowed = ['email', 'google', 'facebook'];
+
     protected $guarded = [];
+
     protected $casts = ['payload' => 'array'];
+
     protected $hidden = ['payload.token'];
 }
