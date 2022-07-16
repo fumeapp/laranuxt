@@ -23,7 +23,7 @@
     "barryvdh/laravel-ide-helper": "^2.8",
     "fakerphp/faker": "^1.9.1",
     "fumeapp/modeltyper": "^1.0",
-    "laravel/pint": "^0.1.1",
+    "laravel/pint": "^1.0.0",
     "mockery/mockery": "^1.4.4",
     "nunomaduro/collision": "^6.1",
     "nunomaduro/larastan": "^2.0",
