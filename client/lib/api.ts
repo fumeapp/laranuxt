@@ -148,40 +148,39 @@ export default class Api {
     }
   }
 
-  public async get <Result>(endpoint: string, params?: SearchParams, cb?: (e: FetchError) => unknown): Promise<api.MetApiResponse & { data: Result }> {
+  public async get <Result>(endpoint: string, params?: SearchParams, cb?: (e: FetchError) => void, toast = true): Promise<api.MetApiResponse & { data: Result }> {
     try {
       return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
     } catch (error) {
       if (cb) cb(error)
-      else await this.toastError(error)
+      if (toast) await this.toastError(error)
     }
   }
 
-  public async update (endpoint: string, params?: SearchParams, cb?: (e: FetchError) => unknown): Promise<api.MetApiResponse> {
+  public async update (endpoint: string, params?: SearchParams, cb?: (e: FetchError) => void, toast = true): Promise<api.MetApiResponse> {
     try {
       return (await $fetch<api.MetApiResults & { data: api.MetApiResponse}>(endpoint, this.fetchOptions(params, 'PUT'))).data
     } catch (error) {
       if (cb) cb(error)
-      else await this.toastError(error)
+      if (toast) await this.toastError(error)
     }
   }
 
-  public async store <Result>(endpoint: string, params?: SearchParams, cb?: (e: FetchError) => unknown): Promise<api.MetApiResponse & { data: Result }> {
+  public async store <Result>(endpoint: string, params?: SearchParams, cb?: (e: FetchError) => void, toast = true): Promise<api.MetApiResponse & { data: Result }> {
     try {
       return (await $fetch<api.MetApiResults & { data: api.MetApiResponse & { data: Result } }>(endpoint, this.fetchOptions(params, 'POST'))).data
     } catch (error) {
       if (cb) cb(error)
-      await this.toastError(error)
+      if (toast) await this.toastError(error)
     }
   }
 
-
-
-  public async delete (endpoint: string, params?: SearchParams): Promise<api.MetApiResponse> {
+  public async delete (endpoint: string, params?: SearchParams, cb?: (e: FetchError) => void, toast = true): Promise<api.MetApiResponse> {
     try {
       return (await $fetch<api.MetApiResults & { data: api.MetApiResponse}>(endpoint, this.fetchOptions(params, 'DELETE'))).data
     } catch (error) {
-      await this.toastError(error)
+      if (cb) cb(error)
+      if (toast) await this.toastError(error)
     }
   }
 
@@ -202,6 +201,7 @@ export default class Api {
     if (error.response?.status === 401)
       return await this.invalidate()
 
+    console.log('handling our 402')
     if (error.response?.status === 402 && this.config.paymentToast)
       return this.$toast.show(this.config.paymentToast)
 

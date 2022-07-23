@@ -39,6 +39,7 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $providers_count
  * @property-read Collection|Session[] $sessions
  * @property-read int|null $sessions_count
+ *
  * @method static UserFactory factory(...$parameters)
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
@@ -65,8 +66,10 @@ class User extends Authenticatable
      * @var array<string>|bool
      */
     protected $guarded = [];
-    protected $appends = ['first_name', 'is_trial',];
-    protected $casts = [ 'is_sub' => 'boolean' ];
+
+    protected $appends = ['first_name', 'is_trial'];
+
+    protected $casts = ['is_sub' => 'boolean'];
 
     public array $interfaces = [
         'location' => [
@@ -87,7 +90,7 @@ class User extends Authenticatable
 
     public function getFirstNameAttribute(): string
     {
-        return explode(' ', $this->name ?? '')[ 0 ];
+        return explode(' ', $this->name ?? '')[0];
     }
 
     /**

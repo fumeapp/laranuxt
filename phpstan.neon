@@ -9,7 +9,6 @@ parameters:
     level: 8
 
     ignoreErrors:
-        - '#Call to method [^\s]+\(\) on an unknown class acidjazz\\metapi\\MetApi#'
 
     excludePaths:
 
