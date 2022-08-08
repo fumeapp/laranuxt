@@ -9,6 +9,8 @@
 
 [![](https://img.shields.io/badge/nuxt.js-v3-04C690.svg)](https://v3.nuxtjs.org)
 [![](https://img.shields.io/badge/Laravel-v9.7.0-ff2e21.svg)](https://laravel.com)
+[![MadeWithLaravel.com shield](https://madewithlaravel.com/storage/repo-shields/3372-shield.svg)](https://madewithlaravel.com/p/laranuxt/shield-link)
+
 ![Test PHP](https://github.com/fumeapp/laranuxt/workflows/Test%20PHP/badge.svg)
 [![Lint Javascript](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml)
 [![Lint PHP](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml)
