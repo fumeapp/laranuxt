@@ -86,7 +86,7 @@ DOCKER_PORT_MAILHOG_2
 
 Then set the value equal to the port you want it to run at.
 
-For example of the mysql port of 3306 will not work for your locally, maybe you have another instance running.
+For example if the mysql port of 3306 will not work for your locally, maybe you have another instance running.
 
 You may set it to the value you want:
 
@@ -100,9 +100,9 @@ DOCKER_PORT_MYSQL=13306
 
 Once the Dev Container successfully built you can run your typically `artisan`/`composer`/`yarn` commands. 
 
-We suggest after everting is built opening up 2 integrated terminals.
+We suggest after everything is built opening up 2 integrated terminals.
 
-> To migrate and seed container database. Then run api server
+> To migrate and seed container database & To run API server
 1. One to run `yarn seed` && `yarn api`
 
 > To run Nuxt server
