@@ -32,7 +32,6 @@ class CreateUsersTable extends Migration
             $table->text('payload');
             $table->timestamps();
         });
-
     }
 
     /**

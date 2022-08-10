@@ -24,12 +24,15 @@ Route::get('error', [Controller::class, 'exampleError'])->name('error');
 
 // Authentication
 Route::get('login', [Controller::class, 'auth'])->name('login');
-Route::get('redirect/{provider}', [AuthController::class, 'redirect'])->name('provider.redirect');
-Route::get('callback/{provider}', [AuthController::class, 'callback'])->name('provider.callback');
-Route::get('onetap/{credential}', [AuthController::class, 'onetap'])->name('onetap.support');
-Route::post('attempt', [AuthController::class, 'attempt'])->name('auth.attempt');
-Route::post('login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('logout', [AuthController::class, 'logout'])->middleware('auth:api')->name('auth.logout');
-Route::get('me', [AuthController::class, 'me'])->middleware('auth:api')->name('auth.session');
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('redirect/{provider}', 'redirect')->name('provider.redirect');
+    Route::get('callback/{provider}', 'callback')->name('provider.callback');
+    Route::get('onetap/{credential}', 'onetap')->name('onetap.support');
+    Route::post('attempt', 'attempt')->name('auth.attempt');
+    Route::post('login', 'login')->name('auth.login');
+    Route::get('logout', 'logout')->middleware('auth:api')->name('auth.logout');
+    Route::get('me', 'me')->middleware('auth:api')->name('auth.session');
+});
 
 Route::apiResource('session', SessionController::class)->middleware('auth:api');

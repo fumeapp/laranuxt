@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from '@vue/runtime-core'
+import { PropType } from 'vue'
 import SessionDeviceSkeleton from '@/components/session/SessionDeviceSkeleton.vue'
 import SessionDevice from '~/components/session/SessionDevice.vue'
 defineProps({

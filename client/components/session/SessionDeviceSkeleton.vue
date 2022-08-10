@@ -2,7 +2,7 @@
   <div class="bg-white dark:bg-gray-800 rounded-lg shadow relative">
     <div class="absolute right-0 top-0 m-2">
       <push-button theme="text" size="xs" class="shadow-none">
-        <icon-client
+        <icon
           icon="mdi-trash"
           class="w-4 h-4 text-gray-200"
         />
@@ -14,7 +14,7 @@
     <div class="p-4">
       <div>
         <div class="flex items-center text-gray-900 mb-1">
-          <icon-client
+          <icon
             icon="mdi-laptop"
             class="w-4 h-4 mr-1.5 text-gray-200"
           />
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="flex items-center text-gray-500 text-sm mb-1">
-          <icon-client
+          <icon
             icon="mdi-application-outline"
             class="w-4 h-4 mr-1.5 text-gray-200"
           />
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="flex items-center text-gray-500 text-sm mb-1">
-          <icon-client
+          <icon
             icon="mdi-map"
             class="w-4 h-4 mr-1.5 text-gray-200"
           />
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="flex items-center text-gray-500 text-sm mb-1">
-          <icon-client
+          <icon
             icon="mdi-envelope"
             class="w-4 h-4 mr-1.5 text-gray-200"
           />
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div class="flex items-center text-gray-500 text-sm mb-1">
-          <icon-client
+          <icon
             icon="mdi-clock"
             class="w-4 h-4 mr-1.5 text-gray-200"
           />
@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="flex items-center text-gray-500 text-sm mb-1">
-          <icon-client
+          <icon
             icon="mdi-clock"
             class="w-4 h-4 mr-1.5 text-gray-200"
           />
@@ -72,6 +72,6 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { Icon } from '@iconify/vue'
 import { PushButton } from 'tailvue'
-import IconClient from '~/components/IconClient.vue'
 </script>

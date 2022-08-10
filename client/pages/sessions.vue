@@ -9,14 +9,15 @@
 
 <script lang="ts" setup>
 import { useNuxtApp } from '#app'
-import { useAuthMiddleware } from '~/composables/useAuthMiddleware'
-import SessionList from '~/components/session/SessionList.vue'
-import { ref } from '@vue/reactivity'
-const { $api } = useNuxtApp()
+const { $api, $crumbs } = useNuxtApp()
 
-useAuthMiddleware()
 const sessions = ref(undefined)
 const get = async () => sessions.value = (await $api.index<api.Sessions>('/session'))?.data
 get()
+
+$crumbs.set([
+  { name: 'Home', to: '/' },
+  { name: 'Sessions', to: '/sessions', icon: 'mdi-devices' },
+])
 
 </script>

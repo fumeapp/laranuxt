@@ -43,6 +43,7 @@ module.exports = {
 
     // https://eslint.vuejs.org/rules/no-v-html.html
     'vue/no-v-html': 'off',
+    'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     "vue/max-attributes-per-line": ["error", {
       "singleline": {
         "max": 3,

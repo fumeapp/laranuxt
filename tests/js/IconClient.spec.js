@@ -1,13 +1,13 @@
 import { mount } from '@vue/test-utils'
-import IconClient from '@/client/components/IconCLient.vue'
+import TransitionScaleIn from '@/client/components/transition/TransitionScaleIn.vue'
 
-test('IconClient', () => {
-  const wrapper = mount(IconClient, {
+test('TransitionScaleIn', () => {
+  const wrapper = mount(TransitionScaleIn, {
     props: {
-      icon: 'mdi-check',
+      appear:  true,
     },
   })
 
-  expect(wrapper.text()).toContain('mdi-check')
+  expect(wrapper.text()).toContain('')
 
 })

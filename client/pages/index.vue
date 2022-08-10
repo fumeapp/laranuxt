@@ -1,25 +1,21 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { PushButton } from 'tailvue'
 import { useNuxtApp } from '#app'
-import { ref } from '@vue/reactivity'
-import ContactCardSkeleton from '~/components/contact/ContactCardSkeleton.vue'
-import ContactCard from '~/components/contact/ContactCard.vue'
-import IconClient from '~/components/IconClient.vue'
-const { $api } = useNuxtApp()
 
-export interface ExampleUser {
-  name: string
-  /** Current Position */
-  job: string
-  email: string
-  avatar: string
-}
+const { $api, $crumbs } = useNuxtApp()
 
-const users = ref<ExampleUser[]|undefined>(undefined)
-const get = async () => users.value = (await $api.index<ExampleUser[]>('/example', { count: 9 })).data
+$crumbs.set([
+  {
+    name: 'Home',
+    to: '/',
+  },
+])
+
+const users = ref<models.User[]|undefined>(undefined)
+const get = async () => users.value = (await $api.index<models.User[]>('/example', { count: 9 })).data
 const error = async (): Promise<api.MetApiResponse> => await $api.get('/error')
 get()
-
 </script>
 
 <template>
@@ -37,11 +33,11 @@ get()
       <span class="text-sm">(1 second delay)</span>
       <div class="mt-4 flex justify-center space-x-2">
         <push-button @click="get">
-          <icon-client icon="mdi:refresh" class="w-6 h-6 text-green-600 mr-2.5" />
+          <icon icon="mdi:refresh" class="w-6 h-6 text-green-600 mr-2.5" />
           get()
         </push-button>
         <push-button @click="error">
-          <icon-client icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
+          <icon icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
           Force PHP Error
         </push-button>
       </div>

@@ -1,0 +1,14 @@
+{
+  "preset": "laravel",
+  "exclude": [
+    "node_modules",
+    "vendor",
+    "client"
+  ],
+  "rules": {
+    "no_useless_else": true,
+    "concat_space": {
+      "spacing": "one"
+    }
+  }
+}
