@@ -95,3 +95,22 @@ You may set it to the value you want:
 ```
 DOCKER_PORT_MYSQL=13306
 ```
+
+## After Dev Container Build
+
+Once the Dev Container successfully built you can run your typically `artisan`/`composer`/`yarn` commands. 
+
+We suggest after everting is built opening up 2 integrated terminals.
+
+> To migrate and seed container database. Then run api server
+1. One to run `yarn seed` && `yarn api`
+
+> To run Nuxt server
+2. `yarn dev`
+
+
+But before both if this is the first time building the app you would still need to:
+
+```bash
+composer install && yarn install
+```
