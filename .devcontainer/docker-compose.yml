@@ -1,0 +1,43 @@
+version: "3"
+
+x-environment: &default-environment
+  MYSQL_ROOT_PASSWORD: "password"
+  MYSQL_DATABSE: "laranuxt"
+services:
+  mysql:
+    container_name: mysql_container_laranuxt
+    image: mysql
+    platform: linux/x86_64
+    restart: unless-stopped
+    ports:
+      - "${DOCKER_PORT_MYSQL:-3306}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD:-password}'
+      MYSQL_DATABASE: '${DB_DATABASE:-laranuxt}'
+    volumes:
+      - mysql-data:/var/lib/mysql
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: mailhog_container_punchlist
+    ports:
+      - "${DOCKER_PORT_MAILHOG_1:-1025}:1025"
+      - "${DOCKER_PORT_MAILHOG_2:-8025}:8025"
+  app:
+    container_name: app_container_laranuxt
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    environment:
+      <<: *default-environment
+      PORTS:
+        3000
+        8000
+        9003
+    volumes:
+      - ..:/workspace
+    user: vscode
+    command: sleep infinity
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+volumes:
+  mysql-data:

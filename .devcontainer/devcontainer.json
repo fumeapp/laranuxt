@@ -1,0 +1,21 @@
+{
+  "name": "Laranuxt VSCode Container",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "remoteEnv": {
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "editorconfig.editorconfig",
+  ],
+  "forwardPorts": [
+    8000,
+    3000,
+    9003
+  ],
+  "remoteUser": "vscode"
+}
