@@ -71,7 +71,7 @@ console.log($api.$user.name);
 ```
 
 #### API
-The API class provides helper functions to easily retrieve, update, and remove data from your Laravel endpoints
+The API class provides helper functions to easily retrieve, update, and remove data from your Laravel endpoints.  If you use and update [modeltyper](https://github.com/fumeapp/modeltyper) regularly you will always have completely typed results
 
 * To get a listing/index of data, use `$api.index`
 ```ts
