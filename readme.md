@@ -23,7 +23,7 @@
 
 * [NUXT v3](https://v3.nuxtjs.org) front end, a progressive Vue.js framework - For Nuxt v2 visit [this branch](https://github.com/fumeapp/laranuxt/tree/nuxt2)
   * [tailvue](https://github.com/fumeapp/tailvue) a collection of components built for Nuxt.js, powered by WindiCSS|TailwindCSS
-  * [Authentication library](#api-and-authentication) to assist with user sessions and logging in/out
+  * [Authentication library](https://github.com/fumeapp/laranuxt#api-and-authentication) to assist with user sessions and logging in/out
   * Example Authentication Middleware
 
 * [Laravel](https://laravel.com) - for our API - `v9.7.0`
