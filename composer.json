@@ -9,7 +9,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.0|^8.1",
-    "acidjazz/humble": "^2.1",
+    "acidjazz/humble": "^3.0",
     "acidjazz/metapi": "^2.1",
     "composer/composer": "^2.2.1",
     "google/apiclient": "^2.11",
