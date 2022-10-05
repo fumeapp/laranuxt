@@ -13,12 +13,7 @@
           @click="toggle"
         >
           <span class="sr-only">Open user menu</span>
-          <client-only>
-            <img class="w-8 h-8 rounded-full bg-blue-400" :src="$api.$user?.avatar" alt="User Avatar">
-            <template #fallback>
-              <div class="w-8 h-8 rounded-full bg-blue-400" />
-            </template>
-          </client-only>
+          <img class="w-8 h-8 rounded-full bg-blue-400" :src="$api.$user?.avatar" alt="User Avatar">
         </button>
       </div>
       <transition-dropdown>

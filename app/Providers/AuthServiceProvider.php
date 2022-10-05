@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use acidjazz\Humble\Models\Session;
+use Fumeapp\Humble\Models\Session;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider

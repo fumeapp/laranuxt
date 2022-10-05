@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use acidjazz\Humble\Models\Session;
 use App\Models\User;
+use Fumeapp\Humble\Models\Session;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class SessionPolicy

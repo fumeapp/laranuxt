@@ -18,6 +18,7 @@ class CreateHumbleTables extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('source')->nullable();
+            $table->json('abilities')->nullable();
 
             // user metadata
             $table->string('ip', 300)->nullable();

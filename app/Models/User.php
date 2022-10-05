@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use acidjazz\Humble\Models\Session;
-use acidjazz\Humble\Traits\Humble;
 use Database\Factories\UserFactory;
 use Eloquent;
+use Fumeapp\Humble\Models\Session;
+use Fumeapp\Humble\Traits\Humble;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
