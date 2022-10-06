@@ -80,7 +80,7 @@
 
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
-import { PushButton } from 'tailvue'
+import { PushButton, ToastProps } from 'tailvue'
 import { PropType } from 'vue'
 import { useNuxtApp } from '#app'
 import { computed } from 'vue'
@@ -142,7 +142,7 @@ function confirm (session: api.Session) {
 
 async function revoke (session: api.Session) {
   if (session.current) return $api.logout(router)
-  $toast.show((await $api.delete(`/session/${session.token}`)))
+  $toast.show((await $api.delete(`/session/${session.token}`)) as ToastProps)
   emit('refresh')
 }
 

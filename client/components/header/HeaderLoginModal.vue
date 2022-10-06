@@ -78,7 +78,7 @@ import { UserLogin } from '~/lib/api'
 import { useRouter } from 'vue-router'
 import { PushButton, ModalBase } from 'tailvue'
 import { getCurrentInstance, onBeforeUnmount, onMounted } from 'vue'
-import { reactive, ref } from 'vue'
+import { reactive, ref, PropType } from 'vue'
 import { Icon } from '@iconify/vue'
 
 const config = useRuntimeConfig()
@@ -93,7 +93,7 @@ const loading = reactive({
 
 const props = defineProps({
   destroyed: {
-    type: Function,
+    type: Function as PropType<() => void>,
     required: true,
   },
 })

@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use acidjazz\Humble\Models\Attempt;
+use Fumeapp\Humble\Models\Attempt;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;

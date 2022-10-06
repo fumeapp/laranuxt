@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use acidjazz\Humble\Models\Session;
+use Fumeapp\Humble\Models\Session;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
