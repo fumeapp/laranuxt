@@ -10,7 +10,7 @@
     "terminal.integrated.shell.linux": "/bin/bash"
   },
   "extensions": [
-    "editorconfig.editorconfig",
+    "editorconfig.editorconfig"
   ],
   "forwardPorts": [
     8000,
