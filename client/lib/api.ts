@@ -185,6 +185,7 @@ export default class Api {
   }
 
   public async toastError(error: FetchError): Promise<void> {
+    console.log('toastError', error)
 
     if (error.response?.status === 401)
       return await this.invalidate()
@@ -212,8 +213,14 @@ export default class Api {
 
     if (error.response?._data.exception)
       this.$toast.show({
+        wide: true,
         type: 'danger',
-        message: `<b>[${error.response._data.exception}]</b> <br /> ${error.response._data.message} <br /> <a href="phpstorm://open?file=/${error.response._data.file}&line=${error.response._data.line}">${error.response._data.file}:${error.response._data.line}</a>`,
+        message: `
+        <b>[${error.response._data.exception}]</b><br />
+        ${error.response._data.message}<br />
+        <a href="phpstorm://open?file=/${error.response._data.file}&line=${error.response._data.line}">
+          ${error.response._data.file}:${error.response._data.line}
+        </a>`,
         timeout: 0,
       })
   }

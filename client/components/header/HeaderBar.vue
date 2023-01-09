@@ -23,9 +23,10 @@ const menu = new Menu(route, router, api)
                 v-for="item in menu.main()"
                 :key="item.name"
                 :to="item.to"
-                class="text-base py-2 px-4 rounded-md text-gray-900 dark:text-gray-200"
+                class="text-base py-2 px-4 rounded-md text-gray-900 dark:text-gray-200 inline-flex items-center"
                 :class="{'bg-gray-200 dark:bg-gray-600': item.names.includes(route.name as string)}"
               >
+                <icon v-if="item.icon" :icon="item.icon" class="w-6 h-6 mr-2.5" />
                 {{ item.name }}
               </nuxt-link>
             </client-only>

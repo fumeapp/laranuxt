@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { PushButton } from 'tailvue'
 const api = useApi()
-
 const { setCrumbs } = useCrumbs()
+setCrumbs([ { name: 'Home', to: '/' }])
 
-setCrumbs([
-  {
-    name: 'Home',
-    to: '/',
-  },
-])
-
-const users = ref<models.UserResults|undefined>(undefined)
-const get = async () => users.value = (await api.index<models.UserResults>('/example', { count: 9 })).data
-const error = async (): Promise<api.MetApiResponse> => await api.get('/error')
+const users = ref<models.UserResults>(undefined)
+const get = async () => users.value = await api.index<models.UserResults>('/example', { count: 9 })
+const error = async ():Promise<api.MetApiResponse> => await api.get('/error')
 get()
+
 </script>
 
 <template>
@@ -23,7 +17,7 @@ get()
       <contact-card-skeleton v-for="i in 9" :key="`user-${i}`" />
     </ul>
     <ul v-else class="grid grid-cols-1 gap-6 bg-gray-100 dark:bg-gray-900 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
-      <contact-card v-for="(user, index) in users" :key="index" :user="user" />
+      <contact-card v-for="(user, index) in users.data" :key="index" :user="user" />
     </ul>
     <div class="text-center mt-4">
       <span>provided by endpoint</span><span>&nbsp;</span>

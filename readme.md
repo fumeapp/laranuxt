@@ -51,7 +51,7 @@ git clone git@github.com:fumeapp/laranuxt.git; cd laranuxt; yarn; composer insta
 
 ### Api and Authentication
 
-* Api and auth can be accessed via the provided `$api` library
+* Api and auth can be accessed via the provided `Api` library
 
 ```ts
 const api = useApi()
