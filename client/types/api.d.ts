@@ -1,4 +1,4 @@
-export {}
+export { }
 declare global {
   export namespace api {
     export interface MetApiResponse {
@@ -64,5 +64,6 @@ declare global {
     }
 
     export type Sessions = Array<Session>
+    export type SessionResults = Modify<api.MetApiResults, { data: Sessions }>
   }
 }

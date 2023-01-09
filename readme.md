@@ -54,46 +54,46 @@ git clone git@github.com:fumeapp/laranuxt.git; cd laranuxt; yarn; composer insta
 * Api and auth can be accessed via the provided `$api` library
 
 ```ts
-const { $api } = useNuxtApp()
-console.log($api.$user.name);
+const api = useApi()
+console.log(api.$user.name);
 ```
 
 #### Authentication
 
 * Take a look at [HeaderLoginModal.vue](https://github.com/fumeapp/laranuxt/blob/main/client/components/header/HeaderLoginModal.vue#L143) to see how we pass the credentials to our library
 ```ts
-  const redirect = await $api.login(result)
+  const redirect = await api.login(result)
   if (redirect) await router.push({path: redirect})
 ```
-* Once logged on, you have the boolean `$api.loggedIn` and the object `$api.$user`
+* Once logged on, you have the boolean `api.loggedIn` and the object `api.$user`
 ```html
-  <img class="w-8 h-8 rounded-full bg-blue-400" :src="$api.$user?.avatar" alt="User Avatar">
+  <img class="w-8 h-8 rounded-full bg-blue-400" :src="api.$user.avatar" alt="User Avatar">
 ```
 
 #### API
 The API class provides helper functions to easily retrieve, update, and remove data from your Laravel endpoints.  If you use and update [modeltyper](https://github.com/fumeapp/modeltyper) regularly you will always have completely typed results
 
-* To get a listing/index of data, use `$api.index`
+* To get a listing/index of data, use `api.index`
 ```ts
-const users = $api.index<models.Users>('/user', { page: 1 })
+const users = api.index<models.UserResults>('/user', { page: 1 })
 ```
 
-* To get an individual by id, use `$api.get`
+* To get an individual by id, use `api.get`
 ```ts
-const users = $api.get<models.User>('/user/1')
+const users = api.get<models.User>('/user/1')
 ```
 
-* To update with an id, use `$api.put`
+* To update with an id, use `api.put`
 ```ts
-const result = $api.put<models.User>('/user/1', user)
+const result = api.put<api.MetapiResponse>('/user/1', user)
 ```
 
-* To store a new record, use `$api.store`
+* To store a new record, use `api.store`
 ```ts
-const result = $api.store<models.User>('/user', { name: 'Bob', email: 'bob@mail.com' })
+const result = api.store<api.MetApiResponse>('/user', { name: 'Bob', email: 'bob@mail.com' })
 ```
 
-* To delete with an id, use `$api.delete`
+* To delete with an id, use `api.delete`
 ```ts
-const result = $api.delete<models.User>('/user/1')
+const result = api.delete<api.MetApiResponse>('/user/1')
 ```

@@ -1,8 +1,33 @@
+
+<script lang="ts" setup>
+import { onClickOutside } from '@vueuse/core'
+import { PushButton } from 'tailvue'
+import Menu from '@/lib/menu'
+
+const route = useRoute()
+const router = useRouter()
+const api = useApi()
+
+const modal = ref(false)
+const profile = ref(false)
+const outside = ref(null)
+
+const menu = new Menu(route, router, api)
+
+onClickOutside(outside, () => profile.value = false)
+
+const toggle = () => profile.value = !profile.value
+const login = () =>  modal.value = true
+const off = () => modal.value = false
+
+</script>
+
+
 <template>
   <div ref="outside" class="flex-shrink-0 relative mr-5">
     <client-only>
       <div class="flex items-center text-white space-x-4">
-        <push-button v-if="!$api.loggedIn.value" theme="indigo" @click="login"> Sign In </push-button>
+        <push-button v-if="!api.loggedIn.value" theme="indigo" @click="login"> Sign In </push-button>
         <button
           v-else
           id="user-menu-button"
@@ -13,7 +38,10 @@
           @click="toggle"
         >
           <span class="sr-only">Open user menu</span>
-          <img class="w-8 h-8 rounded-full bg-blue-400" :src="$api.$user?.avatar" alt="User Avatar">
+          <img
+            v-if="api.$user.avatar" class="w-8 h-8 rounded-full bg-blue-400" :src="api.$user.avatar"
+            alt="User Avatar"
+          >
         </button>
       </div>
       <transition-dropdown>
@@ -31,27 +59,3 @@
     @off="off"
   />
 </template>
-
-<script lang="ts" setup>
-import { onClickOutside } from '@vueuse/core'
-import { ref } from 'vue'
-import { PushButton } from 'tailvue'
-import Menu from '~/lib/menu'
-
-const route = useRoute()
-const router = useRouter()
-const { $api } = useNuxtApp()
-
-const modal = ref(false)
-const profile = ref(false)
-const outside = ref(null)
-
-const menu = new Menu(route, router, $api)
-
-onClickOutside(outside, () => profile.value = false)
-
-const toggle = () => profile.value = !profile.value
-const login = () =>  modal.value = true
-const off = () => modal.value = false
-
-</script>

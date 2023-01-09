@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+import Menu from '@/lib/menu'
+
+const route = useRoute()
+const router = useRouter()
+const api = useApi()
+
+const menu = new Menu(route, router, api)
+</script>
 
 <template>
   <header class="bg-white dark:bg-gray-800">
@@ -9,15 +18,17 @@
             <icon icon="simple-icons:nuxtdotjs" class="w-8 h-8 text-green-400 -ml-1" />
           </div>
           <div class="hidden ml-10 space-x-8 lg:block">
-            <router-link
-              v-for="item in menu.main()"
-              :key="item.name"
-              :to="item.to"
-              class="text-base py-2 px-4 rounded-md text-gray-900 dark:text-gray-200"
-              :class="{'bg-gray-200 dark:bg-gray-600': item.names.includes($route.name)}"
-            >
-              {{ item.name }}
-            </router-link>
+            <client-only>
+              <nuxt-link
+                v-for="item in menu.main()"
+                :key="item.name"
+                :to="item.to"
+                class="text-base py-2 px-4 rounded-md text-gray-900 dark:text-gray-200"
+                :class="{'bg-gray-200 dark:bg-gray-600': item.names.includes(route.name as string)}"
+              >
+                {{ item.name }}
+              </nuxt-link>
+            </client-only>
           </div>
         </div>
         <div class="flex items-center justify-center space-x-4">
@@ -33,17 +44,3 @@
     </nav>
   </header>
 </template>
-<script lang="ts" setup>
-import { Icon } from '@iconify/vue'
-import HeaderProfile from '~/components/header/HeaderProfile.vue'
-import { useNuxtApp } from '#app'
-import HeaderDarkMode from '~/components/header/HeaderDarkMode.vue'
-import Menu from '~~/client/lib/menu'
-
-const route = useRoute()
-const router = useRouter()
-const { $api } = useNuxtApp()
-
-const menu = new Menu(route, router, $api)
-
-</script>

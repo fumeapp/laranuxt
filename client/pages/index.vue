@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { PushButton } from 'tailvue'
-import { useNuxtApp } from '#app'
+const api = useApi()
 
-const { $api, $crumbs } = useNuxtApp()
+const { setCrumbs } = useCrumbs()
 
-$crumbs.set([
+setCrumbs([
   {
     name: 'Home',
     to: '/',
   },
 ])
 
-const users = ref<models.User[]|undefined>(undefined)
-const get = async () => users.value = (await $api.index<models.User[]>('/example', { count: 9 })).data
-const error = async (): Promise<api.MetApiResponse> => await $api.get('/error')
+const users = ref<models.UserResults|undefined>(undefined)
+const get = async () => users.value = (await api.index<models.UserResults>('/example', { count: 9 })).data
+const error = async (): Promise<api.MetApiResponse> => await api.get('/error')
 get()
 </script>
 

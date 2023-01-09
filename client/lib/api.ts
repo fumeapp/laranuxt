@@ -20,7 +20,7 @@ export interface AuthConfig {
   apiURL: string
   redirect: {
     logout: string
-    login: undefined|string
+    login: undefined | string
   }
   paymentToast?: ToastProps,
   echoConfig?: EchoConfig,
@@ -28,7 +28,7 @@ export interface AuthConfig {
 
 export interface EchoConfig {
   pusherAppKey: string
-  pusheAppCluster: string
+  pusherAppCluster: string
 
 }
 
@@ -37,7 +37,7 @@ export interface LoginAction {
   url: string
 }
 
-const authConfigDefaults:AuthConfig = {
+const authConfigDefaults: AuthConfig = {
   fetchOptions: {},
   webURL: 'https://localhost:3000',
   apiURL: 'https://localhost:8000',
@@ -49,23 +49,25 @@ const authConfigDefaults:AuthConfig = {
 
 export default class Api {
 
-  public token = useCookie('token', { path: '/', maxAge: 60*60*24*30 })
+  public token = useCookie<string | undefined>('token', { path: '/', maxAge: 60 * 60 * 24 * 30 })
   public config: AuthConfig
-  public $user = reactive<models.User>({})
-  public $echo:undefined|Echo = undefined
-  public $toast:TailvueToast
-  public loggedIn = ref<boolean|undefined>(undefined)
+  public $user = reactive<models.User>({} as models.User)
+  public $echo: undefined | Echo = undefined
+  public $toast: TailvueToast
+  public loggedIn = ref<boolean | undefined>(undefined)
   public modal = ref<boolean>(false)
   public redirect = ref<boolean>(false)
-  public action = ref<null|LoginAction>(null)
+  public action = ref<LoginAction | undefined>(undefined)
+
+  public nuxtApp = useNuxtApp()
 
   constructor(config: AuthConfig, toast: TailvueToast) {
     this.$toast = toast
-    this.config = { ...authConfigDefaults,...config }
+    this.config = { ...authConfigDefaults, ...config }
     this.checkUser()
   }
 
-  on(redirect: boolean, action?: LoginAction|null) {
+  on(redirect: boolean, action?: LoginAction | undefined) {
     this.redirect.value = redirect
     this.modal.value = true
     this.action.value = action
@@ -76,7 +78,7 @@ export default class Api {
   }
 
   checkUser() {
-    if (this.token.value !== undefined)  {
+    if (this.token.value !== undefined) {
       this.setUser().then()
       this.loggedIn.value = true
     }
@@ -90,7 +92,7 @@ export default class Api {
     this.$echo = new Echo({
       broadcaster: 'pusher',
       key: this.config.echoConfig.pusherAppKey,
-      cluster: this.config.echoConfig.pusheAppCluster,
+      cluster: this.config.echoConfig.pusherAppCluster,
       authEndpoint: `${this.config.apiURL}/broadcasting/auth`,
       forceTls: true,
       encrypted: true,
@@ -103,7 +105,7 @@ export default class Api {
     })
   }
 
-  async login (result: UserLogin, discreet = false): Promise<undefined|string> {
+  async login(result: UserLogin, discreet = false): Promise<undefined | string> {
     this.loggedIn.value = true
     this.token.value = result.token
     Object.assign(this.$user, result.user)
@@ -120,6 +122,15 @@ export default class Api {
       Referer: this.config.webURL,
     }
     fetchOptions.method = method
+    fetchOptions.onRequest = () => {
+      this.nuxtApp.callHook('page:start')
+    }
+    fetchOptions.onResponse = () => {
+      this.nuxtApp.callHook('page:finish')
+    }
+    fetchOptions.onResponseError = (error) => {
+      this.toastError(error as unknown as FetchError)
+    }
     delete this.config.fetchOptions.body
     delete this.config.fetchOptions.params
     if (params)
@@ -140,75 +151,51 @@ export default class Api {
     }
   }
 
-  public async index <Results>(endpoint: string, params?: SearchParams): Promise<api.MetApiResults & { data: Results }> {
+  public async index<Results>(endpoint: string, params?: SearchParams): Promise<Results> {
+    return await $fetch<Results>(endpoint, this.fetchOptions(params))
+  }
+
+  public async get<Results>(endpoint: string, params?: SearchParams): Promise<Results> {
+    return await $fetch<Results>(endpoint, this.fetchOptions(params))
+  }
+
+  public async update<Response>(endpoint: string, params?: SearchParams): Promise<Response | undefined> {
+    return await $fetch<Response>(endpoint, this.fetchOptions(params, 'PUT'))
+  }
+
+  public async store<Response>(endpoint: string, params?: SearchParams): Promise<Response | undefined> {
+    return await $fetch<Response>(endpoint, this.fetchOptions(params, 'POST'))
+  }
+
+  public async delete<Response>(endpoint: string, params?: SearchParams): Promise<Response | undefined> {
+    return await $fetch<Response>(endpoint, this.fetchOptions(params, 'DELETE'))
+  }
+
+  public async attempt(token: string | string[]): Promise<UserLogin> {
     try {
-      return await $fetch<api.MetApiResults & { data: Results }>(endpoint, this.fetchOptions(params))
+      return (await $fetch<api.MetApiResponse & { data: UserLogin }>(`/login/${token}`, this.fetchOptions())).data
     } catch (error) {
-      await this.toastError(error)
+      await this.toastError(error as FetchError)
+      throw (error)
     }
   }
 
-  public async get <Result>(endpoint: string, params?: SearchParams, cb?: (e: FetchError) => void, toast = true): Promise<api.MetApiResponse & { data: Result }> {
-    try {
-      return await $fetch<api.MetApiResponse & { data: Result }>(endpoint, this.fetchOptions(params))
-    } catch (error) {
-      if (cb) cb(error)
-      if (toast) await this.toastError(error)
-    }
+  public upload(url: string, params?: SearchParams) {
+    return $fetch(url, { method: 'PUT', body: params })
   }
 
-  public async update (endpoint: string, params?: SearchParams, cb?: (e: FetchError) => void, toast = true): Promise<api.MetApiResponse> {
-    try {
-      return (await $fetch<api.MetApiResults & { data: api.MetApiResponse}>(endpoint, this.fetchOptions(params, 'PUT'))).data
-    } catch (error) {
-      if (cb) cb(error)
-      if (toast) await this.toastError(error)
-    }
-  }
-
-  public async store <Result>(endpoint: string, params?: SearchParams, cb?: (e: FetchError) => void, toast = true): Promise<api.MetApiResponse & { data: Result }> {
-    try {
-      return (await $fetch<api.MetApiResults & { data: api.MetApiResponse & { data: Result } }>(endpoint, this.fetchOptions(params, 'POST'))).data
-    } catch (error) {
-      if (cb) cb(error)
-      if (toast) await this.toastError(error)
-    }
-  }
-
-  public async delete (endpoint: string, params?: SearchParams, cb?: (e: FetchError) => void, toast = true): Promise<api.MetApiResponse> {
-    try {
-      return (await $fetch<api.MetApiResults & { data: api.MetApiResponse}>(endpoint, this.fetchOptions(params, 'DELETE'))).data
-    } catch (error) {
-      if (cb) cb(error)
-      if (toast) await this.toastError(error)
-    }
-  }
-
-  public async attempt (token: string | string[]): Promise<UserLogin> {
-    try {
-      return (await $fetch<api.MetApiResponse & { data: UserLogin }>('/login', this.fetchOptions({ token }, 'POST'))).data
-    } catch (error) {
-      await this.toastError(error)
-    }
-  }
-
-  public upload (url: string, params?: SearchParams) {
-    return $fetch(url, {method: 'PUT', body: params})
-  }
-
-  public async toastError (error: FetchError): Promise<void> {
+  public async toastError(error: FetchError): Promise<void> {
 
     if (error.response?.status === 401)
       return await this.invalidate()
 
-    console.log('handling our 402')
     if (error.response?.status === 402 && this.config.paymentToast)
       return this.$toast.show(this.config.paymentToast)
 
 
     if (!this.$toast) throw error
 
-    if (error.response._data && error.response._data.errors)
+    if (error.response?._data && error.response._data.errors?.error?.reason)
       for (const err of error.response._data.errors)
         this.$toast.show({
           type: 'danger',
@@ -223,7 +210,7 @@ export default class Api {
         timeout: 0,
       })
 
-    if (error.response._data.exception)
+    if (error.response?._data.exception)
       this.$toast.show({
         type: 'danger',
         message: `<b>[${error.response._data.exception}]</b> <br /> ${error.response._data.message} <br /> <a href="phpstorm://open?file=/${error.response._data.file}&line=${error.response._data.line}">${error.response._data.file}:${error.response._data.line}</a>`,
@@ -231,14 +218,14 @@ export default class Api {
       })
   }
 
-  public async logout (router: Router): Promise<void> {
+  public async logout(router: Router): Promise<void> {
     if (this.$echo) this.$echo.disconnect()
     const response = (await $fetch<api.MetApiResults>('/logout', this.fetchOptions()))
-    this.$toast.show(Object.assign(response.data, { timeout: 1 }))
+    this.$toast.show(Object.assign(response.data as ToastProps, { timeout: 1 }))
     await this.invalidate(router)
   }
 
-  public async invalidate (router?: Router): Promise<void> {
+  public async invalidate(router?: Router): Promise<void> {
     this.token.value = undefined
     this.loggedIn.value = false
     Object.assign(this.$user, {})

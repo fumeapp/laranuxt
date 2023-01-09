@@ -6,37 +6,42 @@ declare global {
       // columns
       id: number
       user_id: number
-      avatar?: string
+      avatar: string|null
       name: string
-      payload: string
-      created_at?: Date
-      updated_at?: Date
+      payload: string[]
+      created_at: Date|null
+      updated_at: Date|null
     }
-
-    export type Providers = Array<Provider>
+    export type Providers = Provider[]
+    export type ProviderResults = Modify<api.MetApiResults, { data: Providers }>
 
     export interface User {
       // columns
       id: number
       email: string
-      name?: string
-      avatar?: string
-      stripe?: string
+      name: string|null
+      avatar: string|null
+      stripe: string|null
       is_sub: boolean
-      created_at?: Date
-      updated_at?: Date
+      created_at: Date|null
+      updated_at: Date|null
       // mutators
-      is_trial: boolean
+      is_trial: bool
       first_name: string
-      has_active_session: boolean
-      session: api.Session
-      location: api.SessionLocation
+      has_active_session: bool
+      session: Session
+      location: array
+      // overrides
+      location: unknown
+      session: unknown
+      sessions: unknown
       // relations
       providers: Providers
-      sessions: api.Sessions
+      sessions: Sessions
+      notifications: DatabaseNotifications
     }
-
-    export type Users = Array<User>
+    export type Users = User[]
+    export type UserResults = Modify<api.MetApiResults, { data: Users }>
 
   }
 }

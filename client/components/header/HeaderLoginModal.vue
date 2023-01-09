@@ -1,3 +1,86 @@
+<script lang="ts" setup>
+import { UserLogin } from '@/types/frontend'
+import { RouteLocationRaw, useRouter } from 'vue-router'
+import { PushButton, ModalBase } from 'tailvue'
+import { PropType } from 'vue'
+
+const config = useRuntimeConfig()
+const router = useRouter()
+const emit = defineEmits(['off'])
+const api = useApi()
+const email = ref('')
+const loading = reactive({
+  attempt: false,
+  google: false,
+} as Record<string, boolean>)
+
+const props = defineProps({
+  destroyed: {
+    type: Function as PropType<() => void>,
+    required: true,
+  },
+})
+
+if (getCurrentInstance() && window) {
+  onMounted(() => messageHandler(true))
+  onBeforeUnmount(() => messageHandler(false))
+}
+
+const off = () => emit('off')
+
+async function attempt (): Promise<void> {
+  loading.attempt = true
+  const result = await api.store('/attempt', { email: email.value })
+  loading.attempt = false
+  if (!result) return
+  api.$toast.show({
+    type: 'success',
+    title: 'Login E-mail Sent',
+    message: `Login link sent to <b>${email.value}</b>`,
+    timeout: 5,
+  })
+  email.value = ''
+  emit('off')
+}
+
+function messageHandler (add: boolean): void {
+  if (add) return window.addEventListener('message', handleMessage)
+  return window.removeEventListener('message', handleMessage)
+}
+
+function handleMessage (event: { data: UserLogin }): void {
+  if (event.data.user && event.data.token)
+    oauthComplete(event.data)
+  if (event.data.error)
+    api.$toast.show({ type: 'danger', message: event.data.error })
+}
+
+function login (provider: 'facebook'|'google'): void {
+  loading[provider] = true
+  const width = 640
+  const height = 660
+  const left = window.screen.width / 2 - (width / 2)
+  const top = window.screen.height / 2 - (height / 2)
+  const win = window.open(`${config.apiURL}/redirect/${provider}`, 'Log In',
+    `toolbar=no, location=no, directories=no, status=no, menubar=no, scollbars=no,
+      resizable=no, copyhistory=no, width=${width},height=${height},top=${top},left=${left}`)
+  const interval = setInterval(() => {
+    if (win === null || win.closed) {
+      clearInterval(interval)
+      loading[provider] = false
+    }
+  }, 200)
+}
+
+const oauthComplete = async (result: UserLogin): Promise<void> => {
+  loading[result.provider] = false
+  const redirect = await api.login(result)
+  await router.push(redirect as RouteLocationRaw)
+  emit('off')
+}
+</script>
+
+
 <template>
   <modal-base :destroyed="props.destroyed">
     <div class="bg-white dark:bg-gray-800 py-8 px-4 sm:px-10">
@@ -71,88 +154,3 @@
     </div>
   </modal-base>
 </template>
-
-<script lang="ts" setup>
-import { useNuxtApp, useRuntimeConfig } from '#app'
-import { UserLogin } from '~/lib/api'
-import { useRouter } from 'vue-router'
-import { PushButton, ModalBase } from 'tailvue'
-import { getCurrentInstance, onBeforeUnmount, onMounted } from 'vue'
-import { reactive, ref, PropType } from 'vue'
-import { Icon } from '@iconify/vue'
-
-const config = useRuntimeConfig()
-const router = useRouter()
-const emit = defineEmits(['off'])
-const { $toast, $api } = useNuxtApp()
-const email = ref('')
-const loading = reactive({
-  attempt: false,
-  google: false,
-} as Record<string, boolean>)
-
-const props = defineProps({
-  destroyed: {
-    type: Function as PropType<() => void>,
-    required: true,
-  },
-})
-
-if (getCurrentInstance() && window) {
-  onMounted(() => messageHandler(true))
-  onBeforeUnmount(() => messageHandler(false))
-}
-
-const off = () => emit('off')
-
-async function attempt (): Promise<void> {
-  loading.attempt = true
-  const result = await $api.store('/attempt', { email: email.value })
-  loading.attempt = false
-  if (!result) return
-  $toast.show({
-    type: 'success',
-    title: 'Login E-mail Sent',
-    message: `Login link sent to <b>${email.value}</b>`,
-    timeout: 5,
-  })
-  email.value = ''
-  emit('off')
-}
-
-function messageHandler (add: boolean): void {
-  if (add) return window.addEventListener('message', handleMessage)
-  return window.removeEventListener('message', handleMessage)
-}
-
-function handleMessage (event: { data: UserLogin }): void {
-  if (event.data.user && event.data.token)
-    oauthComplete(event.data)
-  if (event.data.error)
-    $toast.show({ type: 'danger', message: event.data.error })
-}
-
-function login (provider: 'facebook'|'google'): void {
-  loading[provider] = true
-  const width = 640
-  const height = 660
-  const left = window.screen.width / 2 - (width / 2)
-  const top = window.screen.height / 2 - (height / 2)
-  const win = window.open(`${config.apiURL}/redirect/${provider}`, 'Log In',
-    `toolbar=no, location=no, directories=no, status=no, menubar=no, scollbars=no,
-      resizable=no, copyhistory=no, width=${width},height=${height},top=${top},left=${left}`)
-  const interval = setInterval(() => {
-    if (win === null || win.closed) {
-      clearInterval(interval)
-      loading[provider] = false
-    }
-  }, 200)
-}
-
-const oauthComplete = async (result: UserLogin): Promise<void> => {
-  loading[result.provider] = false
-  const redirect = await $api.login(result)
-  await router.push({path: redirect})
-  emit('off')
-}
-</script>

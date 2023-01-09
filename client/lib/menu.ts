@@ -1,6 +1,6 @@
 import { RouteLocationNormalizedLoaded, Router } from 'vue-router'
-import { DropdownGroup } from '~/components/dropdown/DropdownGroup.vue'
-import Api from '~/lib/api'
+import { DropdownGroup } from '@/components/dropdown/DropdownGroup.vue'
+import Api from '@/lib/api'
 
 interface MenuItem {
   name: string
@@ -16,15 +16,15 @@ export default class {
     private route: RouteLocationNormalizedLoaded,
     private router: Router,
     private api: Api,
-  ) {}
+  ) { }
 
-  public main (): MenuItem[] {
+  public main(): MenuItem[] {
     if (this.api.loggedIn.value)
       return this.items()
     return this.items().filter(item => !item.gated)
   }
 
-  public items ():MenuItem[] {
+  public items(): MenuItem[] {
     return [
       {
         name: 'Home',
@@ -50,7 +50,7 @@ export default class {
     ]
   }
 
-  public profileGroup:DropdownGroup = [
+  public profileGroup: DropdownGroup = [
     [
       {
         icon: 'carbon:user-profile',
