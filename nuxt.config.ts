@@ -37,6 +37,7 @@ export default defineNuxtConfig({
    * @see https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
    */
   modules: [
+    '@pinia/nuxt',
     '@vueuse/nuxt',
     'nuxt-windicss',
     '@tailvue/nuxt',

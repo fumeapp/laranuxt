@@ -17,7 +17,10 @@
     "caches": "./artisan config:cache; ./artisan route:cache; ./artisan cache:clear; ./artisan event:clear;",
     "stan": "composer stan"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.6",
+    "pinia": "^2.0.29"
+  },
   "devDependencies": {
     "@iconify/vue": "^4.0.0",
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",

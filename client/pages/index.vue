@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { PushButton } from 'tailvue'
+import { useCounterStore } from '@/stores/counter'
+
 const api = useApi()
+const store = useCounterStore()
 const { setCrumbs } = useCrumbs()
 setCrumbs([ { name: 'Home', to: '/' }])
 
 const users = ref<models.UserResults>(undefined)
 const get = async () => users.value = await api.index<models.UserResults>('/example', { count: 9 })
 const error = async ():Promise<api.MetApiResponse> => await api.get('/error')
+const increment = () => store.increment()
 get()
 
 </script>
@@ -32,6 +36,10 @@ get()
         <push-button @click="error">
           <icon icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
           Force PHP Error
+        </push-button>
+        <push-button @click="increment">
+          <icon icon="mdi:plus" class="w-6 h-6 text-blue-600 mr-2.5" />
+          Increment Count {{ store.count }}
         </push-button>
       </div>
     </div>
