@@ -1,20 +1,31 @@
 export { }
 declare global {
   export namespace api {
+    interface MetApiQuery {
+      options: Record<string, unknown>
+      params: Record<string, unknown>
+    }
+    interface MetApiData {
+      success: boolean
+      type: 'success' | 'failure'
+      message: string
+      data: unknown
+    }
     export interface MetApiResponse {
+      benchmark: number
       success: boolean
       message: string
       type: 'success' | 'failure'
-      data: unknown
+      query: MetApiQuery
+      data: MetApiData
+
     }
+    export type Me = Modify<api.MetApiResponse, { data: models.User }>
 
     export interface MetApiResults {
       benchmark: number
       status: 'success' | 'failure'
-      query: {
-        options: Record<string, unknown>
-        params: Record<string, unknown>
-      }
+      query: MetApiQuery
       paginate?: MetApiPaginate
       data: unknown
     }
