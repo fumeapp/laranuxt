@@ -1,4 +1,4 @@
-import { FetchError, FetchOptions, SearchParams, $fetch } from 'ohmyfetch'
+import { FetchError, FetchOptions, SearchParameters, $fetch } from 'ofetch'
 import { reactive, ref } from 'vue'
 import { TailvueToast, ToastProps } from 'tailvue'
 import { Router } from 'vue-router'
@@ -114,7 +114,7 @@ export default class Api {
     if (result.action && result.action.action === 'redirect') return result.action.url
     return this.config.redirect.login
   }
-  private fetchOptions(params?: SearchParams, method = 'GET'): FetchOptions<'json'> {
+  private fetchOptions(params?: SearchParameters, method = 'GET'): FetchOptions<'json'> {
     const fetchOptions = this.config.fetchOptions
     fetchOptions.headers = {
       Accept: 'application/json',
@@ -151,23 +151,23 @@ export default class Api {
     }
   }
 
-  public async index<Results>(endpoint: string, params?: SearchParams): Promise<Results> {
+  public async index<Results>(endpoint: string, params?: SearchParameters): Promise<Results> {
     return await $fetch<Results>(endpoint, this.fetchOptions(params))
   }
 
-  public async get<Results>(endpoint: string, params?: SearchParams): Promise<Results> {
+  public async get<Results>(endpoint: string, params?: SearchParameters): Promise<Results> {
     return await $fetch<Results>(endpoint, this.fetchOptions(params))
   }
 
-  public async update<Response>(endpoint: string, params?: SearchParams): Promise<Response | undefined> {
+  public async update<Response>(endpoint: string, params?: SearchParameters): Promise<Response | undefined> {
     return await $fetch<Response>(endpoint, this.fetchOptions(params, 'PUT'))
   }
 
-  public async store<Response>(endpoint: string, params?: SearchParams): Promise<Response | undefined> {
+  public async store<Response>(endpoint: string, params?: SearchParameters): Promise<Response | undefined> {
     return await $fetch<Response>(endpoint, this.fetchOptions(params, 'POST'))
   }
 
-  public async delete<Response>(endpoint: string, params?: SearchParams): Promise<Response | undefined> {
+  public async delete<Response>(endpoint: string, params?: SearchParameters): Promise<Response | undefined> {
     return await $fetch<Response>(endpoint, this.fetchOptions(params, 'DELETE'))
   }
 
@@ -180,7 +180,7 @@ export default class Api {
     }
   }
 
-  public upload(url: string, params?: SearchParams) {
+  public upload(url: string, params?: SearchParameters) {
     return $fetch(url, { method: 'PUT', body: params })
   }
 
