@@ -5,8 +5,8 @@ on:
       - staging
       - production
     paths:
-      - '**.php'
-      - '!client/**'
+      - "**.php"
+      - "!client/**"
 jobs:
   stan:
     runs-on: ubuntu-latest
@@ -18,7 +18,7 @@ jobs:
     name: PHP Version:${{ matrix.php }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2

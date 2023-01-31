@@ -182,7 +182,10 @@ export default class Api {
     return await $fetch<Response>(endpoint, this.fetchOptions(params, 'DELETE'))
   }
 
-  public async attempt(token: string): Promise<UserLogin> {
+  public async attempt(token: string | string[]): Promise<UserLogin> {
+    if (Array.isArray(token))
+      token = token.join('')
+
     try {
       return (await $fetch<api.MetApiResponse & { data: UserLogin }>(`/login/${token}`, this.fetchOptions())).data
     }
