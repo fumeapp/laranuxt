@@ -5,13 +5,13 @@ on:
       - staging
       - production
     paths:
-      - 'client/**'
+      - "client/**"
 jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path

@@ -5,8 +5,8 @@ on:
       - staging
       - production
     paths:
-      - '**.php'
-      - '!client/**'
+      - "**.php"
+      - "!client/**"
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
     name: PHP Version:${{ matrix.php }}
 
     steps:
-      - name: 'MySQL - tweak mysql'
+      - name: "MySQL - tweak mysql"
         run: |
           echo "[mysqld]" | sudo tee -a /etc/mysql/conf.d/mysql.cnf > /dev/null
           echo "skip-grant-tables" | sudo tee -a /etc/mysql/conf.d/mysql.cnf > /dev/null
@@ -27,7 +27,7 @@ jobs:
         run: |
           sudo service mysql restart
           mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`test-laranuxt\`"
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
@@ -46,5 +46,3 @@ jobs:
         with:
           name: coverage-html
           path: coverage/
-
-
