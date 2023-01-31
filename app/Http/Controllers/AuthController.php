@@ -180,16 +180,12 @@ class AuthController extends Controller
     /**
      * Verify the link clicked in the e-mail
      *
-     * @param  Request  $request
+     * @param  string $token
      * @return Response|JsonResponse
      */
-    public function login(Request $request): Response|JsonResponse
+    public function login(string $token): Response|JsonResponse
     {
-        $this
-            ->option('token', 'required|alpha_num|size:64')
-            ->verify();
-
-        if (! $login = auth()->verify($request->token)) {
+        if (! $login = auth()->verify($token)) {
             return $this->error('auth.failed');
         }
 
@@ -211,6 +207,7 @@ class AuthController extends Controller
         $this
             ->option('providers', 'boolean')
             ->verify();
+
         if ($request->providers) {
             return $this->render(User::whereId(auth()->user()?->id)->with(['providers'])->first());
         }

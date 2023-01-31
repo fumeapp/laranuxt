@@ -23,7 +23,7 @@ Route::get('example', [Controller::class, 'example'])->name('example');
 Route::get('error', [Controller::class, 'exampleError'])->name('error');
 
 // Authentication
-Route::get('login', [Controller::class, 'auth'])->name('login');
+Route::get('login/{token}', [AuthController::class, 'login'])->name('login');
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('redirect/{provider}', 'redirect')->name('provider.redirect');
