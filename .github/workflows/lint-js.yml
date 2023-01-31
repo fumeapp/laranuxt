@@ -28,4 +28,4 @@ jobs:
       - name: Install Dependencies
         run: yarn
       - name: Run Eslint
-        run: yarn lint:action
+        run: yarn lint
