@@ -53,10 +53,10 @@ const { list, actions } = useCrumbs()
           :to="action.to"
           class="flex text-xs"
         >
-          <push-button size="xs">
+          <PushButton size="xs">
             <icon :icon="action.icon" class="w-4 h-4 mr-2.5" />
             {{ action.name }}
-          </push-button>
+          </PushButton>
         </router-link>
       </div>
     </nav>

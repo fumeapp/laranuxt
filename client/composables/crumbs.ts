@@ -1,10 +1,9 @@
-import { BreadCrumb } from '@/types/frontend'
+import type { BreadCrumb } from '@/types/frontend'
 
 const list = ref<BreadCrumb[]>([])
 const actions = ref<BreadCrumb[]>([])
 
 export const useCrumbs = () => {
-
   const setCrumbs = (crumbs: BreadCrumb[]): void => {
     list.value = crumbs
     actions.value = []
@@ -15,5 +14,4 @@ export const useCrumbs = () => {
   }
 
   return { list, actions, setCrumbs, setActions }
-
 }

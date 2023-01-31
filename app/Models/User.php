@@ -52,6 +52,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereName($value)
  * @method static Builder|User whereStripe($value)
  * @method static Builder|User whereUpdatedAt($value)
+ *
  * @mixin Eloquent
  */
 class User extends Authenticatable

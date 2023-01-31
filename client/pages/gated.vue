@@ -6,7 +6,6 @@ setCrumbs([
   { name: 'Home', to: '/' },
   { name: 'Gated', to: '/gated' },
 ])
-
 </script>
 
 <template>
@@ -15,4 +14,3 @@ setCrumbs([
     <pre class="text-xs p-4 bg-gray-200 dark:bg-gray-700 rounded-md max-w-md overflow-hidden"> {{ api.$user }} </pre>
   </div>
 </template>
-

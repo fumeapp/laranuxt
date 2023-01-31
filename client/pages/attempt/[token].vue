@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 
 const api = useApi()
-const { sleep} = useUtils()
+const { sleep } = useUtils()
 
 const route = useRoute()
 const router = useRouter()
@@ -15,7 +15,8 @@ const verify = async () => {
 
 useHead({ title: 'Authenticating..' })
 
-if (getCurrentInstance()) onMounted(verify)
+if (getCurrentInstance())
+  onMounted(verify)
 </script>
 
 <script lang="ts">

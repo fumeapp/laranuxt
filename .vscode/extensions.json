@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "editorconfig.editorconfig",
+        "dbaeumer.vscode-eslint",
+        "henrynguyen5-vsc.vsc-nvm",
+        "ms-vscode.vscode-typescript-next",
+        "open-southeners.laravel-pint",
+        "Vue.volar",
+        "Vue.vscode-typescript-vue-plugin",
+    ]
+}
