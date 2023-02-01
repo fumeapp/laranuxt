@@ -1,5 +1,4 @@
 export const useUtils = () => {
-
   /**
    * Perform a sleep as a Promise
    * ex: await this.$sleep(200)
@@ -27,7 +26,6 @@ export const useUtils = () => {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
-
   /**
    * Scroll to an element on the page
    * @param id
@@ -35,7 +33,8 @@ export const useUtils = () => {
    */
   const properScroll = (id: string, offset: number) => {
     const el = document.getElementById(id)
-    if (!el) return true
+    if (!el)
+      return true
     const y = el.getBoundingClientRect().top + window.pageYOffset + offset
     window.scrollTo(0, y)
   }

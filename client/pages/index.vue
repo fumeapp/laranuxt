@@ -2,13 +2,12 @@
 import { PushButton } from 'tailvue'
 const api = useApi()
 const { setCrumbs } = useCrumbs()
-setCrumbs([ { name: 'Home', to: '/' }])
+setCrumbs([{ name: 'Home', to: '/' }])
 
 const users = ref<models.UserResults>(undefined)
 const get = async () => users.value = await api.index<models.UserResults>('/example', { count: 9 })
-const error = async ():Promise<api.MetApiResponse> => await api.get('/error')
+const error = async (): Promise<api.MetApiResponse> => await api.get('/error')
 get()
-
 </script>
 
 <template>
@@ -25,14 +24,14 @@ get()
       <span>&nbsp;</span>
       <span class="text-sm">(1 second delay)</span>
       <div class="mt-4 flex justify-center space-x-2">
-        <push-button @click="get">
+        <PushButton @click="get">
           <icon icon="mdi:refresh" class="w-6 h-6 text-green-600 mr-2.5" />
           get()
-        </push-button>
-        <push-button @click="error">
+        </PushButton>
+        <PushButton @click="error">
           <icon icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
           Force PHP Error
-        </push-button>
+        </PushButton>
       </div>
     </div>
   </div>

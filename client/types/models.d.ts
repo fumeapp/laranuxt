@@ -21,20 +21,17 @@ declare global {
       email: string
       name: string|null
       avatar: string|null
+      job: string
       stripe: string|null
       is_sub: boolean
       created_at: Date|null
       updated_at: Date|null
       // mutators
-      is_trial: bool
+      is_trial: boolean
       first_name: string
-      has_active_session: bool
+      has_active_session: boolean
       session: Session
-      location: array
-      // overrides
-      location: unknown
-      session: unknown
-      sessions: unknown
+      location: Array<unknown>
       // relations
       providers: Providers
       sessions: Sessions

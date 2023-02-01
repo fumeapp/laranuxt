@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 
 const api = useApi()
 const { sleep } = useUtils()
@@ -13,13 +13,13 @@ const verify = async () => {
     const redirect = await api.login(await api.attempt(route.params.token))
     await sleep(400)
     await router.push(redirect as RouteLocationRaw)
-
-  } catch (error) {
+  }
+  catch (error) {
     $toast.show({
       message: 'Invalid or expired token.',
       type: 'danger',
     })
-    await router.push('/' )
+    await router.push('/')
   }
 }
 
@@ -35,8 +35,8 @@ definePageMeta({
   ],
 })
 
-
-if (getCurrentInstance()) onMounted(verify)
+if (getCurrentInstance())
+  onMounted(verify)
 </script>
 
 <script lang="ts">

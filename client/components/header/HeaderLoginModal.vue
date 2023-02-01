@@ -1,18 +1,9 @@
 <script lang="ts" setup>
-import { UserLogin } from '@/types/frontend'
-import { RouteLocationRaw, useRouter } from 'vue-router'
-import { PushButton, ModalBase } from 'tailvue'
-import { PropType } from 'vue'
-
-const config = useRuntimeConfig()
-const router = useRouter()
-const emit = defineEmits(['off'])
-const api = useApi()
-const email = ref('')
-const loading = reactive({
-  attempt: false,
-  google: false,
-} as Record<string, boolean>)
+import type { RouteLocationRaw } from 'vue-router'
+import { useRouter } from 'vue-router'
+import { ModalBase, PushButton } from 'tailvue'
+import type { PropType } from 'vue'
+import type { UserLogin } from '@/types/frontend'
 
 const props = defineProps({
   destroyed: {
@@ -20,19 +11,24 @@ const props = defineProps({
     required: true,
   },
 })
-
-if (getCurrentInstance() && window) {
-  onMounted(() => messageHandler(true))
-  onBeforeUnmount(() => messageHandler(false))
-}
+const emit = defineEmits(['off'])
+const config = useRuntimeConfig()
+const router = useRouter()
+const api = useApi()
+const email = ref('')
+const loading = reactive({
+  attempt: false,
+  google: false,
+} as Record<string, boolean>)
 
 const off = () => emit('off')
 
-async function attempt (): Promise<void> {
+async function attempt(): Promise<void> {
   loading.attempt = true
   const result = await api.store('/attempt', { email: email.value })
   loading.attempt = false
-  if (!result) return
+  if (!result)
+    return
   api.$toast.show({
     type: 'success',
     title: 'Login E-mail Sent',
@@ -43,19 +39,27 @@ async function attempt (): Promise<void> {
   emit('off')
 }
 
-function messageHandler (add: boolean): void {
-  if (add) return window.addEventListener('message', handleMessage)
+const oauthComplete = async (result: UserLogin): Promise<void> => {
+  loading[result.provider] = false
+  const redirect = await api.login(result)
+  await router.push(redirect as RouteLocationRaw)
+  emit('off')
+}
+
+function messageHandler(add: boolean): void {
+  if (add)
+    return window.addEventListener('message', handleMessage)
   return window.removeEventListener('message', handleMessage)
 }
 
-function handleMessage (event: { data: UserLogin }): void {
+function handleMessage(event: { data: UserLogin }): void {
   if (event.data.user && event.data.token)
     oauthComplete(event.data)
   if (event.data.error)
     api.$toast.show({ type: 'danger', message: event.data.error })
 }
 
-function login (provider: 'facebook'|'google'): void {
+function login(provider: 'facebook' | 'google'): void {
   loading[provider] = true
   const width = 640
   const height = 660
@@ -72,21 +76,18 @@ function login (provider: 'facebook'|'google'): void {
   }, 200)
 }
 
-const oauthComplete = async (result: UserLogin): Promise<void> => {
-  loading[result.provider] = false
-  const redirect = await api.login(result)
-  await router.push(redirect as RouteLocationRaw)
-  emit('off')
+if (getCurrentInstance() && window) {
+  onMounted(() => messageHandler(true))
+  onBeforeUnmount(() => messageHandler(false))
 }
 </script>
 
-
 <template>
-  <modal-base :destroyed="props.destroyed">
+  <ModalBase :destroyed="props.destroyed">
     <div class="bg-white dark:bg-gray-800 py-8 px-4 sm:px-10">
       <div class="grid grid-cols-2 gap-3">
         <div>
-          <push-button class="w-full justify-center" @click="login('google')">
+          <PushButton class="w-full justify-center" @click="login('google')">
             <icon
               v-if="loading.google"
               icon="gg:spinner-two"
@@ -97,10 +98,10 @@ const oauthComplete = async (result: UserLogin): Promise<void> => {
               icon="flat-color-icons:google"
               class="w-6 h-6"
             />
-          </push-button>
+          </PushButton>
         </div>
         <div>
-          <push-button class="w-full justify-center" @click="login('facebook')">
+          <PushButton class="w-full justify-center" @click="login('facebook')">
             <icon
               v-if="loading.facebook"
               icon="gg:spinner-two"
@@ -111,7 +112,7 @@ const oauthComplete = async (result: UserLogin): Promise<void> => {
               icon="logos:facebook"
               class="w-6 h-6"
             />
-          </push-button>
+          </PushButton>
         </div>
       </div>
       <div class="mt-6 relative">
@@ -143,14 +144,14 @@ const oauthComplete = async (result: UserLogin): Promise<void> => {
       </div>
       <div class="mt-6">
         <span class="block w-full rounded-md shadow-sm">
-          <push-button theme="indigo" class="w-full justify-center" @click="attempt">
+          <PushButton theme="indigo" class="w-full justify-center" @click="attempt">
             Sign in / Register
             <div v-if="loading.attempt" class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <icon icon="gg:spinner-two" class="w-5 h-5 text-indigo-200 animate-spin" />
             </div>
-          </push-button>
+          </PushButton>
         </span>
       </div>
     </div>
-  </modal-base>
+  </ModalBase>
 </template>

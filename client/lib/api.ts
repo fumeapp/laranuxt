@@ -1,7 +1,8 @@
-import { FetchError, FetchOptions, SearchParameters, $fetch } from 'ofetch'
+import type { FetchError, FetchOptions, SearchParameters } from 'ofetch'
+import { $fetch } from 'ofetch'
 import { reactive, ref } from 'vue'
-import { TailvueToast, ToastProps } from 'tailvue'
-import { Router } from 'vue-router'
+import type { TailvueToast, ToastProps } from 'tailvue'
+import type { Router } from 'vue-router'
 
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
@@ -22,8 +23,8 @@ export interface AuthConfig {
     logout: string
     login: undefined | string
   }
-  paymentToast?: ToastProps,
-  echoConfig?: EchoConfig,
+  paymentToast?: ToastProps
+  echoConfig?: EchoConfig
 }
 
 export interface EchoConfig {
@@ -48,7 +49,6 @@ const authConfigDefaults: AuthConfig = {
 }
 
 export default class Api {
-
   public token = useCookie<string | undefined>('token', { path: '/', maxAge: 60 * 60 * 24 * 30 })
   public config: AuthConfig
   public $user = reactive<models.User>({} as models.User)
@@ -79,15 +79,21 @@ export default class Api {
 
   checkUser() {
     if (this.token.value !== undefined) {
-      this.setUser().then()
-      this.loggedIn.value = true
+      this.setUser().then(() => {
+        this.loggedIn.value = true
+      })
+        .catch(() => {
+          this.loggedIn.value = false
+        })
     }
-    else this.loggedIn.value = false
+    else { this.loggedIn.value = false }
   }
 
   setEcho() {
-    if (!this.config.echoConfig) return
-    if (!process.client) return
+    if (!this.config.echoConfig)
+      return
+    if (!process.client)
+      return
     window.Pusher = Pusher
     this.$echo = new Echo({
       broadcaster: 'pusher',
@@ -99,45 +105,49 @@ export default class Api {
       auth: {
         headers: {
           Accept: 'application/json',
-          Authorization: `Bearer ` + this.token.value,
+          Authorization: `Bearer ${this.token.value || ''}`,
         },
       },
     })
   }
 
-  async login(result: UserLogin, discreet = false): Promise<undefined | string> {
+  login(result: UserLogin, discreet = false): undefined | string {
     this.loggedIn.value = true
     this.token.value = result.token
     Object.assign(this.$user, result.user)
     this.setEcho()
-    if (!discreet) this.$toast.show({ type: 'success', message: 'Login Successful', timeout: 1 })
-    if (result.action && result.action.action === 'redirect') return result.action.url
+    if (!discreet)
+      this.$toast.show({ type: 'success', message: 'Login Successful', timeout: 1 })
+    if (result.action && result.action.action === 'redirect')
+      return result.action.url
     return this.config.redirect.login
   }
+
   private fetchOptions(params?: SearchParameters, method = 'GET'): FetchOptions<'json'> {
     const fetchOptions = this.config.fetchOptions
     fetchOptions.headers = {
       Accept: 'application/json',
-      Authorization: `Bearer ${this.token.value}`,
+      Authorization: `Bearer ${this.token.value || ''}`,
       Referer: this.config.webURL,
     }
     fetchOptions.method = method
     fetchOptions.onRequest = () => {
-      this.nuxtApp.callHook('page:start')
+      this.nuxtApp.callHook('page:start').catch(() => { })
     }
     fetchOptions.onResponse = () => {
-      this.nuxtApp.callHook('page:finish')
+      this.nuxtApp.callHook('page:finish').catch(() => { })
     }
     fetchOptions.onResponseError = (error) => {
-      this.toastError(error as unknown as FetchError)
+      this.toastError(error as unknown as FetchError).catch(() => { })
     }
     delete this.config.fetchOptions.body
     delete this.config.fetchOptions.params
-    if (params)
+    if (params) {
       if (method === 'POST' || method === 'PUT')
         this.config.fetchOptions.body = params
       else
         this.config.fetchOptions.params = params
+    }
     return this.config.fetchOptions
   }
 
@@ -146,7 +156,8 @@ export default class Api {
       const result = await $fetch<api.MetApiResponse & { data: models.User }>('/me', this.fetchOptions())
       Object.assign(this.$user, result.data)
       this.setEcho()
-    } catch (e) {
+    }
+    catch (e) {
       await this.invalidate()
     }
   }
@@ -172,9 +183,13 @@ export default class Api {
   }
 
   public async attempt(token: string | string[]): Promise<UserLogin> {
+    if (Array.isArray(token))
+      token = token.join('')
+
     try {
       return (await $fetch<api.MetApiResponse & { data: UserLogin }>(`/login/${token}`, this.fetchOptions())).data
-    } catch (error) {
+    }
+    catch (error) {
       await this.toastError(error as FetchError)
       throw (error)
     }
@@ -185,33 +200,34 @@ export default class Api {
   }
 
   public async toastError(error: FetchError): Promise<void> {
-    console.log('toastError', error)
-
     if (error.response?.status === 401)
       return await this.invalidate()
 
     if (error.response?.status === 402 && this.config.paymentToast)
       return this.$toast.show(this.config.paymentToast)
 
+    if (!this.$toast)
+      throw error
 
-    if (!this.$toast) throw error
-
-    if (error.response?._data && error.response._data.errors?.error?.reason)
-      for (const err of error.response._data.errors)
+    if (error.response?._data && error.response._data.errors?.error?.reason) {
+      for (const err of error.response._data.errors) {
         this.$toast.show({
           type: 'danger',
           message: err.detail ?? err.message ?? '',
           timeout: 12,
         })
+      }
+    }
 
-    if (error.response?.status === 403)
+    if (error.response?.status === 403) {
       return this.$toast.show({
         type: 'denied',
         message: error.response._data.message,
         timeout: 0,
       })
+    }
 
-    if (error.response?._data.exception)
+    if (error.response?._data.exception) {
       this.$toast.show({
         wide: true,
         type: 'danger',
@@ -223,10 +239,12 @@ export default class Api {
         </a>`,
         timeout: 0,
       })
+    }
   }
 
   public async logout(router: Router): Promise<void> {
-    if (this.$echo) this.$echo.disconnect()
+    if (this.$echo)
+      this.$echo.disconnect()
     const response = (await $fetch<api.MetApiResults>('/logout', this.fetchOptions()))
     this.$toast.show(Object.assign(response.data as ToastProps, { timeout: 1 }))
     await this.invalidate(router)
@@ -236,9 +254,9 @@ export default class Api {
     this.token.value = undefined
     this.loggedIn.value = false
     Object.assign(this.$user, {})
-    if (router) await router.push(this.config.redirect.logout)
+    if (router)
+      await router.push(this.config.redirect.logout)
     else if (process.client && document.location.pathname !== this.config.redirect.logout)
       document.location.href = this.config.redirect.logout
   }
-
 }

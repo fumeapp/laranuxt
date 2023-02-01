@@ -1,6 +1,6 @@
-import { RouteLocationNormalizedLoaded, Router } from 'vue-router'
-import { DropdownGroup } from '@/components/dropdown/DropdownGroup.vue'
-import Api from '@/lib/api'
+import type { RouteLocationNormalizedLoaded, Router } from 'vue-router'
+import type { DropdownGroup } from '@/components/dropdown/DropdownGroup.vue'
+import type Api from '@/lib/api'
 
 interface MenuItem {
   name: string
@@ -11,7 +11,6 @@ interface MenuItem {
 }
 
 export default class {
-
   constructor(
     private route: RouteLocationNormalizedLoaded,
     private router: Router,
@@ -78,5 +77,4 @@ export default class {
 
   public isCurrent = (item: MenuItem) =>
     typeof this.route.name === 'string' && item.names.includes(this.route.name)
-
 }

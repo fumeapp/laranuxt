@@ -1,10 +1,7 @@
 <script lang="ts" setup>
-import { PushButton, ToastProps } from 'tailvue'
-import { PropType } from 'vue'
-const { $toast, $modal } = useNuxtApp()
-const api = useApi()
-const dayjs = useDayjs()
-const router = useRouter()
+import type { ToastProps } from 'tailvue'
+import { PushButton } from 'tailvue'
+import type { PropType } from 'vue'
 const props = defineProps({
   session: {
     type: Object as PropType<api.Session>,
@@ -12,35 +9,54 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['refresh'])
-
+const { $toast, $modal } = useNuxtApp()
+const api = useApi()
+const dayjs = useDayjs()
+const router = useRouter()
 const type = computed((): string => {
-  if (props.session.device.platform.includes('macOS')) return 'mac'
-  if (props.session.device.platform.includes('OS X')) return 'mac'
-  if (props.session.device.platform.includes('Windows')) return 'windows'
-  if (props.session.device.platform.includes('Linux')) return 'linux'
+  if (props.session.device.platform.includes('macOS'))
+    return 'mac'
+  if (props.session.device.platform.includes('OS X'))
+    return 'mac'
+  if (props.session.device.platform.includes('Windows'))
+    return 'windows'
+  if (props.session.device.platform.includes('Linux'))
+    return 'linux'
   // if (this.session.device.platform.includes('iOS')) return 'ios'
-  if (props.session.agent.includes('iPhone')) return 'iphone'
-  if (props.session.agent.includes('iPad')) return 'ipad'
-  if (props.session.agent.includes('Android')) return 'android'
-  if (props.session.agent.includes('Chrome')) return 'chrome'
-  if (props.session.agent.includes('Safari')) return 'chrome'
-  if (props.session.agent.includes('Edge')) return 'edge'
+  if (props.session.agent.includes('iPhone'))
+    return 'iphone'
+  if (props.session.agent.includes('iPad'))
+    return 'ipad'
+  if (props.session.agent.includes('Android'))
+    return 'android'
+  if (props.session.agent.includes('Chrome'))
+    return 'chrome'
+  if (props.session.agent.includes('Safari'))
+    return 'chrome'
+  if (props.session.agent.includes('Edge'))
+    return 'edge'
   return 'other'
 })
 const source = computed((): string => {
-    if (props.session.source === 'actions') return 'Github Actions'
-    if (props.session.source === 'pipelines') return 'Bitbucket Pipelines'
-    if (props.session.source === 'cli') return 'Fume CLI'
-    if (props.session.source === 'ci') return 'CI / CD'
-    return 'Unknown'
+  if (props.session.source === 'actions')
+    return 'Github Actions'
+  if (props.session.source === 'pipelines')
+    return 'Bitbucket Pipelines'
+  if (props.session.source === 'cli')
+    return 'Fume CLI'
+  if (props.session.source === 'ci')
+    return 'CI / CD'
+  return 'Unknown'
 })
 const name = computed((): string => {
-  if (props.session.device.name) return props.session.device.name
-  if (props.session.device.platform) return props.session.device.platform
+  if (props.session.device.name)
+    return props.session.device.name
+  if (props.session.device.platform)
+    return props.session.device.platform
   return props.session.agent
 })
 
-function confirm (session: api.Session) {
+function confirm(session: api.Session) {
   $modal.show({
     type: 'danger',
     title: 'Delete Session',
@@ -58,24 +74,23 @@ function confirm (session: api.Session) {
   })
 }
 
-async function revoke (session: api.Session) {
-  if (session.current) return api.logout(router)
+async function revoke(session: api.Session) {
+  if (session.current)
+    return api.logout(router)
   $toast.show((await api.delete(`/session/${session.token}`)) as ToastProps)
   emit('refresh')
 }
-
 </script>
-
 
 <template>
   <div class="bg-white dark:bg-gray-800 rounded-lg shadow relative">
     <div class="absolute right-0 top-0 m-2">
-      <push-button size="xs" @click="confirm(session)">
+      <PushButton size="xs" @click="confirm(session)">
         <icon
           icon="mdi-trash"
           class="w-4 h-4 text-red-400"
         />
-      </push-button>
+      </PushButton>
     </div>
     <div class="flex items-center justify-center py-4 border-gray-200 border-b dark:border-gray-600">
       <div :class="`device device-${type}`" />

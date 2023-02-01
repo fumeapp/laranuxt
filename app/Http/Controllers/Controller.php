@@ -88,7 +88,7 @@ class Controller extends BaseController
      * @param  Request  $request
      * @return Response|JsonResponse
      */
-    public function example(Request $request): Response | JsonResponse
+    public function example(Request $request): Response|JsonResponse
     {
         if (! app()->environment('testing')) {
             sleep(1);
@@ -114,13 +114,13 @@ class Controller extends BaseController
         return $this->render($users);
     }
 
-    public function exampleError(): Response | JsonResponse
+    public function exampleError(): Response|JsonResponse
     {
         // @phpstan-ignore-next-line
         return $this->render(['forced_error' => $forced_error]);
     }
 
-    public function auth(): Redirector | Application | RedirectResponse
+    public function auth(): Redirector|Application|RedirectResponse
     {
         return redirect(config('app.web'));
     }

@@ -28,6 +28,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Provider wherePayload($value)
  * @method static Builder|Provider whereUpdatedAt($value)
  * @method static Builder|Provider whereUserId($value)
+ *
  * @mixin Eloquent
  */
 class Provider extends Model
