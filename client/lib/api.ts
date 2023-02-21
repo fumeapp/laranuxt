@@ -79,12 +79,8 @@ export default class Api {
 
   checkUser() {
     if (this.token.value !== undefined) {
-      this.setUser().then(() => {
-        this.loggedIn.value = true
-      })
-        .catch(() => {
-          this.loggedIn.value = false
-        })
+      this.setUser().then().catch(() => {})
+      this.loggedIn.value = true
     }
     else { this.loggedIn.value = false }
   }

@@ -8,14 +8,14 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^8.0|^8.1",
+    "php": "^8.1",
     "acidjazz/humble": "^3.0",
     "acidjazz/metapi": "^2.1",
     "composer/composer": "^2.2.1",
     "google/apiclient": "^2.11",
     "guzzlehttp/guzzle": "^7.0.1",
-    "laravel/framework": "^9.0",
-    "laravel/socialite": "^5.2",
+    "laravel/framework": "^10.0",
+    "laravel/socialite": "^5.6",
     "laravel/tinker": "^2.5"
   },
   "require-dev": {
@@ -25,10 +25,10 @@
     "fumeapp/modeltyper": "^1.0",
     "laravel/pint": "^1.0.0",
     "mockery/mockery": "^1.4.4",
-    "nunomaduro/collision": "^6.1",
+    "nunomaduro/collision": "^7.0",
     "nunomaduro/larastan": "^2.0",
-    "phpunit/phpunit": "^9.5.10",
-    "spatie/laravel-ignition": "^1.0",
+    "phpunit/phpunit": "^10.0",
+    "spatie/laravel-ignition": "^2.0",
     "spatie/laravel-ray": "^1.29",
     "squizlabs/php_codesniffer": "^3.6"
   },
@@ -54,11 +54,14 @@
       "Tests\\": "tests/php/"
     }
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true,
   "scripts": {
     "test": [
       "vendor/bin/phpunit -c tests/php/phpunit.xml --colors=always --testdox --coverage-text"
+    ],
+    "test:coverage": [
+      "XDEBUG_MODE=coverage vendor/bin/phpunit -c tests/php/phpunit.xml --colors=always --testdox --coverage-text"
     ],
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
@@ -85,6 +88,7 @@
   },
   "scripts-descriptions": {
     "test": "Run the PHPUnit tests.",
+    "test:coverage": "Run the PHPUnit tests with coverage.",
     "post-autoload-dump": "Run after autoloading has been dumped.",
     "post-root-package-install": "Run after the root package has been installed.",
     "post-create-project-cmd": "Run after the project has been created.",

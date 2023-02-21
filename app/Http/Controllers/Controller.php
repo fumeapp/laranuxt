@@ -30,8 +30,6 @@ class Controller extends BaseController
 
     /**
      * Display our routes
-     *
-     * @return string
      */
     public function routes(): string
     {
@@ -84,9 +82,6 @@ class Controller extends BaseController
 
     /**
      * Example endpoint returning random users
-     *
-     * @param  Request  $request
-     * @return Response|JsonResponse
      */
     public function example(Request $request): Response|JsonResponse
     {
