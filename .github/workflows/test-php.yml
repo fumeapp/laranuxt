@@ -23,24 +23,39 @@ jobs:
         run: |
           echo "[mysqld]" | sudo tee -a /etc/mysql/conf.d/mysql.cnf > /dev/null
           echo "skip-grant-tables" | sudo tee -a /etc/mysql/conf.d/mysql.cnf > /dev/null
+
       - name: MySQL - restart and add database
         run: |
           sudo service mysql restart
           mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`test-laranuxt\`"
-      - uses: actions/checkout@v3
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, intl, pdo_mysql, zip, gd, exif, pcntl, bcmath, ctype, fileinfo, json, tokenizer, xml, dom, curl, iconv, openssl, readline, sockets, zip, zlib
+          coverage: xdebug
+          tools: composer:v2
+
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
+
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+
       - name: Run phpunit
-        run: vendor/bin/phpunit --color=always --testdox --coverage-text --coverage-html coverage/ -c tests/php/phpunit.xml
+        run: XDEBUG_MODE=coverage vendor/bin/phpunit --color=always --testdox --coverage-text --coverage-html coverage/ -c tests/php/phpunit.xml
 
       - uses: actions/upload-artifact@v2
         with:

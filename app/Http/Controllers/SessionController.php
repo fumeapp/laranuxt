@@ -11,8 +11,6 @@ class SessionController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return JsonResponse|Response
      */
     public function index(): JsonResponse|Response
     {
@@ -24,8 +22,6 @@ class SessionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Session  $session
-     * @return JsonResponse|Response
      *
      * @throws AuthorizationException
      */

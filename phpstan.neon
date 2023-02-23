@@ -9,6 +9,7 @@ parameters:
     level: 8
 
     ignoreErrors:
+      - '#Call to an undefined method Laravel\\Socialite\\Contracts\\Provider::stateless\(\)\.#'
 
     excludePaths:
 
