@@ -24,9 +24,12 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      -
-        name: Install our dependencies
+
+      - name: Install our dependencies
         run: yarn
-      -
-        name: Run Jest
+
+      - name: Build
+        run: yarn build
+
+      - name: Run Jest
         run: yarn test:coverage
