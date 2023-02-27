@@ -14,7 +14,7 @@ describe('ContactCard', () => {
       },
 
       computed: {
-        isAdmin: () => false,
+        is_admin: () => false,
       },
     })
     expect(wrapper.html()).toMatchSnapshot()
@@ -27,9 +27,10 @@ describe('ContactCard', () => {
       },
 
       computed: {
-        isAdmin: () => true,
+        is_admin: () => true,
       },
     })
+
     expect(wrapper.html()).toMatchSnapshot()
   })
 })
