@@ -1,14 +1,12 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
-import type { PropType } from 'vue'
 
-const props = defineProps({
-  user: {
-    type: Object as PropType<models.User>,
-    required: true,
-  },
-})
+export interface Props {
+  user: models.User
+}
+
+defineProps<Props>()
 
 const is_admin = computed(() => Math.random() >= 0.5)
 </script>
@@ -19,7 +17,7 @@ const is_admin = computed(() => Math.random() >= 0.5)
       <div class="flex-1 truncate">
         <div class="flex items-center space-x-3">
           <h3 class="text-gray-900 dark:text-gray-200 text-sm leading-5 font-medium truncate">
-            {{ props.user.name }}
+            {{ user.name }}
           </h3>
           <span
             v-if="is_admin"
@@ -29,13 +27,13 @@ const is_admin = computed(() => Math.random() >= 0.5)
           </span>
         </div>
         <p class="mt-1 text-gray-500 dark:text-gray-400 text-sm leading-5 truncate">
-          {{ props.user.job }}
+          {{ user.job }}
         </p>
       </div>
       <img
-        v-if="props.user.avatar"
+        v-if="user.avatar"
         class="w-10 h-10 bg-gray-300 dark:border-gray-600 rounded-full flex-shrink-0"
-        :src="props.user.avatar"
+        :src="user.avatar"
         alt="avatar"
       >
     </div>

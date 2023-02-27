@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { PropType } from 'vue'
 import { Icon } from '@iconify/vue'
 
 /** Menu item */
@@ -16,24 +15,18 @@ export interface DropdownItem {
 export type DropdownGroup = DropdownItem[][]
 export type DropdownItems = DropdownItem[]
 
-defineProps({
-  width: {
-    type: String as PropType<string>,
-    required: false,
-    default: 'w-44',
-  },
-  mt: {
-    type: String as PropType<string>,
-    required: false,
-    default: 'mt-2',
-  },
-  groups: {
-    type: Array as PropType<DropdownGroup>,
-    required: true,
-  },
+export interface Props {
+  groups: DropdownGroup
+  width?: string
+  mt?: string
+}
+
+withDefaults(defineProps<Props>(), {
+  width: 'w-44',
+  mt: 'mt-2',
 })
 
-const emit = defineEmits(['action'])
+const emit = defineEmits<{ (event: 'action', value: string): void }>()
 
 const action = (action: string | (() => void)): void => {
   if (typeof action === 'function')

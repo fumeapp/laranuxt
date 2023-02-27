@@ -1,16 +1,19 @@
 <script lang="ts" setup>
 import { useDark, useToggle } from '@vueuse/core'
 import type { AnimationItem } from 'lottie-web'
-const props = defineProps({
-  id: {
-    type: String,
-    required: false,
-    default: 'darkModeIcon',
-  },
+
+export interface Props {
+  id?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  id: 'darkModeIcon',
 })
+
 const isDark = useDark()
 const toggleDark = useToggle((isDark))
 let animation: undefined | AnimationItem
+
 if (getCurrentInstance()) {
   onMounted(() => {
     if (!process.client || !window.lottie)
@@ -26,6 +29,7 @@ if (getCurrentInstance()) {
     else animation.goToAndStop(0, true)
   })
 }
+
 const toggle = () => {
   if (!animation)
     return
@@ -34,6 +38,7 @@ const toggle = () => {
   else animation.playSegments([0, 114], true)
   setTimeout(toggleDark, 200)
 }
+
 defineExpose({ toggle })
 </script>
 

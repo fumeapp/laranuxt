@@ -2,16 +2,16 @@
 import type { RouteLocationRaw } from 'vue-router'
 import { useRouter } from 'vue-router'
 import { ModalBase, PushButton } from 'tailvue'
-import type { PropType } from 'vue'
 import type { UserLogin } from '@/types/frontend'
 
-const props = defineProps({
-  destroyed: {
-    type: Function as PropType<() => void>,
-    required: true,
-  },
-})
-const emit = defineEmits(['off'])
+export interface Props {
+  destroyed: () => void
+}
+
+defineProps<Props>()
+
+const emit = defineEmits<{ (event: 'off'): void }>()
+
 const config = useRuntimeConfig()
 const router = useRouter()
 const api = useApi()
@@ -83,7 +83,7 @@ if (getCurrentInstance() && window) {
 </script>
 
 <template>
-  <ModalBase :destroyed="props.destroyed">
+  <ModalBase :destroyed="destroyed">
     <div class="bg-white dark:bg-gray-800 py-8 px-4 sm:px-10">
       <div class="grid grid-cols-2 gap-3">
         <div>

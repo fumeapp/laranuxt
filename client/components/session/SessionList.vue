@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import type { PropType } from 'vue'
 import SessionDeviceSkeleton from '@/components/session/SessionDeviceSkeleton.vue'
 import SessionDevice from '~/components/session/SessionDevice.vue'
-defineProps({
-  sessions: Array as PropType<api.Sessions>,
-})
-const emit = defineEmits(['refresh'])
+
+export interface Props {
+  sessions: api.Sessions
+}
+
+defineProps<Props>()
+
+defineEmits<{ (event: 'refresh'): void }>()
 </script>
 
 <template>
@@ -15,7 +18,7 @@ const emit = defineEmits(['refresh'])
       :key="session.token"
       class="col-span-1"
     >
-      <SessionDevice :session="session" @refresh="emit('refresh')" />
+      <SessionDevice :session="session" @refresh="$emit('refresh')" />
     </li>
   </ul>
   <ul v-else class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
