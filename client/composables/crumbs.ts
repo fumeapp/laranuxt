@@ -1,3 +1,4 @@
+import { ref } from 'vue'
 import type { BreadCrumb } from '@/types/frontend'
 
 const list = ref<BreadCrumb[]>([])

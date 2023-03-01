@@ -1,18 +1,20 @@
 <script lang="ts" setup>
 import type { ToastProps } from 'tailvue'
 import { PushButton } from 'tailvue'
-import type { PropType } from 'vue'
-const props = defineProps({
-  session: {
-    type: Object as PropType<api.Session>,
-    required: true,
-  },
-})
-const emit = defineEmits(['refresh'])
+
+export interface Props {
+  session: api.Session
+}
+
+const props = defineProps<Props>()
+
+const emit = defineEmits<{ (event: 'refresh'): void }>()
+
 const { $toast, $modal } = useNuxtApp()
 const api = useApi()
 const dayjs = useDayjs()
 const router = useRouter()
+
 const type = computed((): string => {
   if (props.session.device.platform.includes('macOS'))
     return 'mac'
@@ -37,6 +39,7 @@ const type = computed((): string => {
     return 'edge'
   return 'other'
 })
+
 const source = computed((): string => {
   if (props.session.source === 'actions')
     return 'Github Actions'
@@ -48,6 +51,7 @@ const source = computed((): string => {
     return 'CI / CD'
   return 'Unknown'
 })
+
 const name = computed((): string => {
   if (props.session.device.name)
     return props.session.device.name

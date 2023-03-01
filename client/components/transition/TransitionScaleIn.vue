@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-defineProps({
-  appear: Boolean,
-})
+export interface Props {
+  appear: boolean
+}
+defineProps<Props>()
 </script>
 
 <template>

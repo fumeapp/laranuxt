@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ContactCard > renders contact card for admin 1`] = `
+"<li class=\\"col-span-1 bg-white dark:bg-gray-700 rounded-lg shadow\\">
+  <div class=\\"w-full flex items-center justify-between p-6 space-x-6\\">
+    <div class=\\"flex-1 truncate\\">
+      <div class=\\"flex items-center space-x-3\\">
+        <h3 class=\\"text-gray-900 dark:text-gray-200 text-sm leading-5 font-medium truncate\\"></h3><span class=\\"flex-shrink-0 inline-block px-2 text-teal-800 text-xs leading-4 font-medium bg-green-100 dark:bg-green-400 rounded-full py-0.5\\"> Admin </span>
+      </div>
+      <p class=\\"mt-1 text-gray-500 dark:text-gray-400 text-sm leading-5 truncate\\"></p>
+    </div>
+    <!--v-if-->
+  </div>
+  <div class=\\"border-t border-gray-200 dark:border-gray-500\\">
+    <div class=\\"-mt-px flex\\">
+      <div class=\\"w-0 flex-1 flex border-r border-gray-200 dark:border-gray-500\\"><a class=\\"relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 dark:text-gray-200 font-medium border border-transparent rounded-bl-lg transition ease-in-out duration-150 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10\\" href=\\"#\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\" aria-hidden=\\"true\\" role=\\"img\\" class=\\"w-5 h-5 text-gray-400\\" width=\\"1em\\" height=\\"1em\\" viewBox=\\"0 0 16 16\\"></svg><span class=\\"ml-3\\">Email</span></a></div>
+      <div class=\\"-ml-px w-0 flex-1 flex\\"><a class=\\"relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 dark:text-gray-200 font-medium border border-transparent rounded-br-lg transition ease-in-out duration-150 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10\\" href=\\"#\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\" aria-hidden=\\"true\\" role=\\"img\\" class=\\"w-5 h-5 text-gray-400\\" width=\\"1em\\" height=\\"1em\\" viewBox=\\"0 0 16 16\\"></svg><span class=\\"ml-3\\">Call</span></a></div>
+    </div>
+  </div>
+</li>"
+`;
+
+exports[`ContactCard > renders contact card for non admin 1`] = `
+"<li class=\\"col-span-1 bg-white dark:bg-gray-700 rounded-lg shadow\\">
+  <div class=\\"w-full flex items-center justify-between p-6 space-x-6\\">
+    <div class=\\"flex-1 truncate\\">
+      <div class=\\"flex items-center space-x-3\\">
+        <h3 class=\\"text-gray-900 dark:text-gray-200 text-sm leading-5 font-medium truncate\\"></h3>
+        <!--v-if-->
+      </div>
+      <p class=\\"mt-1 text-gray-500 dark:text-gray-400 text-sm leading-5 truncate\\"></p>
+    </div>
+    <!--v-if-->
+  </div>
+  <div class=\\"border-t border-gray-200 dark:border-gray-500\\">
+    <div class=\\"-mt-px flex\\">
+      <div class=\\"w-0 flex-1 flex border-r border-gray-200 dark:border-gray-500\\"><a class=\\"relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 dark:text-gray-200 font-medium border border-transparent rounded-bl-lg transition ease-in-out duration-150 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10\\" href=\\"#\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\" aria-hidden=\\"true\\" role=\\"img\\" class=\\"w-5 h-5 text-gray-400\\" width=\\"1em\\" height=\\"1em\\" viewBox=\\"0 0 16 16\\"></svg><span class=\\"ml-3\\">Email</span></a></div>
+      <div class=\\"-ml-px w-0 flex-1 flex\\"><a class=\\"relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 dark:text-gray-200 font-medium border border-transparent rounded-br-lg transition ease-in-out duration-150 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10\\" href=\\"#\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\" aria-hidden=\\"true\\" role=\\"img\\" class=\\"w-5 h-5 text-gray-400\\" width=\\"1em\\" height=\\"1em\\" viewBox=\\"0 0 16 16\\"></svg><span class=\\"ml-3\\">Call</span></a></div>
+    </div>
+  </div>
+</li>"
+`;
