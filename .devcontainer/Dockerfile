@@ -6,7 +6,8 @@ ARG USER_GID=$USER_UID
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ENV NODE_VERSION 16.13.0
+ENV NODE_VERSION 16.18.0
+ENV PNPM_VERSION 8.1.0
 ENV NVM_DIR /usr/local/nvm
 ENV PATH $NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
 RUN mkdir -p $NVM_DIR
@@ -41,11 +42,6 @@ RUN echo "xdebug.mode = develop,debug" >> /etc/php/8.2/cli/conf.d/20-xdebug.ini 
 
 RUN touch /var/log/xdebug.log
 
-# Yarn
-RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -y yarn
-
 # Composer
 RUN cd ~
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
@@ -58,6 +54,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | b
 RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION"
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+# PNPM
+RUN curl -sL https://unpkg.com/@pnpm/self-installer | node
 
 # Set User and Group
 RUN groupadd --gid $USER_GID $USERNAME \

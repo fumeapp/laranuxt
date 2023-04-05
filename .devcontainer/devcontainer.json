@@ -9,9 +9,13 @@
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
-  "extensions": [
-    "editorconfig.editorconfig"
-  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "editorconfig.editorconfig"
+      ]
+    }
+  },
   "forwardPorts": [
     8000,
     3000,

@@ -89,6 +89,9 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+# PNPM Store files
+.pnpm-store/*
+
 # dotenv environment variables file
 .env
 

@@ -98,19 +98,19 @@ DOCKER_PORT_MYSQL=13306
 
 ## After Dev Container Build
 
-Once the Dev Container successfully built you can run your typically `artisan`/`composer`/`yarn` commands. 
+Once the Dev Container successfully built you can run your typically `artisan`/`composer`/`pnpm` commands. 
 
 We suggest after everything is built opening up 2 integrated terminals.
 
 > To migrate and seed container database & To run API server
-1. One to run `yarn seed` && `yarn api`
+1. One to run `pnpm seed` && `pnpm api`
 
 > To run Nuxt server
-2. `yarn dev`
+2. `pnpm dev`
 
 
 But before both if this is the first time building the app you would still need to:
 
 ```bash
-composer install && yarn install
+composer install && pnpm install
 ```

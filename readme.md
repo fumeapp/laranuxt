@@ -36,18 +36,18 @@
 ### Installation
 
 * clone from GitHub
-* run `yarn` and `composer install` to install all of your deps
+* run `pnpm install` and `composer install` to install all of your deps
 * copy `.env.example` to `.env` and configure it to your likings
 * TL;DR
  ```bash
-git clone git@github.com:fumeapp/laranuxt.git; cd laranuxt; yarn; composer install; cp .env.example .env;
+git clone git@github.com:fumeapp/laranuxt.git; cd laranuxt; pnpm install; composer install; cp .env.example .env;
  ```
 * Feel free to delete excess media in  `/resources/`
 
 
 ### Local Environment
-* run `yarn dev` in one terminal for our nuxt dev setup
-* run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
+* run `pnpm dev` in one terminal for our nuxt dev setup
+* run `pnpm api` (alias for `./artisan serve`) in another terminal for our laravel API
 
 ### Api and Authentication
 
