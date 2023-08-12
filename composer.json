@@ -58,7 +58,7 @@
   "prefer-stable": true,
   "scripts": {
     "test": [
-      "vendor/bin/phpunit -c tests/php/phpunit.xml --colors=always --testdox --coverage-text"
+      "vendor/bin/phpunit -c tests/php/phpunit.xml --colors=always --testdox"
     ],
     "test:coverage": [
       "XDEBUG_MODE=coverage vendor/bin/phpunit -c tests/php/phpunit.xml --colors=always --testdox --coverage-text"
@@ -87,7 +87,6 @@
     ]
   },
   "scripts-descriptions": {
-    "test": "Run the PHPUnit tests.",
     "test:coverage": "Run the PHPUnit tests with coverage.",
     "post-autoload-dump": "Run after autoloading has been dumped.",
     "post-root-package-install": "Run after the root package has been installed.",
