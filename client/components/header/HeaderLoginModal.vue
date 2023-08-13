@@ -65,7 +65,7 @@ function login(provider: 'facebook' | 'google'): void {
   const height = 660
   const left = window.screen.width / 2 - (width / 2)
   const top = window.screen.height / 2 - (height / 2)
-  const win = window.open(`${config.apiURL}/redirect/${provider}`, 'Log In',
+  const win = window.open(`${config.public.apiURL}/redirect/${provider}`, 'Log In',
     `toolbar=no, location=no, directories=no, status=no, menubar=no, scollbars=no,
       resizable=no, copyhistory=no, width=${width},height=${height},top=${top},left=${left}`)
   const interval = setInterval(() => {
