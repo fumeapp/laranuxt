@@ -4,7 +4,7 @@ const { list, actions } = useCrumbs()
 
 <template>
   <div>
-    <nav class="flex justify-between px-4 sm:px-6 border-b border-gray-300 dark:border-gray-700 lg:border-0" aria-label="Breadcrumb">
+    <nav class="flex h-12 justify-between px-4 sm:px-6 border-b border-gray-300 dark:border-gray-700 lg:border-0" aria-label="Breadcrumb">
       <client-only>
         <ol class="flex items-center space-x-4 py-3">
           <transition-group
@@ -17,7 +17,7 @@ const { list, actions } = useCrumbs()
           >
             <li key="home">
               <div>
-                <router-link to="/home" class="text-gray-400 hover:text-gray-500">
+                <router-link to="/" class="text-gray-400 hover:text-gray-500">
                   <icon icon="fa-solid:home" class="w-5 h-5" />
                   <span class="sr-only">Home</span>
                 </router-link>

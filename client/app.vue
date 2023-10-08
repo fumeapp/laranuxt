@@ -21,7 +21,8 @@ useApi().setNuxtApp(useNuxtApp())
           <span v-html="description" />
         </template>
       </u-notifications>
-      <header-login-modal />
+      <layout-login-modal />
+      <layout-confirm />
     </nuxt-layout>
   </div>
 </template>

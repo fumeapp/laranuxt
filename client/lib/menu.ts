@@ -45,29 +45,6 @@ export default class {
       },
     ]
   }
-
-  public profileGroup: DropdownGroup = [
-    [
-      {
-        icon: 'carbon:user-profile',
-        name: 'Your Profile',
-        action: () => navigateTo('/profile'),
-      },
-      {
-        icon: 'mdi-devices',
-        name: 'Your Devices',
-        action: () => navigateTo('/sessions'),
-      },
-    ],
-    [
-      {
-        icon: 'heroicons-outline:logout',
-        name: 'Logout',
-        action: async () => await this.logout(),
-      },
-    ],
-  ]
-
   private async logout() {
     await this.api.logout()
   }

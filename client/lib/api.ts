@@ -66,6 +66,13 @@ export default class Api {
     this.config = { ...authConfigDefaults, ...config }
   }
 
+  public async invalidate(): Promise<void> {
+    this.token.value = undefined
+    this.loggedIn.value = false
+    Object.assign(this.$user, {})
+    navigateTo(this.config.redirect.logout)
+  }
+
   setNuxtApp(nuxtApp:NuxtApp) {
     this.nuxtApp = nuxtApp
   }
@@ -81,10 +88,8 @@ export default class Api {
   }
 
   async checkUser() {
-    if (this.token.value !== undefined) {
-      await this.setUser()
-      this.loggedIn.value = true
-    }
+    if (this.token.value !== undefined)
+      this.loggedIn.value = await this.setUser()
     else this.loggedIn.value = false
   }
 
@@ -113,7 +118,7 @@ export default class Api {
     Object.assign(this.$user, result.user)
     this.setEcho()
     if (!discreet)
-      useToast().add({ icon: 'i-mdi-check-bold', color: 'green', title: 'Login Successful', timeout: 1 })
+      useToast().add({ icon: 'i-mdi-check-bold', color: 'green', title: 'Login Successful' })
     if (result.action && result.action.action === 'redirect')
       return result.action.url
     return this.config.redirect.login
@@ -143,11 +148,12 @@ export default class Api {
     return this.config.fetchOptions
   }
 
-  public async setUser(): Promise<void> {
+  public async setUser(): Promise<boolean> {
     const result = await $fetch<api.MetApiResults & { data: models.User }>('/me', this.fetchOptions())
-    if (!result || !result.status || result.status !== 'success') this.invalidate()
+    if (!result || !result.status || result.status !== 'success') return false
     Object.assign(this.$user, result.data)
     this.setEcho()
+    return true
   }
 
   public async index<Results>(endpoint: string, params?: SearchParameters): Promise<Results> {
@@ -224,12 +230,5 @@ export default class Api {
     const response = (await $fetch<api.MetApiResponse>('/logout', this.fetchOptions()))
     useToast().add({ icon: 'i-mdi-check-bold', color: 'green', title: response.data.message, timeout: 1 })
     await this.invalidate()
-  }
-
-  public async invalidate(): Promise<void> {
-    this.token.value = undefined
-    this.loggedIn.value = false
-    Object.assign(this.$user, {})
-    navigateTo(this.config.redirect.logout)
   }
 }

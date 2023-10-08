@@ -5,9 +5,9 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   await api.checkUser()
   const menu = new Menu(api)
   const item = menu.items().find(item => item.to === to.path)
-  if (item?.gated === true && api.loggedIn.value === false) {
+  if (item && item.gated === true && api.loggedIn.value === false) {
     useToast().add({ icon: 'i-mdi-lock', color: 'red', title: 'Access Denied', })
-    // return navigateTo('/')
+    return navigateTo('/')
   }
 
 })

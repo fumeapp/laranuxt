@@ -3,7 +3,6 @@ const api = useApi()
 const { setCrumbs } = useCrumbs()
 
 setCrumbs([
-  { name: 'Home', to: '/' },
   { name: 'Gated', to: '/gated' },
 ])
 </script>

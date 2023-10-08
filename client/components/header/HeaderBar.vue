@@ -39,7 +39,9 @@ const menu = new Menu(api)
             </button>
           </a>
           <header-dark-mode />
-          <header-profile />
+          <client-only>
+            <header-profile />
+          </client-only>
         </div>
       </div>
     </nav>

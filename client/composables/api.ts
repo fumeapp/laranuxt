@@ -13,7 +13,7 @@ export const useApi = () => {
       webURL: config.public.webURL,
       redirect: {
         logout: '/',
-        login: '/home',
+        login: '/gated',
       },
       /*
       echoConfig: {
