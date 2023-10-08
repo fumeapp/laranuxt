@@ -5,21 +5,22 @@ declare global {
       options: Record<string, unknown>
       params: Record<string, unknown>
     }
+
     interface MetApiData {
       success: boolean
       type: 'success' | 'failure'
       message: string
       data: unknown
     }
-    export interface MetApiResponse {
+
+   export interface MetApiResponse {
+      status: 'success' | 'failure'
       benchmark: number
       success: boolean
-      message: string
-      type: 'success' | 'failure'
       query: MetApiQuery
       data: MetApiData
-
     }
+
     export type Me = Modify<api.MetApiResponse, { data: models.User }>
 
     export interface MetApiResults {

@@ -4,14 +4,15 @@ setCrumbs([{ name: 'List of Users', to: '/', icon: 'i-mdi-account-group' }])
 
 const loading = ref(false)
 
-const users = ref<models.UserResults>(undefined)
+const users = ref<models.UserResults>()
 const get = async () => {
   loading.value = true
   users.value = undefined
-  users.value = await useApi().index<models.UserResults>('/example', { count: 9 })
+  users.value = await useApi().index<models.UserResults>('/example', { count: 9 }) as models.UserResults
   loading.value = false
 }
-const error = async () => await useApi().get('/error')
+
+const error = async () => await useApi().index('/error')
 
 const start = () => {
   useNuxtApp().callHook('page:start').catch(() => { })

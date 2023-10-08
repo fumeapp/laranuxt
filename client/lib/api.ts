@@ -1,6 +1,9 @@
 import type { Notification } from '@nuxt/ui/dist/runtime/types'
 import { reactive, ref } from 'vue'
 
+import { NitroFetchRequest, $Fetch } from "nitropack";
+
+
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
 import { NuxtApp } from '#app'
@@ -65,6 +68,7 @@ export default class Api {
   constructor(config: AuthConfig) {
     this.config = { ...authConfigDefaults, ...config }
   }
+
   setNuxtApp(nuxtApp:NuxtApp) {
     this.nuxtApp = nuxtApp
   }
@@ -110,73 +114,61 @@ export default class Api {
     Object.assign(this.$user, result.user)
     this.setEcho()
     if (!discreet)
-      useToast().add({ icon: 'i-mdi-check-bold', color: 'green', title: 'Login Successful' })
+      useToast().add({ icon: 'i-mdi-check-bold', color: 'green', title: 'Login Successful', timeout: 1 })
     if (result.action && result.action.action === 'redirect')
       return result.action.url
     return this.config.redirect.login
   }
 
-  private fetchOptions(params?: SearchParameters, method = 'GET') {
-    const fetchOptions = this.config.fetchOptions
-    fetchOptions.headers = {
-      Accept: 'application/json',
-      Authorization: `Bearer ${this.token.value || ''}`,
-      Referer: this.config.webURL,
-    }
-    fetchOptions.method = method
-    fetchOptions.onRequest = () => this.nuxtApp?.callHook('page:start')
-    fetchOptions.onResponse = () => this.nuxtApp?.callHook('page:finish')
-    fetchOptions.onResponseError = this.toastError
-    delete this.config.fetchOptions.body
-    delete this.config.fetchOptions.params
-    if (params) {
-      if (method === 'POST' || method === 'PUT')
-        this.config.fetchOptions.body = params
-      else
-        this.config.fetchOptions.params = params
-    }
-    return this.config.fetchOptions
+  public fetch <Results>(params?: SearchParameters, method = 'GET'): $Fetch<Results, NitroFetchRequest> {
+    const nuxtApp = this.nuxtApp
+    return $fetch.create({
+      baseURL: this.config.apiURL,
+      method,
+      params: method === 'GET' ? params : undefined,
+      body: ['POST','PUT'].includes(method) ? params : undefined,
+      headers: {Accept: 'application/json', Authorization: `Bearer ${this.token.value}`},
+      onRequest() { nuxtApp?.callHook('page:start') },
+      onResponse() { nuxtApp?.callHook('page:finish') },
+    })
   }
+
 
   public async setUser(): Promise<boolean> {
     try {
-    const result = await $fetch<api.MetApiResults & { data: models.User }>('/me', this.fetchOptions())
+    const result = await this.index<api.MetApiResponse & { data: models.User }>('/me')
     if (!result || !result.status || result.status !== 'success') return false
     Object.assign(this.$user, result.data)
-    } catch (e) { this.invalidate() }
+    } catch (e) { console.log(this.token.value, e.response._data) }
     this.setEcho()
     return true
   }
 
-  public async index<Results>(endpoint: string, params?: SearchParameters): Promise<Results> {
-    return await $fetch<Results>(endpoint, this.fetchOptions(params))
-  }
-
-  public async get<Results>(endpoint: string, params?: SearchParameters): Promise<Results> {
-    return await $fetch<Results>(endpoint, this.fetchOptions(params))
+  public async index<Results>(endpoint: string, params?: SearchParameters): Promise<Results | undefined> {
+    return await this.fetch<Results>(params)(endpoint)
   }
 
   public async update<Response>(endpoint: string, params?: SearchParameters): Promise<Response | undefined> {
-    return await $fetch<Response>(endpoint, this.fetchOptions(params, 'PUT'))
+    return await this.fetch<Response>(params, 'PUT')(endpoint)
   }
 
   public async store<Response>(endpoint: string, params?: SearchParameters): Promise<Response | undefined> {
-    return await $fetch<Response>(endpoint, this.fetchOptions(params, 'POST'))
+    return await this.fetch<Response>(params, 'POST')(endpoint)
   }
 
   public async delete<Response>(endpoint: string, params?: SearchParameters): Promise<Response | undefined> {
-    return await $fetch<Response>(endpoint, this.fetchOptions(params, 'DELETE'))
+    return await this.fetch<Response>(params, 'DELETE')(endpoint)
   }
 
   public async attempt(token: string | string[]): Promise<UserLogin> {
     if (Array.isArray(token))
       token = token.join('')
 
-      return (await $fetch<api.MetApiResponse & { data: UserLogin }>(`/login/${token}`, this.fetchOptions())).data
+      return (await this.fetch<api.MetApiResponse & { data: UserLogin }>([])(`/login/${token}`)).data
   }
 
-  public upload(url: string, params?: SearchParameters) {
-    return $fetch(url, { method: 'PUT', body: params })
+  public upload(endpoint: string, params?: SearchParameters) {
+    return this.fetch(params, 'PUT')(endpoint)
   }
 
   public async toastError(error: any): Promise<any> {
@@ -202,8 +194,7 @@ export default class Api {
 
     if (error.response?._data.exception) {
       useToast().add({
-        ui: {'width': 'sm:w-1/2'},
-        icon: 'i-mdi-alert',
+        icon: 'i-mdi-document',
         color: 'red',
         title: `
         <b>[${error.response._data.exception}]</b><br />
@@ -226,7 +217,7 @@ export default class Api {
   public async logout(): Promise<void> {
     if (this.$echo)
       this.$echo.disconnect()
-    const response = (await $fetch<api.MetApiResponse>('/logout', this.fetchOptions()))
+    const response = (await this.fetch<api.MetApiResponse>([])('/logout'))
     useToast().add({ icon: 'i-mdi-check-bold', color: 'green', title: response.data.message, timeout: 1 })
     await this.invalidate()
   }

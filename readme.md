@@ -39,18 +39,18 @@
 ### Installation
 
 * clone from GitHub
-* run `yarn` and `composer install` to install all of your deps
+* run `pnpm i` and `composer install` to install all of your deps
 * copy `.env.example` to `.env` and configure it to your likings
 * TL;DR
  ```bash
-git clone git@github.com:fumeapp/laranuxt.git; cd laranuxt; yarn; c****omposer install; cp .env.example .env;
+git clone git@github.com:fumeapp/laranuxt.git; cd laranuxt; pnpm i; composer install; cp .env.example .env;
  ```
 * Feel free to delete excess media in  `/resources/`
 
 
 ### Local Environment
-* run `yarn dev` in one terminal for our nuxt dev setup
-* run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
+* run `pnpm run dev` in one terminal for our nuxt dev setup
+* run `pnpm run api` (alias for `./artisan serve`) in another terminal for our laravel API
 
 ### Api and Authentication
 
@@ -68,7 +68,7 @@ console.log(api.$user.name);
   const redirect = await api.login(result)
   if (redirect) await router.push({path: redirect})
 ```
-* Once logged on, you have the boolean `api.loggedIn` and the object `api.$user`
+* Once logged on, you have the ref<boolean> `api.loggedIn` and the object `api.$user`
 ```html
   <img class="w-8 h-8 rounded-full bg-blue-400" :src="api.$user.avatar" alt="User Avatar">
 ```

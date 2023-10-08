@@ -30,11 +30,7 @@ const profileGroup = [
       {
         icon: 'i-mdi-logout',
         label: 'Logout',
-        click: async () => {
-          await useApi().logout()
-          useToast().add({ icon: 'i-mdi-logout', title: 'Logged out', })
-
-        }
+        click: async () => await useApi().logout()
       },
     ],
   ]

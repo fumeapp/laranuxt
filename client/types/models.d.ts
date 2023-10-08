@@ -38,6 +38,7 @@ declare global {
       notifications: DatabaseNotifications
     }
     export type Users = User[]
+    export type UserResult = Modify<api.MetApiResults, { data: User }>
     export type UserResults = Modify<api.MetApiResults, { data: Users }>
 
   }
