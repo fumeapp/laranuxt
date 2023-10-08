@@ -10,15 +10,15 @@
 > Are you using Laravel with vapor? want your Nuxt setup on lambda as well? [TRY FUME!](https://fume.app)
 
 
-[![](https://img.shields.io/badge/nuxt.js-v3-04C690.svg)](https://nuxt.com)
-[![](https://img.shields.io/badge/Laravel-v9.40.0-ff2e21.svg)](https://laravel.com)
+[![](https://img.shields.io/badge/nuxt.js-v3.7-04C690.svg)](https://nuxt.com)
+[![](https://img.shields.io/badge/Laravel-v10.26.2-ff2e21.svg)](https://laravel.com)
 [![MadeWithLaravel shield](https://madewithlaravel.com/storage/repo-shields/3372-shield.svg)](https://madewithlaravel.com/p/laranuxt/shield-link)
 
 ![Test PHP](https://github.com/fumeapp/laranuxt/workflows/Test%20PHP/badge.svg)
 [![Lint Javascript](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml)
 [![Lint PHP](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml)
 
-![](resources/laranuxt.mp4)
+![](resources/laranuxt.gif)
 
 > Examples on using Dark Mode, authentication, and listing data
 
