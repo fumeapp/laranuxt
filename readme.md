@@ -7,6 +7,9 @@
 > Now supporting [Nuxt v3](https://nuxt.com)
 
 
+> Are you using Laravel with vapor? want your Nuxt setup on lambda as well? [TRY FUME!](https://fume.app)
+
+
 [![](https://img.shields.io/badge/nuxt.js-v3-04C690.svg)](https://nuxt.com)
 [![](https://img.shields.io/badge/Laravel-v9.40.0-ff2e21.svg)](https://laravel.com)
 [![MadeWithLaravel shield](https://madewithlaravel.com/storage/repo-shields/3372-shield.svg)](https://madewithlaravel.com/p/laranuxt/shield-link)
@@ -15,14 +18,14 @@
 [![Lint Javascript](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-js.yml)
 [![Lint PHP](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml/badge.svg)](https://github.com/fumeapp/laranuxt/actions/workflows/lint-php.yml)
 
-![](resources/laranuxt.gif?raw=true)
+![](resources/laranuxt.mp4)
 
 > Examples on using Dark Mode, authentication, and listing data
 
 ### What is included
 
 * [NUXT v3](https://nuxt.com) front end, a progressive Vue.js framework - For Nuxt v2 visit [this branch](https://github.com/fumeapp/laranuxt/tree/nuxt2)
-  * [tailvue](https://github.com/fumeapp/tailvue) a collection of components built for Nuxt.js, powered by WindiCSS|TailwindCSS
+  * [nuxt UI](https://ui.nuxt.com.com) a collection of components built by the NuxtJS team, powered by TailwindCSS
   * [Authentication library](https://github.com/fumeapp/laranuxt#api-and-authentication) to assist with user sessions and logging in/out
   * Example Authentication Middleware
 

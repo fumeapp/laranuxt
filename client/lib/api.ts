@@ -141,9 +141,11 @@ export default class Api {
   }
 
   public async setUser(): Promise<boolean> {
+    try {
     const result = await $fetch<api.MetApiResults & { data: models.User }>('/me', this.fetchOptions())
     if (!result || !result.status || result.status !== 'success') return false
     Object.assign(this.$user, result.data)
+    } catch (e) { this.invalidate() }
     this.setEcho()
     return true
   }

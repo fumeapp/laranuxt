@@ -55,7 +55,7 @@ const { list, actions } = useCrumbs()
         </router-link>
       </div>
     </nav>
-    <div class="my-12 md:mx-12">
+    <div>
       <slot />
     </div>
   </div>
