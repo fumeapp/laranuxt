@@ -7,7 +7,7 @@
 > Now supporting [Nuxt v3](https://nuxt.com)
 
 
-** Are you using Laravel with vapor? want your Nuxt setup on lambda as well? [TRY FUME!](https://fume.app) **
+**Are you using Laravel with vapor? want your Nuxt setup on lambda as well? [TRY FUME!](https://fume.app)**
 
 
 [![](https://img.shields.io/badge/nuxt.js-v3.7-04C690.svg)](https://nuxt.com)
