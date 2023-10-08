@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { onClickOutside } from '@vueuse/core'
-import { PushButton } from 'tailvue'
 import Menu from '@/lib/menu'
 
 const route = useRoute()
@@ -11,9 +9,9 @@ const modal = ref(false)
 const profile = ref(false)
 const outside = ref(null)
 
-const menu = new Menu(route, router, api)
+const { loginModalOn } = useModal()
 
-onClickOutside(outside, () => profile.value = false)
+const menu = new Menu(route, router, api)
 
 const toggle = () => profile.value = !profile.value
 const login = () => modal.value = true
@@ -24,9 +22,9 @@ const off = () => modal.value = false
   <div ref="outside" class="flex-shrink-0 relative mr-5">
     <client-only>
       <div class="flex items-center text-white space-x-4">
-        <PushButton v-if="!api.loggedIn.value" theme="indigo" @click="login">
+        <u-button v-if="!api.loggedIn.value" theme="indigo" @click="loginModalOn">
           Sign In
-        </PushButton>
+        </u-button>
         <button
           v-else
           id="user-menu-button"

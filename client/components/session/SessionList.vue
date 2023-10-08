@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import SessionDeviceSkeleton from '@/components/session/SessionDeviceSkeleton.vue'
-import SessionDevice from '~/components/session/SessionDevice.vue'
-
-export interface Props {
-  sessions: api.Sessions
-}
-
-defineProps<Props>()
-
+defineProps<{sessions: api.Sessions}>()
 defineEmits<{ (event: 'refresh'): void }>()
 </script>
 

@@ -5,7 +5,6 @@ let api: Api
 export const useApi = () => {
   if (!api) {
     const config = useRuntimeConfig()
-    const { $toast } = useNuxtApp()
     api = new Api({
       fetchOptions: {
         baseURL: config.public.apiURL,
@@ -22,7 +21,7 @@ export const useApi = () => {
         pusheAppCluster: config.public.pusherAppCluster,
       },
       */
-    }, $toast)
+    })
   }
   return api
 }

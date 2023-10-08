@@ -1,15 +1,13 @@
-export default defineNuxtRouteMiddleware((to, from) => {
-  if (import.meta.server)
-    return
+import Menu from '@/lib/menu'
 
+export default defineNuxtRouteMiddleware(async (to, from) => {
   const api = useApi()
-
-  if (api && to.path !== api.config.redirect.logout && to.path !== '/invalid' && !api.loggedIn.value) {
-    if (to.meta.middleware === 'guest')
-      return
-    if (from.meta.middleware === 'guest')
-      return
-
-    return navigateTo(api.config.redirect.logout)
+  await api.checkUser()
+  const menu = new Menu(api)
+  const item = menu.items().find(item => item.to === to.path)
+  if (item?.gated === true && api.loggedIn.value === false) {
+    useToast().add({ icon: 'i-mdi-lock', color: 'red', title: 'Access Denied', })
+    // return navigateTo('/')
   }
+
 })

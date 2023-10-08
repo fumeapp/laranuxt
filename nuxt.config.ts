@@ -16,21 +16,11 @@ export default defineNuxtConfig({
       ],
     },
   },
+  tailwindcss: {
+  },
   css: [
     '@/assets/css/main.css',
     '@/assets/css/device.css',
-  ],
-
-  /*
-  ** Auto import components
-  ** See https://nuxtjs.org/api/configuration-components
-  */
-  components: [
-    '~/components',
-    '~/components/contact',
-    '~/components/layout',
-    '~/components/header',
-    '~/components/transition',
   ],
 
   /**
@@ -38,9 +28,11 @@ export default defineNuxtConfig({
    */
   modules: [
     '@vueuse/nuxt',
-    'nuxt-windicss',
-    '@tailvue/nuxt',
+    '@nuxt/ui',
   ],
+  ui: {
+    icons: ['mdi'],
+  },
 
   /**
    * @see https://v3.nuxtjs.org/guide/features/runtime-config#exposing-runtime-config
@@ -50,14 +42,6 @@ export default defineNuxtConfig({
       webURL: process.env.WEB_URL || 'http://localhost:3000',
       apiURL: process.env.API_URL || 'http://localhost:8000',
     },
-  },
-
-  /**
-   * WindiCSS configuration
-   * @see https://github.com/windicss/nuxt-windicss
-   */
-  windicss: {
-    analyze: false,
   },
 
 })

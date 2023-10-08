@@ -1,13 +1,19 @@
 <script setup lang="ts">
-import { PushButton } from 'tailvue'
-const api = useApi()
 const { setCrumbs } = useCrumbs()
-setCrumbs([{ name: 'Home', to: '/' }])
+setCrumbs([{ name: 'List of Users', to: '/', icon: 'i-mdi-account-group' }])
 
 const users = ref<models.UserResults>(undefined)
-const get = async () => users.value = await api.index<models.UserResults>('/example', { count: 9 })
-const error = async (): Promise<api.MetApiResponse> => await api.get('/error')
+const get = async () => users.value = await useApi().index<models.UserResults>('/example', { count: 9 })
+const error = async () => await useApi().get('/error')
+
 get()
+
+const test = () => {
+  useToast().add({
+    icon: 'i-mdi-alert',
+    title: 'this is a test',
+  })
+}
 </script>
 
 <template>
@@ -24,14 +30,13 @@ get()
       <span>&nbsp;</span>
       <span class="text-sm">(1 second delay)</span>
       <div class="mt-4 flex justify-center space-x-2">
-        <PushButton @click="get">
-          <icon icon="mdi:refresh" class="w-6 h-6 text-green-600 mr-2.5" />
+        <u-button @click="get" icon="i-mdi-refresh">
           get()
-        </PushButton>
-        <PushButton @click="error">
-          <icon icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
+        </u-button>
+        <u-button @click="test">toast test </u-button>
+        <u-button @click="error" color="red" icon="i-mdi-error">
           Force PHP Error
-        </PushButton>
+        </u-button>
       </div>
     </div>
   </div>

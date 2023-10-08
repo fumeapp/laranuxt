@@ -1,11 +1,13 @@
-import type { FetchError, FetchOptions, SearchParameters } from 'ofetch'
-import { $fetch } from 'ofetch'
+import type { Notification } from '@nuxt/ui/dist/runtime/types'
 import { reactive, ref } from 'vue'
-import type { TailvueToast, ToastProps } from 'tailvue'
-import type { Router } from 'vue-router'
 
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
+import { NuxtApp } from '#app'
+
+export interface SearchParameters {
+  [key: string]: any;
+}
 
 export interface UserLogin {
   token: string
@@ -16,14 +18,14 @@ export interface UserLogin {
 }
 
 export interface AuthConfig {
-  fetchOptions: FetchOptions<'json'>
+  fetchOptions: any
   webURL: string
   apiURL: string
   redirect: {
     logout: string
     login: undefined | string
   }
-  paymentToast?: ToastProps
+  paymentToast?: Partial<Notification>
   echoConfig?: EchoConfig
 }
 
@@ -53,18 +55,19 @@ export default class Api {
   public config: AuthConfig
   public $user = reactive<models.User>({} as models.User)
   public $echo: undefined | Echo = undefined
-  public $toast: TailvueToast
   public loggedIn = ref<boolean | undefined>(undefined)
   public modal = ref<boolean>(false)
   public redirect = ref<boolean>(false)
   public action = ref<LoginAction | undefined>(undefined)
 
-  public nuxtApp = useNuxtApp()
+  public nuxtApp:NuxtApp|undefined = undefined
 
-  constructor(config: AuthConfig, toast: TailvueToast) {
-    this.$toast = toast
+  constructor(config: AuthConfig) {
     this.config = { ...authConfigDefaults, ...config }
-    this.checkUser()
+  }
+
+  setNuxtApp(nuxtApp:NuxtApp) {
+    this.nuxtApp = nuxtApp
   }
 
   on(redirect: boolean, action?: LoginAction | undefined) {
@@ -77,19 +80,16 @@ export default class Api {
     this.modal.value = false
   }
 
-  checkUser() {
+  async checkUser() {
     if (this.token.value !== undefined) {
-      this.setUser().then().catch(() => {})
+      await this.setUser()
       this.loggedIn.value = true
     }
-    else { this.loggedIn.value = false }
+    else this.loggedIn.value = false
   }
 
   setEcho() {
-    if (!this.config.echoConfig)
-      return
-    if (!process.client)
-      return
+    if (this.config.echoConfig === undefined) return
     window.Pusher = Pusher
     this.$echo = new Echo({
       broadcaster: 'pusher',
@@ -113,13 +113,13 @@ export default class Api {
     Object.assign(this.$user, result.user)
     this.setEcho()
     if (!discreet)
-      this.$toast.show({ type: 'success', message: 'Login Successful', timeout: 1 })
+      useToast().add({ icon: 'i-mdi-check-bold', color: 'green', title: 'Login Successful', timeout: 1 })
     if (result.action && result.action.action === 'redirect')
       return result.action.url
     return this.config.redirect.login
   }
 
-  private fetchOptions(params?: SearchParameters, method = 'GET'): FetchOptions<'json'> {
+  private fetchOptions(params?: SearchParameters, method = 'GET') {
     const fetchOptions = this.config.fetchOptions
     fetchOptions.headers = {
       Accept: 'application/json',
@@ -127,15 +127,11 @@ export default class Api {
       Referer: this.config.webURL,
     }
     fetchOptions.method = method
-    fetchOptions.onRequest = () => {
-      this.nuxtApp.callHook('page:start').catch(() => { })
+    if (this.nuxtApp) {
+      fetchOptions.onRequest = () => this.nuxtApp?.callHook('page:start').catch(() => { })
+      fetchOptions.onResponse = () => this.nuxtApp?.callHook('page:finish').catch(() => { })
     }
-    fetchOptions.onResponse = () => {
-      this.nuxtApp.callHook('page:finish').catch(() => { })
-    }
-    fetchOptions.onResponseError = (error) => {
-      this.toastError(error as unknown as FetchError).catch(() => { })
-    }
+    fetchOptions.onResponseError = this.toastError
     delete this.config.fetchOptions.body
     delete this.config.fetchOptions.params
     if (params) {
@@ -148,14 +144,10 @@ export default class Api {
   }
 
   public async setUser(): Promise<void> {
-    try {
-      const result = await $fetch<api.MetApiResponse & { data: models.User }>('/me', this.fetchOptions())
-      Object.assign(this.$user, result.data)
-      this.setEcho()
-    }
-    catch (e) {
-      await this.invalidate()
-    }
+    const result = await $fetch<api.MetApiResults & { data: models.User }>('/me', this.fetchOptions())
+    if (!result || !result.status || result.status !== 'success') this.invalidate()
+    Object.assign(this.$user, result.data)
+    this.setEcho()
   }
 
   public async index<Results>(endpoint: string, params?: SearchParameters): Promise<Results> {
@@ -182,52 +174,40 @@ export default class Api {
     if (Array.isArray(token))
       token = token.join('')
 
-    try {
       return (await $fetch<api.MetApiResponse & { data: UserLogin }>(`/login/${token}`, this.fetchOptions())).data
-    }
-    catch (error) {
-      await this.toastError(error as FetchError)
-      throw (error)
-    }
   }
 
   public upload(url: string, params?: SearchParameters) {
     return $fetch(url, { method: 'PUT', body: params })
   }
 
-  public async toastError(error: FetchError): Promise<void> {
+  public async toastError(error: any): Promise<any> {
     if (error.response?.status === 401)
       return await this.invalidate()
 
     if (error.response?.status === 402 && this.config.paymentToast)
-      return this.$toast.show(this.config.paymentToast)
-
-    if (!this.$toast)
-      throw error
+      return useToast().add(this.config.paymentToast)
 
     if (error.response?._data && error.response._data.errors?.error?.reason) {
       for (const err of error.response._data.errors) {
-        this.$toast.show({
-          type: 'danger',
-          message: err.detail ?? err.message ?? '',
-          timeout: 12,
-        })
-      }
+        useToast().add({ icon: 'i-mdi-alert', title: err.detail ?? err.message ?? '', color: 'red' })
+     }
     }
 
     if (error.response?.status === 403) {
-      return this.$toast.show({
-        type: 'denied',
-        message: error.response._data.message,
-        timeout: 0,
+      useToast().add({
+        icon: 'i-mdi-account-cancel',
+        title: error.response._data.message,
+        color: 'red',
       })
     }
 
     if (error.response?._data.exception) {
-      this.$toast.show({
-        wide: true,
-        type: 'danger',
-        message: `
+      useToast().add({
+        ui: {'width': 'sm:w-1/2'},
+        icon: 'i-mdi-alert',
+        color: 'red',
+        title: `
         <b>[${error.response._data.exception}]</b><br />
         ${error.response._data.message}<br />
         <a href="phpstorm://open?file=/${error.response._data.file}&line=${error.response._data.line}">
@@ -238,21 +218,18 @@ export default class Api {
     }
   }
 
-  public async logout(router: Router): Promise<void> {
+  public async logout(): Promise<void> {
     if (this.$echo)
       this.$echo.disconnect()
-    const response = (await $fetch<api.MetApiResults>('/logout', this.fetchOptions()))
-    this.$toast.show(Object.assign(response.data as ToastProps, { timeout: 1 }))
-    await this.invalidate(router)
+    const response = (await $fetch<api.MetApiResponse>('/logout', this.fetchOptions()))
+    useToast().add({ icon: 'i-mdi-check-bold', color: 'green', title: response.data.message, timeout: 1 })
+    await this.invalidate()
   }
 
-  public async invalidate(router?: Router): Promise<void> {
+  public async invalidate(): Promise<void> {
     this.token.value = undefined
     this.loggedIn.value = false
     Object.assign(this.$user, {})
-    if (router)
-      await router.push(this.config.redirect.logout)
-    else if (process.client && document.location.pathname !== this.config.redirect.logout)
-      document.location.href = this.config.redirect.logout
+    navigateTo(this.config.redirect.logout)
   }
 }

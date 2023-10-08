@@ -12,7 +12,7 @@ const is_admin = computed(() => Math.random() >= 0.5)
 </script>
 
 <template>
-  <li class="col-span-1 bg-white dark:bg-gray-700 rounded-lg shadow">
+  <li class="col-span-1 bg-white dark:bg-gray-950 rounded-lg shadow">
     <div class="w-full flex items-center justify-between p-6 space-x-6">
       <div class="flex-1 truncate">
         <div class="flex items-center space-x-3">
@@ -32,14 +32,14 @@ const is_admin = computed(() => Math.random() >= 0.5)
       </div>
       <img
         v-if="user.avatar"
-        class="w-10 h-10 bg-gray-300 dark:border-gray-600 rounded-full flex-shrink-0"
+        class="w-10 h-10 bg-gray-300 dark:border-gray-800 rounded-full flex-shrink-0"
         :src="user.avatar"
         alt="avatar"
       >
     </div>
-    <div class="border-t border-gray-200 dark:border-gray-500">
+    <div class="border-t border-gray-200 dark:border-gray-800">
       <div class="-mt-px flex">
-        <div class="w-0 flex-1 flex border-r border-gray-200 dark:border-gray-500">
+        <div class="w-0 flex-1 flex border-r border-gray-200 dark:border-gray-800">
           <a
             class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 dark:text-gray-200 font-medium border border-transparent rounded-bl-lg transition ease-in-out duration-150 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10"
             href="#"

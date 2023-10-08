@@ -1,4 +1,10 @@
 {
+  "files.associations": {
+      "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+      "strings": true
+  },
   "prettier.enable": false,
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {

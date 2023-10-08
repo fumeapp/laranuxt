@@ -5,11 +5,11 @@ const route = useRoute()
 const router = useRouter()
 const api = useApi()
 
-const menu = new Menu(route, router, api)
+const menu = new Menu(api)
 </script>
 
 <template>
-  <header class="bg-white dark:bg-gray-800">
+  <header class="bg-white dark:bg-gray-800 h-16">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
       <div class="w-full py-3 flex items-center justify-between border-b border-indigo-500 lg:border-none">
         <div class="flex items-center">

@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 const { setCrumbs } = useCrumbs()
-const api = useApi()
 const sessions = ref<api.SessionResults | undefined>(undefined)
-const get = async () => sessions.value = (await api.index<api.SessionResults>('/session')).data
-get()
+const get = async () => sessions.value = (await useApi().index<api.SessionResults>('/session')).data
 setCrumbs([
   { name: 'Home', to: '/' },
   { name: 'Sessions', to: '/sessions', icon: 'mdi-devices' },
 ])
+
+get()
 </script>
 
 <template>

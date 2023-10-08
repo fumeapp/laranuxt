@@ -1,4 +1,3 @@
-import type { RouteLocationNormalizedLoaded, Router } from 'vue-router'
 import type { DropdownGroup } from '@/components/dropdown/DropdownGroup.vue'
 import type Api from '@/lib/api'
 
@@ -12,8 +11,6 @@ interface MenuItem {
 
 export default class {
   constructor(
-    private route: RouteLocationNormalizedLoaded,
-    private router: Router,
     private api: Api,
   ) { }
 
@@ -54,12 +51,12 @@ export default class {
       {
         icon: 'carbon:user-profile',
         name: 'Your Profile',
-        action: () => this.router.push('/profile'),
+        action: () => navigateTo('/profile'),
       },
       {
         icon: 'mdi-devices',
         name: 'Your Devices',
-        action: () => this.router.push('/sessions'),
+        action: () => navigateTo('/sessions'),
       },
     ],
     [
@@ -72,9 +69,9 @@ export default class {
   ]
 
   private async logout() {
-    await this.api.logout(this.router)
+    await this.api.logout()
   }
 
   public isCurrent = (item: MenuItem) =>
-    typeof this.route.name === 'string' && item.names.includes(this.route.name)
+    typeof useRoute().name === 'string' && item.names.includes(useRoute().name as string)
 }
