@@ -1,6 +1,7 @@
 import Menu from '@/lib/menu'
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
+  await useLnUtils().sleep(100)
   const api = useApi()
   await api.checkUser()
   const menu = new Menu(api)
