@@ -13,14 +13,15 @@ const get = async () => {
 }
 const error = async () => await useApi().get('/error')
 
-get()
-
-const test = () => {
-  useToast().add({
-    icon: 'i-mdi-alert',
-    title: 'this is a test',
-  })
+const start = () => {
+  useNuxtApp().callHook('page:start').catch(() => { })
 }
+
+const finish = () => {
+  useNuxtApp().callHook('page:finish').catch(() => { })
+}
+
+onMounted(get)
 </script>
 
 <template>
@@ -37,13 +38,10 @@ const test = () => {
       <span>&nbsp;</span>
       <span class="text-sm">(1 second delay)</span>
       <div class="mt-4 flex justify-center space-x-2">
-        <u-button @click="get" :loading="loading" icon="i-mdi-refresh">
-          get()
-        </u-button>
-        <u-button @click="test">toast test </u-button>
-        <u-button @click="error" color="red" icon="i-mdi-error">
-          Force PHP Error
-        </u-button>
+        <u-button @click="get" :loading="loading" icon="i-mdi-refresh" labe="get()" />
+        <u-button @click="start" label="start" />
+        <u-button @click="finish" label="finish" />
+        <u-button @click="error" color="red" icon="i-mdi-error" label="Force PHP Error" />
       </div>
     </div>
   </div>

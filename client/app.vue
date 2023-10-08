@@ -6,10 +6,10 @@ useApi().setNuxtApp(useNuxtApp())
 <template>
   <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
     <nuxt-layout>
+      <NuxtLoadingIndicator :color="color" />
       <header-bar />
       <layout-bread-crumbs>
         <u-container>
-          <NuxtLoadingIndicator /> <!-- here -->
           <nuxt-page />
         </u-container>
       </layout-bread-crumbs>

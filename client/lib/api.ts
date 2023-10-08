@@ -124,10 +124,8 @@ export default class Api {
       Referer: this.config.webURL,
     }
     fetchOptions.method = method
-    if (this.nuxtApp) {
-      fetchOptions.onRequest = () => this.nuxtApp?.callHook('page:start').catch(() => { })
-      fetchOptions.onResponse = () => this.nuxtApp?.callHook('page:finish').catch(() => { })
-    }
+    fetchOptions.onRequest = () => this.nuxtApp?.callHook('page:start')
+    fetchOptions.onResponse = () => this.nuxtApp?.callHook('page:finish')
     fetchOptions.onResponseError = this.toastError
     delete this.config.fetchOptions.body
     delete this.config.fetchOptions.params
