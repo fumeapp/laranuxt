@@ -65,14 +65,6 @@ export default class Api {
   constructor(config: AuthConfig) {
     this.config = { ...authConfigDefaults, ...config }
   }
-
-  public async invalidate(): Promise<void> {
-    this.token.value = undefined
-    this.loggedIn.value = false
-    Object.assign(this.$user, {})
-    navigateTo(this.config.redirect.logout)
-  }
-
   setNuxtApp(nuxtApp:NuxtApp) {
     this.nuxtApp = nuxtApp
   }
@@ -188,8 +180,8 @@ export default class Api {
   }
 
   public async toastError(error: any): Promise<any> {
-    if (error.response?.status === 401)
-      return await this.invalidate()
+    if (error.response?.status === 401) {
+     }
 
     if (error.response?.status === 402 && this.config.paymentToast)
       return useToast().add(this.config.paymentToast)
@@ -224,6 +216,13 @@ export default class Api {
     }
   }
 
+  public async invalidate(): Promise<void> {
+    this.token.value = undefined
+    this.loggedIn.value = false
+    Object.assign(this.$user, {})
+    navigateTo(this.config.redirect.logout)
+  }
+
   public async logout(): Promise<void> {
     if (this.$echo)
       this.$echo.disconnect()
@@ -231,4 +230,5 @@ export default class Api {
     useToast().add({ icon: 'i-mdi-check-bold', color: 'green', title: response.data.message, timeout: 1 })
     await this.invalidate()
   }
+
 }
