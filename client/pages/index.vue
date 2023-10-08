@@ -2,8 +2,15 @@
 const { setCrumbs } = useCrumbs()
 setCrumbs([{ name: 'List of Users', to: '/', icon: 'i-mdi-account-group' }])
 
+const loading = ref(false)
+
 const users = ref<models.UserResults>(undefined)
-const get = async () => users.value = await useApi().index<models.UserResults>('/example', { count: 9 })
+const get = async () => {
+  loading.value = true
+  users.value = undefined
+  users.value = await useApi().index<models.UserResults>('/example', { count: 9 })
+  loading.value = false
+}
 const error = async () => await useApi().get('/error')
 
 get()
@@ -30,7 +37,7 @@ const test = () => {
       <span>&nbsp;</span>
       <span class="text-sm">(1 second delay)</span>
       <div class="mt-4 flex justify-center space-x-2">
-        <u-button @click="get" icon="i-mdi-refresh">
+        <u-button @click="get" :loading="loading" icon="i-mdi-refresh">
           get()
         </u-button>
         <u-button @click="test">toast test </u-button>

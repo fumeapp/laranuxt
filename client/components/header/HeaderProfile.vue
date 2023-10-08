@@ -38,9 +38,6 @@ const profileGroup = [
       },
     ],
   ]
-
-
-
 </script>
 
 <template>
@@ -50,7 +47,7 @@ const profileGroup = [
         Sign In
       </u-button>
       <u-dropdown v-else :items="profileGroup">
-        <u-button variant="ghost" color="white" size="xs">
+        <u-button variant="ghost" color="white" size="xs" :ui="{ rounded: 'rounded-full' }">
           <span class="sr-only">Open user menu</span>
           <img
             v-if="api.$user.avatar" class="w-8 h-8 rounded-full bg-blue-400" :src="api.$user.avatar"
