@@ -102,7 +102,7 @@ class Controller extends BaseController
                 'name' => $faker->name(),
                 'job' => $faker->jobTitle,
                 'email' => $email,
-                'avatar' => 'https://avatars.dicebear.com/api/human/' . $email . '.svg',
+                'avatar' => 'https://api.multiavatar.com/' . $email . '.svg',
             ];
         }
 
