@@ -25,7 +25,6 @@ const verify = async () => {
 
 definePageMeta({
   auth: false,
-  middleware: 'guest',
   title: 'Authenticating..',
   meta: [
     {
