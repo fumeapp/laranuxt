@@ -25,7 +25,7 @@
 ### What is included
 
 * [NUXT v3](https://nuxt.com) front end, a progressive Vue.js framework - For Nuxt v2 visit [this branch](https://github.com/fumeapp/laranuxt/tree/nuxt2)
-  * [nuxt UI](https://ui.nuxt.com.com) a collection of components built by the NuxtJS team, powered by TailwindCSS
+  * [nuxt UI](https://ui.nuxt.com) a collection of components built by the NuxtJS team, powered by TailwindCSS
   * [Authentication library](https://github.com/fumeapp/laranuxt#api-and-authentication) to assist with user sessions and logging in/out
   * Example Authentication Middleware
 
