@@ -72,6 +72,11 @@ class User extends Authenticatable
 
     protected $casts = ['is_sub' => 'boolean'];
 
+    /**
+     * Providers allowed.
+     *
+     * @var array<string, array<string, string>>
+     */
     public array $interfaces = [
         'location' => [
             'name' => 'api.SessionLocation',

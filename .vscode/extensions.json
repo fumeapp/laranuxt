@@ -7,5 +7,6 @@
         "open-southeners.laravel-pint",
         "Vue.volar",
         "Vue.vscode-typescript-vue-plugin",
+        "emeraldwalk.RunOnSave",
     ]
 }

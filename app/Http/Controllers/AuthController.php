@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Provider;
 use App\Models\User;
 use App\Notifications\LoginAttempt;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -57,7 +58,7 @@ class AuthController extends Controller
 
         $user = $this->oaHandle($oaUser, $provider);
 
-        /** @var User $user */
+        /** @var Authenticatable $user */
         auth()->login($user, $provider);
 
         return $this->response($provider);
@@ -114,6 +115,8 @@ class AuthController extends Controller
 
     /**
      * Create new users with their initial team
+     *
+     * @param  array<int, mixed>  $payload
      */
     private function createUser(string $provider, string $name, string $email, string $avatar, array $payload): User
     {

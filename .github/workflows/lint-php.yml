@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.1]
+        php: [8.3]
 
     name: PHP Version:${{ matrix.php }}
 
@@ -43,4 +43,4 @@ jobs:
         run: composer install --prefer-dist --no-suggest --no-progress
 
       - name: Detect coding standard violations
-        run: vendor/bin/phpcs -q --report=checkstyle | cs2pr --graceful-warnings
+        run: vendor/bin/pint --test --format=checkstyle | cs2pr

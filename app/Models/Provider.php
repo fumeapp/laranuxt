@@ -33,6 +33,11 @@ use Illuminate\Support\Carbon;
  */
 class Provider extends Model
 {
+    /**
+     * Providers allowed.
+     *
+     * @var array<string>
+     */
     public static array $allowed = ['email', 'google', 'facebook'];
 
     protected $guarded = [];
