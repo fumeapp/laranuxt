@@ -8,10 +8,15 @@
   "prettier.enable": false,
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
-  "[php]": {
-    "editor.defaultFormatter": "open-southeners.laravel-pint",
-    "editor.formatOnSave": true
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.php$",
+        "isAsync": true,
+        "cmd": "./vendor/bin/pint ${file}"
+      },
+    ]
   },
 }

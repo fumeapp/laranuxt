@@ -14,19 +14,19 @@
     "composer/composer": "^2.2.1",
     "google/apiclient": "^2.11",
     "guzzlehttp/guzzle": "^7.0.1",
-    "laravel/framework": "^10.0",
+    "laravel/framework": "^11.0",
     "laravel/socialite": "^5.6",
     "laravel/tinker": "^2.5"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.5",
-    "barryvdh/laravel-ide-helper": "^2.8",
+    "barryvdh/laravel-ide-helper": "^3.0",
     "fakerphp/faker": "^1.9.1",
     "fumeapp/modeltyper": "^2.2",
+    "larastan/larastan": "^2.1",
     "laravel/pint": "^1.0.0",
     "mockery/mockery": "^1.4.4",
-    "nunomaduro/collision": "^7.0",
-    "nunomaduro/larastan": "^2.0",
+    "nunomaduro/collision": "^8.1",
     "phpunit/phpunit": "^10.0",
     "spatie/laravel-ignition": "^2.0",
     "spatie/laravel-ray": "^1.29",
@@ -73,12 +73,6 @@
     "post-create-project-cmd": [
       "@php artisan key:generate --ansi"
     ],
-    "cs": [
-      "@php vendor/bin/phpcs"
-    ],
-    "cs-v": [
-      "@php vendor/bin/phpcs -s"
-    ],
     "stan": [
       "vendor/bin/phpstan analyse"
     ],
@@ -91,8 +85,6 @@
     "post-autoload-dump": "Run after autoloading has been dumped.",
     "post-root-package-install": "Run after the root package has been installed.",
     "post-create-project-cmd": "Run after the project has been created.",
-    "cs": "Run the PHP CodeSniffer.",
-    "cs-v": "Run the PHP CodeSniffer verbosely.",
     "stan": "Run the PHPStan analyser.",
     "pint": "Run the Pint analyser."
   }

@@ -20,8 +20,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests;
     use DispatchesJobs;
-    use ValidatesRequests;
     use MetApi;
+    use ValidatesRequests;
 
     public function __construct(Request $request)
     {
